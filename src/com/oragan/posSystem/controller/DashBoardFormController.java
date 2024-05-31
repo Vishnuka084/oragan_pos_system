@@ -1,6 +1,5 @@
 package com.oragan.posSystem.controller;
 
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,6 +7,13 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
+/**
+ * Created by Vishnuka Yahan
+ *
+ * @author : Vishnuka Yahan
+ * @data : 5/31/2024
+ * @project : oragan_posSystem
+ */
 public class DashBoardFormController {
 
     public AnchorPane context;
@@ -18,23 +24,24 @@ public class DashBoardFormController {
         context.getChildren().add(parent);
     }
 
-    public void DashBoardOnAction(ActionEvent actionEvent) throws IOException {
+    public void CustomerOnAction(ActionEvent actionEvent) throws IOException {
         setUi2("CustomerForm");
     }
 
-    public void CustomerOnAction(ActionEvent actionEvent) throws IOException {
+    public void ItemOnAction(ActionEvent actionEvent) throws IOException {
         setUi2("ItemForm");
     }
 
-    public void ItemOnAction(ActionEvent actionEvent) throws IOException {
+    public void PurchaseOrderOnAction(ActionEvent actionEvent) throws IOException {
         setUi2("PurchaseOrderForm");
     }
 
-    public void PurchaseOrderOnAction(ActionEvent actionEvent) throws IOException {
+    public void OderDetailsOnAction(ActionEvent actionEvent) throws IOException {
         setUi2("OrderDetailsForm");
+
     }
 
-    public void OderDetailsOnAction(ActionEvent actionEvent) throws IOException {
+    public void DashBoardOnAction(ActionEvent actionEvent) throws IOException {
         setUi2("DashBoardFunctionForm");
     }
 }
