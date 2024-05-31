@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="788.0" prefWidth="1622.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.ItemFormController">
+   <children>
+      <Text layoutX="436.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item" wrappingWidth="522.13671875" />
+   </children>
+</AnchorPane>

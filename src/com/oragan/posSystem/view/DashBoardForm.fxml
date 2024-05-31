@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="1120.0" prefWidth="1929.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.DashBoardFormController">
+   <children>
+      <Circle fill="#106bc6" layoutX="96.0" layoutY="555.0" radius="607.0" stroke="#106bc6" strokeType="INSIDE" />
+      <Circle fill="#167be1" layoutX="-130.0" layoutY="555.0" radius="604.0" stroke="#167be1" strokeType="INSIDE" />
+      <Circle fill="#4198ee" layoutX="-307.0" layoutY="580.0" radius="604.0" stroke="#4198ee" strokeType="INSIDE" />
+      <Rectangle arcWidth="5.0" fill="WHITE" height="72.0" layoutX="197.0" layoutY="116.0" opacity="0.86" stroke="WHITE" strokeType="INSIDE" width="1622.0" />
+      <Text layoutX="275.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 27; -fx-font-family: bold;" text="Oragan Shop" wrappingWidth="181.13671875" />
+      <ImageView fitHeight="54.0" fitWidth="62.0" layoutX="215.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-shop-96.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="33.0" fitWidth="31.0" layoutX="502.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-home-100.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="31.0" fitWidth="31.0" layoutX="696.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-customer-100.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="533.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 25; -fx-font-family: bold;" text="DashBoard" wrappingWidth="150.13671875" />
+      <Text layoutX="725.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 25; -fx-font-family: bold;" text="Customer" wrappingWidth="150.13671875" />
+      <ImageView fitHeight="31.0" fitWidth="31.0" layoutX="876.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-open-box-90.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="906.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 25; -fx-font-family: bold;" text="Items" wrappingWidth="150.13671875" />
+      <Text layoutX="1065.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 25; -fx-font-family: bold;" text="Purchase Order" wrappingWidth="208.13671875" />
+      <ImageView fitHeight="31.0" fitWidth="31.0" layoutX="1034.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-create-order-100.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="1323.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 25; -fx-font-family: bold;" text="Oder Details" wrappingWidth="217.13671875" />
+      <ImageView fitHeight="31.0" fitWidth="31.0" layoutX="1292.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-order-100.png" />
+         </image>
+      </ImageView>
+      <Separator layoutX="216.0" layoutY="173.0" prefHeight="12.0" prefWidth="1585.0" />
+      <Text layoutX="1008.0" layoutY="1002.0" strokeType="OUTSIDE" strokeWidth="0.0" text="copy@right 2024 Oragan " />
+      <Button layoutX="525.0" layoutY="145.0" mnemonicParsing="false" onAction="#DashBoardOnAction" opacity="0.11" prefHeight="25.0" prefWidth="137.0" />
+      <Button layoutX="712.0" layoutY="143.0" mnemonicParsing="false" onAction="#CustomerOnAction" opacity="0.11" prefHeight="25.0" prefWidth="123.0" />
+      <Button layoutX="892.0" layoutY="143.0" mnemonicParsing="false" onAction="#ItemOnAction" opacity="0.11" prefHeight="25.0" prefWidth="89.0" />
+      <Button layoutX="1054.0" layoutY="141.0" mnemonicParsing="false" onAction="#PurchaseOrderOnAction" opacity="0.11" prefHeight="25.0" prefWidth="181.0" />
+      <Button layoutX="1315.0" layoutY="144.0" mnemonicParsing="false" onAction="#OderDetailsOnAction" opacity="0.11" prefHeight="25.0" prefWidth="150.0" />
+      <AnchorPane fx:id="context" layoutX="197.0" layoutY="186.0" opacity="0.98" prefHeight="788.0" prefWidth="1622.0" style="-fx-background-color: #ebf3ff;" />
+   </children>
+</AnchorPane>
