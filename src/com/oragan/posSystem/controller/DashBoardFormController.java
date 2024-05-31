@@ -19,22 +19,22 @@ public class DashBoardFormController {
     }
 
     public void DashBoardOnAction(ActionEvent actionEvent) throws IOException {
-        setUi2("CustomerForm");
+        setUi2("DashBoardFunctionForm");
     }
 
     public void CustomerOnAction(ActionEvent actionEvent) throws IOException {
-        setUi2("ItemForm");
+        setUi2("CustomerForm");
     }
 
     public void ItemOnAction(ActionEvent actionEvent) throws IOException {
-        setUi2("PurchaseOrderForm");
+        setUi2("ItemForm");
     }
 
     public void PurchaseOrderOnAction(ActionEvent actionEvent) throws IOException {
-        setUi2("OrderDetailsForm");
+        setUi2("PurchaseOrderForm");
     }
 
     public void OderDetailsOnAction(ActionEvent actionEvent) throws IOException {
-        setUi2("DashBoardFunctionForm");
+        setUi2("OrderDetailsForm");
     }
 }
