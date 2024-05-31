@@ -43,5 +43,6 @@ public class DashBoardFormController {
 
     public void DashBoardOnAction(ActionEvent actionEvent) throws IOException {
         setUi2("DashBoardFunctionForm");
+
     }
 }
