@@ -7,13 +7,7 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
-/**
- * Created by Vishnuka Yahan
- *
- * @author : Vishnuka Yahan
- * @data : 5/31/2024
- * @project : oragan_posSystem
- */
+
 public class DashBoardFormController {
 
     public AnchorPane context;
