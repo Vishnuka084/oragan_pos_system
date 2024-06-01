@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="788.0" prefWidth="1622.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.ItemFormController">
+<AnchorPane prefHeight="788.0" prefWidth="1622.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.ItemFormController">
    <children>
       <TextField layoutX="433.0" layoutY="105.0" prefHeight="39.0" prefWidth="304.0" promptText="Search">
          <font>
@@ -32,6 +32,6 @@
          </columns>
       </TableView>
       <Button layoutX="875.0" layoutY="105.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="134.0" text="Search" />
-      <Button layoutX="1115.0" layoutY="105.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="192.0" text="Add New Customer" />
+      <Button layoutX="1115.0" layoutY="105.0" mnemonicParsing="false" onAction="#btnAddItemFormOnAction" prefHeight="39.0" prefWidth="192.0" text="Add New Customer" />
    </children>
 </AnchorPane>
