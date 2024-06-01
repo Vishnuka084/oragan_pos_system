@@ -14,7 +14,10 @@ public class DashBoardFormController {
 
     private void setUi2(String ui2) throws IOException {
         context.getChildren().clear();
-        Parent parent = FXMLLoader.load(getClass().getResource("../view/"+ui2+".fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/" + ui2 + ".fxml"));
+        Parent parent = loader.load();
+        // Assuming 'context' is an instance of AnchorPane or its subclass
+        parent.getStylesheets().add(getClass().getResource("../styles/styles.css").toExternalForm());
         context.getChildren().add(parent);
     }
 
@@ -23,6 +26,7 @@ public class DashBoardFormController {
     }
 
     public void ItemOnAction(ActionEvent actionEvent) throws IOException {
+
         setUi2("ItemForm");
     }
 

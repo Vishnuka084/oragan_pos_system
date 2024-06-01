@@ -21,7 +21,7 @@ public class ItemFormController {
         Stage stage = new Stage();
         stage.setScene(new Scene(load));
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setTitle("Add Customer Form");
+        stage.setTitle("Add Item Form");
         stage.centerOnScreen();
         stage.show();
     }
