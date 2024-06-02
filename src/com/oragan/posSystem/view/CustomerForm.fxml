@@ -17,7 +17,7 @@
                 <Font size="15.0" />
             </font>
         </TextField>
-        <MenuButton layoutX="685.0" layoutY="95.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="146.0" style="-fx-background-color: #EFD726; -fx-border-radius: 10; -fx-background-radius: 10;" text="Customer Id">
+        <MenuButton layoutX="685.0" layoutY="95.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="146.0" style="-fx-background-color: #EFC81A; -fx-border-radius: 10; -fx-background-radius: 10;" text="Customer Id">
             <items>
                 <MenuItem mnemonicParsing="false" text="Action 1" />
                 <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -39,6 +39,9 @@
          </effect>
         </TableView>
         <Button layoutX="845.0" layoutY="95.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="134.0" style="-fx-border-color: green; -fx-background-color: white; -fx-border-width: 2; -fx-border-radius: 8;" text="Search" textFill="#1eab0b" />
-        <Button layoutX="1000.0" layoutY="95.0" mnemonicParsing="false" onAction="#btnAddItemFormOnAction" prefHeight="48.0" prefWidth="192.0" style="-fx-background-color: black; -fx-border-radius: 15; -fx-background-radius: 10;" text="Add New Customer" textFill="#f8f8f8" />
+        <Button layoutX="1000.0" layoutY="95.0" mnemonicParsing="false" onAction="#btnAddItemFormOnAction" prefHeight="48.0" prefWidth="192.0" style="-fx-background-color: black; -fx-border-radius: 15; -fx-background-radius: 10;" text="Add New Customer" textFill="#f8f8f8">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
     </children>
 </AnchorPane>
