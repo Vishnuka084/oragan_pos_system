@@ -1,38 +1,152 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="788.0" prefWidth="1622.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.PurchaseOrderFormController">
+<AnchorPane prefHeight="788.0" prefWidth="1622.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.PurchaseOrderFormController">
    <children>
-      <TextField layoutX="443.0" layoutY="115.0" prefHeight="39.0" prefWidth="304.0" promptText="Search">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </TextField>
-      <MenuButton layoutX="764.0" layoutY="115.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="107.0" text="Item Code">
-         <items>
-            <MenuItem mnemonicParsing="false" text="Action 1" />
-            <MenuItem mnemonicParsing="false" text="Action 2" />
-         </items>
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </MenuButton>
-      <TableView layoutX="214.0" layoutY="207.0" prefHeight="200.0" prefWidth="1180.0">
+      <TableView layoutX="275.0" layoutY="394.0" prefHeight="200.0" prefWidth="1180.0">
          <columns>
-            <TableColumn prefWidth="75.0" text="C1" />
-            <TableColumn prefWidth="75.0" text="C2" />
+            <TableColumn prefWidth="167.0" text="Item Code" />
+            <TableColumn minWidth="0.0" prefWidth="188.0" text="Item Name" />
+            <TableColumn prefWidth="173.0" text="Unit Price" />
+            <TableColumn prefWidth="166.0" text="Quantity" />
+            <TableColumn prefWidth="212.0" text="Total" />
+            <TableColumn prefWidth="273.0" text="Options" />
          </columns>
       </TableView>
-      <Button layoutX="885.0" layoutY="115.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="134.0" text="Search" />
-      <Button layoutX="1125.0" layoutY="115.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="192.0" text="Add New Customer" />
+      <Text layoutX="20.0" layoutY="53.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID" wrappingWidth="133.60986328125">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <ComboBox layoutX="20.0" layoutY="66.0" opacity="0.84" prefHeight="35.0" prefWidth="371.0" style="-fx-background-color: white;">
+         <opaqueInsets>
+            <Insets left="5.0" />
+         </opaqueInsets>
+      </ComboBox>
+      <Text layoutX="410.0" layoutY="50.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="133.60986328125">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TextField layoutX="410.0" layoutY="66.0" prefHeight="35.0" prefWidth="371.0">
+         <opaqueInsets>
+            <Insets left="5.0" />
+         </opaqueInsets>
+      </TextField>
+      <Text layoutX="798.0" layoutY="49.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" wrappingWidth="133.60986328125">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TextField layoutX="798.0" layoutY="66.0" prefHeight="35.0" prefWidth="371.0">
+         <opaqueInsets>
+            <Insets left="5.0" />
+         </opaqueInsets>
+      </TextField>
+      <Text layoutX="1189.0" layoutY="51.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact Number" wrappingWidth="214.60986328125">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TextField layoutX="1189.0" layoutY="66.0" prefHeight="35.0" prefWidth="382.0">
+         <opaqueInsets>
+            <Insets left="5.0" />
+         </opaqueInsets>
+      </TextField>
+      <Text layoutX="23.0" layoutY="139.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Code" wrappingWidth="133.60986328125">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <ComboBox layoutX="23.0" layoutY="152.0" opacity="0.84" prefHeight="35.0" prefWidth="371.0" style="-fx-background-color: white;">
+         <opaqueInsets>
+            <Insets left="5.0" />
+         </opaqueInsets>
+      </ComboBox>
+      <Text layoutX="413.0" layoutY="136.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Name" wrappingWidth="133.60986328125">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TextField layoutX="413.0" layoutY="152.0" prefHeight="35.0" prefWidth="371.0">
+         <opaqueInsets>
+            <Insets left="5.0" />
+         </opaqueInsets>
+      </TextField>
+      <Text layoutX="801.0" layoutY="135.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="QTY On Hand" wrappingWidth="133.60986328125">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TextField layoutX="801.0" layoutY="152.0" prefHeight="35.0" prefWidth="371.0">
+         <opaqueInsets>
+            <Insets left="5.0" />
+         </opaqueInsets>
+      </TextField>
+      <Text layoutX="1192.0" layoutY="135.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Qty" wrappingWidth="214.60986328125">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TextField layoutX="1192.0" layoutY="152.0" prefHeight="35.0" prefWidth="382.0">
+         <opaqueInsets>
+            <Insets left="5.0" />
+         </opaqueInsets>
+      </TextField>
+      <Text layoutX="1348.0" layoutY="228.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity" wrappingWidth="214.60986328125">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TextField layoutX="1348.0" layoutY="240.0" prefHeight="35.0" prefWidth="225.0">
+         <opaqueInsets>
+            <Insets left="5.0" />
+         </opaqueInsets>
+      </TextField>
+      <Button layoutX="1348.0" layoutY="286.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="215.0" style="-fx-background-color: yellow; -fx-border-radius: 10; -fx-background-radius: 10;" text="Add To Cart">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="28.0" fitWidth="25.0" layoutX="1507.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/cart.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="1425.0" layoutY="692.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="164.0" style="-fx-background-color: #3BB30A; -fx-border-radius: 10; -fx-background-radius: 10;" text="Place Order" textFill="#f5f5f5">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="25.0" fitWidth="43.0" layoutX="1558.0" layoutY="702.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/place-order.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="20.0" layoutY="720.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Totol :" wrappingWidth="51.70654296875">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
+      <Text layoutX="20.0" layoutY="752.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Totol :" wrappingWidth="51.70654296875">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
    </children>
+   <effect>
+      <ColorAdjust />
+   </effect>
 </AnchorPane>

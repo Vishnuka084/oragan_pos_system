@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -33,6 +34,9 @@
                 <TableColumn prefWidth="184.0" text="Salary" />
             <TableColumn prefWidth="362.0" text="Options" />
             </columns>
+         <effect>
+            <ColorAdjust brightness="0.13" contrast="0.05" hue="0.15" saturation="-0.03" />
+         </effect>
         </TableView>
         <Button layoutX="845.0" layoutY="95.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="134.0" style="-fx-border-color: green; -fx-background-color: white; -fx-border-width: 2; -fx-border-radius: 8;" text="Search" textFill="#1eab0b" />
         <Button layoutX="1000.0" layoutY="95.0" mnemonicParsing="false" onAction="#btnAddItemFormOnAction" prefHeight="48.0" prefWidth="192.0" style="-fx-background-color: black; -fx-border-radius: 15; -fx-background-radius: 10;" text="Add New Customer" textFill="#f8f8f8" />
