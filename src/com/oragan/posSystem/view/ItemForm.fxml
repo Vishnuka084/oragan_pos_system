@@ -27,7 +27,7 @@
       </MenuButton>
       <TableView fx:id="tblItem" layoutX="221.0" layoutY="211.0" prefHeight="200.0" prefWidth="1180.0">
          <columns>
-            <TableColumn prefWidth="196.0" text="Item Code" />
+            <TableColumn prefWidth="196.0" style="-fx-background-color: black;" text="Item Code" />
             <TableColumn prefWidth="181.0" text="Item Name" />
             <TableColumn prefWidth="256.0" text="Price" />
             <TableColumn prefWidth="184.0" text="Qty On Hand" />

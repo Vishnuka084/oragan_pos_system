@@ -26,7 +26,7 @@
                 <Font name="System Bold" size="14.0" />
             </font>
         </MenuButton>
-        <TableView fx:id="tblItem" layoutX="221.0" layoutY="211.0" prefHeight="200.0" prefWidth="1180.0">
+        <TableView fx:id="tblItem" layoutX="221.0" layoutY="211.0" prefHeight="200.0" prefWidth="1180.0" style="-fx-background-color: black;">
             <columns>
                 <TableColumn prefWidth="196.0" text="Customer ID" />
                 <TableColumn prefWidth="181.0" text="Name" />
