@@ -12,14 +12,14 @@ public class DashBoardFormController {
 
     public AnchorPane context;
 
+
     private void setUi2(String ui2) throws IOException {
         context.getChildren().clear();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/" + ui2 + ".fxml"));
         Parent parent = loader.load();
-        // Assuming 'context' is an instance of AnchorPane or its subclass
-        parent.getStylesheets().add(getClass().getResource("../styles/styles.css").toExternalForm());
         context.getChildren().add(parent);
     }
+
 
     public void CustomerOnAction(ActionEvent actionEvent) throws IOException {
         setUi2("CustomerForm");

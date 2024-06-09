@@ -9,12 +9,27 @@ public class DBConnection {
     private Connection connection;
 
     private DBConnection() throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/oragan_pos_system", "root", "1234");
+        try {
+            // Load the SQLite JDBC driver
+            Class.forName("org.sqlite.JDBC");
+            // Connect to the SQLite database file (replace "/path/to/your/database.db" with the actual path)
+            connection = DriverManager.getConnection("jdbc:sqlite:identifier.sqlite");
+        } catch (SQLException e) {
+            System.err.println("Error connecting to the database: " + e.getMessage());
+            throw e; // rethrow the exception to indicate failure
+        } catch (ClassNotFoundException e) {
+            System.err.println("SQLite JDBC driver not found");
+            throw e; // rethrow the exception to indicate failure
+        }
     }
-    public static DBConnection getInstance() throws SQLException, ClassNotFoundException {
-        return (null == dbConnection) ? dbConnection = new DBConnection() : dbConnection;
+
+    public static synchronized DBConnection getInstance() throws SQLException, ClassNotFoundException {
+        if (dbConnection == null) {
+            dbConnection = new DBConnection();
+        }
+        return dbConnection;
     }
+
     public Connection getConnection() {
         return connection;
     }

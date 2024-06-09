@@ -11,9 +11,9 @@
 
 <AnchorPane prefHeight="1120.0" prefWidth="1929.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.DashBoardFormController">
    <children>
-      <Circle fill="#106bc6" layoutX="96.0" layoutY="555.0" radius="607.0" stroke="#106bc6" strokeType="INSIDE" />
-      <Circle fill="#167be1" layoutX="-130.0" layoutY="555.0" radius="604.0" stroke="#167be1" strokeType="INSIDE" />
-      <Circle fill="#4198ee" layoutX="-307.0" layoutY="580.0" radius="604.0" stroke="#4198ee" strokeType="INSIDE" />
+      <Circle fill="#034586" layoutX="96.0" layoutY="555.0" radius="607.0" stroke="#034586" strokeType="INSIDE" />
+      <Circle fill="#0d549a" layoutX="-130.0" layoutY="555.0" radius="604.0" stroke="#0d549a" strokeType="INSIDE" />
+      <Circle fill="#2868a4" layoutX="-307.0" layoutY="580.0" radius="604.0" stroke="#2868a4" strokeType="INSIDE" />
       <Rectangle arcWidth="5.0" fill="WHITE" height="72.0" layoutX="197.0" layoutY="116.0" opacity="0.86" stroke="WHITE" strokeType="INSIDE" width="1622.0" />
       <Text layoutX="275.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 27; -fx-font-family: bold;" text="Oragan Shop" wrappingWidth="181.13671875" />
       <ImageView fitHeight="54.0" fitWidth="62.0" layoutX="215.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
