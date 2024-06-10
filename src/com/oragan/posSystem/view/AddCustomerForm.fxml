@@ -15,7 +15,7 @@
          </font>
       </Text>
       <Line endX="469.0" layoutX="115.0" layoutY="76.0" opacity="0.18" startX="-100.0" />
-      <TextField fx:id="txtCustomerId" layoutX="70.0" layoutY="130.0" prefHeight="46.0" prefWidth="459.0" />
+      <TextField fx:id="txtCustomerId" editable="false" layoutX="70.0" layoutY="130.0" prefHeight="46.0" prefWidth="459.0" />
       <TextField fx:id="txtCustomerName" layoutX="71.0" layoutY="233.0" prefHeight="46.0" prefWidth="459.0" />
       <TextField fx:id="txtCustomerAddress" layoutX="70.0" layoutY="344.0" prefHeight="46.0" prefWidth="459.0" />
       <TextField fx:id="txtContactNumber" layoutX="70.0" layoutY="448.0" prefHeight="46.0" prefWidth="459.0" />

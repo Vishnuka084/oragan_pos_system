@@ -1,5 +1,13 @@
+/**
+ * authour By Pamindu Nawodya
+ * Date:6/1/2024
+ * Time:10:14 PM
+ * Project Name:oragan_pos_system
+ */
 package com.oragan.posSystem.controller;
+
 import com.oragan.posSystem.db.DBConnection;
+import com.oragan.posSystem.entity.Customer;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -15,6 +23,21 @@ public class AddCustomerFormController {
     public TextField txtCustomerAddress;
     public TextField txtContactNumber;
 
+
+    public void initialize() {
+        setNewCustomerId();
+    }
+
+    private void setNewCustomerId() {
+        String newCustomerId = generateNewCustomerId();
+        if (newCustomerId != null) {
+            txtCustomerId.setText(newCustomerId);
+        } else {
+            System.out.println("Error generating new customer ID.");
+        }
+    }
+
+
     public void btnClearTxtFldOnAction(ActionEvent actionEvent) {
         txtCustomerId.clear();
         txtCustomerName.clear();
@@ -23,16 +46,6 @@ public class AddCustomerFormController {
     }
 
     public void btnCustomerAddOnAction(ActionEvent actionEvent) {
-       /* String customerID=txtCustomerId.getText();
-        String customerName=txtCustomerName.getText();
-        String customerAddress=txtCustomerAddress.getText();
-        String customerSalary=txtContactNumber.getText();
-
-        Customer c1=new Customer(
-                customerID,
-                customerName,
-                customerAddress,customerSalary
-        );*/
 
         String newCustomerId = generateNewCustomerId();
         if (newCustomerId == null) {
@@ -72,7 +85,7 @@ public class AddCustomerFormController {
                         String numericPartStr = lastId.substring(1);
                         try {
                             int numericPart = Integer.parseInt(numericPartStr) + 1;
-                            return String.format("C%02d", numericPart);
+                            return String.format("C%002d", numericPart);
                         } catch (NumberFormatException e) {
                             System.out.println("Invalid numeric part in the last customer ID: " + numericPartStr);
                             return null;
@@ -83,7 +96,7 @@ public class AddCustomerFormController {
                     }
                 } else {
                     // If no records found, start with C01
-                    return "C01";
+                    return "C001";
                 }
             }
         } catch (ClassNotFoundException | SQLException e) {
