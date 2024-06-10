@@ -87,4 +87,8 @@ public class CustomerFormController {
         }
     }
 
+    public void refreshCustomerData() {
+        loadCustomerData();
+    }
+
 }

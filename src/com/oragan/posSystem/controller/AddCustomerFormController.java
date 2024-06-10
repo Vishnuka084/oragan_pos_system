@@ -68,6 +68,7 @@ public class AddCustomerFormController {
 
                 // Show success alert
                 showAlert(Alert.AlertType.INFORMATION, "Success", "Customer added successfully.");
+                customerFormController.refreshCustomerData();
 
                 // Reset the form
                 btnClearTxtFldOnAction(null);
