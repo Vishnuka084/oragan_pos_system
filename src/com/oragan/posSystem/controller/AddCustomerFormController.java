@@ -34,9 +34,14 @@ public class AddCustomerFormController {
         txtCustomerName.clear();
         txtCustomerAddress.clear();
         txtContactNumber.clear();
+        resetFieldStyles();
     }
 
     public void btnCustomerAddOnAction(ActionEvent actionEvent) {
+        if (!validateInput()) {
+            return;
+        }
+
         String newCustomerId = txtCustomerId.getText(); // Use the ID set by initialize method
         if (newCustomerId == null || newCustomerId.isEmpty()) {
             System.out.println("Error: Customer ID is missing.");
@@ -107,5 +112,49 @@ public class AddCustomerFormController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    // Validation method
+    private boolean validateInput() {
+        boolean valid = true;
+        resetFieldStyles();
+
+        // Validation for Customer Name
+        if (!txtCustomerName.getText().matches("^[A-Z][a-zA-Z]*$")) {
+            txtCustomerName.setStyle("-fx-border-color: red;");
+            valid = false;
+        } else {
+            txtCustomerName.setStyle("-fx-border-color: #38f838;");
+        }
+
+        // Validation for Customer Address
+        if (!txtCustomerAddress.getText().matches("^[A-Z][a-zA-Z0-9\\s]*$")) {
+            txtCustomerAddress.setStyle("-fx-border-color: red;");
+            valid = false;
+        } else {
+            txtCustomerAddress.setStyle("-fx-border-color: #38f838;");
+        }
+
+        // Validation for Contact Number
+        if (!txtContactNumber.getText().matches("^\\+94[0-9]+$")) {
+            txtContactNumber.setStyle("-fx-border-color: red;");
+            valid = false;
+        } else {
+            txtContactNumber.setStyle("-fx-border-color: #38f838;");
+        }
+
+        // Display error message if validation fails
+        if (!valid) {
+            showAlert(Alert.AlertType.ERROR, "Validation Error", "Please correct the input fields.");
+        }
+
+        return valid;
+    }
+
+    // Reset field styles method
+    private void resetFieldStyles() {
+        txtCustomerName.setStyle(null);
+        txtCustomerAddress.setStyle(null);
+        txtContactNumber.setStyle(null);
     }
 }
