@@ -35,6 +35,12 @@ public class CustomerFormController {
     public TableColumn tblCustomerContactNoField;
     private ObservableList<Customer> customerList = FXCollections.observableArrayList();
 
+    public void initialize() {
+        loadCustomerData();
+        initializeTableColumns();
+
+    }
+
 
     public void btnAddCustomerFormOnAction(ActionEvent actionEvent) throws IOException {
         URL resource = this.getClass().getResource("/com/oragan/posSystem/view/AddCustomerForm.fxml");
@@ -50,11 +56,7 @@ public class CustomerFormController {
         stage.show();
     }
 
-    public void initialize() {
 
-        initializeTableColumns();
-        loadCustomerData();
-    }
 
     private void initializeTableColumns() {
         tblCustomerIdField.setCellValueFactory(new PropertyValueFactory<>("customer_Id"));
