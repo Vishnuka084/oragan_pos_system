@@ -4,6 +4,7 @@ import com.oragan.posSystem.db.DBConnection;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 
 import java.sql.*;
@@ -114,7 +115,6 @@ public class AddCustomerFormController {
         alert.showAndWait();
     }
 
-    // Validation method
     private boolean validateInput() {
         boolean valid = true;
         resetFieldStyles();
@@ -122,25 +122,31 @@ public class AddCustomerFormController {
         // Validation for Customer Name
         if (!txtCustomerName.getText().matches("^[A-Z][a-zA-Z]*$")) {
             txtCustomerName.setStyle("-fx-border-color: red;");
+            Tooltip tooltip = new Tooltip("Name should start with a capital letter and contain only letters.");
+            Tooltip.install(txtCustomerName, tooltip);
             valid = false;
         } else {
-            txtCustomerName.setStyle("-fx-border-color: #38f838;");
+            txtCustomerName.setStyle("-fx-border-color: #2aff2a;");
         }
 
         // Validation for Customer Address
         if (!txtCustomerAddress.getText().matches("^[A-Z][a-zA-Z0-9\\s]*$")) {
             txtCustomerAddress.setStyle("-fx-border-color: red;");
+            Tooltip tooltip = new Tooltip("Address should start with a capital letter and contain only letters and numbers.");
+            Tooltip.install(txtCustomerAddress, tooltip);
             valid = false;
         } else {
-            txtCustomerAddress.setStyle("-fx-border-color: #38f838;");
+            txtCustomerAddress.setStyle("-fx-border-color: #2aff2a;");
         }
 
         // Validation for Contact Number
         if (!txtContactNumber.getText().matches("^\\+94[0-9]+$")) {
             txtContactNumber.setStyle("-fx-border-color: red;");
+            Tooltip tooltip = new Tooltip("Phone number should start with +94 and contain only numbers.");
+            Tooltip.install(txtContactNumber, tooltip);
             valid = false;
         } else {
-            txtContactNumber.setStyle("-fx-border-color: #38f838;");
+            txtContactNumber.setStyle("-fx-border-color: #2aff2a;");
         }
 
         // Display error message if validation fails
@@ -150,6 +156,7 @@ public class AddCustomerFormController {
 
         return valid;
     }
+
 
     // Reset field styles method
     private void resetFieldStyles() {
