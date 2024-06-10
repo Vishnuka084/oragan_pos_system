@@ -15,21 +15,21 @@
          </font>
       </Text>
       <Line endX="469.0" layoutX="115.0" layoutY="76.0" opacity="0.18" startX="-100.0" />
-      <TextField layoutX="70.0" layoutY="130.0" prefHeight="46.0" prefWidth="459.0" />
-      <TextField layoutX="71.0" layoutY="233.0" prefHeight="46.0" prefWidth="459.0" />
-      <TextField layoutX="70.0" layoutY="344.0" prefHeight="46.0" prefWidth="459.0" />
-      <TextField layoutX="70.0" layoutY="448.0" prefHeight="46.0" prefWidth="459.0" />
+      <TextField fx:id="txtCustomerId" layoutX="70.0" layoutY="130.0" prefHeight="46.0" prefWidth="459.0" />
+      <TextField fx:id="txtCustomerName" layoutX="71.0" layoutY="233.0" prefHeight="46.0" prefWidth="459.0" />
+      <TextField fx:id="txtCustomerAddress" layoutX="70.0" layoutY="344.0" prefHeight="46.0" prefWidth="459.0" />
+      <TextField fx:id="txtContactNumber" layoutX="70.0" layoutY="448.0" prefHeight="46.0" prefWidth="459.0" />
       <Text layoutX="70.0" layoutY="114.0" opacity="0.7" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID" />
       <Text layoutX="70.0" layoutY="215.0" opacity="0.7" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer Name" />
       <Text layoutX="71.0" layoutY="328.0" opacity="0.7" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" />
       <Text layoutX="71.0" layoutY="431.0" opacity="0.7" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact Number" />
       <Line endX="502.0" layoutX="98.0" layoutY="519.0" opacity="0.25" startX="-100.0" />
-      <Button layoutX="404.0" layoutY="543.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="83.0" style="-fx-background-color: #EFC81A;" text="Clear">
+      <Button layoutX="404.0" layoutY="543.0" mnemonicParsing="false" onAction="#btnClearTxtFldOnAction" prefHeight="37.0" prefWidth="83.0" style="-fx-background-color: #EFC81A;" text="Clear">
          <font>
             <Font size="17.0" />
          </font>
       </Button>
-      <Button layoutX="502.0" layoutY="543.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="83.0" style="-fx-background-color: #0BD32C;" text="Save" textFill="#fffdfd">
+      <Button layoutX="502.0" layoutY="543.0" mnemonicParsing="false" onAction="#btnCustomerAddOnAction" prefHeight="37.0" prefWidth="83.0" style="-fx-background-color: #0BD32C;" text="Save" textFill="#fffdfd">
          <font>
             <Font size="17.0" />
          </font>
