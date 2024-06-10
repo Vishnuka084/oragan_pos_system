@@ -1,11 +1,10 @@
 package com.oragan.posSystem.controller;
 
 import com.oragan.posSystem.db.DBConnection;
-import com.oragan.posSystem.entity.Customer;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 
 import java.sql.*;
@@ -17,8 +16,6 @@ public class AddCustomerFormController {
     public TextField txtCustomerName;
     public TextField txtCustomerAddress;
     public TextField txtContactNumber;
-    private TableView<Customer> tblCustomer;
-    private CustomerFormController customerFormController;
 
     public void initialize() {
         setNewCustomerId();
@@ -38,9 +35,14 @@ public class AddCustomerFormController {
         txtCustomerName.clear();
         txtCustomerAddress.clear();
         txtContactNumber.clear();
+        resetFieldStyles();
     }
 
     public void btnCustomerAddOnAction(ActionEvent actionEvent) {
+        if (!validateInput()) {
+            return;
+        }
+
         String newCustomerId = txtCustomerId.getText(); // Use the ID set by initialize method
         if (newCustomerId == null || newCustomerId.isEmpty()) {
             System.out.println("Error: Customer ID is missing.");
@@ -112,10 +114,54 @@ public class AddCustomerFormController {
         alert.setContentText(message);
         alert.showAndWait();
     }
-    public void init(TableView<Customer> tblCustomer, CustomerFormController customerFormController) {
-        this.tblCustomer = tblCustomer;
-        this.customerFormController = customerFormController;
+
+    private boolean validateInput() {
+        boolean valid = true;
+        resetFieldStyles();
+
+        // Validation for Customer Name
+        if (!txtCustomerName.getText().matches("^[A-Z][a-zA-Z]*$")) {
+            txtCustomerName.setStyle("-fx-border-color: red;");
+            Tooltip tooltip = new Tooltip("Name should start with a capital letter and contain only letters.");
+            Tooltip.install(txtCustomerName, tooltip);
+            valid = false;
+        } else {
+            txtCustomerName.setStyle("-fx-border-color: #2aff2a;");
+        }
+
+        // Validation for Customer Address
+        if (!txtCustomerAddress.getText().matches("^[A-Z][a-zA-Z0-9\\s]*$")) {
+            txtCustomerAddress.setStyle("-fx-border-color: red;");
+            Tooltip tooltip = new Tooltip("Address should start with a capital letter and contain only letters and numbers.");
+            Tooltip.install(txtCustomerAddress, tooltip);
+            valid = false;
+        } else {
+            txtCustomerAddress.setStyle("-fx-border-color: #2aff2a;");
+        }
+
+        // Validation for Contact Number
+        if (!txtContactNumber.getText().matches("^\\+94[0-9]+$")) {
+            txtContactNumber.setStyle("-fx-border-color: red;");
+            Tooltip tooltip = new Tooltip("Phone number should start with +94 and contain only numbers.");
+            Tooltip.install(txtContactNumber, tooltip);
+            valid = false;
+        } else {
+            txtContactNumber.setStyle("-fx-border-color: #2aff2a;");
+        }
+
+        // Display error message if validation fails
+        if (!valid) {
+            showAlert(Alert.AlertType.ERROR, "Validation Error", "Please correct the input fields.");
+        }
+
+        return valid;
     }
 
 
+    // Reset field styles method
+    private void resetFieldStyles() {
+        txtCustomerName.setStyle(null);
+        txtCustomerAddress.setStyle(null);
+        txtContactNumber.setStyle(null);
+    }
 }
