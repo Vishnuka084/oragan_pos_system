@@ -1,13 +1,5 @@
-/**
- * authour By Pamindu Nawodya
- * Date:6/1/2024
- * Time:10:14 PM
- * Project Name:oragan_pos_system
- */
 package com.oragan.posSystem.controller;
-
 import com.oragan.posSystem.db.DBConnection;
-import com.oragan.posSystem.entity.Customer;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
