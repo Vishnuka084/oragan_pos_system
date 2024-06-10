@@ -1,9 +1,4 @@
-/**
- * authour By Pamindu Nawodya
- * Date:6/10/2024
- * Time:4:07 PM
- * Project Name:oragan_pos_system
- */
+
 package com.oragan.posSystem.entity;
 
 public class Customer {
