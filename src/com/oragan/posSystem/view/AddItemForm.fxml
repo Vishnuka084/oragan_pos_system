@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="601.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.AddItemFormController">
+<AnchorPane fx:id="addItemFormContext" prefHeight="601.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.AddItemFormController">
 
     <children>
         <Text layoutX="21.0" layoutY="57.0" opacity="0.7" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Items">
@@ -16,21 +16,21 @@
             </font>
         </Text>
         <Line endX="469.0" layoutX="115.0" layoutY="76.0" opacity="0.18" startX="-100.0" />
-        <TextField layoutX="70.0" layoutY="130.0" prefHeight="46.0" prefWidth="459.0" style="-fx-border-radius: 50;" />
-        <TextField layoutX="71.0" layoutY="233.0" prefHeight="46.0" prefWidth="459.0" />
-        <TextField layoutX="70.0" layoutY="344.0" prefHeight="46.0" prefWidth="459.0" />
-        <TextField layoutX="70.0" layoutY="448.0" prefHeight="46.0" prefWidth="459.0" />
+        <TextField fx:id="txtItemCode" layoutX="70.0" layoutY="130.0" prefHeight="46.0" prefWidth="459.0" style="-fx-border-radius: 50;" />
+        <TextField fx:id="txtItemName" layoutX="71.0" layoutY="233.0" prefHeight="46.0" prefWidth="459.0" />
+        <TextField fx:id="txtItemPrice" layoutX="70.0" layoutY="344.0" prefHeight="46.0" prefWidth="459.0" />
+        <TextField fx:id="txtItemQty" layoutX="70.0" layoutY="448.0" prefHeight="46.0" prefWidth="459.0" />
         <Text layoutX="70.0" layoutY="114.0" opacity="0.7" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Code" />
         <Text layoutX="70.0" layoutY="215.0" opacity="0.7" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Name" />
         <Text layoutX="71.0" layoutY="328.0" opacity="0.7" strokeType="OUTSIDE" strokeWidth="0.0" text="price" />
         <Text layoutX="71.0" layoutY="431.0" opacity="0.7" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity On Hand" />
         <Line endX="502.0" layoutX="98.0" layoutY="519.0" opacity="0.25" startX="-100.0" />
-        <Button layoutX="404.0" layoutY="543.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="83.0" style="-fx-background-color: #EFC81A;" text="Clear">
+        <Button layoutX="404.0" layoutY="543.0" mnemonicParsing="false" onAction="#clearbtnOnAction" prefHeight="37.0" prefWidth="83.0" style="-fx-background-color: #EFC81A;" text="Clear">
             <font>
                 <Font size="17.0" />
             </font>
         </Button>
-        <Button layoutX="502.0" layoutY="543.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="83.0" style="-fx-background-color: #0BD32C;" text="Update" textFill="#fffdfd">
+        <Button layoutX="502.0" layoutY="543.0" mnemonicParsing="false" onAction="#saveBtnOnAction" prefHeight="37.0" prefWidth="83.0" style="-fx-background-color: #0BD32C;" text="Save" textFill="#fffdfd">
             <font>
                 <Font size="17.0" />
             </font>

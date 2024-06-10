@@ -16,8 +16,7 @@ public class ItemFormController {
         URL resource = this.getClass().getResource("/com/oragan/posSystem/view/AddItemForm.fxml");
         FXMLLoader fxmlLoader = new FXMLLoader(resource);
         Parent load = fxmlLoader.load();
-        // AddCustomerFormController AddCustomerFormController = fxmlLoader.getController();
-        // AddCustomerFormController.init(tblStudent,this);
+
         Stage stage = new Stage();
         stage.setScene(new Scene(load));
         stage.initModality(Modality.APPLICATION_MODAL);
