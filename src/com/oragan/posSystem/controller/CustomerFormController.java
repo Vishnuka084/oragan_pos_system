@@ -19,7 +19,7 @@ public class CustomerFormController {
     public AnchorPane addCustomerFormContext;
 
 
-    public void btnAddItemFormOnAction(ActionEvent actionEvent) throws IOException {
+    public void btnAddCustomerFormOnAction(ActionEvent actionEvent) throws IOException {
         URL resource = this.getClass().getResource("/com/oragan/posSystem/view/AddCustomerForm.fxml");
         FXMLLoader fxmlLoader = new FXMLLoader(resource);
         Parent load = fxmlLoader.load();

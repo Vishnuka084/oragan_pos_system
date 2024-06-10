@@ -17,7 +17,7 @@
                 <Font size="15.0" />
             </font>
         </TextField>
-        <MenuButton layoutX="685.0" layoutY="95.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="146.0" style="-fx-background-color: #EFC81A; -fx-border-radius: 10; -fx-background-radius: 10;" text="Customer Id">
+        <MenuButton layoutX="685.0" layoutY="95.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="146.0" style="-fx-background-color: #EFC81A; -fx-border-radius: 10; -fx-background-radius: 10;" text="Customer Id" textFill="WHITE">
             <items>
                 <MenuItem mnemonicParsing="false" text="Action 1" />
                 <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -26,20 +26,20 @@
                 <Font name="System Bold" size="14.0" />
             </font>
         </MenuButton>
-        <TableView fx:id="tblItem" layoutX="221.0" layoutY="211.0" prefHeight="200.0" prefWidth="1180.0" style="-fx-background-color: black;">
+        <TableView fx:id="tblItem" layoutX="221.0" layoutY="211.0" prefHeight="200.0" prefWidth="1180.0">
             <columns>
-                <TableColumn prefWidth="196.0" text="Customer ID" />
-                <TableColumn prefWidth="181.0" text="Name" />
-                <TableColumn prefWidth="256.0" text="Address" />
-                <TableColumn prefWidth="184.0" text="Salary" />
-            <TableColumn prefWidth="362.0" text="Options" />
+                <TableColumn prefWidth="196.0" style="-fx-background-color: black;" text="Customer ID" />
+                <TableColumn prefWidth="181.0" style="-fx-background-color: black;" text="Name" />
+                <TableColumn prefWidth="256.0" style="-fx-background-color: black;" text="Address" />
+                <TableColumn prefWidth="184.0" style="-fx-background-color: black;" text="Salary" />
+            <TableColumn prefWidth="362.0" style="-fx-background-color: black;" text="Options" />
             </columns>
          <effect>
             <ColorAdjust brightness="0.13" contrast="0.05" hue="0.15" saturation="-0.03" />
          </effect>
         </TableView>
         <Button layoutX="845.0" layoutY="95.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="134.0" style="-fx-border-color: green; -fx-background-color: white; -fx-border-width: 2; -fx-border-radius: 8;" text="Search" textFill="#1eab0b" />
-        <Button layoutX="1000.0" layoutY="95.0" mnemonicParsing="false" onAction="#btnAddItemFormOnAction" prefHeight="48.0" prefWidth="192.0" style="-fx-background-color: black; -fx-border-radius: 15; -fx-background-radius: 10;" text="Add New Customer" textFill="#f8f8f8">
+        <Button layoutX="1000.0" layoutY="95.0" mnemonicParsing="false" onAction="#btnAddCustomerFormOnAction" prefHeight="48.0" prefWidth="192.0" style="-fx-background-color: black; -fx-border-radius: 15; -fx-background-radius: 10;" text="Add New Customer" textFill="#f8f8f8">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
