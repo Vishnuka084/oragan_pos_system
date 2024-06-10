@@ -1,8 +1,10 @@
 package com.oragan.posSystem.controller;
 
 import com.oragan.posSystem.db.DBConnection;
+import com.oragan.posSystem.entity.Customer;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
@@ -15,6 +17,8 @@ public class AddCustomerFormController {
     public TextField txtCustomerName;
     public TextField txtCustomerAddress;
     public TextField txtContactNumber;
+    private TableView<Customer> tblCustomer;
+    private CustomerFormController customerFormController;
 
     public void initialize() {
         setNewCustomerId();
@@ -108,4 +112,10 @@ public class AddCustomerFormController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+    public void init(TableView<Customer> tblCustomer, CustomerFormController customerFormController) {
+        this.tblCustomer = tblCustomer;
+        this.customerFormController = customerFormController;
+    }
+
+
 }
