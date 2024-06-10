@@ -12,6 +12,10 @@ public class AddItemFormController {
     public TextField txtItemQty;
     public AnchorPane addItemFormContext;
 
+    public void initialize() {
+
+    }
+
     public void clearbtnOnAction(ActionEvent actionEvent) {
         txtItemCode.clear();
         txtItemName.clear();
