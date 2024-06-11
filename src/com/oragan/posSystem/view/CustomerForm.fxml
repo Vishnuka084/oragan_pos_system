@@ -28,11 +28,11 @@
         </MenuButton>
         <TableView fx:id="tblCustomer" layoutX="221.0" layoutY="211.0" prefHeight="200.0" prefWidth="1180.0">
             <columns>
-                <TableColumn fx:id="tblCustomerIdField" prefWidth="196.0"  text="Customer ID" />
-                <TableColumn fx:id="tblCustomerNameFIeld" prefWidth="181.0" style="-fx-background-color: black;" text="Name" />
-                <TableColumn fx:id="tblCustomerAddressField" prefWidth="256.0" style="-fx-background-color: black;" text="Address" />
-                <TableColumn fx:id="tblCustomerContactNoField" prefWidth="193.0" style="-fx-background-color: black;" text="Contact Number" />
-            <TableColumn prefWidth="353.0" style="-fx-background-color: black;" text="Options" />
+                <TableColumn fx:id="tblCustomerIdField" prefWidth="196.0" text="Customer ID" />
+                <TableColumn fx:id="tblCustomerNameFIeld" prefWidth="181.0"  text="Name" />
+                <TableColumn fx:id="tblCustomerAddressField" prefWidth="256.0"  text="Address" />
+                <TableColumn fx:id="tblCustomerContactNoField" prefWidth="193.0"  text="Contact Number" />
+                <TableColumn fx:id="tblOptionsColumn" prefWidth="353.0"  text="Options" />
             </columns>
          <effect>
             <ColorAdjust brightness="0.13" contrast="0.05" hue="0.15" saturation="-0.03" />

@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="89dbfd71-98c4-49ba-a84d-1363c7f00fa7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/jfoenix_8_0_8.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sqlite_jdbc_3_42_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3c56102c-1dc0-49ba-94cc-2f52a60fde0d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/3c56102c-1dc0-49ba-94cc-2f52a60fde0d.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3c56102c-1dc0-49ba-94cc-2f52a60fde0d/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/3c56102c-1dc0-49ba-94cc-2f52a60fde0d/storage_v2/_src_/schema/main.uQUzAA.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identifier.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/identifier.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oragan_pos_system.iml" beforeDir="false" afterPath="$PROJECT_DIR$/oragan_pos_system.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/AddCustomerFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/AddCustomerFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/CustomerFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/CustomerFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/CustomerForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/view/CustomerForm.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +33,9 @@
   "associatedIndex": 0
 }]]></component>
   <component name="ProjectId" id="2himxfBdo2WkUsgndzFgyBZefjj" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -37,7 +46,16 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "F:/oragan/New folder/oragan_pos_system/oragan_pos_system",
+    "last_opened_file_path": "F:/oragan/New folder/oragan_pos_system/oragan_pos_system/lib/jfoenix-8.0.8.jar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -46,6 +64,11 @@
     ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\oragan\New folder\oragan_pos_system\oragan_pos_system\src\com\oragan\posSystem\assets" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="AppInitializer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.oragan.posSystem.AppInitializer" />
@@ -74,11 +97,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1718085521888</updated>
-      <workItem from="1718085522653" duration="136000" />
+      <workItem from="1718085522653" duration="8787000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
