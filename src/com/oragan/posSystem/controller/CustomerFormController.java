@@ -29,7 +29,6 @@ import java.sql.Statement;
 
 public class CustomerFormController {
     public AnchorPane context;
-    public AnchorPane addCustomerFormContext;
     public TableView<Customer> tblCustomer;
     public TableColumn<Customer, String> tblCustomerIdField;
     public TableColumn<Customer, String> tblCustomerNameFIeld;
@@ -37,12 +36,15 @@ public class CustomerFormController {
     public TableColumn<Customer, String> tblCustomerContactNoField;
     public TableColumn<Customer, Customer> tblOptionsColumn;
     public TextField txtSerchFieldCustomer;
+    public ComboBox<String> cmbCustomerId;
 
+    private ObservableList<String> customerIds = FXCollections.observableArrayList();
     private ObservableList<Customer> customerList = FXCollections.observableArrayList();
 
     public void initialize() {
         loadCustomerData();
         initializeTableColumns();
+        loadCustomerIds();
         txtSerchFieldCustomer.textProperty().addListener((observable, oldValue, newValue) -> filterCustomerList(newValue));
     }
 
@@ -130,6 +132,7 @@ public class CustomerFormController {
 
     private void loadCustomerData() {
         customerList.clear();
+        customerIds.clear(); // Clear the customerIds list as well
         String sql = "SELECT * FROM customers";
         try {
             Connection conn = DBConnection.getInstance().getConnection();
@@ -142,6 +145,7 @@ public class CustomerFormController {
                     String contactNumber = rs.getString("contact_number");
                     Customer customer = new Customer(customerId, customerName, customerAddress, contactNumber);
                     customerList.add(customer);
+                    customerIds.add(customerId); // Add customerId to the customerIds list
                 }
             }
         } catch (ClassNotFoundException | SQLException e) {
@@ -160,6 +164,7 @@ public class CustomerFormController {
 
                 // Remove the customer from the table
                 tblCustomer.getItems().remove(customer);
+                customerIds.remove(customer.getCustomer_Id()); // Remove the customerId from the customerIds list
             }
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Error deleting customer: " + e.getMessage());
@@ -168,10 +173,10 @@ public class CustomerFormController {
 
     public void refreshCustomerData() {
         loadCustomerData();
+        loadCustomerIds();
     }
 
-    //search customer
-
+    // Search customer
     public void txtSerchFieldCustomerOnAction(ActionEvent actionEvent) {
         String searchQuery = txtSerchFieldCustomer.getText().toLowerCase();
         if (searchQuery.isEmpty()) {
@@ -200,7 +205,22 @@ public class CustomerFormController {
             tblCustomer.setItems(filteredList);
         }
     }
+
+    private void loadCustomerIds() {
+        cmbCustomerId.setItems(customerIds); // Bind the ComboBox with customerIds list
+    }
+
+    public void cmbCustomerIdOnAction(ActionEvent actionEvent) {
+        String selectedCustomerId = cmbCustomerId.getValue();
+        if (selectedCustomerId != null) {
+            ObservableList<Customer> selectedCustomerList = FXCollections.observableArrayList();
+            for (Customer customer : customerList) {
+                if (customer.getCustomer_Id().equals(selectedCustomerId)) {
+                    selectedCustomerList.add(customer);
+                    break;
+                }
+            }
+            tblCustomer.setItems(selectedCustomerList);
+        }
+    }
 }
-
-
-//----------------------------
