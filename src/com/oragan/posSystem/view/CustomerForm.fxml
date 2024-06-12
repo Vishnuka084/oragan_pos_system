@@ -12,7 +12,7 @@
 
 <AnchorPane fx:id="context" prefHeight="788.0" prefWidth="1622.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.CustomerFormController">
     <children>
-        <TextField layoutX="362.0" layoutY="95.0" prefHeight="48.0" prefWidth="304.0" promptText="Search" style="-fx-border-width: 2; -fx-border-color: green; -fx-background-color: transparent; -fx-text-fill: green; -fx-border-radius: 10; -fx-background-radius: 20;">
+        <TextField fx:id="txtSerchFieldCustomer" layoutX="362.0" layoutY="95.0" onAction="#txtSerchFieldCustomerOnAction" prefHeight="48.0" prefWidth="304.0" promptText="Search" style="-fx-border-width: 2; -fx-border-color: green; -fx-background-color: transparent; -fx-text-fill: green; -fx-border-radius: 10; -fx-background-radius: 20;">
             <font>
                 <Font size="15.0" />
             </font>
@@ -29,10 +29,10 @@
         <TableView fx:id="tblCustomer" layoutX="221.0" layoutY="211.0" prefHeight="200.0" prefWidth="1180.0">
             <columns>
                 <TableColumn fx:id="tblCustomerIdField" prefWidth="196.0" text="Customer ID" />
-                <TableColumn fx:id="tblCustomerNameFIeld" prefWidth="181.0"  text="Name" />
-                <TableColumn fx:id="tblCustomerAddressField" prefWidth="256.0"  text="Address" />
-                <TableColumn fx:id="tblCustomerContactNoField" prefWidth="193.0"  text="Contact Number" />
-                <TableColumn fx:id="tblOptionsColumn" prefWidth="353.0"  text="Options" />
+                <TableColumn fx:id="tblCustomerNameFIeld" prefWidth="181.0" text="Name" />
+                <TableColumn fx:id="tblCustomerAddressField" prefWidth="256.0" text="Address" />
+                <TableColumn fx:id="tblCustomerContactNoField" prefWidth="193.0" text="Contact Number" />
+                <TableColumn fx:id="tblOptionsColumn" prefWidth="353.0" text="Options" />
             </columns>
          <effect>
             <ColorAdjust brightness="0.13" contrast="0.05" hue="0.15" saturation="-0.03" />

@@ -1,0 +1,105 @@
+Index: src/com/oragan/posSystem/view/CustomerForm.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import javafx.scene.control.Button?>\r\n<?import javafx.scene.control.MenuButton?>\r\n<?import javafx.scene.control.MenuItem?>\r\n<?import javafx.scene.control.TableColumn?>\r\n<?import javafx.scene.control.TableView?>\r\n<?import javafx.scene.control.TextField?>\r\n<?import javafx.scene.effect.ColorAdjust?>\r\n<?import javafx.scene.layout.AnchorPane?>\r\n<?import javafx.scene.text.Font?>\r\n\r\n<AnchorPane fx:id=\"context\" prefHeight=\"788.0\" prefWidth=\"1622.0\" xmlns=\"http://javafx.com/javafx/8.0.171\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.oragan.posSystem.controller.CustomerFormController\">\r\n    <children>\r\n        <TextField layoutX=\"362.0\" layoutY=\"95.0\" prefHeight=\"48.0\" prefWidth=\"304.0\" promptText=\"Search\" style=\"-fx-border-width: 2; -fx-border-color: green; -fx-background-color: transparent; -fx-text-fill: green; -fx-border-radius: 10; -fx-background-radius: 20;\">\r\n            <font>\r\n                <Font size=\"15.0\" />\r\n            </font>\r\n        </TextField>\r\n        <MenuButton layoutX=\"685.0\" layoutY=\"95.0\" mnemonicParsing=\"false\" prefHeight=\"48.0\" prefWidth=\"146.0\" style=\"-fx-background-color: #EFC81A; -fx-border-radius: 10; -fx-background-radius: 10;\" text=\"Customer Id\" textFill=\"WHITE\">\r\n            <items>\r\n                <MenuItem mnemonicParsing=\"false\" text=\"Action 1\" />\r\n                <MenuItem mnemonicParsing=\"false\" text=\"Action 2\" />\r\n            </items>\r\n            <font>\r\n                <Font name=\"System Bold\" size=\"14.0\" />\r\n            </font>\r\n        </MenuButton>\r\n        <TableView fx:id=\"tblCustomer\" layoutX=\"221.0\" layoutY=\"211.0\" prefHeight=\"200.0\" prefWidth=\"1180.0\">\r\n            <columns>\r\n                <TableColumn fx:id=\"tblCustomerIdField\" prefWidth=\"196.0\"  text=\"Customer ID\" />\r\n                <TableColumn fx:id=\"tblCustomerNameFIeld\" prefWidth=\"181.0\" style=\"-fx-background-color: black;\" text=\"Name\" />\r\n                <TableColumn fx:id=\"tblCustomerAddressField\" prefWidth=\"256.0\" style=\"-fx-background-color: black;\" text=\"Address\" />\r\n                <TableColumn fx:id=\"tblCustomerContactNoField\" prefWidth=\"193.0\" style=\"-fx-background-color: black;\" text=\"Contact Number\" />\r\n            <TableColumn prefWidth=\"353.0\" style=\"-fx-background-color: black;\" text=\"Options\" />\r\n            </columns>\r\n         <effect>\r\n            <ColorAdjust brightness=\"0.13\" contrast=\"0.05\" hue=\"0.15\" saturation=\"-0.03\" />\r\n         </effect>\r\n        </TableView>\r\n        <Button layoutX=\"845.0\" layoutY=\"95.0\" mnemonicParsing=\"false\" prefHeight=\"48.0\" prefWidth=\"134.0\" style=\"-fx-border-color: green; -fx-background-color: white; -fx-border-width: 2; -fx-border-radius: 8;\" text=\"Search\" textFill=\"#1eab0b\" />\r\n        <Button layoutX=\"1000.0\" layoutY=\"95.0\" mnemonicParsing=\"false\" onAction=\"#btnAddCustomerFormOnAction\" prefHeight=\"48.0\" prefWidth=\"192.0\" style=\"-fx-background-color: black; -fx-border-radius: 15; -fx-background-radius: 10;\" text=\"Add New Customer\" textFill=\"#f8f8f8\">\r\n         <font>\r\n            <Font name=\"System Bold\" size=\"15.0\" />\r\n         </font></Button>\r\n    </children>\r\n</AnchorPane>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/oragan/posSystem/view/CustomerForm.fxml b/src/com/oragan/posSystem/view/CustomerForm.fxml
+--- a/src/com/oragan/posSystem/view/CustomerForm.fxml	(revision b0db72581009769a78e9e7a6d8c0ac051a41b713)
++++ b/src/com/oragan/posSystem/view/CustomerForm.fxml	(date 1718089946147)
+@@ -26,13 +26,15 @@
+                 <Font name="System Bold" size="14.0" />
+             </font>
+         </MenuButton>
++
++        <Button fx:id="btnCustomerDelete" layoutX="112.0" layoutY="128.0" onAction="#btnDeleteCustomerOnAction" prefHeight="31.0" prefWidth="86.0" style="-fx-background-color: yellow;" text="Delete " />
+         <TableView fx:id="tblCustomer" layoutX="221.0" layoutY="211.0" prefHeight="200.0" prefWidth="1180.0">
+             <columns>
+-                <TableColumn fx:id="tblCustomerIdField" prefWidth="196.0"  text="Customer ID" />
++                <TableColumn fx:id="tblCustomerIdField" prefWidth="196.0" text="Customer ID" />
+                 <TableColumn fx:id="tblCustomerNameFIeld" prefWidth="181.0" style="-fx-background-color: black;" text="Name" />
+                 <TableColumn fx:id="tblCustomerAddressField" prefWidth="256.0" style="-fx-background-color: black;" text="Address" />
+                 <TableColumn fx:id="tblCustomerContactNoField" prefWidth="193.0" style="-fx-background-color: black;" text="Contact Number" />
+-            <TableColumn prefWidth="353.0" style="-fx-background-color: black;" text="Options" />
++                 <TableColumn fx:id="tblCustomerOptionsField" prefWidth="353.0" style="-fx-background-color: black;" text="Options" />
+             </columns>
+          <effect>
+             <ColorAdjust brightness="0.13" contrast="0.05" hue="0.15" saturation="-0.03" />
+Index: src/com/oragan/posSystem/controller/CustomerFormController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\npackage com.oragan.posSystem.controller;\r\n\r\nimport com.oragan.posSystem.db.DBConnection;\r\nimport com.oragan.posSystem.entity.Customer;\r\nimport javafx.collections.FXCollections;\r\nimport javafx.collections.ObservableList;\r\nimport javafx.event.ActionEvent;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.control.TableColumn;\r\nimport javafx.scene.control.TableView;\r\nimport javafx.scene.control.cell.PropertyValueFactory;\r\nimport javafx.scene.layout.AnchorPane;\r\nimport javafx.stage.Modality;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.io.IOException;\r\nimport java.net.URL;\r\nimport java.sql.Connection;\r\nimport java.sql.ResultSet;\r\nimport java.sql.SQLException;\r\nimport java.sql.Statement;\r\n\r\npublic class CustomerFormController {\r\n\r\n\r\n    public AnchorPane context;\r\n    public AnchorPane addCustomerFormContext;\r\n    public TableView tblCustomer;\r\n    public TableColumn tblCustomerIdField;\r\n    public TableColumn tblCustomerNameFIeld;\r\n    public TableColumn tblCustomerAddressField;\r\n    public TableColumn tblCustomerContactNoField;\r\n    private ObservableList<Customer> customerList = FXCollections.observableArrayList();\r\n\r\n    public void initialize() {\r\n        loadCustomerData();\r\n        initializeTableColumns();\r\n\r\n    }\r\n\r\n\r\n    public void btnAddCustomerFormOnAction(ActionEvent actionEvent) throws IOException {\r\n        URL resource = this.getClass().getResource(\"/com/oragan/posSystem/view/AddCustomerForm.fxml\");\r\n        FXMLLoader fxmlLoader = new FXMLLoader(resource);\r\n        Parent load = fxmlLoader.load();\r\n         AddCustomerFormController AddCustomerFormController = fxmlLoader.getController();\r\n         AddCustomerFormController.init(tblCustomer,this);\r\n        Stage stage = new Stage();\r\n        stage.setScene(new Scene(load));\r\n        stage.initModality(Modality.APPLICATION_MODAL);\r\n        stage.setTitle(\"Add Customer Form\");\r\n        stage.centerOnScreen();\r\n        stage.show();\r\n    }\r\n\r\n\r\n\r\n    private void initializeTableColumns() {\r\n        tblCustomerIdField.setCellValueFactory(new PropertyValueFactory<>(\"customer_Id\"));\r\n        tblCustomerNameFIeld.setCellValueFactory(new PropertyValueFactory<>(\"Customer_name\"));\r\n        tblCustomerAddressField.setCellValueFactory(new PropertyValueFactory<>(\"Address\"));\r\n        tblCustomerContactNoField.setCellValueFactory(new PropertyValueFactory<>(\"contact_number\"));\r\n        tblCustomer.setItems(customerList);\r\n    }\r\n\r\n    private void loadCustomerData() {\r\n        customerList.clear();\r\n        String sql = \"SELECT * FROM customers\";\r\n        try {\r\n            Connection conn = DBConnection.getInstance().getConnection();\r\n            try (Statement stmt = conn.createStatement();\r\n                 ResultSet rs = stmt.executeQuery(sql)) {\r\n                while (rs.next()) {\r\n                    String customerId = rs.getString(\"Customer_Id\");\r\n                    String customerName = rs.getString(\"customer_name\");\r\n                    String customerAddress = rs.getString(\"address\");\r\n                    String contactNumber = rs.getString(\"contact_number\");\r\n                    Customer customer = new Customer(customerId, customerName, customerAddress, contactNumber);\r\n                    customerList.add(customer);\r\n                }\r\n            }\r\n        } catch (ClassNotFoundException  | SQLException e) {\r\n            System.out.println(\"Error loading customer data from the database: \" + e.getMessage());\r\n        }\r\n    }\r\n\r\n    public void refreshCustomerData() {\r\n        loadCustomerData();\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/oragan/posSystem/controller/CustomerFormController.java b/src/com/oragan/posSystem/controller/CustomerFormController.java
+--- a/src/com/oragan/posSystem/controller/CustomerFormController.java	(revision b0db72581009769a78e9e7a6d8c0ac051a41b713)
++++ b/src/com/oragan/posSystem/controller/CustomerFormController.java	(date 1718170514873)
+@@ -2,6 +2,7 @@
+ package com.oragan.posSystem.controller;
+ 
+ import com.oragan.posSystem.db.DBConnection;
++import com.oragan.posSystem.dto.CustomerDTO;
+ import com.oragan.posSystem.entity.Customer;
+ import javafx.collections.FXCollections;
+ import javafx.collections.ObservableList;
+@@ -9,6 +10,7 @@
+ import javafx.fxml.FXMLLoader;
+ import javafx.scene.Parent;
+ import javafx.scene.Scene;
++import javafx.scene.control.Button;
+ import javafx.scene.control.TableColumn;
+ import javafx.scene.control.TableView;
+ import javafx.scene.control.cell.PropertyValueFactory;
+@@ -22,6 +24,7 @@
+ import java.sql.ResultSet;
+ import java.sql.SQLException;
+ import java.sql.Statement;
++import java.util.List;
+ 
+ public class CustomerFormController {
+ 
+@@ -33,6 +36,9 @@
+     public TableColumn tblCustomerNameFIeld;
+     public TableColumn tblCustomerAddressField;
+     public TableColumn tblCustomerContactNoField;
++    public Button btnCustomerDelete;
++    public TableColumn tblCustomerOptionsField;
++    List<CustomerDTO> customerDTOList;
+     private ObservableList<Customer> customerList = FXCollections.observableArrayList();
+ 
+     public void initialize() {
+@@ -91,4 +97,11 @@
+         loadCustomerData();
+     }
+ 
++    public void btnDeleteCustomerOnAction(ActionEvent actionEvent) {
++
++    }
++
++
++
++
+ }
+Index: .idea/runConfigurations.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/runConfigurations.xml b/.idea/runConfigurations.xml
+new file mode 100644
+--- /dev/null	(date 1718083754225)
++++ b/.idea/runConfigurations.xml	(date 1718083754225)
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="RunConfigurationProducerService">
++    <option name="ignoredProducers">
++      <set>
++        <option value="com.android.tools.idea.compose.preview.runconfiguration.ComposePreviewRunConfigurationProducer" />
++      </set>
++    </option>
++  </component>
++</project>
+\ No newline at end of file

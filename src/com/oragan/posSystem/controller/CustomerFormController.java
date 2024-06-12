@@ -36,12 +36,14 @@ public class CustomerFormController {
     public TableColumn<Customer, String> tblCustomerAddressField;
     public TableColumn<Customer, String> tblCustomerContactNoField;
     public TableColumn<Customer, Customer> tblOptionsColumn;
+    public TextField txtSerchFieldCustomer;
 
     private ObservableList<Customer> customerList = FXCollections.observableArrayList();
 
     public void initialize() {
         loadCustomerData();
         initializeTableColumns();
+        txtSerchFieldCustomer.textProperty().addListener((observable, oldValue, newValue) -> filterCustomerList(newValue));
     }
 
     public void btnAddCustomerFormOnAction(ActionEvent actionEvent) throws IOException {
@@ -166,5 +168,36 @@ public class CustomerFormController {
 
     public void refreshCustomerData() {
         loadCustomerData();
+    }
+
+    //search customer
+
+    public void txtSerchFieldCustomerOnAction(ActionEvent actionEvent) {
+        String searchQuery = txtSerchFieldCustomer.getText().toLowerCase();
+        if (searchQuery.isEmpty()) {
+            tblCustomer.setItems(customerList);  // Display all customers if search query is empty
+        } else {
+            ObservableList<Customer> filteredList = FXCollections.observableArrayList();
+            for (Customer customer : customerList) {
+                if (customer.getCustomer_name().toLowerCase().contains(searchQuery)) {
+                    filteredList.add(customer);
+                }
+            }
+            tblCustomer.setItems(filteredList);
+        }
+    }
+
+    private void filterCustomerList(String searchQuery) {
+        if (searchQuery == null || searchQuery.isEmpty()) {
+            tblCustomer.setItems(customerList);  // Display all customers if search query is empty
+        } else {
+            ObservableList<Customer> filteredList = FXCollections.observableArrayList();
+            for (Customer customer : customerList) {
+                if (customer.getCustomer_name().toLowerCase().contains(searchQuery.toLowerCase())) {
+                    filteredList.add(customer);
+                }
+            }
+            tblCustomer.setItems(filteredList);
+        }
     }
 }
