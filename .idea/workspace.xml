@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="89dbfd71-98c4-49ba-a84d-1363c7f00fa7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/AddItemFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/AddItemFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/CustomerFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/CustomerFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/CustomerForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/view/CustomerForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/ItemFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/ItemFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/ItemForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/view/ItemForm.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +82,7 @@
       <option name="presentableId" value="Default" />
       <updated>1718085521888</updated>
       <workItem from="1718085522653" duration="13943000" />
-      <workItem from="1718171185591" duration="3786000" />
+      <workItem from="1718171185591" duration="6089000" />
     </task>
     <task id="LOCAL-00001" summary="updated serch customer">
       <created>1718173089708</created>
@@ -89,7 +91,14 @@
       <option name="project" value="LOCAL" />
       <updated>1718173089708</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="updated cmobox loading ids">
+      <created>1718175036983</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1718175036983</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -109,7 +118,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="updated serch customer" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated serch customer" />
+    <MESSAGE value="updated cmobox loading ids" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated cmobox loading ids" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

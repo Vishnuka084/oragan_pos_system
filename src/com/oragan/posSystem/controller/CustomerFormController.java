@@ -177,6 +177,7 @@ public class CustomerFormController {
     }
 
     // Search customer
+
     public void txtSerchFieldCustomerOnAction(ActionEvent actionEvent) {
         String searchQuery = txtSerchFieldCustomer.getText().toLowerCase();
         if (searchQuery.isEmpty()) {
@@ -205,6 +206,8 @@ public class CustomerFormController {
             tblCustomer.setItems(filteredList);
         }
     }
+
+    //search customer Ids combobox
 
     private void loadCustomerIds() {
         cmbCustomerId.setItems(customerIds); // Bind the ComboBox with customerIds list
