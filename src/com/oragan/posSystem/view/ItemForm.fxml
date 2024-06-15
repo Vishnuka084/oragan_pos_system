@@ -8,7 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="context" prefHeight="788.0" prefWidth="1622.0" stylesheets="../styles/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.ItemFormController">
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<AnchorPane fx:id="context" prefHeight="788.0" prefWidth="1622.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.ItemFormController">
    <children>
       <TextField fx:id="txtSearchField" layoutX="362.0" layoutY="95.0" onAction="#txtSearchFieldOnAction" prefHeight="48.0" prefWidth="304.0" promptText="Search" style="-fx-border-width: 2; -fx-border-color: green; -fx-background-color: transparent; -fx-text-fill: green; -fx-border-radius: 10; -fx-background-radius: 20;">
          <font>
@@ -28,6 +30,13 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <ComboBox fx:id="cmbItemCode" layoutX="680.0" layoutY="95.0" onAction="#cmbItemCodeOnAction" prefHeight="48.0" prefWidth="150.0" promptText="Item Code" style="-fx-background-color: #EFC81A; -fx-border-radius: 10; -fx-background-radius: 10;" />
+      <ComboBox fx:id="cmbCustomerId" layoutX="683.0" layoutY="95.0" onAction="#cmbSearchByItemOnAction" prefHeight="48.0" prefWidth="150.0" promptText="Select Serch Option" style="-fx-background-color: #EFC81A; -fx-background-radius: 10;">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String  fx:id="cmbName" fx:value="Item Name" />
+               <String fx:id="cmbID" fx:value="Item Code" />
+            </FXCollections>
+         </items>
+      </ComboBox>
    </children>
 </AnchorPane>

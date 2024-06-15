@@ -6,6 +6,7 @@ import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -33,15 +34,19 @@ public class ItemFormController {
     public TableColumn<Item, Integer> colQtyOnHand;
     public TableColumn<Item, Item> colOptions;
     public TextField txtSearchField;
-    public ComboBox<String> cmbItemCode;
+    public String cmbName;
+    public String cmbID;
+    public ComboBox<String> cmbCustomerId;
 
     private ObservableList<String> itemCodes = FXCollections.observableArrayList();
     private ObservableList<Item> itemList = FXCollections.observableArrayList();
 
     public void initialize() {
-        loadItemData();
+
+        //item code, name initialize
+        cmbCustomerId.setItems(FXCollections.observableArrayList("Item Name", "Item Code"));
+        loadItemsData();
         initializeTableColumns();
-        loadItemCodes();
         txtSearchField.textProperty().addListener((observable, oldValue, newValue) -> filterItemList(newValue));
     }
 
@@ -107,7 +112,26 @@ public class ItemFormController {
         });
 
         tblItem.setItems(itemList);
+
+
+        // Custom row factory to set row background color based on quantity
+        tblItem.setRowFactory(tv -> new TableRow<Item>() {
+            @Override
+            protected void updateItem(Item item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setStyle("");
+                } else {
+                    if (item.getQty() < 10) {
+                        setStyle("-fx-background-color: red; -fx-text-fill: white;");
+                    } else {
+                        setStyle("");
+                    }
+                }
+            }
+        });
     }
+
 
     private void handleUpdateItem(Item item) {
         try {
@@ -127,7 +151,9 @@ public class ItemFormController {
         }
     }
 
-    private void loadItemData() {
+
+    //create Item
+    private void loadItemsData() {
         itemList.clear();
         itemCodes.clear(); // Clear the itemCodes list as well
         String sql = "SELECT * FROM items";
@@ -169,25 +195,29 @@ public class ItemFormController {
     }
 
     public void refreshItemData() {
-        loadItemData();
-        loadItemCodes();
+        loadItemsData();
+
     }
 
-    // Search item
+    //table view up on search
 
-    public void txtSearchFieldOnAction(ActionEvent actionEvent) {
-        String searchQuery = txtSearchField.getText().toLowerCase();
-        if (searchQuery.isEmpty()) {
-            tblItem.setItems(itemList);  // Display all items if search query is empty
-        } else {
-            ObservableList<Item> filteredList = FXCollections.observableArrayList();
-            for (Item item : itemList) {
-                if (item.getItem_name().toLowerCase().contains(searchQuery)) {
-                    filteredList.add(item);
-                }
-            }
-            tblItem.setItems(filteredList);
+    @FXML
+    private void cmbSearchByItemOnAction(ActionEvent actionEvent) {
+        String selectedValue = cmbCustomerId.getValue();
+        if ("Item Name".equals(selectedValue)) {
+            txtSearchField.setPromptText("Enter item name");
+            txtSearchField.clear();
+        } else if ("Item Code".equals(selectedValue)) {
+            txtSearchField.setPromptText("Enter item code");
+            txtSearchField.clear();
         }
+        // Trigger filtering immediately when the selection changes
+        filterItemList(txtSearchField.getText());
+    }
+
+    @FXML
+    private void txtSearchFieldOnAction(ActionEvent event) {
+        filterItemList(txtSearchField.getText());
     }
 
     private void filterItemList(String searchQuery) {
@@ -195,32 +225,22 @@ public class ItemFormController {
             tblItem.setItems(itemList);  // Display all items if search query is empty
         } else {
             ObservableList<Item> filteredList = FXCollections.observableArrayList();
-            for (Item item : itemList) {
-                if (item.getItem_name().toLowerCase().contains(searchQuery.toLowerCase())) {
-                    filteredList.add(item);
+            String selectedValue = cmbCustomerId.getValue();
+            if ("Item Name".equals(selectedValue)) {
+                for (Item item : itemList) {
+                    if (item.getItem_name().toLowerCase().contains(searchQuery.toLowerCase())) {
+                        filteredList.add(item);
+                    }
+                }
+            } else if ("Item Code".equals(selectedValue)) {
+                for (Item item : itemList) {
+                    // Assuming getItem_code() method exists in Item class
+                    if (item.getItem_code().toLowerCase().contains(searchQuery.toLowerCase())) {
+                        filteredList.add(item);
+                    }
                 }
             }
             tblItem.setItems(filteredList);
-        }
-    }
-
-    // Search item codes combobox
-
-    private void loadItemCodes() {
-        cmbItemCode.setItems(itemCodes); // Bind the ComboBox with itemCodes list
-    }
-
-    public void cmbItemCodeOnAction(ActionEvent actionEvent) {
-        String selectedItemCode = cmbItemCode.getValue();
-        if (selectedItemCode != null) {
-            ObservableList<Item> selectedItemList = FXCollections.observableArrayList();
-            for (Item item : itemList) {
-                if (item.getItem_code().equals(selectedItemCode)) {
-                    selectedItemList.add(item);
-                    break;
-                }
-            }
-            tblItem.setItems(selectedItemList);
         }
     }
 }
