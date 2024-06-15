@@ -24,14 +24,14 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Text>
-      <Text fx:id="totalID" layoutX="216.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="50000" wrappingWidth="46.0" />
-      <Text layoutX="649.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="25" wrappingWidth="89.0" />
+      <Text fx:id="total" layoutX="216.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="50000" wrappingWidth="46.0" />
+      <Text fx:id="totalItem" layoutX="649.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="25" wrappingWidth="89.0" />
       <Text fontSmoothingType="LCD" layoutX="1367.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customers" wrappingWidth="89.0">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Text>
-      <Text layoutX="1385.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10" wrappingWidth="54.0" />
+      <Text fx:id="CustCount" layoutX="1385.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10" wrappingWidth="54.0" />
       <Text fontSmoothingType="LCD" layoutX="434.0" layoutY="440.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Items" wrappingWidth="181.0">
          <font>
             <Font name="System Bold" size="16.0" />
@@ -42,9 +42,9 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Text>
-      <Text fx:id="totalID1" layoutX="262.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LKR" wrappingWidth="89.0" />
-      <Text layoutX="436.0" layoutY="472.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10" wrappingWidth="89.0" />
-      <Text layoutX="1176.0" layoutY="481.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12" wrappingWidth="89.0" />
+      <Text layoutX="262.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LKR" wrappingWidth="89.0" />
+      <Text fx:id="ItemCount" layoutX="436.0" layoutY="472.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10" wrappingWidth="89.0" />
+      <Text fx:id="OrderCount" layoutX="1176.0" layoutY="481.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12" wrappingWidth="89.0" />
       <ImageView fitHeight="38.0" fitWidth="46.0" layoutX="480.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/icons8-payment-100.png" />

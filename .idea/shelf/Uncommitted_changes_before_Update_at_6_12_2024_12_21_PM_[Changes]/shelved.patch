@@ -1,0 +1,283 @@
+Index: src/com/oragan/posSystem/view/CustomerForm.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import javafx.scene.control.Button?>\r\n<?import javafx.scene.control.MenuButton?>\r\n<?import javafx.scene.control.MenuItem?>\r\n<?import javafx.scene.control.TableColumn?>\r\n<?import javafx.scene.control.TableView?>\r\n<?import javafx.scene.control.TextField?>\r\n<?import javafx.scene.effect.ColorAdjust?>\r\n<?import javafx.scene.layout.AnchorPane?>\r\n<?import javafx.scene.text.Font?>\r\n\r\n<AnchorPane fx:id=\"context\" prefHeight=\"788.0\" prefWidth=\"1622.0\" xmlns=\"http://javafx.com/javafx/8.0.171\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.oragan.posSystem.controller.CustomerFormController\">\r\n    <children>\r\n        <TextField layoutX=\"362.0\" layoutY=\"95.0\" prefHeight=\"48.0\" prefWidth=\"304.0\" promptText=\"Search\" style=\"-fx-border-width: 2; -fx-border-color: green; -fx-background-color: transparent; -fx-text-fill: green; -fx-border-radius: 10; -fx-background-radius: 20;\">\r\n            <font>\r\n                <Font size=\"15.0\" />\r\n            </font>\r\n        </TextField>\r\n        <MenuButton layoutX=\"685.0\" layoutY=\"95.0\" mnemonicParsing=\"false\" prefHeight=\"48.0\" prefWidth=\"146.0\" style=\"-fx-background-color: #EFC81A; -fx-border-radius: 10; -fx-background-radius: 10;\" text=\"Customer Id\" textFill=\"WHITE\">\r\n            <items>\r\n                <MenuItem mnemonicParsing=\"false\" text=\"Action 1\" />\r\n                <MenuItem mnemonicParsing=\"false\" text=\"Action 2\" />\r\n            </items>\r\n            <font>\r\n                <Font name=\"System Bold\" size=\"14.0\" />\r\n            </font>\r\n        </MenuButton>\r\n        <TableView fx:id=\"tblCustomer\" layoutX=\"221.0\" layoutY=\"211.0\" prefHeight=\"200.0\" prefWidth=\"1180.0\">\r\n            <columns>\r\n                <TableColumn fx:id=\"tblCustomerIdField\" prefWidth=\"196.0\" text=\"Customer ID\" />\r\n                <TableColumn fx:id=\"tblCustomerNameFIeld\" prefWidth=\"181.0\"  text=\"Name\" />\r\n                <TableColumn fx:id=\"tblCustomerAddressField\" prefWidth=\"256.0\"  text=\"Address\" />\r\n                <TableColumn fx:id=\"tblCustomerContactNoField\" prefWidth=\"193.0\"  text=\"Contact Number\" />\r\n                <TableColumn fx:id=\"tblOptionsColumn\" prefWidth=\"353.0\"  text=\"Options\" />\r\n            </columns>\r\n         <effect>\r\n            <ColorAdjust brightness=\"0.13\" contrast=\"0.05\" hue=\"0.15\" saturation=\"-0.03\" />\r\n         </effect>\r\n        </TableView>\r\n        <Button layoutX=\"845.0\" layoutY=\"95.0\" mnemonicParsing=\"false\" prefHeight=\"48.0\" prefWidth=\"134.0\" style=\"-fx-border-color: green; -fx-background-color: white; -fx-border-width: 2; -fx-border-radius: 8;\" text=\"Search\" textFill=\"#1eab0b\" />\r\n        <Button layoutX=\"1000.0\" layoutY=\"95.0\" mnemonicParsing=\"false\" onAction=\"#btnAddCustomerFormOnAction\" prefHeight=\"48.0\" prefWidth=\"192.0\" style=\"-fx-background-color: black; -fx-border-radius: 15; -fx-background-radius: 10;\" text=\"Add New Customer\" textFill=\"#f8f8f8\">\r\n         <font>\r\n            <Font name=\"System Bold\" size=\"15.0\" />\r\n         </font></Button>\r\n    </children>\r\n</AnchorPane>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/oragan/posSystem/view/CustomerForm.fxml b/src/com/oragan/posSystem/view/CustomerForm.fxml
+--- a/src/com/oragan/posSystem/view/CustomerForm.fxml	(revision 8a893dd38880d82e1da79dbce53c16b8a7054139)
++++ b/src/com/oragan/posSystem/view/CustomerForm.fxml	(date 1718172519027)
+@@ -10,7 +10,7 @@
+ <?import javafx.scene.layout.AnchorPane?>
+ <?import javafx.scene.text.Font?>
+ 
+-<AnchorPane fx:id="context" prefHeight="788.0" prefWidth="1622.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.CustomerFormController">
++<AnchorPane fx:id="context" prefHeight="788.0" prefWidth="1622.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.CustomerFormController">
+     <children>
+         <TextField layoutX="362.0" layoutY="95.0" prefHeight="48.0" prefWidth="304.0" promptText="Search" style="-fx-border-width: 2; -fx-border-color: green; -fx-background-color: transparent; -fx-text-fill: green; -fx-border-radius: 10; -fx-background-radius: 20;">
+             <font>
+@@ -26,13 +26,13 @@
+                 <Font name="System Bold" size="14.0" />
+             </font>
+         </MenuButton>
+-        <TableView fx:id="tblCustomer" layoutX="221.0" layoutY="211.0" prefHeight="200.0" prefWidth="1180.0">
++        <TableView fx:id="tblCustomer" layoutX="221.0" layoutY="211.0" prefHeight="462.0" prefWidth="1250.0">
+             <columns>
+                 <TableColumn fx:id="tblCustomerIdField" prefWidth="196.0" text="Customer ID" />
+-                <TableColumn fx:id="tblCustomerNameFIeld" prefWidth="181.0"  text="Name" />
+-                <TableColumn fx:id="tblCustomerAddressField" prefWidth="256.0"  text="Address" />
+-                <TableColumn fx:id="tblCustomerContactNoField" prefWidth="193.0"  text="Contact Number" />
+-                <TableColumn fx:id="tblOptionsColumn" prefWidth="353.0"  text="Options" />
++                <TableColumn fx:id="tblCustomerNameFIeld" prefWidth="255.0" text="Name" />
++                <TableColumn fx:id="tblCustomerAddressField" prefWidth="352.0" text="Address" />
++                <TableColumn fx:id="tblCustomerContactNoField" prefWidth="254.0" text="Contact Number" />
++                <TableColumn fx:id="tblOptionsColumn" prefWidth="192.0" text="Options" />
+             </columns>
+          <effect>
+             <ColorAdjust brightness="0.13" contrast="0.05" hue="0.15" saturation="-0.03" />
+Index: src/com/oragan/posSystem/controller/AddCustomerFormController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.oragan.posSystem.controller;\r\n\r\nimport com.oragan.posSystem.db.DBConnection;\r\nimport com.oragan.posSystem.entity.Customer;\r\nimport javafx.event.ActionEvent;\r\nimport javafx.scene.control.Alert;\r\nimport javafx.scene.control.TableView;\r\nimport javafx.scene.control.TextField;\r\nimport javafx.scene.control.Tooltip;\r\nimport javafx.scene.layout.AnchorPane;\r\n\r\nimport java.sql.*;\r\n\r\npublic class AddCustomerFormController {\r\n\r\n    public AnchorPane addCustomerFormContext;\r\n    public TextField txtCustomerId;\r\n    public TextField txtCustomerName;\r\n    public TextField txtCustomerAddress;\r\n    public TextField txtContactNumber;\r\n    private TableView<Customer> tblCustomer;\r\n    private CustomerFormController customerFormController;\r\n\r\n    public void initialize() {\r\n        setNewCustomerId();\r\n\r\n    }\r\n\r\n    private void setNewCustomerId() {\r\n        String newCustomerId = generateNewCustomerId();\r\n        if (newCustomerId != null) {\r\n            txtCustomerId.setText(newCustomerId);\r\n        } else {\r\n            System.out.println(\"Error generating new customer ID.\");\r\n        }\r\n    }\r\n\r\n    public void btnClearTxtFldOnAction(ActionEvent actionEvent) {\r\n        txtCustomerId.clear();\r\n        txtCustomerName.clear();\r\n        txtCustomerAddress.clear();\r\n        txtContactNumber.clear();\r\n        resetFieldStyles();\r\n    }\r\n\r\n    public void btnCustomerAddOnAction(ActionEvent actionEvent) {\r\n        if (!validateInput()) {\r\n            return;\r\n        }\r\n\r\n        String newCustomerId = txtCustomerId.getText(); // Use the ID set by initialize method\r\n        if (newCustomerId == null || newCustomerId.isEmpty()) {\r\n            System.out.println(\"Error: Customer ID is missing.\");\r\n            return;\r\n        }\r\n\r\n        String sql = \"INSERT INTO customers(Customer_Id, customer_name, address, contact_number) VALUES(?,?,?,?)\";\r\n        try {\r\n            // Get connection from the DBConnection singleton\r\n            Connection conn = DBConnection.getInstance().getConnection();\r\n            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {\r\n                pstmt.setString(1, newCustomerId);\r\n                pstmt.setString(2, txtCustomerName.getText());\r\n                pstmt.setString(3, txtCustomerAddress.getText());\r\n                pstmt.setString(4, txtContactNumber.getText());\r\n                pstmt.executeUpdate();\r\n                System.out.println(\"Customer data added successfully\");\r\n\r\n                // Show success alert\r\n                showAlert(Alert.AlertType.INFORMATION, \"Success\", \"Customer added successfully.\");\r\n                customerFormController.refreshCustomerData();\r\n\r\n                // Reset the form\r\n                btnClearTxtFldOnAction(null);\r\n                setNewCustomerId(); // Generate a new customer ID for the next entry\r\n            }\r\n        } catch (ClassNotFoundException | SQLException e) {\r\n            System.out.println(\"Error adding customer to the database: \" + e.getMessage());\r\n        }\r\n    }\r\n\r\n    // Auto Generate ID Function\r\n    private String generateNewCustomerId() {\r\n        String sql = \"SELECT Customer_Id FROM customers ORDER BY Customer_Id DESC LIMIT 1\";\r\n        try {\r\n            Connection conn = DBConnection.getInstance().getConnection();\r\n            try (Statement stmt = conn.createStatement();\r\n                 ResultSet rs = stmt.executeQuery(sql)) {\r\n                if (rs.next()) {\r\n                    String lastId = rs.getString(\"Customer_Id\");\r\n                    if (lastId != null && lastId.length() > 1 && lastId.startsWith(\"C\")) {\r\n                        String numericPartStr = lastId.substring(1);\r\n                        try {\r\n                            int numericPart = Integer.parseInt(numericPartStr) + 1;\r\n                            return String.format(\"C%03d\", numericPart);\r\n                        } catch (NumberFormatException e) {\r\n                            System.out.println(\"Invalid numeric part in the last customer ID: \" + numericPartStr);\r\n                            return null;\r\n                        }\r\n                    } else {\r\n                        System.out.println(\"Invalid format of the last customer ID: \" + lastId);\r\n                        return null;\r\n                    }\r\n                } else {\r\n                    // If no records found, start with C001\r\n                    return \"C001\";\r\n                }\r\n            }\r\n        } catch (ClassNotFoundException | SQLException e) {\r\n            System.out.println(\"Error fetching last customer ID: \" + e.getMessage());\r\n            return null;\r\n        }\r\n    }\r\n\r\n    // Show alert method\r\n    private void showAlert(Alert.AlertType alertType, String title, String message) {\r\n        Alert alert = new Alert(alertType);\r\n        alert.setTitle(title);\r\n        alert.setHeaderText(null);\r\n        alert.setContentText(message);\r\n        alert.showAndWait();\r\n    }\r\n\r\n    private boolean validateInput() {\r\n        boolean valid = true;\r\n        resetFieldStyles();\r\n\r\n        // Validation for Customer Name\r\n        if (!txtCustomerName.getText().matches(\"^[A-Z][a-zA-Z]*$\")) {\r\n            txtCustomerName.setStyle(\"-fx-border-color: red;\");\r\n            Tooltip tooltip = new Tooltip(\"Name should start with a capital letter and contain only letters.\");\r\n            Tooltip.install(txtCustomerName, tooltip);\r\n            valid = false;\r\n        } else {\r\n            txtCustomerName.setStyle(\"-fx-border-color: #2aff2a;\");\r\n        }\r\n\r\n        // Validation for Customer Address\r\n        if (!txtCustomerAddress.getText().matches(\"^[A-Z][a-zA-Z0-9\\\\s]*$\")) {\r\n            txtCustomerAddress.setStyle(\"-fx-border-color: red;\");\r\n            Tooltip tooltip = new Tooltip(\"Address should start with a capital letter and contain only letters and numbers.\");\r\n            Tooltip.install(txtCustomerAddress, tooltip);\r\n            valid = false;\r\n        } else {\r\n            txtCustomerAddress.setStyle(\"-fx-border-color: #2aff2a;\");\r\n        }\r\n\r\n        // Validation for Contact Number\r\n        if (!txtContactNumber.getText().matches(\"^\\\\+94[0-9]+$\")) {\r\n            txtContactNumber.setStyle(\"-fx-border-color: red;\");\r\n            Tooltip tooltip = new Tooltip(\"Phone number should start with +94 and contain only numbers.\");\r\n            Tooltip.install(txtContactNumber, tooltip);\r\n            valid = false;\r\n        } else {\r\n            txtContactNumber.setStyle(\"-fx-border-color: #2aff2a;\");\r\n        }\r\n\r\n        // Display error message if validation fails\r\n        if (!valid) {\r\n            showAlert(Alert.AlertType.ERROR, \"Validation Error\", \"Please correct the input fields.\");\r\n        }\r\n\r\n        return valid;\r\n    }\r\n\r\n\r\n    // Reset field styles method\r\n    private void resetFieldStyles() {\r\n        txtCustomerName.setStyle(null);\r\n        txtCustomerAddress.setStyle(null);\r\n        txtContactNumber.setStyle(null);\r\n    }\r\n\r\n    public void init(TableView<Customer> tblCustomer, CustomerFormController customerFormController) {\r\n        this.tblCustomer = tblCustomer;\r\n        this.customerFormController = customerFormController;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/oragan/posSystem/controller/AddCustomerFormController.java b/src/com/oragan/posSystem/controller/AddCustomerFormController.java
+--- a/src/com/oragan/posSystem/controller/AddCustomerFormController.java	(revision 0c2b462260848fd14fc6fedaebed2e7954f8f53a)
++++ b/src/com/oragan/posSystem/controller/AddCustomerFormController.java	(date 1718170078140)
+@@ -8,6 +8,7 @@
+ import javafx.scene.control.TextField;
+ import javafx.scene.control.Tooltip;
+ import javafx.scene.layout.AnchorPane;
++import javafx.stage.Stage;
+ 
+ import java.sql.*;
+ 
+@@ -20,10 +21,31 @@
+     public TextField txtContactNumber;
+     private TableView<Customer> tblCustomer;
+     private CustomerFormController customerFormController;
++    private Customer customerToUpdate;  // Track the customer being updated
+ 
+     public void initialize() {
+-        setNewCustomerId();
++        // If customerToUpdate is not set, it's an add operation
++        if (customerToUpdate == null) {
++            setNewCustomerId();
++        }
++    }
++
++    public void initForUpdate(TableView<Customer> tblCustomer, CustomerFormController customerFormController, Customer customer) {
++        this.tblCustomer = tblCustomer;
++        this.customerFormController = customerFormController;
++        this.customerToUpdate = customer;
+ 
++        // Pre-fill the form fields with customer data
++        txtCustomerId.setText(customer.getCustomer_Id());
++        txtCustomerName.setText(customer.getCustomer_name());
++        txtCustomerAddress.setText(customer.getAddress());
++        txtContactNumber.setText(customer.getContact_number());
++        txtCustomerId.setEditable(false);  // Disable editing of ID during update
++    }
++
++    public void init(TableView<Customer> tblCustomer, CustomerFormController customerFormController) {
++        this.tblCustomer = tblCustomer;
++        this.customerFormController = customerFormController;
+     }
+ 
+     private void setNewCustomerId() {
+@@ -36,11 +58,16 @@
+     }
+ 
+     public void btnClearTxtFldOnAction(ActionEvent actionEvent) {
+-        txtCustomerId.clear();
+         txtCustomerName.clear();
+         txtCustomerAddress.clear();
+         txtContactNumber.clear();
+         resetFieldStyles();
++
++        if (customerToUpdate == null) {
++            setNewCustomerId();
++        } else {
++            txtCustomerId.setText(customerToUpdate.getCustomer_Id());
++        }
+     }
+ 
+     public void btnCustomerAddOnAction(ActionEvent actionEvent) {
+@@ -48,15 +75,17 @@
+             return;
+         }
+ 
+-        String newCustomerId = txtCustomerId.getText(); // Use the ID set by initialize method
+-        if (newCustomerId == null || newCustomerId.isEmpty()) {
+-            System.out.println("Error: Customer ID is missing.");
+-            return;
++        if (customerToUpdate != null) {
++            updateCustomer();
++        } else {
++            addNewCustomer();
+         }
++    }
+ 
++    private void addNewCustomer() {
++        String newCustomerId = txtCustomerId.getText();
+         String sql = "INSERT INTO customers(Customer_Id, customer_name, address, contact_number) VALUES(?,?,?,?)";
+         try {
+-            // Get connection from the DBConnection singleton
+             Connection conn = DBConnection.getInstance().getConnection();
+             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                 pstmt.setString(1, newCustomerId);
+@@ -64,22 +93,35 @@
+                 pstmt.setString(3, txtCustomerAddress.getText());
+                 pstmt.setString(4, txtContactNumber.getText());
+                 pstmt.executeUpdate();
+-                System.out.println("Customer data added successfully");
+-
+-                // Show success alert
+                 showAlert(Alert.AlertType.INFORMATION, "Success", "Customer added successfully.");
+                 customerFormController.refreshCustomerData();
+-
+-                // Reset the form
+                 btnClearTxtFldOnAction(null);
+-                setNewCustomerId(); // Generate a new customer ID for the next entry
++                setNewCustomerId();
+             }
+         } catch (ClassNotFoundException | SQLException e) {
+             System.out.println("Error adding customer to the database: " + e.getMessage());
+         }
+     }
+ 
+-    // Auto Generate ID Function
++    private void updateCustomer() {
++        String sql = "UPDATE customers SET customer_name=?, address=?, contact_number=? WHERE Customer_Id=?";
++        try {
++            Connection conn = DBConnection.getInstance().getConnection();
++            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
++                pstmt.setString(1, txtCustomerName.getText());
++                pstmt.setString(2, txtCustomerAddress.getText());
++                pstmt.setString(3, txtContactNumber.getText());
++                pstmt.setString(4, txtCustomerId.getText());
++                pstmt.executeUpdate();
++                showAlert(Alert.AlertType.INFORMATION, "Success", "Customer updated successfully.");
++                customerFormController.refreshCustomerData();
++                ((Stage) addCustomerFormContext.getScene().getWindow()).close();
++            }
++        } catch (ClassNotFoundException | SQLException e) {
++            System.out.println("Error updating customer in the database: " + e.getMessage());
++        }
++    }
++
+     private String generateNewCustomerId() {
+         String sql = "SELECT Customer_Id FROM customers ORDER BY Customer_Id DESC LIMIT 1";
+         try {
+@@ -102,7 +144,6 @@
+                         return null;
+                     }
+                 } else {
+-                    // If no records found, start with C001
+                     return "C001";
+                 }
+             }
+@@ -112,7 +153,6 @@
+         }
+     }
+ 
+-    // Show alert method
+     private void showAlert(Alert.AlertType alertType, String title, String message) {
+         Alert alert = new Alert(alertType);
+         alert.setTitle(title);
+@@ -125,7 +165,6 @@
+         boolean valid = true;
+         resetFieldStyles();
+ 
+-        // Validation for Customer Name
+         if (!txtCustomerName.getText().matches("^[A-Z][a-zA-Z]*$")) {
+             txtCustomerName.setStyle("-fx-border-color: red;");
+             Tooltip tooltip = new Tooltip("Name should start with a capital letter and contain only letters.");
+@@ -135,7 +174,6 @@
+             txtCustomerName.setStyle("-fx-border-color: #2aff2a;");
+         }
+ 
+-        // Validation for Customer Address
+         if (!txtCustomerAddress.getText().matches("^[A-Z][a-zA-Z0-9\\s]*$")) {
+             txtCustomerAddress.setStyle("-fx-border-color: red;");
+             Tooltip tooltip = new Tooltip("Address should start with a capital letter and contain only letters and numbers.");
+@@ -145,7 +183,6 @@
+             txtCustomerAddress.setStyle("-fx-border-color: #2aff2a;");
+         }
+ 
+-        // Validation for Contact Number
+         if (!txtContactNumber.getText().matches("^\\+94[0-9]+$")) {
+             txtContactNumber.setStyle("-fx-border-color: red;");
+             Tooltip tooltip = new Tooltip("Phone number should start with +94 and contain only numbers.");
+@@ -155,7 +192,6 @@
+             txtContactNumber.setStyle("-fx-border-color: #2aff2a;");
+         }
+ 
+-        // Display error message if validation fails
+         if (!valid) {
+             showAlert(Alert.AlertType.ERROR, "Validation Error", "Please correct the input fields.");
+         }
+@@ -163,16 +199,9 @@
+         return valid;
+     }
+ 
+-
+-    // Reset field styles method
+     private void resetFieldStyles() {
+         txtCustomerName.setStyle(null);
+         txtCustomerAddress.setStyle(null);
+         txtContactNumber.setStyle(null);
+     }
+-
+-    public void init(TableView<Customer> tblCustomer, CustomerFormController customerFormController) {
+-        this.tblCustomer = tblCustomer;
+-        this.customerFormController = customerFormController;
+-    }
+ }
+Index: src/com/oragan/posSystem/controller/CustomerFormController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.oragan.posSystem.controller;\r\n\r\nimport com.oragan.posSystem.db.DBConnection;\r\nimport com.oragan.posSystem.entity.Customer;\r\nimport javafx.beans.property.ReadOnlyObjectWrapper;\r\nimport javafx.collections.FXCollections;\r\nimport javafx.collections.ObservableList;\r\nimport javafx.event.ActionEvent;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.geometry.Pos;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.image.Image;\r\nimport javafx.scene.image.ImageView;\r\nimport javafx.scene.control.*;\r\nimport javafx.scene.control.cell.PropertyValueFactory;\r\nimport javafx.scene.layout.AnchorPane;\r\nimport javafx.scene.layout.HBox;\r\nimport javafx.stage.Modality;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.io.IOException;\r\nimport java.net.URL;\r\nimport java.sql.Connection;\r\nimport java.sql.PreparedStatement;\r\nimport java.sql.ResultSet;\r\nimport java.sql.SQLException;\r\nimport java.sql.Statement;\r\n\r\npublic class CustomerFormController {\r\n    public AnchorPane context;\r\n    public AnchorPane addCustomerFormContext;\r\n    public TableView<Customer> tblCustomer;\r\n    public TableColumn<Customer, String> tblCustomerIdField;\r\n    public TableColumn<Customer, String> tblCustomerNameFIeld;\r\n    public TableColumn<Customer, String> tblCustomerAddressField;\r\n    public TableColumn<Customer, String> tblCustomerContactNoField;\r\n    public TableColumn<Customer, Customer> tblOptionsColumn;\r\n\r\n    private ObservableList<Customer> customerList = FXCollections.observableArrayList();\r\n\r\n    public void initialize() {\r\n        loadCustomerData();\r\n        initializeTableColumns();\r\n    }\r\n\r\n    public void btnAddCustomerFormOnAction(ActionEvent actionEvent) throws IOException {\r\n        URL resource = this.getClass().getResource(\"/com/oragan/posSystem/view/AddCustomerForm.fxml\");\r\n        FXMLLoader fxmlLoader = new FXMLLoader(resource);\r\n        Parent load = fxmlLoader.load();\r\n        AddCustomerFormController addCustomerFormController = fxmlLoader.getController();\r\n        addCustomerFormController.init(tblCustomer, this);\r\n        Stage stage = new Stage();\r\n        stage.setScene(new Scene(load));\r\n        stage.initModality(Modality.APPLICATION_MODAL);\r\n        stage.setTitle(\"Add Customer Form\");\r\n        stage.centerOnScreen();\r\n        stage.show();\r\n    }\r\n\r\n    private void initializeTableColumns() {\r\n        tblCustomerIdField.setCellValueFactory(new PropertyValueFactory<>(\"Customer_Id\"));\r\n        tblCustomerNameFIeld.setCellValueFactory(new PropertyValueFactory<>(\"Customer_name\"));\r\n        tblCustomerAddressField.setCellValueFactory(new PropertyValueFactory<>(\"address\"));\r\n        tblCustomerContactNoField.setCellValueFactory(new PropertyValueFactory<>(\"contact_number\"));\r\n\r\n        tblOptionsColumn.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));\r\n        tblOptionsColumn.setCellFactory(param -> new TableCell<Customer, Customer>() {\r\n            private final Button updateButton = new Button();\r\n            private final Button deleteButton = new Button();\r\n\r\n            @Override\r\n            protected void updateItem(Customer customer, boolean empty) {\r\n                super.updateItem(customer, empty);\r\n                if (customer == null) {\r\n                    setGraphic(null);\r\n                    return;\r\n                }\r\n\r\n                // Load the update icon image\r\n                Image updateImage = new Image(getClass().getResourceAsStream(\"/com/oragan/posSystem/assets/icons8-update-64.png\"));\r\n                if (updateImage != null) {\r\n                    ImageView updateImageView = new ImageView(updateImage);\r\n                    updateImageView.setFitWidth(20); // Adjust the size as needed\r\n                    updateImageView.setFitHeight(20); // Adjust the size as needed\r\n                    updateButton.setGraphic(updateImageView);\r\n                }\r\n\r\n                // Load the delete icon image\r\n                Image deleteImage = new Image(getClass().getResourceAsStream(\"/com/oragan/posSystem/assets/icons8-delete-120.png\"));\r\n                if (deleteImage != null) {\r\n                    ImageView deleteImageView = new ImageView(deleteImage);\r\n                    deleteImageView.setFitWidth(20); // Adjust the size as needed\r\n                    deleteImageView.setFitHeight(20); // Adjust the size as needed\r\n                    deleteButton.setGraphic(deleteImageView);\r\n                }\r\n\r\n                HBox hBox = new HBox(updateButton, deleteButton);\r\n                hBox.setAlignment(Pos.CENTER);\r\n                hBox.setSpacing(10);\r\n                setGraphic(hBox);\r\n\r\n                updateButton.setOnAction(event -> handleUpdateCustomer(customer));\r\n                deleteButton.setOnAction(event -> handleDeleteCustomer(customer));\r\n            }\r\n        });\r\n\r\n        tblCustomer.setItems(customerList);\r\n    }\r\n\r\n    private void handleUpdateCustomer(Customer customer) {\r\n        try {\r\n            URL resource = this.getClass().getResource(\"/com/oragan/posSystem/view/AddCustomerForm.fxml\");\r\n            FXMLLoader fxmlLoader = new FXMLLoader(resource);\r\n            Parent load = fxmlLoader.load();\r\n            AddCustomerFormController addCustomerFormController = fxmlLoader.getController();\r\n            addCustomerFormController.initForUpdate(tblCustomer, this, customer);\r\n            Stage stage = new Stage();\r\n            stage.setScene(new Scene(load));\r\n            stage.initModality(Modality.APPLICATION_MODAL);\r\n            stage.setTitle(\"Update Customer Form\");\r\n            stage.centerOnScreen();\r\n            stage.show();\r\n        } catch (IOException e) {\r\n            System.out.println(\"Error loading update customer form: \" + e.getMessage());\r\n        }\r\n    }\r\n\r\n    private void loadCustomerData() {\r\n        customerList.clear();\r\n        String sql = \"SELECT * FROM customers\";\r\n        try {\r\n            Connection conn = DBConnection.getInstance().getConnection();\r\n            try (Statement stmt = conn.createStatement();\r\n                 ResultSet rs = stmt.executeQuery(sql)) {\r\n                while (rs.next()) {\r\n                    String customerId = rs.getString(\"Customer_Id\");\r\n                    String customerName = rs.getString(\"customer_name\");\r\n                    String customerAddress = rs.getString(\"address\");\r\n                    String contactNumber = rs.getString(\"contact_number\");\r\n                    Customer customer = new Customer(customerId, customerName, customerAddress, contactNumber);\r\n                    customerList.add(customer);\r\n                }\r\n            }\r\n        } catch (ClassNotFoundException | SQLException e) {\r\n            System.out.println(\"Error loading customer data from the database: \" + e.getMessage());\r\n        }\r\n    }\r\n\r\n    private void handleDeleteCustomer(Customer customer) {\r\n        String sql = \"DELETE FROM customers WHERE Customer_Id = ?\";\r\n        try {\r\n            Connection conn = DBConnection.getInstance().getConnection();\r\n            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {\r\n                pstmt.setString(1, customer.getCustomer_Id());\r\n                pstmt.executeUpdate();\r\n                System.out.println(\"Customer deleted successfully\");\r\n\r\n                // Remove the customer from the table\r\n                tblCustomer.getItems().remove(customer);\r\n            }\r\n        } catch (ClassNotFoundException | SQLException e) {\r\n            System.out.println(\"Error deleting customer: \" + e.getMessage());\r\n        }\r\n    }\r\n\r\n    public void refreshCustomerData() {\r\n        loadCustomerData();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/oragan/posSystem/controller/CustomerFormController.java b/src/com/oragan/posSystem/controller/CustomerFormController.java
+--- a/src/com/oragan/posSystem/controller/CustomerFormController.java	(revision 768ce68d7d78035a8be883b5f95c662a9169814a)
++++ b/src/com/oragan/posSystem/controller/CustomerFormController.java	(date 1718171227141)
+@@ -168,3 +168,6 @@
+         loadCustomerData();
+     }
+ }
++
++
++//----------------------------
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"89dbfd71-98c4-49ba-a84d-1363c7f00fa7\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/com/oragan/posSystem/controller/AddCustomerFormController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/com/oragan/posSystem/controller/AddCustomerFormController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/com/oragan/posSystem/controller/CustomerFormController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/com/oragan/posSystem/controller/CustomerFormController.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ComposerSettings\">\r\n    <execution />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"PhpWorkspaceProjectConfiguration\" interpreter_name=\"C:\\xampp\\php\\php.exe\" />\r\n  <component name=\"ProjectColorInfo\"><![CDATA[{\r\n  \"associatedIndex\": 0\r\n}]]></component>\r\n  <component name=\"ProjectId\" id=\"2himxfBdo2WkUsgndzFgyBZefjj\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"1\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"git-widget-placeholder\": \"master\",\r\n    \"last_opened_file_path\": \"F:/oragan/New folder/oragan_pos_system/oragan_pos_system/lib/jfoenix-8.0.8.jar\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"project.structure.last.edited\": \"Libraries\",\r\n    \"project.structure.proportion\": \"0.0\",\r\n    \"project.structure.side.proportion\": \"0.0\",\r\n    \"settings.editor.selected.configurable\": \"editor.preferences.fonts.default\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  },\r\n  \"keyToStringList\": {\r\n    \"DatabaseDriversLRU\": [\r\n      \"sqlite\"\r\n    ]\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"F:\\oragan\\New folder\\oragan_pos_system\\oragan_pos_system\\src\\com\\oragan\\posSystem\\assets\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"AppInitializer\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.oragan.posSystem.AppInitializer\" />\r\n      <module name=\"oragan_pos_system\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.oragan.posSystem.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.AppInitializer\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"89dbfd71-98c4-49ba-a84d-1363c7f00fa7\" name=\"Changes\" comment=\"\" />\r\n      <created>1718085521888</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1718085521888</updated>\r\n      <workItem from=\"1718085522653\" duration=\"14676000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 8a893dd38880d82e1da79dbce53c16b8a7054139)
++++ b/.idea/workspace.xml	(date 1718175079829)
+@@ -8,6 +8,7 @@
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/AddCustomerFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/AddCustomerFormController.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/CustomerFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/CustomerFormController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/CustomerForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/view/CustomerForm.fxml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -89,7 +90,7 @@
+       <option name="number" value="Default" />
+       <option name="presentableId" value="Default" />
+       <updated>1718085521888</updated>
+-      <workItem from="1718085522653" duration="14676000" />
++      <workItem from="1718085522653" duration="17808000" />
+     </task>
+     <servers />
+   </component>

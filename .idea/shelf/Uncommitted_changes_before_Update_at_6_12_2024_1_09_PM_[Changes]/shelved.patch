@@ -1,0 +1,684 @@
+Index: src/com/oragan/posSystem/controller/AddItemFormController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.oragan.posSystem.controller;\r\n\r\nimport javafx.event.ActionEvent;\r\nimport javafx.scene.control.TextField;\r\nimport javafx.scene.layout.AnchorPane;\r\n\r\npublic class AddItemFormController {\r\n    \r\n    public TextField txtItemName;\r\n    public TextField txtItemCode;\r\n    public TextField txtItemPrice;\r\n    public TextField txtItemQty;\r\n    public AnchorPane addItemFormContext;\r\n\r\n    public void initialize() {\r\n\r\n    }\r\n\r\n    public void clearbtnOnAction(ActionEvent actionEvent) {\r\n        txtItemCode.clear();\r\n        txtItemName.clear();\r\n        txtItemPrice.clear();\r\n        txtItemQty.clear();\r\n    }\r\n\r\n    public void saveBtnOnAction(ActionEvent actionEvent) {\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/oragan/posSystem/controller/AddItemFormController.java b/src/com/oragan/posSystem/controller/AddItemFormController.java
+--- a/src/com/oragan/posSystem/controller/AddItemFormController.java	(revision ea088001b3bd742d6817b5899e271d332792c111)
++++ b/src/com/oragan/posSystem/controller/AddItemFormController.java	(date 1718177486839)
+@@ -1,29 +1,243 @@
++//package com.oragan.posSystem.controller;
++//
++//import com.oragan.posSystem.entity.Item;
++//import javafx.event.ActionEvent;
++//import javafx.scene.control.TableView;
++//import javafx.scene.control.TextField;
++//import javafx.scene.layout.AnchorPane;
++//
++//public class AddItemFormController {
++//
++//    public TextField txtItemName;
++//    public TextField txtItemCode;
++//    public TextField txtItemPrice;
++//    public TextField txtItemQty;
++//    public AnchorPane addItemFormContext;
++//
++//    public void initialize() {
++//
++//    }
++//
++//    public void clearbtnOnAction(ActionEvent actionEvent) {
++//        txtItemCode.clear();
++//        txtItemName.clear();
++//        txtItemPrice.clear();
++//        txtItemQty.clear();
++//    }
++//
++//    public void saveBtnOnAction(ActionEvent actionEvent) {
++//
++//    }
++//
++//    public void init(TableView<Item> tblItem, ItemFormController itemFormController) {
++//    }
++//}
+ package com.oragan.posSystem.controller;
+ 
++import com.oragan.posSystem.db.DBConnection;
++import com.oragan.posSystem.entity.Item;
+ import javafx.event.ActionEvent;
++import javafx.scene.control.Alert;
++import javafx.scene.control.TableView;
+ import javafx.scene.control.TextField;
++import javafx.scene.control.Tooltip;
+ import javafx.scene.layout.AnchorPane;
++import javafx.stage.Stage;
++
++import java.sql.*;
+ 
+ public class AddItemFormController {
+-    
+-    public TextField txtItemName;
++
++    public AnchorPane addItemFormContext;
+     public TextField txtItemCode;
++    public TextField txtItemName;
+     public TextField txtItemPrice;
+     public TextField txtItemQty;
+-    public AnchorPane addItemFormContext;
++    private TableView<Item> tblItem;
++    private ItemFormController itemFormController;
++    private Item itemToUpdate;  // Track the item being updated
+ 
+     public void initialize() {
++        // If itemToUpdate is not set, it's an add operation
++        if (itemToUpdate == null) {
++            setNewItemCode();
++        }
++    }
++
++    public void initForUpdate(TableView<Item> tblItem, ItemFormController itemFormController, Item item) {
++        this.tblItem = tblItem;
++        this.itemFormController = itemFormController;
++        this.itemToUpdate = item;
++
++        // Pre-fill the form fields with item data
++        txtItemCode.setText(item.getItem_code());
++        txtItemName.setText(item.getItem_name());
++        txtItemPrice.setText(String.valueOf(item.getPrice()));
++        txtItemQty.setText(String.valueOf(item.getQty()));
++        txtItemCode.setEditable(false);  // Disable editing of code during update
++    }
++
++    public void init(TableView<Item> tblItem, ItemFormController itemFormController) {
++        this.tblItem = tblItem;
++        this.itemFormController = itemFormController;
++    }
+ 
++    private void setNewItemCode() {
++        String newItemCode = generateNewItemCode();
++        if (newItemCode != null) {
++            txtItemCode.setText(newItemCode);
++        } else {
++            System.out.println("Error generating new item code.");
++        }
+     }
+ 
+-    public void clearbtnOnAction(ActionEvent actionEvent) {
+-        txtItemCode.clear();
++    public void btnClearTxtFldOnAction(ActionEvent actionEvent) {
+         txtItemName.clear();
+         txtItemPrice.clear();
+         txtItemQty.clear();
++        resetFieldStyles();
++
++        if (itemToUpdate == null) {
++            setNewItemCode();
++        } else {
++            txtItemCode.setText(itemToUpdate.getItem_code());
++        }
++    }
++
++    public void btnItemAddOnAction(ActionEvent actionEvent) {
++        if (!validateInput()) {
++            return;
++        }
++
++        if (itemToUpdate != null) {
++            updateItem();
++        } else {
++            addNewItem();
++        }
++    }
++
++    private void addNewItem() {
++        String newItemCode = txtItemCode.getText();
++        String sql = "INSERT INTO items(Item_code, Item_name, price, qty) VALUES(?,?,?,?)";
++        try {
++            Connection conn = DBConnection.getInstance().getConnection();
++            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
++                pstmt.setString(1, newItemCode);
++                pstmt.setString(2, txtItemName.getText());
++                pstmt.setDouble(3, Double.parseDouble(txtItemPrice.getText()));
++                pstmt.setInt(4, Integer.parseInt(txtItemQty.getText()));
++                pstmt.executeUpdate();
++                showAlert(Alert.AlertType.INFORMATION, "Success", "Item added successfully.");
++                itemFormController.refreshItemData();
++                btnClearTxtFldOnAction(null);
++                setNewItemCode();
++            }
++        } catch (ClassNotFoundException | SQLException e) {
++            System.out.println("Error adding item to the database: " + e.getMessage());
++        }
++    }
++
++    private void updateItem() {
++        String sql = "UPDATE items SET Item_name=?, price=?, qty=? WHERE Item_code=?";
++        try {
++            Connection conn = DBConnection.getInstance().getConnection();
++            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
++                pstmt.setString(1, txtItemName.getText());
++                pstmt.setDouble(2, Double.parseDouble(txtItemPrice.getText()));
++                pstmt.setInt(3, Integer.parseInt(txtItemQty.getText()));
++                pstmt.setString(4, txtItemCode.getText());
++                pstmt.executeUpdate();
++                showAlert(Alert.AlertType.INFORMATION, "Success", "Item updated successfully.");
++                itemFormController.refreshItemData();
++                ((Stage) addItemFormContext.getScene().getWindow()).close();
++            }
++        } catch (ClassNotFoundException | SQLException e) {
++            System.out.println("Error updating item in the database: " + e.getMessage());
++        }
++    }
++
++    private String generateNewItemCode() {
++        String sql = "SELECT Item_code FROM items ORDER BY Item_code DESC LIMIT 1";
++        try {
++            Connection conn = DBConnection.getInstance().getConnection();
++            try (Statement stmt = conn.createStatement();
++                 ResultSet rs = stmt.executeQuery(sql)) {
++                if (rs.next()) {
++                    String lastCode = rs.getString("Item_code");
++                    if (lastCode != null && lastCode.length() > 1 && lastCode.startsWith("I")) {
++                        String numericPartStr = lastCode.substring(1);
++                        try {
++                            int numericPart = Integer.parseInt(numericPartStr) + 1;
++                            return String.format("I%03d", numericPart);
++                        } catch (NumberFormatException e) {
++                            System.out.println("Invalid numeric part in the last item code: " + numericPartStr);
++                            return null;
++                        }
++                    } else {
++                        System.out.println("Invalid format of the last item code: " + lastCode);
++                        return null;
++                    }
++                } else {
++                    return "I001";
++                }
++            }
++        } catch (ClassNotFoundException | SQLException e) {
++            System.out.println("Error fetching last item code: " + e.getMessage());
++            return null;
++        }
+     }
+ 
+-    public void saveBtnOnAction(ActionEvent actionEvent) {
++    private void showAlert(Alert.AlertType alertType, String title, String message) {
++        Alert alert = new Alert(alertType);
++        alert.setTitle(title);
++        alert.setHeaderText(null);
++        alert.setContentText(message);
++        alert.showAndWait();
++    }
++
++    private boolean validateInput() {
++        boolean valid = true;
++        resetFieldStyles();
++
++        if (!txtItemName.getText().matches("^[A-Z][a-zA-Z0-9\\s]*$")) {
++            txtItemName.setStyle("-fx-border-color: red;");
++            Tooltip tooltip = new Tooltip("Name should start with a capital letter and contain only letters and numbers.");
++            Tooltip.install(txtItemName, tooltip);
++            valid = false;
++        } else {
++            txtItemName.setStyle("-fx-border-color: #2aff2a;");
++        }
+ 
++        try {
++            Double.parseDouble(txtItemPrice.getText());
++            txtItemPrice.setStyle("-fx-border-color: #2aff2a;");
++        } catch (NumberFormatException e) {
++            txtItemPrice.setStyle("-fx-border-color: red;");
++            Tooltip tooltip = new Tooltip("Price should be a valid number.");
++            Tooltip.install(txtItemPrice, tooltip);
++            valid = false;
++        }
++
++        try {
++            Integer.parseInt(txtItemQty.getText());
++            txtItemQty.setStyle("-fx-border-color: #2aff2a;");
++        } catch (NumberFormatException e) {
++            txtItemQty.setStyle("-fx-border-color: red;");
++            Tooltip tooltip = new Tooltip("Quantity should be a valid number.");
++            Tooltip.install(txtItemQty, tooltip);
++            valid = false;
++        }
++
++        if (!valid) {
++            showAlert(Alert.AlertType.ERROR, "Validation Error", "Please correct the input fields.");
++        }
++
++        return valid;
++    }
++
++    private void resetFieldStyles() {
++        txtItemName.setStyle(null);
++        txtItemPrice.setStyle(null);
++        txtItemQty.setStyle(null);
+     }
+ }
+Index: src/com/oragan/posSystem/controller/ItemFormController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\npackage com.oragan.posSystem.controller;\r\n\r\nimport javafx.event.ActionEvent;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.Scene;\r\nimport javafx.stage.Modality;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.io.IOException;\r\nimport java.net.URL;\r\n\r\npublic class ItemFormController {\r\n    public void btnAddItemFormOnAction(ActionEvent actionEvent) throws IOException {\r\n        URL resource = this.getClass().getResource(\"/com/oragan/posSystem/view/AddItemForm.fxml\");\r\n        FXMLLoader fxmlLoader = new FXMLLoader(resource);\r\n        Parent load = fxmlLoader.load();\r\n\r\n        Stage stage = new Stage();\r\n        stage.setScene(new Scene(load));\r\n        stage.initModality(Modality.APPLICATION_MODAL);\r\n        stage.setTitle(\"Add Item Form\");\r\n        stage.centerOnScreen();\r\n        stage.show();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/oragan/posSystem/controller/ItemFormController.java b/src/com/oragan/posSystem/controller/ItemFormController.java
+--- a/src/com/oragan/posSystem/controller/ItemFormController.java	(revision ea088001b3bd742d6817b5899e271d332792c111)
++++ b/src/com/oragan/posSystem/controller/ItemFormController.java	(date 1718177453204)
+@@ -1,27 +1,263 @@
++//
++//package com.oragan.posSystem.controller;
++//
++//import javafx.event.ActionEvent;
++//import javafx.fxml.FXMLLoader;
++//import javafx.scene.Parent;
++//import javafx.scene.Scene;
++//import javafx.scene.control.ComboBox;
++//import javafx.scene.control.TableColumn;
++//import javafx.scene.control.TableView;
++//import javafx.scene.control.TextField;
++//import javafx.scene.layout.AnchorPane;
++//import javafx.stage.Modality;
++//import javafx.stage.Stage;
++//
++//import java.io.IOException;
++//import java.net.URL;
++//
++//public class ItemFormController {
++//
++//    public AnchorPane context;
++//    public TextField txtSerchFieldItem;
++//    public TableView tblItem;
++//    public TableColumn tblItemCodeField;
++//    public TableColumn tblItemNameFIeld;
++//    public TableColumn tblItemPriceFIeld;
++//    public TableColumn tblItemQtyFIeld;
++//    public TableColumn tblOptionsColumn;
++//    public ComboBox cmbItemId;
++//
++//    public void btnAddItemFormOnAction(ActionEvent actionEvent) throws IOException {
++//        URL resource = this.getClass().getResource("/com/oragan/posSystem/view/AddItemForm.fxml");
++//        FXMLLoader fxmlLoader = new FXMLLoader(resource);
++//        Parent load = fxmlLoader.load();
++//
++//        Stage stage = new Stage();
++//        stage.setScene(new Scene(load));
++//        stage.initModality(Modality.APPLICATION_MODAL);
++//        stage.setTitle("Add Item Form");
++//        stage.centerOnScreen();
++//        stage.show();
++//    }
++//
++//    public void txtSerchFieldItemOnAction(ActionEvent actionEvent) {
++//    }
++//
++//    public void cmbItemIdOnAction(ActionEvent actionEvent) {
++//    }
++//}
++
+ 
+ package com.oragan.posSystem.controller;
+ 
++import com.oragan.posSystem.db.DBConnection;
++import com.oragan.posSystem.entity.Item;
++import javafx.beans.property.ReadOnlyObjectWrapper;
++import javafx.collections.FXCollections;
++import javafx.collections.ObservableList;
+ import javafx.event.ActionEvent;
+ import javafx.fxml.FXMLLoader;
++import javafx.geometry.Pos;
+ import javafx.scene.Parent;
+ import javafx.scene.Scene;
++import javafx.scene.image.Image;
++import javafx.scene.image.ImageView;
++import javafx.scene.control.*;
++import javafx.scene.control.cell.PropertyValueFactory;
++import javafx.scene.layout.AnchorPane;
++import javafx.scene.layout.HBox;
+ import javafx.stage.Modality;
+ import javafx.stage.Stage;
+ 
+ import java.io.IOException;
+ import java.net.URL;
++import java.sql.Connection;
++import java.sql.PreparedStatement;
++import java.sql.ResultSet;
++import java.sql.SQLException;
++import java.sql.Statement;
+ 
+ public class ItemFormController {
+-    public void btnAddItemFormOnAction(ActionEvent actionEvent) throws IOException {
+-        URL resource = this.getClass().getResource("/com/oragan/posSystem/view/AddItemForm.fxml");
+-        FXMLLoader fxmlLoader = new FXMLLoader(resource);
+-        Parent load = fxmlLoader.load();
++    public AnchorPane context;
++    public TableView<Item> tblItem;
++    public TableColumn<Item, String> tblItemCodeField;
++    public TableColumn<Item, String> tblItemNameField;
++    public TableColumn<Item, Double> tblItemPriceField;
++    public TableColumn<Item, Integer> tblItemQtyField;
++    public TableColumn<Item, Item> tblOptionsColumn;
++    public TextField txtSearchFieldItem;
++    public ComboBox<String> cmbItemCode;
++
++    private ObservableList<String> itemCodes = FXCollections.observableArrayList();
++    private ObservableList<Item> itemList = FXCollections.observableArrayList();
++
++    public void initialize() {
++        loadItemData();
++        initializeTableColumns();
++        loadItemCodes();
++    }
++
++    private void loadItemData() {
++        itemList.clear();
++        try {
++            Connection connection = DBConnection.getInstance().getConnection();
++            String sql = "SELECT * FROM items";
++            Statement statement = connection.createStatement();
++            ResultSet resultSet = statement.executeQuery(sql);
++
++            while (resultSet.next()) {
++                itemList.add(new Item(
++                        resultSet.getString("Item_code"),
++                        resultSet.getString("Item_name"),
++                        resultSet.getDouble("price"),
++                        resultSet.getInt("qty")
++                ));
++            }
++        } catch (SQLException | ClassNotFoundException e) {
++            e.printStackTrace();
++        }
++        tblItem.setItems(itemList);
++    }
++
++    private void initializeTableColumns() {
++        tblItemCodeField.setCellValueFactory(new PropertyValueFactory<>("Item_code"));
++        tblItemNameField.setCellValueFactory(new PropertyValueFactory<>("Item_name"));
++        tblItemPriceField.setCellValueFactory(new PropertyValueFactory<>("price"));
++        tblItemQtyField.setCellValueFactory(new PropertyValueFactory<>("qty"));
++
++        tblOptionsColumn.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
++        tblOptionsColumn.setCellFactory(param -> new TableCell<Item, Item>() {
++            private final Button deleteButton = new Button();
++            private final Button editButton = new Button();
++
++            @Override
++            protected void updateItem(Item item, boolean empty) {
++                super.updateItem(item, empty);
++                if (item == null) {
++                    setGraphic(null);
++                    return;
++                }
++
++                deleteButton.setOnAction(event -> deleteItem(item));
++                editButton.setOnAction(event -> openEditItemForm(item));
++
++                HBox hBox = new HBox(10, deleteButton, editButton);
++                hBox.setAlignment(Pos.CENTER);
++                setGraphic(hBox);
++
++                ImageView deleteIcon = new ImageView(new Image("/images/delete.png"));
++                deleteIcon.setFitHeight(20);
++                deleteIcon.setPreserveRatio(true);
++                deleteButton.setGraphic(deleteIcon);
++
++                ImageView editIcon = new ImageView(new Image("/images/edit.png"));
++                editIcon.setFitHeight(20);
++                editIcon.setPreserveRatio(true);
++                editButton.setGraphic(editIcon);
++
++                deleteButton.setTooltip(new Tooltip("Delete Item"));
++                editButton.setTooltip(new Tooltip("Edit Item"));
++            }
++        });
++    }
++
++    private void loadItemCodes() {
++        itemCodes.clear();
++        try {
++            Connection connection = DBConnection.getInstance().getConnection();
++            String sql = "SELECT Item_code FROM items";
++            Statement statement = connection.createStatement();
++            ResultSet resultSet = statement.executeQuery(sql);
++
++            while (resultSet.next()) {
++                itemCodes.add(resultSet.getString("Item_code"));
++            }
++        } catch (SQLException | ClassNotFoundException e) {
++            e.printStackTrace();
++        }
++        cmbItemCode.setItems(itemCodes);
++    }
++
++    public void openAddItemForm(ActionEvent actionEvent) {
++        try {
++            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AddItemForm.fxml"));
++            Parent root = loader.load();
++
++            AddItemFormController addItemFormController = loader.getController();
++            addItemFormController.init(tblItem, this);
+ 
+-        Stage stage = new Stage();
+-        stage.setScene(new Scene(load));
+-        stage.initModality(Modality.APPLICATION_MODAL);
+-        stage.setTitle("Add Item Form");
+-        stage.centerOnScreen();
+-        stage.show();
++            Scene scene = new Scene(root);
++            Stage stage = new Stage();
++            stage.setScene(scene);
++            stage.setTitle("Add Item");
++            stage.initModality(Modality.APPLICATION_MODAL);
++            stage.showAndWait();
++        } catch (IOException e) {
++            e.printStackTrace();
++        }
++    }
++
++    private void deleteItem(Item item) {
++        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this item?", ButtonType.YES, ButtonType.NO);
++        alert.setHeaderText(null);
++        alert.showAndWait().ifPresent(buttonType -> {
++            if (buttonType == ButtonType.YES) {
++                try {
++                    Connection connection = DBConnection.getInstance().getConnection();
++                    String sql = "DELETE FROM items WHERE Item_code=?";
++                    PreparedStatement preparedStatement = connection.prepareStatement(sql);
++                    preparedStatement.setString(1, item.getItem_code());
++                    preparedStatement.executeUpdate();
++                    loadItemData();
++                } catch (SQLException | ClassNotFoundException e) {
++                    e.printStackTrace();
++                }
++            }
++        });
++    }
++
++    private void openEditItemForm(Item item) {
++        try {
++            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AddItemForm.fxml"));
++            Parent root = loader.load();
++
++            AddItemFormController addItemFormController = loader.getController();
++            addItemFormController.initForUpdate(tblItem, this, item);
++
++            Scene scene = new Scene(root);
++            Stage stage = new Stage();
++            stage.setScene(scene);
++            stage.setTitle("Edit Item");
++            stage.initModality(Modality.APPLICATION_MODAL);
++            stage.showAndWait();
++        } catch (IOException e) {
++            e.printStackTrace();
++        }
++    }
++
++    public void refreshItemData() {
++        loadItemData();
++        loadItemCodes();
++    }
++
++    public void btnItemSearchOnAction(ActionEvent actionEvent) {
++        searchItem();
++    }
++
++    private void searchItem() {
++        String searchQuery = txtSearchFieldItem.getText().trim();
++        if (searchQuery.isEmpty()) {
++            loadItemData();
++            return;
++        }
++
++        ObservableList<Item> filteredList = FXCollections.observableArrayList();
++        for (Item item : itemList) {
++            if (item.getItem_code().contains(searchQuery) || item.getItem_name().contains(searchQuery)) {
++                filteredList.add(item);
++            }
++        }
++        tblItem.setItems(filteredList);
+     }
+ }
+Index: src/com/oragan/posSystem/view/ItemForm.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import javafx.scene.control.Button?>\r\n<?import javafx.scene.control.MenuButton?>\r\n<?import javafx.scene.control.MenuItem?>\r\n<?import javafx.scene.control.TableColumn?>\r\n<?import javafx.scene.control.TableView?>\r\n<?import javafx.scene.control.TextField?>\r\n<?import javafx.scene.layout.AnchorPane?>\r\n<?import javafx.scene.text.Font?>\r\n\r\n<AnchorPane fx:id=\"context\" prefHeight=\"788.0\" prefWidth=\"1622.0\" stylesheets=\"../styles/styles.css\" xmlns=\"http://javafx.com/javafx/8.0.171\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.oragan.posSystem.controller.ItemFormController\">\r\n   <children>\r\n      <TextField layoutX=\"362.0\" layoutY=\"95.0\" prefHeight=\"48.0\" prefWidth=\"304.0\" promptText=\"Search\" style=\"-fx-border-width: 2; -fx-border-color: green; -fx-background-color: transparent; -fx-text-fill: green; -fx-border-radius: 10; -fx-background-radius: 20;\">\r\n         <font>\r\n            <Font size=\"15.0\" />\r\n         </font>\r\n      </TextField>\r\n      <MenuButton layoutX=\"685.0\" layoutY=\"95.0\" mnemonicParsing=\"false\" prefHeight=\"48.0\" prefWidth=\"146.0\" style=\"-fx-background-color: #EFC81A; -fx-border-radius: 10; -fx-background-radius: 10;\" text=\"Item Code\">\r\n         <items>\r\n            <MenuItem mnemonicParsing=\"false\" text=\"Action 1\" />\r\n            <MenuItem mnemonicParsing=\"false\" text=\"Action 2\" />\r\n         </items>\r\n         <font>\r\n            <Font name=\"System Bold\" size=\"14.0\" />\r\n         </font>\r\n      </MenuButton>\r\n      <TableView fx:id=\"tblItem\" layoutX=\"221.0\" layoutY=\"211.0\" prefHeight=\"200.0\" prefWidth=\"1180.0\">\r\n         <columns>\r\n            <TableColumn prefWidth=\"196.0\" style=\"-fx-background-color: black;\" text=\"Item Code\" />\r\n            <TableColumn prefWidth=\"181.0\" text=\"Item Name\" />\r\n            <TableColumn prefWidth=\"256.0\" text=\"Price\" />\r\n            <TableColumn prefWidth=\"184.0\" text=\"Qty On Hand\" />\r\n         </columns>\r\n      </TableView>\r\n      <Button layoutX=\"845.0\" layoutY=\"95.0\" mnemonicParsing=\"false\" prefHeight=\"48.0\" prefWidth=\"134.0\" style=\"-fx-border-color: green; -fx-background-color: white; -fx-border-width: 2; -fx-border-radius: 8;\" text=\"Search\" textFill=\"#1eab0b\" />\r\n      <Button layoutX=\"1000.0\" layoutY=\"95.0\" mnemonicParsing=\"false\" onAction=\"#btnAddItemFormOnAction\" prefHeight=\"48.0\" prefWidth=\"192.0\" style=\"-fx-background-color: black; -fx-border-radius: 15; -fx-background-radius: 10;\" text=\"Add New Item\" textFill=\"#f8f8f8\">\r\n         <font>\r\n            <Font name=\"System Bold\" size=\"15.0\" />\r\n         </font></Button>\r\n   </children>\r\n</AnchorPane>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/oragan/posSystem/view/ItemForm.fxml b/src/com/oragan/posSystem/view/ItemForm.fxml
+--- a/src/com/oragan/posSystem/view/ItemForm.fxml	(revision ea088001b3bd742d6817b5899e271d332792c111)
++++ b/src/com/oragan/posSystem/view/ItemForm.fxml	(date 1718177273869)
+@@ -1,42 +1,33 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ 
+ <?import javafx.scene.control.Button?>
+-<?import javafx.scene.control.MenuButton?>
+-<?import javafx.scene.control.MenuItem?>
++<?import javafx.scene.control.ComboBox?>
+ <?import javafx.scene.control.TableColumn?>
+ <?import javafx.scene.control.TableView?>
+ <?import javafx.scene.control.TextField?>
+ <?import javafx.scene.layout.AnchorPane?>
+ <?import javafx.scene.text.Font?>
+ 
+-<AnchorPane fx:id="context" prefHeight="788.0" prefWidth="1622.0" stylesheets="../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.ItemFormController">
++<AnchorPane fx:id="context" prefHeight="788.0" prefWidth="1622.0" stylesheets="../styles/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.ItemFormController">
+    <children>
+-      <TextField layoutX="362.0" layoutY="95.0" prefHeight="48.0" prefWidth="304.0" promptText="Search" style="-fx-border-width: 2; -fx-border-color: green; -fx-background-color: transparent; -fx-text-fill: green; -fx-border-radius: 10; -fx-background-radius: 20;">
++      <TextField fx:id="txtSerchFieldItem" layoutX="362.0" layoutY="95.0" onAction="#txtSerchFieldItemOnAction" prefHeight="48.0" prefWidth="304.0" promptText="Search" style="-fx-border-width: 2; -fx-border-color: green; -fx-background-color: transparent; -fx-text-fill: green; -fx-border-radius: 10; -fx-background-radius: 20;">
+          <font>
+             <Font size="15.0" />
+          </font>
+       </TextField>
+-      <MenuButton layoutX="685.0" layoutY="95.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="146.0" style="-fx-background-color: #EFC81A; -fx-border-radius: 10; -fx-background-radius: 10;" text="Item Code">
+-         <items>
+-            <MenuItem mnemonicParsing="false" text="Action 1" />
+-            <MenuItem mnemonicParsing="false" text="Action 2" />
+-         </items>
+-         <font>
+-            <Font name="System Bold" size="14.0" />
+-         </font>
+-      </MenuButton>
+       <TableView fx:id="tblItem" layoutX="221.0" layoutY="211.0" prefHeight="200.0" prefWidth="1180.0">
+          <columns>
+-            <TableColumn prefWidth="196.0" style="-fx-background-color: black;" text="Item Code" />
+-            <TableColumn prefWidth="181.0" text="Item Name" />
+-            <TableColumn prefWidth="256.0" text="Price" />
+-            <TableColumn prefWidth="184.0" text="Qty On Hand" />
++            <TableColumn fx:id="tblItemCodeField" prefWidth="196.0" text="Item Code" />
++            <TableColumn fx:id="tblItemNameFIeld" prefWidth="181.0" text="Item Name" />
++            <TableColumn fx:id="tblItemPriceFIeld" prefWidth="291.0" text="Price" />
++            <TableColumn fx:id="tblItemQtyFIeld" prefWidth="269.0" text="Qty On Hand" />
++            <TableColumn fx:id="tblOptionsColumn" prefWidth="242.0" text="Options" />
+          </columns>
+       </TableView>
+-      <Button layoutX="845.0" layoutY="95.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="134.0" style="-fx-border-color: green; -fx-background-color: white; -fx-border-width: 2; -fx-border-radius: 8;" text="Search" textFill="#1eab0b" />
+-      <Button layoutX="1000.0" layoutY="95.0" mnemonicParsing="false" onAction="#btnAddItemFormOnAction" prefHeight="48.0" prefWidth="192.0" style="-fx-background-color: black; -fx-border-radius: 15; -fx-background-radius: 10;" text="Add New Item" textFill="#f8f8f8">
++      <Button layoutX="947.0" layoutY="95.0" mnemonicParsing="false" onAction="#btnAddItemFormOnAction" prefHeight="48.0" prefWidth="192.0" style="-fx-background-color: black; -fx-border-radius: 15; -fx-background-radius: 10;" text="Add New Item" textFill="#f8f8f8">
+          <font>
+             <Font name="System Bold" size="15.0" />
+          </font></Button>
++      <ComboBox fx:id="cmbItemId" layoutX="682.0" layoutY="95.0" onAction="#cmbItemIdOnAction" prefHeight="48.0" prefWidth="150.0" promptText="Item Code" style="-fx-background-color: #EFC81A; -fx-background-radius: 10;" />
+    </children>
+ </AnchorPane>
+Index: src/com/oragan/posSystem/entity/Item.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\npackage com.oragan.posSystem.entity;\r\n\r\npublic class Item {\r\n\r\n    private String Item_code;\r\n    private String Item_name;\r\n    private double price;\r\n    private int qty;\r\n\r\n    public Item() {\r\n    }\r\n\r\n    public Item(String item_code, String item_name, double price, int qty) {\r\n        Item_code = item_code;\r\n        Item_name = item_name;\r\n        this.price = price;\r\n        this.qty = qty;\r\n    }\r\n\r\n    public String getItem_code() {\r\n        return Item_code;\r\n    }\r\n\r\n    public void setItem_code(String item_code) {\r\n        Item_code = item_code;\r\n    }\r\n\r\n    public String getItem_name() {\r\n        return Item_name;\r\n    }\r\n\r\n    public void setItem_name(String item_name) {\r\n        Item_name = item_name;\r\n    }\r\n\r\n    public double getPrice() {\r\n        return price;\r\n    }\r\n\r\n    public void setPrice(double price) {\r\n        this.price = price;\r\n    }\r\n\r\n    public int getQty() {\r\n        return qty;\r\n    }\r\n\r\n    public void setQty(int qty) {\r\n        this.qty = qty;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/oragan/posSystem/entity/Item.java b/src/com/oragan/posSystem/entity/Item.java
+--- a/src/com/oragan/posSystem/entity/Item.java	(revision ea088001b3bd742d6817b5899e271d332792c111)
++++ b/src/com/oragan/posSystem/entity/Item.java	(date 1718176098143)
+@@ -2,7 +2,6 @@
+ package com.oragan.posSystem.entity;
+ 
+ public class Item {
+-
+     private String Item_code;
+     private String Item_name;
+     private double price;
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"89dbfd71-98c4-49ba-a84d-1363c7f00fa7\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/com/oragan/posSystem/controller/CustomerFormController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/com/oragan/posSystem/controller/CustomerFormController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/com/oragan/posSystem/view/CustomerForm.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/com/oragan/posSystem/view/CustomerForm.fxml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ComposerSettings\">\r\n    <execution />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"HighlightingSettingsPerFile\">\r\n    <setting file=\"file://$PROJECT_DIR$/src/com/oragan/posSystem/entity/Item.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/com/oragan/posSystem/entity/Customer.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/com/oragan/posSystem/controller/AddCustomerFormController.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/com/oragan/posSystem/view/CustomerForm.fxml\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/com/oragan/posSystem/controller/AddItemFormController.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/com/oragan/posSystem/controller/DashBoardFormController.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/com/oragan/posSystem/controller/CustomerFormController.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/.gitignore\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$USER_HOME$/AppData/Local/Temp/SQLite Tablo Oluşturun.url\" root0=\"FORCE_HIGHLIGHTING\" />\r\n  </component>\r\n  <component name=\"PhpWorkspaceProjectConfiguration\" interpreter_name=\"C:\\xampp\\php\\php.exe\" />\r\n  <component name=\"ProjectId\" id=\"2himxfBdo2WkUsgndzFgyBZefjj\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"1\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"F:\\oragan\\New folder\\oragan_pos_system\\oragan_pos_system\\src\\com\\oragan\\posSystem\\assets\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"AppInitializer\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.oragan.posSystem.AppInitializer\" />\r\n      <module name=\"oragan_pos_system\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.oragan.posSystem.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.AppInitializer\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"89dbfd71-98c4-49ba-a84d-1363c7f00fa7\" name=\"Changes\" comment=\"\" />\r\n      <created>1718085521888</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1718085521888</updated>\r\n      <workItem from=\"1718085522653\" duration=\"13943000\" />\r\n      <workItem from=\"1718171185591\" duration=\"3786000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"updated serch customer\">\r\n      <created>1718173089708</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1718173089708</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"updated serch customer\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"updated serch customer\" />\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision ea088001b3bd742d6817b5899e271d332792c111)
++++ b/.idea/workspace.xml	(date 1718177487189)
+@@ -5,9 +5,19 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="89dbfd71-98c4-49ba-a84d-1363c7f00fa7" name="Changes" comment="">
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_31_2024_4_46_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_31_2024_4_46_PM__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_10_2024_10_49_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_10_2024_10_49_PM__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_11_2024_12_41_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_11_2024_12_41_AM__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_11_2024_12_42_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_11_2024_12_42_AM__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_11_2024_12_42_AM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_11_2024_12_42_AM__Changes_1.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_11_2024_12_44_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_11_2024_12_44_AM__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_11_10_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_11_10_AM__Changes_.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/CustomerFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/CustomerFormController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/CustomerForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/view/CustomerForm.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/identifier.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/identifier.sqlite" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/AddItemFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/AddItemFormController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/ItemFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/ItemFormController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/entity/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/entity/Item.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/ItemForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/view/ItemForm.fxml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -40,12 +50,12 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">
+-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+-    <property name="WebServerToolWindowFactoryState" value="false" />
+-    <property name="nodejs_package_manager_path" value="npm" />
+-  </component>
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "git-widget-placeholder": "master",
++    "node.js.selected.package.tslint": "(autodetect)"
++  }
++}]]></component>
+   <component name="RecentsManager">
+     <key name="MoveFile.RECENT_KEYS">
+       <recent name="F:\oragan\New folder\oragan_pos_system\oragan_pos_system\src\com\oragan\posSystem\assets" />
+@@ -105,7 +115,6 @@
+         </entry>
+       </map>
+     </option>
+-    <option name="oldMeFiltersMigrated" value="true" />
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="updated serch customer" />

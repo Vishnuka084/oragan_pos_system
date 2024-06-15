@@ -12,6 +12,14 @@ public class DashBoardFormController {
 
     public AnchorPane context;
 
+    public void initialize() {
+        try {
+            // Display DashBoardFunctionForm by default when DashBoardForm is loaded
+            DashBoardOnAction(null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     private void setUi2(String ui2) throws IOException {
         context.getChildren().clear();
