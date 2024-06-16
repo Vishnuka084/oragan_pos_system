@@ -2,10 +2,12 @@ package com.oragan.posSystem.controller;
 
 import com.oragan.posSystem.db.DBConnection;
 import com.oragan.posSystem.entity.Customer;
+import com.oragan.posSystem.entity.Item;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -37,14 +39,17 @@ public class CustomerFormController {
     public TableColumn<Customer, Customer> tblOptionsColumn;
     public TextField txtSerchFieldCustomer;
     public ComboBox<String> cmbCustomerId;
+    public String cmbName;
+    public String cmbID;
 
     private ObservableList<String> customerIds = FXCollections.observableArrayList();
     private ObservableList<Customer> customerList = FXCollections.observableArrayList();
 
     public void initialize() {
         loadCustomerData();
+
         initializeTableColumns();
-        loadCustomerIds();
+
         txtSerchFieldCustomer.textProperty().addListener((observable, oldValue, newValue) -> filterCustomerList(newValue));
     }
 
@@ -173,24 +178,13 @@ public class CustomerFormController {
 
     public void refreshCustomerData() {
         loadCustomerData();
-        loadCustomerIds();
+
     }
 
-    // Search customer
+     //search customer Ids ,name combobox
 
     public void txtSerchFieldCustomerOnAction(ActionEvent actionEvent) {
-        String searchQuery = txtSerchFieldCustomer.getText().toLowerCase();
-        if (searchQuery.isEmpty()) {
-            tblCustomer.setItems(customerList);  // Display all customers if search query is empty
-        } else {
-            ObservableList<Customer> filteredList = FXCollections.observableArrayList();
-            for (Customer customer : customerList) {
-                if (customer.getCustomer_name().toLowerCase().contains(searchQuery)) {
-                    filteredList.add(customer);
-                }
-            }
-            tblCustomer.setItems(filteredList);
-        }
+        filterCustomerList(txtSerchFieldCustomer.getText());
     }
 
     private void filterCustomerList(String searchQuery) {
@@ -198,32 +192,36 @@ public class CustomerFormController {
             tblCustomer.setItems(customerList);  // Display all customers if search query is empty
         } else {
             ObservableList<Customer> filteredList = FXCollections.observableArrayList();
-            for (Customer customer : customerList) {
-                if (customer.getCustomer_name().toLowerCase().contains(searchQuery.toLowerCase())) {
-                    filteredList.add(customer);
+            String selectedValue = cmbCustomerId.getValue();
+            if ("Customer Name".equals(selectedValue)) {
+                for (Customer customer : customerList) {
+                    if (customer.getCustomer_name().toLowerCase().contains(searchQuery.toLowerCase())) {
+                        filteredList.add(customer);
+                    }
+                }
+            } else if ("Customer ID".equals(selectedValue)) {
+                for (Customer customer : customerList) {
+
+                    if (customer.getCustomer_Id().toLowerCase().contains(searchQuery.toLowerCase())) {
+                        filteredList.add(customer);
+                    }
                 }
             }
             tblCustomer.setItems(filteredList);
         }
     }
 
-    //search customer Ids combobox
+    public void cmbSearchByCustomerOnAction(ActionEvent actionEvent) {
 
-    private void loadCustomerIds() {
-        cmbCustomerId.setItems(customerIds); // Bind the ComboBox with customerIds list
-    }
-
-    public void cmbCustomerIdOnAction(ActionEvent actionEvent) {
-        String selectedCustomerId = cmbCustomerId.getValue();
-        if (selectedCustomerId != null) {
-            ObservableList<Customer> selectedCustomerList = FXCollections.observableArrayList();
-            for (Customer customer : customerList) {
-                if (customer.getCustomer_Id().equals(selectedCustomerId)) {
-                    selectedCustomerList.add(customer);
-                    break;
-                }
-            }
-            tblCustomer.setItems(selectedCustomerList);
+        String selectedValue = cmbCustomerId.getValue();
+        if ("Customer Name".equals(selectedValue)) {
+            txtSerchFieldCustomer.setPromptText("Enter customer  name");
+            txtSerchFieldCustomer.clear();
+        } else if ("Customer ID".equals(selectedValue)) {
+            txtSerchFieldCustomer.setPromptText("Enter  customer ID ");
+            txtSerchFieldCustomer.clear();
         }
+        // Trigger filtering immediately when the selection changes
+        filterCustomerList(txtSerchFieldCustomer.getText());
     }
 }
