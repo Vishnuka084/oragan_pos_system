@@ -25,89 +25,89 @@
             <TableColumn prefWidth="273.0" text="Options" />
          </columns>
       </TableView>
-      <Text layoutX="20.0" layoutY="53.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID" wrappingWidth="133.60986328125">
+      <Text fill="#180361" layoutX="20.0" layoutY="53.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID" wrappingWidth="133.60986328125">
          <font>
-            <Font size="18.0" />
+            <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
       </Text>
-      <ComboBox layoutX="20.0" layoutY="66.0" opacity="0.84" prefHeight="35.0" prefWidth="371.0" style="-fx-background-color: white;">
+      <ComboBox fx:id="cmbCustomerID" layoutX="23.0" layoutY="66.0" onAction="#cmbCustomerIDOnAction" opacity="0.84" prefHeight="35.0" prefWidth="371.0" promptText="Select Customer ID" style="-fx-background-color: white;">
          <opaqueInsets>
             <Insets left="5.0" />
          </opaqueInsets>
       </ComboBox>
-      <Text layoutX="410.0" layoutY="50.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="133.60986328125">
+      <Text fill="#180361" layoutX="410.0" layoutY="50.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="133.60986328125">
          <font>
-            <Font size="18.0" />
+            <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
       </Text>
-      <TextField layoutX="410.0" layoutY="66.0" prefHeight="35.0" prefWidth="371.0">
+      <TextField fx:id="txtCustomerName" editable="false" layoutX="410.0" layoutY="66.0" prefHeight="35.0" prefWidth="371.0">
          <opaqueInsets>
             <Insets left="5.0" />
          </opaqueInsets>
       </TextField>
-      <Text layoutX="798.0" layoutY="49.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" wrappingWidth="133.60986328125">
+      <Text fx:id="txtCustomerAddress" fill="#180361" layoutX="798.0" layoutY="49.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" wrappingWidth="133.60986328125">
          <font>
-            <Font size="18.0" />
+            <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
       </Text>
-      <TextField layoutX="798.0" layoutY="66.0" prefHeight="35.0" prefWidth="371.0">
+      <TextField editable="false" layoutX="798.0" layoutY="66.0" prefHeight="35.0" prefWidth="371.0">
          <opaqueInsets>
             <Insets left="5.0" />
          </opaqueInsets>
       </TextField>
-      <Text layoutX="1189.0" layoutY="51.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact Number" wrappingWidth="214.60986328125">
+      <Text fill="#180361" layoutX="1189.0" layoutY="51.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact Number" wrappingWidth="214.60986328125">
          <font>
-            <Font size="18.0" />
+            <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
       </Text>
-      <TextField layoutX="1189.0" layoutY="66.0" prefHeight="35.0" prefWidth="382.0">
+      <TextField fx:id="txtContactNumber" editable="false" layoutX="1189.0" layoutY="66.0" prefHeight="35.0" prefWidth="382.0">
          <opaqueInsets>
             <Insets left="5.0" />
          </opaqueInsets>
       </TextField>
-      <Text layoutX="23.0" layoutY="139.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Code" wrappingWidth="133.60986328125">
+      <Text fill="#180361" layoutX="23.0" layoutY="135.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Code" wrappingWidth="133.60986328125">
          <font>
-            <Font size="18.0" />
+            <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
       </Text>
-      <ComboBox layoutX="23.0" layoutY="152.0" opacity="0.84" prefHeight="35.0" prefWidth="371.0" style="-fx-background-color: white;">
+      <ComboBox fx:id="cmbItemCode" layoutX="23.0" layoutY="152.0" onAction="#cmbItemCodeOnAction" opacity="0.84" prefHeight="35.0" prefWidth="371.0" promptText="Select Item Code" style="-fx-background-color: white;">
          <opaqueInsets>
             <Insets left="5.0" />
          </opaqueInsets>
       </ComboBox>
-      <Text layoutX="413.0" layoutY="136.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Name" wrappingWidth="133.60986328125">
+      <Text fill="#180361" layoutX="413.0" layoutY="136.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Name" wrappingWidth="133.60986328125">
          <font>
-            <Font size="18.0" />
+            <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
       </Text>
-      <TextField layoutX="413.0" layoutY="152.0" prefHeight="35.0" prefWidth="371.0">
+      <TextField fx:id="txtItemName" editable="false" layoutX="413.0" layoutY="152.0" prefHeight="35.0" prefWidth="371.0">
          <opaqueInsets>
             <Insets left="5.0" />
          </opaqueInsets>
       </TextField>
-      <Text layoutX="801.0" layoutY="135.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="QTY On Hand" wrappingWidth="133.60986328125">
+      <Text fill="#180361" layoutX="801.0" layoutY="135.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="QTY On Hand" wrappingWidth="133.60986328125">
          <font>
-            <Font size="18.0" />
+            <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
       </Text>
-      <TextField layoutX="801.0" layoutY="152.0" prefHeight="35.0" prefWidth="371.0">
+      <TextField fx:id="txtQtyOnHand" editable="false" layoutX="801.0" layoutY="152.0" prefHeight="35.0" prefWidth="371.0">
          <opaqueInsets>
             <Insets left="5.0" />
          </opaqueInsets>
       </TextField>
-      <Text layoutX="1192.0" layoutY="135.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Qty" wrappingWidth="214.60986328125">
+      <Text fill="#180361" layoutX="1192.0" layoutY="135.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Qty" wrappingWidth="214.60986328125">
          <font>
-            <Font size="18.0" />
+            <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
       </Text>
-      <TextField layoutX="1192.0" layoutY="152.0" prefHeight="35.0" prefWidth="382.0">
+      <TextField fx:id="txtQty" editable="false" layoutX="1192.0" layoutY="152.0" prefHeight="35.0" prefWidth="382.0">
          <opaqueInsets>
             <Insets left="5.0" />
          </opaqueInsets>
       </TextField>
-      <Text layoutX="1348.0" layoutY="228.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity" wrappingWidth="214.60986328125">
+      <Text fill="#ff210d" layoutX="1348.0" layoutY="228.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity" wrappingWidth="214.60986328125">
          <font>
-            <Font size="18.0" />
+            <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
       </Text>
       <TextField layoutX="1348.0" layoutY="240.0" prefHeight="35.0" prefWidth="225.0">
@@ -147,6 +147,6 @@
       </Text>
    </children>
    <effect>
-      <ColorAdjust />
+      <ColorAdjust brightness="0.02" />
    </effect>
 </AnchorPane>
