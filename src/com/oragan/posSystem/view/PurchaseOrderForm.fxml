@@ -45,12 +45,12 @@
             <Insets left="5.0" />
          </opaqueInsets>
       </TextField>
-      <Text fx:id="txtCustomerAddress" fill="#180361" layoutX="798.0" layoutY="49.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" wrappingWidth="133.60986328125">
+      <Text fill="#180361" layoutX="798.0" layoutY="49.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" wrappingWidth="133.60986328125">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
       </Text>
-      <TextField editable="false" layoutX="798.0" layoutY="66.0" prefHeight="35.0" prefWidth="371.0">
+      <TextField fx:id="txtCustomerAddress" editable="false" layoutX="798.0" layoutY="66.0" prefHeight="35.0" prefWidth="371.0">
          <opaqueInsets>
             <Insets left="5.0" />
          </opaqueInsets>

@@ -18,12 +18,12 @@ import java.util.List;
 public class PurchaseOrderFormController {
     public ComboBox <String> cmbCustomerID;
     public TextField txtCustomerName;
-    public Text txtCustomerAddress;
     public TextField txtContactNumber;
     public ComboBox cmbItemCode;
     public TextField txtItemName;
     public TextField txtQtyOnHand;
     public TextField txtQty;
+    public TextField txtCustomerAddress;
     private List<Customer> customers;
 
 
@@ -59,21 +59,21 @@ public class PurchaseOrderFormController {
         List<Customer> customerList = new ArrayList<>();
         String query = "SELECT * FROM customers";
 
-//        try (Connection conn = DBConnection.getConnection();
-//             PreparedStatement ps = conn.prepareStatement(query);
-//             ResultSet rs = ps.executeQuery()) {
-//
-//            while (rs.next()) {
-//                Customer customer = new Customer();
-//                customer.setCustomer_Id(rs.getString("customer_id"));
-//                customer.setCustomer_name(rs.getString("customer_name"));
-//                customer.setAddress(rs.getString("address"));
-//                customer.setContact_number(rs.getString("contact_number"));
-//                customerList.add(customer);
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+        try (Connection conn = DBConnection.getInstance().getConnection();
+             PreparedStatement ps = conn.prepareStatement(query);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                Customer customer = new Customer();
+                customer.setCustomer_Id(rs.getString("customer_id"));
+                customer.setCustomer_name(rs.getString("customer_name"));
+                customer.setAddress(rs.getString("address"));
+                customer.setContact_number(rs.getString("contact_number"));
+                customerList.add(customer);
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
         return customerList;
     }
