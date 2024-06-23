@@ -95,12 +95,12 @@
             <Insets left="5.0" />
          </opaqueInsets>
       </TextField>
-      <Text fill="#180361" layoutX="1192.0" layoutY="135.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Qty" wrappingWidth="214.60986328125">
+      <Text fill="#180361" layoutX="1189.0" layoutY="135.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Price" wrappingWidth="214.60986328125">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
       </Text>
-      <TextField fx:id="txtQty" editable="false" layoutX="1192.0" layoutY="152.0" prefHeight="35.0" prefWidth="382.0">
+      <TextField fx:id="txtPrice" editable="false" layoutX="1192.0" layoutY="152.0" prefHeight="35.0" prefWidth="382.0">
          <opaqueInsets>
             <Insets left="5.0" />
          </opaqueInsets>
