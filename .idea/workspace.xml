@@ -5,17 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="89dbfd71-98c4-49ba-a84d-1363c7f00fa7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_11_10_AM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_11_10_AM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_12_33_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_12_33_PM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_1_10_PM_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_1_10_PM__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_10_2024_10_49_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_10_2024_10_49_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_11_2024_12_44_AM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_11_2024_12_44_AM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/PurchaseOrderFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/PurchaseOrderFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/db/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/db/DBConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/PurchaseOrderForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/view/PurchaseOrderForm.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -100,12 +95,7 @@
       <workItem from="1718521546240" duration="3449000" />
       <workItem from="1718525322147" duration="947000" />
       <workItem from="1718553376607" duration="10197000" />
-      <workItem from="1718773303291" duration="5269000" />
-      <workItem from="1718817192033" duration="474000" />
-      <workItem from="1718871580947" duration="4930000" />
-      <workItem from="1719072736814" duration="1346000" />
-      <workItem from="1719121256994" duration="2071000" />
-      <workItem from="1719160976520" duration="4724000" />
+      <workItem from="1718773303291" duration="2158000" />
     </task>
     <task id="LOCAL-00001" summary="updated serch customer">
       <created>1718173089708</created>
@@ -142,21 +132,7 @@
       <option name="project" value="LOCAL" />
       <updated>1718561946930</updated>
     </task>
-    <task id="LOCAL-00006" summary="updated customer form serch  for combox two options added">
-      <created>1718776508484</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1718776508484</updated>
-    </task>
-    <task id="LOCAL-00007" summary="load purchase order customer details">
-      <created>1718778658045</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1718778658045</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,8 +155,7 @@
     <MESSAGE value="updated cmobox loading ids" />
     <MESSAGE value="updated item form fuctions" />
     <MESSAGE value="updated customer form serch  for combox two options added" />
-    <MESSAGE value="load purchase order customer details" />
-    <option name="LAST_COMMIT_MESSAGE" value="load purchase order customer details" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated customer form serch  for combox two options added" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

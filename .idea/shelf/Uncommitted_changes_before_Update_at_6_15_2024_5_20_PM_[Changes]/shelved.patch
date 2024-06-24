@@ -1,0 +1,27 @@
+Index: src/com/oragan/posSystem/styles/styles.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>/* Style for the table header background */\r\n.table-view .column-header-background {\r\n   -fx-background-color: red;\r\n}\r\n\r\n/* Style for the table header text */\r\n.table-view .column-header .label {\r\n    -fx-text-fill: white;\r\n}\r\n\r\n
+===================================================================
+diff --git a/src/com/oragan/posSystem/styles/styles.css b/src/com/oragan/posSystem/styles/styles.css
+--- a/src/com/oragan/posSystem/styles/styles.css	
++++ b/src/com/oragan/posSystem/styles/styles.css	
+@@ -1,10 +1,10 @@
+-/* Style for the table header background */
+-.table-view .column-header-background {
+-   -fx-background-color: red;
+-}
++/*!* Style for the table header background *!*/
++/*.table-view .column-header-background {*/
++/*   -fx-background-color: red;*/
++/*}*/
+ 
+-/* Style for the table header text */
+-.table-view .column-header .label {
+-    -fx-text-fill: white;
+-}
++/*!* Style for the table header text *!*/
++/*.table-view .column-header .label {*/
++/*    -fx-text-fill: white;*/
++/*}*/
+ 

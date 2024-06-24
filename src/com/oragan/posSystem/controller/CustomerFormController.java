@@ -181,7 +181,7 @@ public class CustomerFormController {
 
     }
 
-     //search customer Ids ,name combobox
+    //search customer Ids ,name combobox
 
     public void txtSerchFieldCustomerOnAction(ActionEvent actionEvent) {
         filterCustomerList(txtSerchFieldCustomer.getText());

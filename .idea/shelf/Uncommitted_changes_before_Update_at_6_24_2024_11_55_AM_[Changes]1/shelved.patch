@@ -1,0 +1,650 @@
+Index: src/com/oragan/posSystem/view/CustomerForm.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import java.lang.String?>\r\n<?import javafx.collections.FXCollections?>\r\n<?import javafx.scene.control.Button?>\r\n<?import javafx.scene.control.ComboBox?>\r\n<?import javafx.scene.control.TableColumn?>\r\n<?import javafx.scene.control.TableView?>\r\n<?import javafx.scene.control.TextField?>\r\n<?import javafx.scene.effect.ColorAdjust?>\r\n<?import javafx.scene.layout.AnchorPane?>\r\n<?import javafx.scene.text.Font?>\r\n\r\n<AnchorPane fx:id=\"context\" prefHeight=\"788.0\" prefWidth=\"1622.0\" xmlns=\"http://javafx.com/javafx/8.0.171\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.oragan.posSystem.controller.CustomerFormController\">\r\n    <children>\r\n        <TextField fx:id=\"txtSerchFieldCustomer\" layoutX=\"362.0\" layoutY=\"95.0\" onAction=\"#txtSerchFieldCustomerOnAction\" prefHeight=\"48.0\" prefWidth=\"304.0\" promptText=\"Search\" style=\"-fx-border-width: 2; -fx-border-color: green; -fx-background-color: transparent; -fx-text-fill: green; -fx-border-radius: 10; -fx-background-radius: 20;\">\r\n            <font>\r\n                <Font size=\"15.0\" />\r\n            </font>\r\n        </TextField>\r\n        <TableView fx:id=\"tblCustomer\" layoutX=\"221.0\" layoutY=\"211.0\" prefHeight=\"540.0\" prefWidth=\"1180.0\">\r\n            <columns>\r\n                <TableColumn fx:id=\"tblCustomerIdField\" prefWidth=\"196.0\" text=\"Customer ID\" style=\"-fx-font-weight: bold;-fx-font-size: 18px\" />\r\n                <TableColumn fx:id=\"tblCustomerNameFIeld\" prefWidth=\"181.0\" text=\"Name\" style=\"-fx-font-weight: bold;-fx-font-size: 18px\" />\r\n                <TableColumn fx:id=\"tblCustomerAddressField\" prefWidth=\"256.0\" text=\"Address\" style=\"-fx-font-weight: bold;-fx-font-size: 18px\" />\r\n                <TableColumn fx:id=\"tblCustomerContactNoField\" prefWidth=\"193.0\" text=\"Contact Number\" style=\"-fx-font-weight: bold;-fx-font-size: 18px\" />\r\n                <TableColumn fx:id=\"tblOptionsColumn\" prefWidth=\"353.0\" text=\"Options\" style=\"-fx-font-weight: bold;-fx-font-size: 18px\"/>\r\n            </columns>\r\n         <effect>\r\n            <ColorAdjust brightness=\"0.13\" contrast=\"0.05\" hue=\"0.15\" saturation=\"-0.03\" />\r\n         </effect>\r\n        </TableView>\r\n        <Button layoutX=\"885.0\" layoutY=\"95.0\" mnemonicParsing=\"false\" onAction=\"#btnAddCustomerFormOnAction\" prefHeight=\"48.0\" prefWidth=\"192.0\" style=\"-fx-background-color: black; -fx-border-radius: 15; -fx-background-radius: 10;\" text=\"Add New Customer\" textFill=\"#f8f8f8\">\r\n         <font>\r\n            <Font name=\"System Bold\" size=\"15.0\" />\r\n         </font></Button>\r\n        <ComboBox fx:id=\"cmbCustomerId\" layoutX=\"683.0\" layoutY=\"95.0\" onAction=\"#cmbSearchByCustomerOnAction\" prefHeight=\"48.0\" prefWidth=\"192.0\" promptText=\"Select Serch Option\" style=\"-fx-background-color: FFC700; -fx-background-radius: 10;-fx-font-weight: bold;-fx-font-size: 15px\">\r\n            <items>\r\n                <FXCollections fx:factory=\"observableArrayList\">\r\n                    <String fx:id=\"cmbName\" fx:value=\"Customer Name\" />\r\n                    <String fx:id=\"cmbID\" fx:value=\"Customer ID\" />\r\n                </FXCollections>\r\n            </items>\r\n        </ComboBox>\r\n    </children>\r\n</AnchorPane>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/oragan/posSystem/view/CustomerForm.fxml b/src/com/oragan/posSystem/view/CustomerForm.fxml
+--- a/src/com/oragan/posSystem/view/CustomerForm.fxml	
++++ b/src/com/oragan/posSystem/view/CustomerForm.fxml	
+@@ -11,7 +11,7 @@
+ <?import javafx.scene.layout.AnchorPane?>
+ <?import javafx.scene.text.Font?>
+ 
+-<AnchorPane fx:id="context" prefHeight="788.0" prefWidth="1622.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.CustomerFormController">
++<AnchorPane fx:id="context" prefHeight="788.0" prefWidth="1622.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.CustomerFormController">
+     <children>
+         <TextField fx:id="txtSerchFieldCustomer" layoutX="362.0" layoutY="95.0" onAction="#txtSerchFieldCustomerOnAction" prefHeight="48.0" prefWidth="304.0" promptText="Search" style="-fx-border-width: 2; -fx-border-color: green; -fx-background-color: transparent; -fx-text-fill: green; -fx-border-radius: 10; -fx-background-radius: 20;">
+             <font>
+@@ -20,17 +20,17 @@
+         </TextField>
+         <TableView fx:id="tblCustomer" layoutX="221.0" layoutY="211.0" prefHeight="540.0" prefWidth="1180.0">
+             <columns>
+-                <TableColumn fx:id="tblCustomerIdField" prefWidth="196.0" text="Customer ID" style="-fx-font-weight: bold;-fx-font-size: 18px" />
+-                <TableColumn fx:id="tblCustomerNameFIeld" prefWidth="181.0" text="Name" style="-fx-font-weight: bold;-fx-font-size: 18px" />
+-                <TableColumn fx:id="tblCustomerAddressField" prefWidth="256.0" text="Address" style="-fx-font-weight: bold;-fx-font-size: 18px" />
+-                <TableColumn fx:id="tblCustomerContactNoField" prefWidth="193.0" text="Contact Number" style="-fx-font-weight: bold;-fx-font-size: 18px" />
+-                <TableColumn fx:id="tblOptionsColumn" prefWidth="353.0" text="Options" style="-fx-font-weight: bold;-fx-font-size: 18px"/>
++                <TableColumn fx:id="tblCustomerIdField" prefWidth="196.0" style="-fx-font-size: 10" text="Customer ID" />
++                <TableColumn fx:id="tblCustomerNameFIeld" prefWidth="181.0" text="Name" />
++                <TableColumn fx:id="tblCustomerAddressField" prefWidth="256.0" text="Address" />
++                <TableColumn fx:id="tblCustomerContactNoField" prefWidth="193.0" text="Contact Number" />
++                <TableColumn fx:id="tblOptionsColumn" prefWidth="353.0" text="Options" />
+             </columns>
+          <effect>
+             <ColorAdjust brightness="0.13" contrast="0.05" hue="0.15" saturation="-0.03" />
+          </effect>
+         </TableView>
+-        <Button layoutX="885.0" layoutY="95.0" mnemonicParsing="false" onAction="#btnAddCustomerFormOnAction" prefHeight="48.0" prefWidth="192.0" style="-fx-background-color: black; -fx-border-radius: 15; -fx-background-radius: 10;" text="Add New Customer" textFill="#f8f8f8">
++        <Button layoutX="1000.0" layoutY="95.0" mnemonicParsing="false" onAction="#btnAddCustomerFormOnAction" prefHeight="48.0" prefWidth="192.0" style="-fx-background-color: black; -fx-border-radius: 15; -fx-background-radius: 10;" text="Add New Customer" textFill="#f8f8f8">
+          <font>
+             <Font name="System Bold" size="15.0" />
+          </font></Button>
+Index: src/com/oragan/posSystem/controller/CustomerFormController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.oragan.posSystem.controller;\r\n\r\nimport com.oragan.posSystem.db.DBConnection;\r\nimport com.oragan.posSystem.entity.Customer;\r\nimport com.oragan.posSystem.entity.Item;\r\nimport javafx.beans.property.ReadOnlyObjectWrapper;\r\nimport javafx.collections.FXCollections;\r\nimport javafx.collections.ObservableList;\r\nimport javafx.event.ActionEvent;\r\nimport javafx.fxml.FXML;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.geometry.Pos;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.image.Image;\r\nimport javafx.scene.image.ImageView;\r\nimport javafx.scene.control.*;\r\nimport javafx.scene.control.cell.PropertyValueFactory;\r\nimport javafx.scene.layout.AnchorPane;\r\nimport javafx.scene.layout.HBox;\r\nimport javafx.stage.Modality;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.io.IOException;\r\nimport java.net.URL;\r\nimport java.sql.Connection;\r\nimport java.sql.PreparedStatement;\r\nimport java.sql.ResultSet;\r\nimport java.sql.SQLException;\r\nimport java.sql.Statement;\r\n\r\npublic class CustomerFormController {\r\n    public AnchorPane context;\r\n    public TableView<Customer> tblCustomer;\r\n    public TableColumn<Customer, String> tblCustomerIdField;\r\n    public TableColumn<Customer, String> tblCustomerNameFIeld;\r\n    public TableColumn<Customer, String> tblCustomerAddressField;\r\n    public TableColumn<Customer, String> tblCustomerContactNoField;\r\n    public TableColumn<Customer, Customer> tblOptionsColumn;\r\n    public TextField txtSerchFieldCustomer;\r\n    public ComboBox<String> cmbCustomerId;\r\n    public String cmbName;\r\n    public String cmbID;\r\n\r\n    private ObservableList<String> customerIds = FXCollections.observableArrayList();\r\n    private ObservableList<Customer> customerList = FXCollections.observableArrayList();\r\n\r\n    public void initialize() {\r\n        loadCustomerData();\r\n\r\n        initializeTableColumns();\r\n\r\n        txtSerchFieldCustomer.textProperty().addListener((observable, oldValue, newValue) -> filterCustomerList(newValue));\r\n    }\r\n\r\n    public void btnAddCustomerFormOnAction(ActionEvent actionEvent) throws IOException {\r\n        URL resource = this.getClass().getResource(\"/com/oragan/posSystem/view/AddCustomerForm.fxml\");\r\n        FXMLLoader fxmlLoader = new FXMLLoader(resource);\r\n        Parent load = fxmlLoader.load();\r\n        AddCustomerFormController addCustomerFormController = fxmlLoader.getController();\r\n        addCustomerFormController.init(tblCustomer, this);\r\n        Stage stage = new Stage();\r\n        stage.setScene(new Scene(load));\r\n        stage.initModality(Modality.APPLICATION_MODAL);\r\n        stage.setTitle(\"Add Customer Form\");\r\n        stage.centerOnScreen();\r\n        stage.show();\r\n    }\r\n\r\n    private void initializeTableColumns() {\r\n        tblCustomerIdField.setCellValueFactory(new PropertyValueFactory<>(\"Customer_Id\"));\r\n        tblCustomerNameFIeld.setCellValueFactory(new PropertyValueFactory<>(\"Customer_name\"));\r\n        tblCustomerAddressField.setCellValueFactory(new PropertyValueFactory<>(\"address\"));\r\n        tblCustomerContactNoField.setCellValueFactory(new PropertyValueFactory<>(\"contact_number\"));\r\n\r\n        tblOptionsColumn.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));\r\n        tblOptionsColumn.setCellFactory(param -> new TableCell<Customer, Customer>() {\r\n            private final Button updateButton = new Button();\r\n            private final Button deleteButton = new Button();\r\n\r\n            @Override\r\n            protected void updateItem(Customer customer, boolean empty) {\r\n                super.updateItem(customer, empty);\r\n                if (customer == null) {\r\n                    setGraphic(null);\r\n                    return;\r\n                }\r\n\r\n                // Load the update icon image\r\n                Image updateImage = new Image(getClass().getResourceAsStream(\"/com/oragan/posSystem/assets/icons8-update-64.png\"));\r\n                if (updateImage != null) {\r\n                    ImageView updateImageView = new ImageView(updateImage);\r\n                    updateImageView.setFitWidth(20); // Adjust the size as needed\r\n                    updateImageView.setFitHeight(20); // Adjust the size as needed\r\n                    updateButton.setGraphic(updateImageView);\r\n                }\r\n\r\n                // Load the delete icon image\r\n                Image deleteImage = new Image(getClass().getResourceAsStream(\"/com/oragan/posSystem/assets/icons8-delete-120.png\"));\r\n                if (deleteImage != null) {\r\n                    ImageView deleteImageView = new ImageView(deleteImage);\r\n                    deleteImageView.setFitWidth(20); // Adjust the size as needed\r\n                    deleteImageView.setFitHeight(20); // Adjust the size as needed\r\n                    deleteButton.setGraphic(deleteImageView);\r\n                }\r\n\r\n                HBox hBox = new HBox(updateButton, deleteButton);\r\n                hBox.setAlignment(Pos.CENTER);\r\n                hBox.setSpacing(10);\r\n                setGraphic(hBox);\r\n\r\n                updateButton.setOnAction(event -> handleUpdateCustomer(customer));\r\n                deleteButton.setOnAction(event -> handleDeleteCustomer(customer));\r\n            }\r\n        });\r\n\r\n        tblCustomer.setItems(customerList);\r\n    }\r\n\r\n    private void handleUpdateCustomer(Customer customer) {\r\n        try {\r\n            URL resource = this.getClass().getResource(\"/com/oragan/posSystem/view/AddCustomerForm.fxml\");\r\n            FXMLLoader fxmlLoader = new FXMLLoader(resource);\r\n            Parent load = fxmlLoader.load();\r\n            AddCustomerFormController addCustomerFormController = fxmlLoader.getController();\r\n            addCustomerFormController.initForUpdate(tblCustomer, this, customer);\r\n            Stage stage = new Stage();\r\n            stage.setScene(new Scene(load));\r\n            stage.initModality(Modality.APPLICATION_MODAL);\r\n            stage.setTitle(\"Update Customer Form\");\r\n            stage.centerOnScreen();\r\n            stage.show();\r\n        } catch (IOException e) {\r\n            System.out.println(\"Error loading update customer form: \" + e.getMessage());\r\n        }\r\n    }\r\n\r\n    private void loadCustomerData() {\r\n        customerList.clear();\r\n        customerIds.clear(); // Clear the customerIds list as well\r\n        String sql = \"SELECT * FROM customers\";\r\n        try {\r\n            Connection conn = DBConnection.getInstance().getConnection();\r\n            try (Statement stmt = conn.createStatement();\r\n                 ResultSet rs = stmt.executeQuery(sql)) {\r\n                while (rs.next()) {\r\n                    String customerId = rs.getString(\"Customer_Id\");\r\n                    String customerName = rs.getString(\"customer_name\");\r\n                    String customerAddress = rs.getString(\"address\");\r\n                    String contactNumber = rs.getString(\"contact_number\");\r\n                    Customer customer = new Customer(customerId, customerName, customerAddress, contactNumber);\r\n                    customerList.add(customer);\r\n                    customerIds.add(customerId); // Add customerId to the customerIds list\r\n                }\r\n            }\r\n        } catch (ClassNotFoundException | SQLException e) {\r\n            System.out.println(\"Error loading customer data from the database: \" + e.getMessage());\r\n        }\r\n    }\r\n\r\n    private void handleDeleteCustomer(Customer customer) {\r\n        String sql = \"DELETE FROM customers WHERE Customer_Id = ?\";\r\n        try {\r\n            Connection conn = DBConnection.getInstance().getConnection();\r\n            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {\r\n                pstmt.setString(1, customer.getCustomer_Id());\r\n                pstmt.executeUpdate();\r\n                System.out.println(\"Customer deleted successfully\");\r\n\r\n                // Remove the customer from the table\r\n                tblCustomer.getItems().remove(customer);\r\n                customerIds.remove(customer.getCustomer_Id()); // Remove the customerId from the customerIds list\r\n            }\r\n        } catch (ClassNotFoundException | SQLException e) {\r\n            System.out.println(\"Error deleting customer: \" + e.getMessage());\r\n        }\r\n    }\r\n\r\n    public void refreshCustomerData() {\r\n        loadCustomerData();\r\n\r\n    }\r\n\r\n     //search customer Ids ,name combobox\r\n\r\n    public void txtSerchFieldCustomerOnAction(ActionEvent actionEvent) {\r\n        filterCustomerList(txtSerchFieldCustomer.getText());\r\n    }\r\n\r\n    private void filterCustomerList(String searchQuery) {\r\n        if (searchQuery == null || searchQuery.isEmpty()) {\r\n            tblCustomer.setItems(customerList);  // Display all customers if search query is empty\r\n        } else {\r\n            ObservableList<Customer> filteredList = FXCollections.observableArrayList();\r\n            String selectedValue = cmbCustomerId.getValue();\r\n            if (\"Customer Name\".equals(selectedValue)) {\r\n                for (Customer customer : customerList) {\r\n                    if (customer.getCustomer_name().toLowerCase().contains(searchQuery.toLowerCase())) {\r\n                        filteredList.add(customer);\r\n                    }\r\n                }\r\n            } else if (\"Customer ID\".equals(selectedValue)) {\r\n                for (Customer customer : customerList) {\r\n\r\n                    if (customer.getCustomer_Id().toLowerCase().contains(searchQuery.toLowerCase())) {\r\n                        filteredList.add(customer);\r\n                    }\r\n                }\r\n            }\r\n            tblCustomer.setItems(filteredList);\r\n        }\r\n    }\r\n\r\n    public void cmbSearchByCustomerOnAction(ActionEvent actionEvent) {\r\n\r\n        String selectedValue = cmbCustomerId.getValue();\r\n        if (\"Customer Name\".equals(selectedValue)) {\r\n            txtSerchFieldCustomer.setPromptText(\"Enter customer  name\");\r\n            txtSerchFieldCustomer.clear();\r\n        } else if (\"Customer ID\".equals(selectedValue)) {\r\n            txtSerchFieldCustomer.setPromptText(\"Enter  customer ID \");\r\n            txtSerchFieldCustomer.clear();\r\n        }\r\n        // Trigger filtering immediately when the selection changes\r\n        filterCustomerList(txtSerchFieldCustomer.getText());\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/oragan/posSystem/controller/CustomerFormController.java b/src/com/oragan/posSystem/controller/CustomerFormController.java
+--- a/src/com/oragan/posSystem/controller/CustomerFormController.java	
++++ b/src/com/oragan/posSystem/controller/CustomerFormController.java	
+@@ -181,7 +181,7 @@
+ 
+     }
+ 
+-     //search customer Ids ,name combobox
++    //search customer Ids ,name combobox
+ 
+     public void txtSerchFieldCustomerOnAction(ActionEvent actionEvent) {
+         filterCustomerList(txtSerchFieldCustomer.getText());
+@@ -224,4 +224,4 @@
+         // Trigger filtering immediately when the selection changes
+         filterCustomerList(txtSerchFieldCustomer.getText());
+     }
+-}
++}
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_1_10_PM_[Changes]1/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_1_10_PM_[Changes]1/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_1_10_PM_[Changes]1/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_1_10_PM_[Changes]1/shelved.patch	
++++ /dev/null	
+@@ -1,14 +0,0 @@
+-Index: .idea/dataSources/3b3aa9a2-d415-4c2e-b7a0-0da89bfbd894/storage_v2/_src_/schema/main.uQUzAA.meta
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>#n:main\r\n!<md> [1718087761478, 0, null, null, -2147483648, -2147483648]\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/dataSources/3b3aa9a2-d415-4c2e-b7a0-0da89bfbd894/storage_v2/_src_/schema/main.uQUzAA.meta b/.idea/dataSources/3b3aa9a2-d415-4c2e-b7a0-0da89bfbd894/storage_v2/_src_/schema/main.uQUzAA.meta
+---- a/.idea/dataSources/3b3aa9a2-d415-4c2e-b7a0-0da89bfbd894/storage_v2/_src_/schema/main.uQUzAA.meta	
+-+++ b/.idea/dataSources/3b3aa9a2-d415-4c2e-b7a0-0da89bfbd894/storage_v2/_src_/schema/main.uQUzAA.meta	
+-@@ -1,2 +1,2 @@
+- #n:main
+--!<md> [1718087761478, 0, null, null, -2147483648, -2147483648]
+-+!<md> [1718174281626, 0, null, null, -2147483648, -2147483648]
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_11_10_AM__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_11_10_AM__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_11_10_AM__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_11_10_AM__Changes_.xml	
++++ /dev/null	
+@@ -1,9 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_6_12_2024_11_10_AM_[Changes]" date="1718170891925" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_11_10_AM_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 6/12/2024 11:10 AM [Changes]" />
+-  <binary>
+-    <option name="BEFORE_PATH" value="identifier.sqlite" />
+-    <option name="AFTER_PATH" value="identifier.sqlite" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_11_10_AM_[Changes]/identifier.sqlite" />
+-  </binary>
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_11_10_AM_[Changes]/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_11_10_AM_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_11_10_AM_[Changes]/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_11_10_AM_[Changes]/shelved.patch	
++++ /dev/null	
+@@ -1,105 +0,0 @@
+-Index: src/com/oragan/posSystem/view/CustomerForm.fxml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import javafx.scene.control.Button?>\r\n<?import javafx.scene.control.MenuButton?>\r\n<?import javafx.scene.control.MenuItem?>\r\n<?import javafx.scene.control.TableColumn?>\r\n<?import javafx.scene.control.TableView?>\r\n<?import javafx.scene.control.TextField?>\r\n<?import javafx.scene.effect.ColorAdjust?>\r\n<?import javafx.scene.layout.AnchorPane?>\r\n<?import javafx.scene.text.Font?>\r\n\r\n<AnchorPane fx:id=\"context\" prefHeight=\"788.0\" prefWidth=\"1622.0\" xmlns=\"http://javafx.com/javafx/8.0.171\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.oragan.posSystem.controller.CustomerFormController\">\r\n    <children>\r\n        <TextField layoutX=\"362.0\" layoutY=\"95.0\" prefHeight=\"48.0\" prefWidth=\"304.0\" promptText=\"Search\" style=\"-fx-border-width: 2; -fx-border-color: green; -fx-background-color: transparent; -fx-text-fill: green; -fx-border-radius: 10; -fx-background-radius: 20;\">\r\n            <font>\r\n                <Font size=\"15.0\" />\r\n            </font>\r\n        </TextField>\r\n        <MenuButton layoutX=\"685.0\" layoutY=\"95.0\" mnemonicParsing=\"false\" prefHeight=\"48.0\" prefWidth=\"146.0\" style=\"-fx-background-color: #EFC81A; -fx-border-radius: 10; -fx-background-radius: 10;\" text=\"Customer Id\" textFill=\"WHITE\">\r\n            <items>\r\n                <MenuItem mnemonicParsing=\"false\" text=\"Action 1\" />\r\n                <MenuItem mnemonicParsing=\"false\" text=\"Action 2\" />\r\n            </items>\r\n            <font>\r\n                <Font name=\"System Bold\" size=\"14.0\" />\r\n            </font>\r\n        </MenuButton>\r\n        <TableView fx:id=\"tblCustomer\" layoutX=\"221.0\" layoutY=\"211.0\" prefHeight=\"200.0\" prefWidth=\"1180.0\">\r\n            <columns>\r\n                <TableColumn fx:id=\"tblCustomerIdField\" prefWidth=\"196.0\"  text=\"Customer ID\" />\r\n                <TableColumn fx:id=\"tblCustomerNameFIeld\" prefWidth=\"181.0\" style=\"-fx-background-color: black;\" text=\"Name\" />\r\n                <TableColumn fx:id=\"tblCustomerAddressField\" prefWidth=\"256.0\" style=\"-fx-background-color: black;\" text=\"Address\" />\r\n                <TableColumn fx:id=\"tblCustomerContactNoField\" prefWidth=\"193.0\" style=\"-fx-background-color: black;\" text=\"Contact Number\" />\r\n            <TableColumn prefWidth=\"353.0\" style=\"-fx-background-color: black;\" text=\"Options\" />\r\n            </columns>\r\n         <effect>\r\n            <ColorAdjust brightness=\"0.13\" contrast=\"0.05\" hue=\"0.15\" saturation=\"-0.03\" />\r\n         </effect>\r\n        </TableView>\r\n        <Button layoutX=\"845.0\" layoutY=\"95.0\" mnemonicParsing=\"false\" prefHeight=\"48.0\" prefWidth=\"134.0\" style=\"-fx-border-color: green; -fx-background-color: white; -fx-border-width: 2; -fx-border-radius: 8;\" text=\"Search\" textFill=\"#1eab0b\" />\r\n        <Button layoutX=\"1000.0\" layoutY=\"95.0\" mnemonicParsing=\"false\" onAction=\"#btnAddCustomerFormOnAction\" prefHeight=\"48.0\" prefWidth=\"192.0\" style=\"-fx-background-color: black; -fx-border-radius: 15; -fx-background-radius: 10;\" text=\"Add New Customer\" textFill=\"#f8f8f8\">\r\n         <font>\r\n            <Font name=\"System Bold\" size=\"15.0\" />\r\n         </font></Button>\r\n    </children>\r\n</AnchorPane>\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/src/com/oragan/posSystem/view/CustomerForm.fxml b/src/com/oragan/posSystem/view/CustomerForm.fxml
+---- a/src/com/oragan/posSystem/view/CustomerForm.fxml	(revision b0db72581009769a78e9e7a6d8c0ac051a41b713)
+-+++ b/src/com/oragan/posSystem/view/CustomerForm.fxml	(date 1718089946147)
+-@@ -26,13 +26,15 @@
+-                 <Font name="System Bold" size="14.0" />
+-             </font>
+-         </MenuButton>
+-+
+-+        <Button fx:id="btnCustomerDelete" layoutX="112.0" layoutY="128.0" onAction="#btnDeleteCustomerOnAction" prefHeight="31.0" prefWidth="86.0" style="-fx-background-color: yellow;" text="Delete " />
+-         <TableView fx:id="tblCustomer" layoutX="221.0" layoutY="211.0" prefHeight="200.0" prefWidth="1180.0">
+-             <columns>
+--                <TableColumn fx:id="tblCustomerIdField" prefWidth="196.0"  text="Customer ID" />
+-+                <TableColumn fx:id="tblCustomerIdField" prefWidth="196.0" text="Customer ID" />
+-                 <TableColumn fx:id="tblCustomerNameFIeld" prefWidth="181.0" style="-fx-background-color: black;" text="Name" />
+-                 <TableColumn fx:id="tblCustomerAddressField" prefWidth="256.0" style="-fx-background-color: black;" text="Address" />
+-                 <TableColumn fx:id="tblCustomerContactNoField" prefWidth="193.0" style="-fx-background-color: black;" text="Contact Number" />
+--            <TableColumn prefWidth="353.0" style="-fx-background-color: black;" text="Options" />
+-+                 <TableColumn fx:id="tblCustomerOptionsField" prefWidth="353.0" style="-fx-background-color: black;" text="Options" />
+-             </columns>
+-          <effect>
+-             <ColorAdjust brightness="0.13" contrast="0.05" hue="0.15" saturation="-0.03" />
+-Index: src/com/oragan/posSystem/controller/CustomerFormController.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>\r\npackage com.oragan.posSystem.controller;\r\n\r\nimport com.oragan.posSystem.db.DBConnection;\r\nimport com.oragan.posSystem.entity.Customer;\r\nimport javafx.collections.FXCollections;\r\nimport javafx.collections.ObservableList;\r\nimport javafx.event.ActionEvent;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.control.TableColumn;\r\nimport javafx.scene.control.TableView;\r\nimport javafx.scene.control.cell.PropertyValueFactory;\r\nimport javafx.scene.layout.AnchorPane;\r\nimport javafx.stage.Modality;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.io.IOException;\r\nimport java.net.URL;\r\nimport java.sql.Connection;\r\nimport java.sql.ResultSet;\r\nimport java.sql.SQLException;\r\nimport java.sql.Statement;\r\n\r\npublic class CustomerFormController {\r\n\r\n\r\n    public AnchorPane context;\r\n    public AnchorPane addCustomerFormContext;\r\n    public TableView tblCustomer;\r\n    public TableColumn tblCustomerIdField;\r\n    public TableColumn tblCustomerNameFIeld;\r\n    public TableColumn tblCustomerAddressField;\r\n    public TableColumn tblCustomerContactNoField;\r\n    private ObservableList<Customer> customerList = FXCollections.observableArrayList();\r\n\r\n    public void initialize() {\r\n        loadCustomerData();\r\n        initializeTableColumns();\r\n\r\n    }\r\n\r\n\r\n    public void btnAddCustomerFormOnAction(ActionEvent actionEvent) throws IOException {\r\n        URL resource = this.getClass().getResource(\"/com/oragan/posSystem/view/AddCustomerForm.fxml\");\r\n        FXMLLoader fxmlLoader = new FXMLLoader(resource);\r\n        Parent load = fxmlLoader.load();\r\n         AddCustomerFormController AddCustomerFormController = fxmlLoader.getController();\r\n         AddCustomerFormController.init(tblCustomer,this);\r\n        Stage stage = new Stage();\r\n        stage.setScene(new Scene(load));\r\n        stage.initModality(Modality.APPLICATION_MODAL);\r\n        stage.setTitle(\"Add Customer Form\");\r\n        stage.centerOnScreen();\r\n        stage.show();\r\n    }\r\n\r\n\r\n\r\n    private void initializeTableColumns() {\r\n        tblCustomerIdField.setCellValueFactory(new PropertyValueFactory<>(\"customer_Id\"));\r\n        tblCustomerNameFIeld.setCellValueFactory(new PropertyValueFactory<>(\"Customer_name\"));\r\n        tblCustomerAddressField.setCellValueFactory(new PropertyValueFactory<>(\"Address\"));\r\n        tblCustomerContactNoField.setCellValueFactory(new PropertyValueFactory<>(\"contact_number\"));\r\n        tblCustomer.setItems(customerList);\r\n    }\r\n\r\n    private void loadCustomerData() {\r\n        customerList.clear();\r\n        String sql = \"SELECT * FROM customers\";\r\n        try {\r\n            Connection conn = DBConnection.getInstance().getConnection();\r\n            try (Statement stmt = conn.createStatement();\r\n                 ResultSet rs = stmt.executeQuery(sql)) {\r\n                while (rs.next()) {\r\n                    String customerId = rs.getString(\"Customer_Id\");\r\n                    String customerName = rs.getString(\"customer_name\");\r\n                    String customerAddress = rs.getString(\"address\");\r\n                    String contactNumber = rs.getString(\"contact_number\");\r\n                    Customer customer = new Customer(customerId, customerName, customerAddress, contactNumber);\r\n                    customerList.add(customer);\r\n                }\r\n            }\r\n        } catch (ClassNotFoundException  | SQLException e) {\r\n            System.out.println(\"Error loading customer data from the database: \" + e.getMessage());\r\n        }\r\n    }\r\n\r\n    public void refreshCustomerData() {\r\n        loadCustomerData();\r\n    }\r\n\r\n}\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/src/com/oragan/posSystem/controller/CustomerFormController.java b/src/com/oragan/posSystem/controller/CustomerFormController.java
+---- a/src/com/oragan/posSystem/controller/CustomerFormController.java	(revision b0db72581009769a78e9e7a6d8c0ac051a41b713)
+-+++ b/src/com/oragan/posSystem/controller/CustomerFormController.java	(date 1718170514873)
+-@@ -2,6 +2,7 @@
+- package com.oragan.posSystem.controller;
+- 
+- import com.oragan.posSystem.db.DBConnection;
+-+import com.oragan.posSystem.dto.CustomerDTO;
+- import com.oragan.posSystem.entity.Customer;
+- import javafx.collections.FXCollections;
+- import javafx.collections.ObservableList;
+-@@ -9,6 +10,7 @@
+- import javafx.fxml.FXMLLoader;
+- import javafx.scene.Parent;
+- import javafx.scene.Scene;
+-+import javafx.scene.control.Button;
+- import javafx.scene.control.TableColumn;
+- import javafx.scene.control.TableView;
+- import javafx.scene.control.cell.PropertyValueFactory;
+-@@ -22,6 +24,7 @@
+- import java.sql.ResultSet;
+- import java.sql.SQLException;
+- import java.sql.Statement;
+-+import java.util.List;
+- 
+- public class CustomerFormController {
+- 
+-@@ -33,6 +36,9 @@
+-     public TableColumn tblCustomerNameFIeld;
+-     public TableColumn tblCustomerAddressField;
+-     public TableColumn tblCustomerContactNoField;
+-+    public Button btnCustomerDelete;
+-+    public TableColumn tblCustomerOptionsField;
+-+    List<CustomerDTO> customerDTOList;
+-     private ObservableList<Customer> customerList = FXCollections.observableArrayList();
+- 
+-     public void initialize() {
+-@@ -91,4 +97,11 @@
+-         loadCustomerData();
+-     }
+- 
+-+    public void btnDeleteCustomerOnAction(ActionEvent actionEvent) {
+-+
+-+    }
+-+
+-+
+-+
+-+
+- }
+-Index: .idea/runConfigurations.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/runConfigurations.xml b/.idea/runConfigurations.xml
+-new file mode 100644
+---- /dev/null	(date 1718083754225)
+-+++ b/.idea/runConfigurations.xml	(date 1718083754225)
+-@@ -0,0 +1,10 @@
+-+<?xml version="1.0" encoding="UTF-8"?>
+-+<project version="4">
+-+  <component name="RunConfigurationProducerService">
+-+    <option name="ignoredProducers">
+-+      <set>
+-+        <option value="com.android.tools.idea.compose.preview.runconfiguration.ComposePreviewRunConfigurationProducer" />
+-+      </set>
+-+    </option>
+-+  </component>
+-+</project>
+-\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_1_10_PM__Changes_1.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_1_10_PM__Changes_1.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_1_10_PM__Changes_1.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_1_10_PM__Changes_1.xml	
++++ /dev/null	
+@@ -1,9 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_6_12_2024_1_10_PM_[Changes]1" date="1718178032931" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_1_10_PM_[Changes]1/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 6/12/2024 1:10 PM [Changes]" />
+-  <binary>
+-    <option name="BEFORE_PATH" value="identifier.sqlite" />
+-    <option name="AFTER_PATH" value="identifier.sqlite" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_1_10_PM_[Changes]1/identifier.sqlite" />
+-  </binary>
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_12_33_PM__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_12_33_PM__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_12_33_PM__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_12_33_PM__Changes_.xml	
++++ /dev/null	
+@@ -1,9 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_6_12_2024_12_33_PM_[Changes]" date="1718175843274" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_12_33_PM_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 6/12/2024 12:33 PM [Changes]" />
+-  <binary>
+-    <option name="BEFORE_PATH" value="identifier.sqlite" />
+-    <option name="AFTER_PATH" value="identifier.sqlite" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_12_33_PM_[Changes]/identifier.sqlite" />
+-  </binary>
+-</changelist>
+\ No newline at end of file
+Index: src/com/oragan/posSystem/entity/Customer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\npackage com.oragan.posSystem.entity;\r\n\r\npublic class Customer {\r\n\r\n    private String Customer_Id;\r\n    private String Customer_name;\r\n    private String Address;\r\n    private String contact_number;\r\n\r\n\r\n    public Customer() {\r\n    }\r\n\r\n    public Customer(String customer_Id, String customer_name, String address, String contact_number) {\r\n        Customer_Id = customer_Id;\r\n        Customer_name = customer_name;\r\n        Address = address;\r\n        this.contact_number = contact_number;\r\n    }\r\n\r\n    public String getCustomer_Id() {\r\n        return Customer_Id;\r\n    }\r\n\r\n    public void setCustomer_Id(String customer_Id) {\r\n        Customer_Id = customer_Id;\r\n    }\r\n\r\n    public String getCustomer_name() {\r\n        return Customer_name;\r\n    }\r\n\r\n    public void setCustomer_name(String customer_name) {\r\n        Customer_name = customer_name;\r\n    }\r\n\r\n    public String getAddress() {\r\n        return Address;\r\n    }\r\n\r\n    public void setAddress(String address) {\r\n        Address = address;\r\n    }\r\n\r\n    public String getContact_number() {\r\n        return contact_number;\r\n    }\r\n\r\n    public void setContact_number(String contact_number) {\r\n        this.contact_number = contact_number;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/oragan/posSystem/entity/Customer.java b/src/com/oragan/posSystem/entity/Customer.java
+--- a/src/com/oragan/posSystem/entity/Customer.java	
++++ b/src/com/oragan/posSystem/entity/Customer.java	
+@@ -15,7 +15,7 @@
+     public Customer(String customer_Id, String customer_name, String address, String contact_number) {
+         Customer_Id = customer_Id;
+         Customer_name = customer_name;
+-        Address = address;
++        this.Address = address;
+         this.contact_number = contact_number;
+     }
+ 
+Index: src/com/oragan/posSystem/controller/DashBoardFunctionFormController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\npackage com.oragan.posSystem.controller;\r\n\r\nimport javafx.scene.layout.AnchorPane;\r\nimport javafx.scene.text.Text;\r\n\r\npublic class DashBoardFunctionFormController {\r\n    public AnchorPane context;\r\n    public Text totalItem;\r\n    public Text total;\r\n    public Text CustCount;\r\n    public Text ItemCount;\r\n    public Text OrderCount;\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/oragan/posSystem/controller/DashBoardFunctionFormController.java b/src/com/oragan/posSystem/controller/DashBoardFunctionFormController.java
+--- a/src/com/oragan/posSystem/controller/DashBoardFunctionFormController.java	
++++ b/src/com/oragan/posSystem/controller/DashBoardFunctionFormController.java	
+@@ -1,9 +1,10 @@
+-
+ package com.oragan.posSystem.controller;
+ 
+ import javafx.scene.layout.AnchorPane;
+ import javafx.scene.text.Text;
+ 
++
++
+ public class DashBoardFunctionFormController {
+     public AnchorPane context;
+     public Text totalItem;
+@@ -11,4 +12,46 @@
+     public Text CustCount;
+     public Text ItemCount;
+     public Text OrderCount;
++
++    public void initialize() {
++        loadDashboardData();
++    }
++
++    private void loadDashboardData() {
++        loadCustomerCount();
++        loadItemCount();
++    }
++
++    private void loadCustomerCount() {
++//        String sql = "SELECT COUNT(*) AS count FROM customers";
++//        try (Connection conn = DBConnection.getInstance().getConnection();
++//             Statement stmt = conn.createStatement();
++//             ResultSet rs = stmt.executeQuery(sql)) {
++//
++//            if (rs.next()) {
++//                CustCount.setText(String.valueOf(rs.getInt("count")));
++//            }
++//        } catch (ClassNotFoundException | SQLException e) {
++//            showError("Error loading customer count", e);
++//        }
++    }
++
++    private void loadItemCount() {
++//        String sql = "SELECT COUNT(*) AS count FROM items";
++//        try (Connection conn = DBConnection.getInstance().getConnection();
++//             Statement stmt = conn.createStatement();
++//             ResultSet rs = stmt.executeQuery(sql)) {
++//
++//            if (rs.next()) {
++//                ItemCount.setText(String.valueOf(rs.getInt("count")));
++//            }
++//        } catch (ClassNotFoundException | SQLException e) {
++//            showError("Error loading item count", e);
++//        }
++    }
++
++    private void showError(String message, Exception e) {
++        System.out.println(message + ": " + e.getMessage());
++        // Optionally, you can show a dialog to the user
++    }
+ }
+Index: src/com/oragan/posSystem/view/DashBoardForm.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import javafx.scene.control.Button?>\r\n<?import javafx.scene.control.Label?>\r\n<?import javafx.scene.control.Separator?>\r\n<?import javafx.scene.image.Image?>\r\n<?import javafx.scene.image.ImageView?>\r\n<?import javafx.scene.layout.AnchorPane?>\r\n<?import javafx.scene.shape.Circle?>\r\n<?import javafx.scene.shape.Rectangle?>\r\n<?import javafx.scene.text.Font?>\r\n<?import javafx.scene.text.Text?>\r\n\r\n<AnchorPane prefHeight=\"1120.0\" prefWidth=\"1929.0\" xmlns=\"http://javafx.com/javafx/8.0.171\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.oragan.posSystem.controller.DashBoardFormController\">\r\n   <children>\r\n      <Circle fill=\"#034586\" layoutX=\"96.0\" layoutY=\"555.0\" radius=\"607.0\" stroke=\"#034586\" strokeType=\"INSIDE\" />\r\n      <Circle fill=\"#0d549a\" layoutX=\"-130.0\" layoutY=\"555.0\" radius=\"604.0\" stroke=\"#0d549a\" strokeType=\"INSIDE\" />\r\n      <Circle fill=\"#2868a4\" layoutX=\"-307.0\" layoutY=\"580.0\" radius=\"604.0\" stroke=\"#2868a4\" strokeType=\"INSIDE\" />\r\n      <Rectangle arcWidth=\"5.0\" fill=\"WHITE\" height=\"72.0\" layoutX=\"197.0\" layoutY=\"116.0\" opacity=\"0.86\" stroke=\"WHITE\" strokeType=\"INSIDE\" width=\"1622.0\" />\r\n      <Text layoutX=\"275.0\" layoutY=\"164.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" style=\"-fx-font-size: 27; -fx-font-family: bold;\" text=\"Oragan Shop\" wrappingWidth=\"181.13671875\" />\r\n      <ImageView fitHeight=\"54.0\" fitWidth=\"62.0\" layoutX=\"215.0\" layoutY=\"125.0\" pickOnBounds=\"true\" preserveRatio=\"true\">\r\n         <image>\r\n            <Image url=\"@../assets/icons8-shop-96.png\" />\r\n         </image>\r\n      </ImageView>\r\n      <ImageView fitHeight=\"33.0\" fitWidth=\"31.0\" layoutX=\"502.0\" layoutY=\"138.0\" pickOnBounds=\"true\" preserveRatio=\"true\">\r\n         <image>\r\n            <Image url=\"@../assets/icons8-home-100.png\" />\r\n         </image>\r\n      </ImageView>\r\n      <ImageView fitHeight=\"31.0\" fitWidth=\"31.0\" layoutX=\"696.0\" layoutY=\"140.0\" pickOnBounds=\"true\" preserveRatio=\"true\">\r\n         <image>\r\n            <Image url=\"@../assets/icons8-customer-100.png\" />\r\n         </image>\r\n      </ImageView>\r\n      <Text layoutX=\"533.0\" layoutY=\"167.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" style=\"-fx-font-size: 25; -fx-font-family: bold;\" text=\"DashBoard\" wrappingWidth=\"150.13671875\" />\r\n      <Text layoutX=\"725.0\" layoutY=\"165.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" style=\"-fx-font-size: 25; -fx-font-family: bold;\" text=\"Customer\" wrappingWidth=\"150.13671875\" />\r\n      <ImageView fitHeight=\"31.0\" fitWidth=\"31.0\" layoutX=\"876.0\" layoutY=\"139.0\" pickOnBounds=\"true\" preserveRatio=\"true\">\r\n         <image>\r\n            <Image url=\"@../assets/icons8-open-box-90.png\" />\r\n         </image>\r\n      </ImageView>\r\n      <Text layoutX=\"906.0\" layoutY=\"165.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" style=\"-fx-font-size: 25; -fx-font-family: bold;\" text=\"Items\" wrappingWidth=\"150.13671875\" />\r\n      <Text layoutX=\"1065.0\" layoutY=\"164.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" style=\"-fx-font-size: 25; -fx-font-family: bold;\" text=\"Purchase Order\" wrappingWidth=\"208.13671875\" />\r\n      <ImageView fitHeight=\"31.0\" fitWidth=\"31.0\" layoutX=\"1034.0\" layoutY=\"139.0\" pickOnBounds=\"true\" preserveRatio=\"true\">\r\n         <image>\r\n            <Image url=\"@../assets/icons8-create-order-100.png\" />\r\n         </image>\r\n      </ImageView>\r\n      <Text layoutX=\"1323.0\" layoutY=\"165.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" style=\"-fx-font-size: 25; -fx-font-family: bold;\" text=\"Oder Details\" wrappingWidth=\"217.13671875\" />\r\n      <ImageView fitHeight=\"31.0\" fitWidth=\"31.0\" layoutX=\"1292.0\" layoutY=\"142.0\" pickOnBounds=\"true\" preserveRatio=\"true\">\r\n         <image>\r\n            <Image url=\"@../assets/icons8-order-100.png\" />\r\n         </image>\r\n      </ImageView>\r\n      <Separator layoutX=\"216.0\" layoutY=\"173.0\" prefHeight=\"12.0\" prefWidth=\"1585.0\" />\r\n      <Text fill=\"#42003e\" layoutX=\"981.0\" layoutY=\"1003.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"copy@right 2024 Oragan.ist\">\r\n         <font>\r\n            <Font name=\"Georgia Pro Bold\" size=\"18.0\" />\r\n         </font></Text>\r\n      <Button layoutX=\"525.0\" layoutY=\"145.0\" mnemonicParsing=\"false\" onAction=\"#DashBoardOnAction\" opacity=\"0.11\" prefHeight=\"25.0\" prefWidth=\"137.0\" />\r\n      <Button layoutX=\"712.0\" layoutY=\"143.0\" mnemonicParsing=\"false\" onAction=\"#CustomerOnAction\" opacity=\"0.11\" prefHeight=\"25.0\" prefWidth=\"123.0\" />\r\n      <Button layoutX=\"892.0\" layoutY=\"143.0\" mnemonicParsing=\"false\" onAction=\"#ItemOnAction\" opacity=\"0.11\" prefHeight=\"25.0\" prefWidth=\"89.0\" />\r\n      <Button layoutX=\"1054.0\" layoutY=\"141.0\" mnemonicParsing=\"false\" onAction=\"#PurchaseOrderOnAction\" opacity=\"0.11\" prefHeight=\"25.0\" prefWidth=\"181.0\" />\r\n      <Button layoutX=\"1315.0\" layoutY=\"144.0\" mnemonicParsing=\"false\" onAction=\"#OderDetailsOnAction\" opacity=\"0.11\" prefHeight=\"25.0\" prefWidth=\"150.0\" />\r\n      <AnchorPane fx:id=\"context\" layoutX=\"197.0\" layoutY=\"186.0\" opacity=\"0.98\" prefHeight=\"788.0\" prefWidth=\"1622.0\" style=\"-fx-background-color: #ebf3ff;\" />\r\n      <Label fx:id=\"timeLabel\" layoutX=\"1542.0\" layoutY=\"129.0\" opacity=\"0.46\" prefHeight=\"47.0\" prefWidth=\"259.0\" style=\"-fx-background-radius: 15; -fx-background-color: #273c75; -fx-background-position: center;\" text=\"Label\" textFill=\"WHITE\">\r\n         <font>\r\n            <Font name=\"Berlin Sans FB\" size=\"26.0\" />\r\n         </font>\r\n      </Label>\r\n      <ImageView fitHeight=\"40.0\" fitWidth=\"40.0\" layoutX=\"1494.0\" layoutY=\"132.0\" pickOnBounds=\"true\" preserveRatio=\"true\">\r\n         <image>\r\n            <Image url=\"@../assets/clock.gif\" />\r\n         </image></ImageView>\r\n   </children>\r\n</AnchorPane>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/oragan/posSystem/view/DashBoardForm.fxml b/src/com/oragan/posSystem/view/DashBoardForm.fxml
+--- a/src/com/oragan/posSystem/view/DashBoardForm.fxml	
++++ b/src/com/oragan/posSystem/view/DashBoardForm.fxml	
+@@ -11,7 +11,7 @@
+ <?import javafx.scene.text.Font?>
+ <?import javafx.scene.text.Text?>
+ 
+-<AnchorPane prefHeight="1120.0" prefWidth="1929.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.DashBoardFormController">
++<AnchorPane prefHeight="1120.0" prefWidth="1929.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.DashBoardFormController">
+    <children>
+       <Circle fill="#034586" layoutX="96.0" layoutY="555.0" radius="607.0" stroke="#034586" strokeType="INSIDE" />
+       <Circle fill="#0d549a" layoutX="-130.0" layoutY="555.0" radius="604.0" stroke="#0d549a" strokeType="INSIDE" />
+@@ -64,7 +64,7 @@
+       <Button layoutX="1054.0" layoutY="141.0" mnemonicParsing="false" onAction="#PurchaseOrderOnAction" opacity="0.11" prefHeight="25.0" prefWidth="181.0" />
+       <Button layoutX="1315.0" layoutY="144.0" mnemonicParsing="false" onAction="#OderDetailsOnAction" opacity="0.11" prefHeight="25.0" prefWidth="150.0" />
+       <AnchorPane fx:id="context" layoutX="197.0" layoutY="186.0" opacity="0.98" prefHeight="788.0" prefWidth="1622.0" style="-fx-background-color: #ebf3ff;" />
+-      <Label fx:id="timeLabel" layoutX="1542.0" layoutY="129.0" opacity="0.46" prefHeight="47.0" prefWidth="259.0" style="-fx-background-radius: 15; -fx-background-color: #273c75; -fx-background-position: center;" text="Label" textFill="WHITE">
++      <Label fx:id="timeLabel" layoutX="1542.0" layoutY="136.0" opacity="0.46" prefHeight="40.0" prefWidth="258.0" style="-fx-background-radius: 15; -fx-background-color: #273c75; -fx-background-position: center;" text="Label" textFill="WHITE">
+          <font>
+             <Font name="Berlin Sans FB" size="26.0" />
+          </font>
+Index: src/com/oragan/posSystem/controller/ItemFormController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.oragan.posSystem.controller;\r\n\r\nimport com.oragan.posSystem.db.DBConnection;\r\nimport com.oragan.posSystem.entity.Item;\r\nimport javafx.beans.property.ReadOnlyObjectWrapper;\r\nimport javafx.collections.FXCollections;\r\nimport javafx.collections.ObservableList;\r\nimport javafx.event.ActionEvent;\r\nimport javafx.fxml.FXML;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.geometry.Pos;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.control.*;\r\nimport javafx.scene.control.cell.PropertyValueFactory;\r\nimport javafx.scene.image.Image;\r\nimport javafx.scene.image.ImageView;\r\nimport javafx.scene.layout.AnchorPane;\r\nimport javafx.scene.layout.HBox;\r\nimport javafx.stage.Modality;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.io.IOException;\r\nimport java.net.URL;\r\nimport java.sql.*;\r\n\r\npublic class ItemFormController {\r\n\r\n    public AnchorPane context;\r\n    public TableView<Item> tblItem;\r\n    public TableColumn<Item, String> colItemCode;\r\n    public TableColumn<Item, String> colItemName;\r\n    public TableColumn<Item, Double> colPrice;\r\n    public TableColumn<Item, Integer> colQtyOnHand;\r\n    public TableColumn<Item, Item> colOptions;\r\n    public TextField txtSearchField;\r\n    public String cmbName;\r\n    public String cmbID;\r\n    public ComboBox<String> cmbItemId;\r\n\r\n    private ObservableList<String> itemCodes = FXCollections.observableArrayList();\r\n    private ObservableList<Item> itemList = FXCollections.observableArrayList();\r\n\r\n    public void initialize() {\r\n\r\n        //item code, name initialize\r\n        cmbItemId.setItems(FXCollections.observableArrayList(\"Item Name\", \"Item Code\"));\r\n        loadItemsData();\r\n        initializeTableColumns();\r\n        txtSearchField.textProperty().addListener((observable, oldValue, newValue) -> filterItemList(newValue));\r\n    }\r\n\r\n    public void btnAddItemFormOnAction(ActionEvent actionEvent) throws IOException {\r\n        URL resource = this.getClass().getResource(\"/com/oragan/posSystem/view/AddItemForm.fxml\");\r\n        FXMLLoader fxmlLoader = new FXMLLoader(resource);\r\n        Parent load = fxmlLoader.load();\r\n        AddItemFormController addItemFormController = fxmlLoader.getController();\r\n        addItemFormController.init(tblItem, this);\r\n        Stage stage = new Stage();\r\n        stage.setScene(new Scene(load));\r\n        stage.initModality(Modality.APPLICATION_MODAL);\r\n        stage.setTitle(\"Add Item Form\");\r\n        stage.centerOnScreen();\r\n        stage.show();\r\n    }\r\n\r\n    private void initializeTableColumns() {\r\n        colItemCode.setCellValueFactory(new PropertyValueFactory<>(\"Item_code\"));\r\n        colItemName.setCellValueFactory(new PropertyValueFactory<>(\"Item_name\"));\r\n        colPrice.setCellValueFactory(new PropertyValueFactory<>(\"price\"));\r\n        colQtyOnHand.setCellValueFactory(new PropertyValueFactory<>(\"qty\"));\r\n\r\n        colOptions.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));\r\n        colOptions.setCellFactory(param -> new TableCell<Item, Item>() {\r\n            private final Button updateButton = new Button();\r\n            private final Button deleteButton = new Button();\r\n\r\n            @Override\r\n            protected void updateItem(Item item, boolean empty) {\r\n                super.updateItem(item, empty);\r\n                if (item == null) {\r\n                    setGraphic(null);\r\n                    return;\r\n                }\r\n\r\n                // Load the update icon image\r\n                Image updateImage = new Image(getClass().getResourceAsStream(\"/com/oragan/posSystem/assets/icons8-update-64.png\"));\r\n                if (updateImage != null) {\r\n                    ImageView updateImageView = new ImageView(updateImage);\r\n                    updateImageView.setFitWidth(20); // Adjust the size as needed\r\n                    updateImageView.setFitHeight(20); // Adjust the size as needed\r\n                    updateButton.setGraphic(updateImageView);\r\n                }\r\n\r\n                // Load the delete icon image\r\n                Image deleteImage = new Image(getClass().getResourceAsStream(\"/com/oragan/posSystem/assets/icons8-delete-120.png\"));\r\n                if (deleteImage != null) {\r\n                    ImageView deleteImageView = new ImageView(deleteImage);\r\n                    deleteImageView.setFitWidth(20); // Adjust the size as needed\r\n                    deleteImageView.setFitHeight(20); // Adjust the size as needed\r\n                    deleteButton.setGraphic(deleteImageView);\r\n                }\r\n\r\n                HBox hBox = new HBox(updateButton, deleteButton);\r\n                hBox.setAlignment(Pos.CENTER);\r\n                hBox.setSpacing(10);\r\n                setGraphic(hBox);\r\n\r\n                updateButton.setOnAction(event -> handleUpdateItem(item));\r\n                deleteButton.setOnAction(event -> handleDeleteItem(item));\r\n            }\r\n        });\r\n\r\n        tblItem.setItems(itemList);\r\n\r\n\r\n        // Custom row factory to set row background color based on quantity\r\n        tblItem.setRowFactory(tv -> new TableRow<Item>() {\r\n            @Override\r\n            protected void updateItem(Item item, boolean empty) {\r\n                super.updateItem(item, empty);\r\n                if (empty || item == null) {\r\n                    setStyle(\"\");\r\n                } else {\r\n                    if (item.getQty() < 10) {\r\n                        setStyle(\"-fx-background-color: #C73659; -fx-text-fill: white; -fx-font-weight: bold;\");\r\n                    } else {\r\n                        setStyle(\"\");\r\n                    }\r\n                }\r\n            }\r\n        });\r\n    }\r\n\r\n\r\n    private void handleUpdateItem(Item item) {\r\n        try {\r\n            URL resource = this.getClass().getResource(\"/com/oragan/posSystem/view/AddItemForm.fxml\");\r\n            FXMLLoader fxmlLoader = new FXMLLoader(resource);\r\n            Parent load = fxmlLoader.load();\r\n            AddItemFormController addItemFormController = fxmlLoader.getController();\r\n            addItemFormController.initForUpdate(tblItem, this, item);\r\n            Stage stage = new Stage();\r\n            stage.setScene(new Scene(load));\r\n            stage.initModality(Modality.APPLICATION_MODAL);\r\n            stage.setTitle(\"Update Item Form\");\r\n            stage.centerOnScreen();\r\n            stage.show();\r\n        } catch (IOException e) {\r\n            System.out.println(\"Error loading update item form: \" + e.getMessage());\r\n        }\r\n    }\r\n\r\n\r\n    //create Item\r\n    private void loadItemsData() {\r\n        itemList.clear();\r\n        itemCodes.clear(); // Clear the itemCodes list as well\r\n        String sql = \"SELECT * FROM items\";\r\n        try {\r\n            Connection conn = DBConnection.getInstance().getConnection();\r\n            try (Statement stmt = conn.createStatement();\r\n                 ResultSet rs = stmt.executeQuery(sql)) {\r\n                while (rs.next()) {\r\n                    String itemCode = rs.getString(\"Item_code\");\r\n                    String itemName = rs.getString(\"Item_name\");\r\n                    double price = rs.getDouble(\"price\");\r\n                    int qty = rs.getInt(\"qty\");\r\n                    Item item = new Item(itemCode, itemName, price, qty);\r\n                    itemList.add(item);\r\n                    itemCodes.add(itemCode); // Add itemCode to the itemCodes list\r\n                }\r\n            }\r\n        } catch (ClassNotFoundException | SQLException e) {\r\n            System.out.println(\"Error loading item data from the database: \" + e.getMessage());\r\n        }\r\n    }\r\n\r\n    private void handleDeleteItem(Item item) {\r\n        String sql = \"DELETE FROM items WHERE Item_code = ?\";\r\n        try {\r\n            Connection conn = DBConnection.getInstance().getConnection();\r\n            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {\r\n                pstmt.setString(1, item.getItem_code());\r\n                pstmt.executeUpdate();\r\n                System.out.println(\"Item deleted successfully\");\r\n\r\n                // Remove the item from the table\r\n                tblItem.getItems().remove(item);\r\n                itemCodes.remove(item.getItem_code()); // Remove the itemCode from the itemCodes list\r\n            }\r\n        } catch (ClassNotFoundException | SQLException e) {\r\n            System.out.println(\"Error deleting item: \" + e.getMessage());\r\n        }\r\n    }\r\n\r\n    public void refreshItemData() {\r\n        loadItemsData();\r\n\r\n    }\r\n\r\n    //table view up on search\r\n\r\n    @FXML\r\n    private void cmbSearchByItemOnAction(ActionEvent actionEvent) {\r\n        String selectedValue = cmbItemId.getValue();\r\n        if (\"Item Name\".equals(selectedValue)) {\r\n            txtSearchField.setPromptText(\"Enter item name\");\r\n            txtSearchField.clear();\r\n        } else if (\"Item Code\".equals(selectedValue)) {\r\n            txtSearchField.setPromptText(\"Enter item code\");\r\n            txtSearchField.clear();\r\n        }\r\n        // Trigger filtering immediately when the selection changes\r\n        filterItemList(txtSearchField.getText());\r\n    }\r\n\r\n    @FXML\r\n    private void txtSearchFieldOnAction(ActionEvent event) {\r\n        filterItemList(txtSearchField.getText());\r\n    }\r\n\r\n    private void filterItemList(String searchQuery) {\r\n        if (searchQuery == null || searchQuery.isEmpty()) {\r\n            tblItem.setItems(itemList);  // Display all items if search query is empty\r\n        } else {\r\n            ObservableList<Item> filteredList = FXCollections.observableArrayList();\r\n            String selectedValue = cmbItemId.getValue();\r\n            if (\"Item Name\".equals(selectedValue)) {\r\n                for (Item item : itemList) {\r\n                    if (item.getItem_name().toLowerCase().contains(searchQuery.toLowerCase())) {\r\n                        filteredList.add(item);\r\n                    }\r\n                }\r\n            } else if (\"Item Code\".equals(selectedValue)) {\r\n                for (Item item : itemList) {\r\n                    // Assuming getItem_code() method exists in Item class\r\n                    if (item.getItem_code().toLowerCase().contains(searchQuery.toLowerCase())) {\r\n                        filteredList.add(item);\r\n                    }\r\n                }\r\n            }\r\n            tblItem.setItems(filteredList);\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/oragan/posSystem/controller/ItemFormController.java b/src/com/oragan/posSystem/controller/ItemFormController.java
+--- a/src/com/oragan/posSystem/controller/ItemFormController.java	
++++ b/src/com/oragan/posSystem/controller/ItemFormController.java	
+@@ -36,7 +36,7 @@
+     public TextField txtSearchField;
+     public String cmbName;
+     public String cmbID;
+-    public ComboBox<String> cmbItemId;
++    public ComboBox<String> cmbCustomerId;
+ 
+     private ObservableList<String> itemCodes = FXCollections.observableArrayList();
+     private ObservableList<Item> itemList = FXCollections.observableArrayList();
+@@ -44,7 +44,7 @@
+     public void initialize() {
+ 
+         //item code, name initialize
+-        cmbItemId.setItems(FXCollections.observableArrayList("Item Name", "Item Code"));
++        cmbCustomerId.setItems(FXCollections.observableArrayList("Item Name", "Item Code"));
+         loadItemsData();
+         initializeTableColumns();
+         txtSearchField.textProperty().addListener((observable, oldValue, newValue) -> filterItemList(newValue));
+@@ -123,7 +123,7 @@
+                     setStyle("");
+                 } else {
+                     if (item.getQty() < 10) {
+-                        setStyle("-fx-background-color: #C73659; -fx-text-fill: white; -fx-font-weight: bold;");
++                        setStyle("-fx-background-color: red; -fx-text-fill: white;");
+                     } else {
+                         setStyle("");
+                     }
+@@ -203,7 +203,7 @@
+ 
+     @FXML
+     private void cmbSearchByItemOnAction(ActionEvent actionEvent) {
+-        String selectedValue = cmbItemId.getValue();
++        String selectedValue = cmbCustomerId.getValue();
+         if ("Item Name".equals(selectedValue)) {
+             txtSearchField.setPromptText("Enter item name");
+             txtSearchField.clear();
+@@ -225,7 +225,7 @@
+             tblItem.setItems(itemList);  // Display all items if search query is empty
+         } else {
+             ObservableList<Item> filteredList = FXCollections.observableArrayList();
+-            String selectedValue = cmbItemId.getValue();
++            String selectedValue = cmbCustomerId.getValue();
+             if ("Item Name".equals(selectedValue)) {
+                 for (Item item : itemList) {
+                     if (item.getItem_name().toLowerCase().contains(searchQuery.toLowerCase())) {
+Index: src/com/oragan/posSystem/controller/DashBoardFormController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.oragan.posSystem.controller;\r\n\r\nimport javafx.animation.KeyFrame;\r\nimport javafx.animation.Timeline;\r\nimport javafx.event.ActionEvent;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.control.Label;\r\nimport javafx.scene.layout.AnchorPane;\r\nimport javafx.util.Duration;\r\nimport java.io.IOException;\r\nimport java.time.LocalDateTime;\r\nimport java.time.format.DateTimeFormatter;\r\n\r\n\r\npublic class DashBoardFormController {\r\n\r\n    public AnchorPane context;\r\n    public Label timeLabel;\r\n    private final DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern(\"    yyyy-MM-dd | HH:mm:ss\");\r\n\r\n    public void initialize() {\r\n        try {\r\n            // Display DashBoardFunctionForm by default when DashBoardForm is loaded\r\n            DashBoardOnAction(null);\r\n        } catch (IOException e) {\r\n            e.printStackTrace();\r\n        }\r\n\r\n        // Create a timeline to update the time label every second\r\n        Timeline timeline = new Timeline(\r\n                new KeyFrame(Duration.seconds(1), event -> updateTime())\r\n        );\r\n        timeline.setCycleCount(Timeline.INDEFINITE);\r\n        timeline.play();\r\n    }\r\n\r\n    private void updateTime() {\r\n        LocalDateTime now = LocalDateTime.now();\r\n        timeLabel.setText(now.format(timeFormatter));\r\n    }\r\n\r\n    private void setUi2(String ui2) throws IOException {\r\n        context.getChildren().clear();\r\n        FXMLLoader loader = new FXMLLoader(getClass().getResource(\"../view/\" + ui2 + \".fxml\"));\r\n        Parent parent = loader.load();\r\n        context.getChildren().add(parent);\r\n    }\r\n\r\n\r\n    public void CustomerOnAction(ActionEvent actionEvent) throws IOException {\r\n        setUi2(\"CustomerForm\");\r\n    }\r\n\r\n    public void ItemOnAction(ActionEvent actionEvent) throws IOException {\r\n\r\n        setUi2(\"ItemForm\");\r\n    }\r\n\r\n    public void PurchaseOrderOnAction(ActionEvent actionEvent) throws IOException {\r\n        setUi2(\"PurchaseOrderForm\");\r\n    }\r\n\r\n    public void OderDetailsOnAction(ActionEvent actionEvent) throws IOException {\r\n        setUi2(\"OrderDetailsForm\");\r\n\r\n    }\r\n\r\n    public void DashBoardOnAction(ActionEvent actionEvent) throws IOException {\r\n        setUi2(\"DashBoardFunctionForm\");\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/oragan/posSystem/controller/DashBoardFormController.java b/src/com/oragan/posSystem/controller/DashBoardFormController.java
+--- a/src/com/oragan/posSystem/controller/DashBoardFormController.java	
++++ b/src/com/oragan/posSystem/controller/DashBoardFormController.java	
+@@ -43,8 +43,7 @@
+     private void setUi2(String ui2) throws IOException {
+         context.getChildren().clear();
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/" + ui2 + ".fxml"));
+-        Parent parent = loader.load();
+-        context.getChildren().add(parent);
++        context.getChildren().add(loader.load());
+     }
+ 
+ 
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"89dbfd71-98c4-49ba-a84d-1363c7f00fa7\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_10_2024_10_49_PM_[Changes]/shelved.patch\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_10_2024_10_49_PM__Changes_.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_11_2024_12_44_AM_[Changes]/shelved.patch\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_11_2024_12_44_AM__Changes_.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/com/oragan/posSystem/controller/PurchaseOrderFormController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/com/oragan/posSystem/controller/PurchaseOrderFormController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/com/oragan/posSystem/view/PurchaseOrderForm.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/com/oragan/posSystem/view/PurchaseOrderForm.fxml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ComposerSettings\">\r\n    <execution />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"HighlightingSettingsPerFile\">\r\n    <setting file=\"file://$PROJECT_DIR$/src/com/oragan/posSystem/view/CustomerForm.fxml\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/com/oragan/posSystem/controller/DashBoardFormController.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/.gitignore\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/com/oragan/posSystem/controller/AddItemFormController.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/com/oragan/posSystem/controller/CustomerFormController.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/com/oragan/posSystem/controller/AddCustomerFormController.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/com/oragan/posSystem/entity/Customer.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/com/oragan/posSystem/entity/Item.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n  </component>\r\n  <component name=\"PhpWorkspaceProjectConfiguration\" interpreter_name=\"C:\\xampp\\php\\php.exe\" />\r\n  <component name=\"ProjectId\" id=\"2himxfBdo2WkUsgndzFgyBZefjj\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"1\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/src/com/oragan/posSystem/assets\" />\r\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\oragan_pos_system\\src\\com\\oragan\\posSystem\\assets\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"F:\\oragan\\New folder\\oragan_pos_system\\oragan_pos_system\\src\\com\\oragan\\posSystem\\assets\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"AppInitializer\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.oragan.posSystem.AppInitializer\" />\r\n      <module name=\"oragan_pos_system\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.oragan.posSystem.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.AppInitializer\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"89dbfd71-98c4-49ba-a84d-1363c7f00fa7\" name=\"Changes\" comment=\"\" />\r\n      <created>1718085521888</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1718085521888</updated>\r\n      <workItem from=\"1718085522653\" duration=\"13943000\" />\r\n      <workItem from=\"1718171185591\" duration=\"7644000\" />\r\n      <workItem from=\"1718186001443\" duration=\"14000\" />\r\n      <workItem from=\"1718433094581\" duration=\"7725000\" />\r\n      <workItem from=\"1718448794662\" duration=\"7382000\" />\r\n      <workItem from=\"1718456806607\" duration=\"111000\" />\r\n      <workItem from=\"1718521546240\" duration=\"3449000\" />\r\n      <workItem from=\"1718525322147\" duration=\"947000\" />\r\n      <workItem from=\"1718553376607\" duration=\"10197000\" />\r\n      <workItem from=\"1718773303291\" duration=\"2158000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"updated serch customer\">\r\n      <created>1718173089708</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1718173089708</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"updated cmobox loading ids\">\r\n      <created>1718175036983</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1718175036983</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"updated item form fuctions\">\r\n      <created>1718177705791</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1718177705791</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"updated item form fuctions\">\r\n      <created>1718452113832</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1718452113832</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"updated customer form serch  for combox two options added\">\r\n      <created>1718561946930</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1718561946930</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"6\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"updated serch customer\" />\r\n    <MESSAGE value=\"updated cmobox loading ids\" />\r\n    <MESSAGE value=\"updated item form fuctions\" />\r\n    <MESSAGE value=\"updated customer form serch  for combox two options added\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"updated customer form serch  for combox two options added\" />\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,14 +4,26 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="89dbfd71-98c4-49ba-a84d-1363c7f00fa7" name="Changes" comment="">
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_10_2024_10_49_PM_[Changes]/shelved.patch" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_10_2024_10_49_PM__Changes_.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_11_2024_12_44_AM_[Changes]/shelved.patch" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_11_2024_12_44_AM__Changes_.xml" beforeDir="false" />
++    <list default="true" id="89dbfd71-98c4-49ba-a84d-1363c7f00fa7" name="Changes" comment="updated item form serch  for combox two options">
++      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3b3aa9a2-d415-4c2e-b7a0-0da89bfbd894.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/3b3aa9a2-d415-4c2e-b7a0-0da89bfbd894.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3b3aa9a2-d415-4c2e-b7a0-0da89bfbd894/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/3b3aa9a2-d415-4c2e-b7a0-0da89bfbd894/storage_v2/_src_/schema/main.uQUzAA.meta" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_11_10_AM_[Changes]/shelved.patch" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_11_10_AM__Changes_.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_12_33_PM_[Changes]/shelved.patch" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_12_33_PM__Changes_.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_1_10_PM_[Changes]1/shelved.patch" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_1_10_PM__Changes_1.xml" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/PurchaseOrderFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/PurchaseOrderFormController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/PurchaseOrderForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/view/PurchaseOrderForm.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/identifier.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/identifier.sqlite" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/CustomerFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/CustomerFormController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/DashBoardFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/DashBoardFormController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/DashBoardFunctionFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/DashBoardFunctionFormController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/ItemFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/ItemFormController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/entity/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/entity/Customer.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/CustomerForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/view/CustomerForm.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/DashBoardForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/view/DashBoardForm.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/ItemForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/view/ItemForm.fxml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -31,6 +43,7 @@
+     <setting file="file://$PROJECT_DIR$/src/com/oragan/posSystem/controller/AddItemFormController.java" root0="FORCE_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/src/com/oragan/posSystem/controller/CustomerFormController.java" root0="FORCE_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/src/com/oragan/posSystem/controller/AddCustomerFormController.java" root0="FORCE_HIGHLIGHTING" />
++    <setting file="file://$USER_HOME$/AppData/Local/Temp/SQLite Tablo Oluşturun.url" root0="FORCE_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/src/com/oragan/posSystem/entity/Customer.java" root0="FORCE_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/src/com/oragan/posSystem/entity/Item.java" root0="FORCE_HIGHLIGHTING" />
+   </component>
+@@ -43,15 +56,16 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">
+-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+-    <property name="WebServerToolWindowFactoryState" value="false" />
+-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/oragan/posSystem/assets" />
+-    <property name="nodejs_package_manager_path" value="npm" />
+-  </component>
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "git-widget-placeholder": "master",
++    "last_opened_file_path": "F:/oragan/New folder/oragan_pos_system/oragan_pos_system/src/com/oragan/posSystem/view/reports",
++    "node.js.selected.package.tslint": "(autodetect)"
++  }
++}]]></component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
++      <recent name="F:\oragan\New folder\oragan_pos_system\oragan_pos_system\src\com\oragan\posSystem\view\reports" />
+       <recent name="D:\oragan_pos_system\src\com\oragan\posSystem\assets" />
+     </key>
+     <key name="MoveFile.RECENT_KEYS">
+@@ -94,8 +108,7 @@
+       <workItem from="1718456806607" duration="111000" />
+       <workItem from="1718521546240" duration="3449000" />
+       <workItem from="1718525322147" duration="947000" />
+-      <workItem from="1718553376607" duration="10197000" />
+-      <workItem from="1718773303291" duration="2158000" />
++      <workItem from="1718553376607" duration="5145000" />
+     </task>
+     <task id="LOCAL-00001" summary="updated serch customer">
+       <created>1718173089708</created>
+@@ -125,14 +138,7 @@
+       <option name="project" value="LOCAL" />
+       <updated>1718452113832</updated>
+     </task>
+-    <task id="LOCAL-00005" summary="updated customer form serch  for combox two options added">
+-      <created>1718561946930</created>
+-      <option name="number" value="00005" />
+-      <option name="presentableId" value="LOCAL-00005" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1718561946930</updated>
+-    </task>
+-    <option name="localTasksCounter" value="6" />
++    <option name="localTasksCounter" value="5" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -148,14 +154,12 @@
+         </entry>
+       </map>
+     </option>
+-    <option name="oldMeFiltersMigrated" value="true" />
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="updated serch customer" />
+     <MESSAGE value="updated cmobox loading ids" />
+     <MESSAGE value="updated item form fuctions" />
+-    <MESSAGE value="updated customer form serch  for combox two options added" />
+-    <option name="LAST_COMMIT_MESSAGE" value="updated customer form serch  for combox two options added" />
++    <option name="LAST_COMMIT_MESSAGE" value="updated item form fuctions" />
+   </component>
+   <component name="XSLT-Support.FileAssociations.UIState">
+     <expand />
+Index: .idea/dataSources.local.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"dataSourceStorageLocal\" created-in=\"IU-212.5712.43\">\r\n    <data-source name=\"oragan_pos\" uuid=\"3b3aa9a2-d415-4c2e-b7a0-0da89bfbd894\">\r\n      <database-info product=\"SQLite\" version=\"3.45.1\" jdbc-version=\"4.2\" driver-name=\"SQLite JDBC\" driver-version=\"3.45.1.0\" dbms=\"SQLITE\" exact-version=\"3.45.1\" exact-driver-version=\"3.45\">\r\n        <identifier-quote-string>&quot;</identifier-quote-string>\r\n      </database-info>\r\n      <case-sensitivity plain-identifiers=\"mixed\" quoted-identifiers=\"mixed\" />\r\n      <schema-mapping>\r\n        <introspection-scope>\r\n          <node kind=\"schema\" qname=\"@\" />\r\n        </introspection-scope>\r\n      </schema-mapping>\r\n    </data-source>\r\n    <data-source name=\"identifier\" uuid=\"8fb61c6b-ff3c-4986-932e-2c55367ea507\">\r\n      <database-info product=\"SQLite\" version=\"3.45.1\" jdbc-version=\"4.2\" driver-name=\"SQLite JDBC\" driver-version=\"3.45.1.0\" dbms=\"SQLITE\" exact-version=\"3.45.1\" exact-driver-version=\"3.45\">\r\n        <identifier-quote-string>&quot;</identifier-quote-string>\r\n      </database-info>\r\n      <case-sensitivity plain-identifiers=\"mixed\" quoted-identifiers=\"mixed\" />\r\n      <auth-provider>no-auth</auth-provider>\r\n      <schema-mapping>\r\n        <introspection-scope>\r\n          <node kind=\"schema\" qname=\"@\" />\r\n        </introspection-scope>\r\n      </schema-mapping>\r\n    </data-source>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/dataSources.local.xml b/.idea/dataSources.local.xml
+--- a/.idea/dataSources.local.xml	
++++ b/.idea/dataSources.local.xml	
+@@ -1,11 +1,13 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="dataSourceStorageLocal" created-in="IU-212.5712.43">
++  <component name="dataSourceStorageLocal" created-in="IU-232.9921.47">
+     <data-source name="oragan_pos" uuid="3b3aa9a2-d415-4c2e-b7a0-0da89bfbd894">
+       <database-info product="SQLite" version="3.45.1" jdbc-version="4.2" driver-name="SQLite JDBC" driver-version="3.45.1.0" dbms="SQLITE" exact-version="3.45.1" exact-driver-version="3.45">
+         <identifier-quote-string>&quot;</identifier-quote-string>
+       </database-info>
+       <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
++      <secret-storage>master_key</secret-storage>
++      <auth-provider>no-auth</auth-provider>
+       <schema-mapping>
+         <introspection-scope>
+           <node kind="schema" qname="@" />
+Index: src/com/oragan/posSystem/view/ItemForm.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import java.lang.String?>\r\n<?import javafx.collections.FXCollections?>\r\n<?import javafx.scene.control.Button?>\r\n<?import javafx.scene.control.ComboBox?>\r\n<?import javafx.scene.control.TableColumn?>\r\n<?import javafx.scene.control.TableView?>\r\n<?import javafx.scene.control.TextField?>\r\n<?import javafx.scene.layout.AnchorPane?>\r\n<?import javafx.scene.text.Font?>\r\n\r\n<AnchorPane fx:id=\"context\" prefHeight=\"788.0\" prefWidth=\"1622.0\" xmlns=\"http://javafx.com/javafx/8.0.171\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.oragan.posSystem.controller.ItemFormController\">\r\n   <children>\r\n      <TextField fx:id=\"txtSearchField\" layoutX=\"362.0\" layoutY=\"95.0\" onAction=\"#txtSearchFieldOnAction\" prefHeight=\"48.0\" prefWidth=\"304.0\" promptText=\"Search\" style=\"-fx-border-width: 2; -fx-border-color: green; -fx-background-color: transparent; -fx-text-fill: green; -fx-border-radius: 10; -fx-background-radius: 20;\">\r\n         <font>\r\n            <Font size=\"15.0\" />\r\n         </font>\r\n      </TextField>\r\n      <TableView fx:id=\"tblItem\" layoutX=\"221.0\" layoutY=\"211.0\" prefHeight=\"448.0\" prefWidth=\"1180.0\">\r\n\r\n         <columns>\r\n            <TableColumn fx:id=\"colItemCode\" prefWidth=\"196.0\" text=\"Item Code\" style=\"-fx-font-weight: bold;-fx-font-size: 18px\"  />\r\n            <TableColumn fx:id=\"colItemName\" prefWidth=\"181.0\" text=\"Item Name\" style=\"-fx-font-weight: bold;-fx-font-size: 18px\"   />\r\n            <TableColumn fx:id=\"colPrice\" prefWidth=\"256.0\" text=\"Price\" style=\"-fx-font-weight: bold;-fx-font-size: 18px\"  />\r\n            <TableColumn fx:id=\"colQtyOnHand\" prefWidth=\"219.0\" text=\"Qty On Hand\" style=\"-fx-font-weight: bold;-fx-font-size: 18px\"  />\r\n            <TableColumn fx:id=\"colOptions\" prefWidth=\"327.0\" text=\"Options\" style=\"-fx-font-weight: bold;-fx-font-size: 18px\"  />\r\n         </columns>\r\n      </TableView>\r\n      <Button layoutX=\"898.0\" layoutY=\"95.0\" mnemonicParsing=\"false\" onAction=\"#btnAddItemFormOnAction\" prefHeight=\"48.0\" prefWidth=\"192.0\" style=\"-fx-background-color: black; -fx-border-radius: 15; -fx-background-radius: 10;\" text=\"Add New Item\" textFill=\"#f8f8f8\">\r\n         <font>\r\n            <Font name=\"System Bold\" size=\"15.0\" />\r\n         </font></Button>\r\n      <ComboBox fx:id=\"cmbItemId\" layoutX=\"683.0\" layoutY=\"95.0\" onAction=\"#cmbSearchByItemOnAction\" prefHeight=\"48.0\" prefWidth=\"192.0\" promptText=\"Select Serch Option\" style=\"-fx-background-color: FFC700; -fx-background-radius: 10;\">\r\n         <items>\r\n            <FXCollections fx:factory=\"observableArrayList\">\r\n               <String fx:id=\"cmbName\" fx:value=\"Item Name\" />\r\n               <String fx:id=\"cmbID\" fx:value=\"Item Code\" />\r\n            </FXCollections>\r\n         </items>\r\n      </ComboBox>\r\n   </children>\r\n</AnchorPane>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/oragan/posSystem/view/ItemForm.fxml b/src/com/oragan/posSystem/view/ItemForm.fxml
+--- a/src/com/oragan/posSystem/view/ItemForm.fxml	
++++ b/src/com/oragan/posSystem/view/ItemForm.fxml	
+@@ -1,7 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ 
+-<?import java.lang.String?>
+-<?import javafx.collections.FXCollections?>
+ <?import javafx.scene.control.Button?>
+ <?import javafx.scene.control.ComboBox?>
+ <?import javafx.scene.control.TableColumn?>
+@@ -10,7 +8,9 @@
+ <?import javafx.scene.layout.AnchorPane?>
+ <?import javafx.scene.text.Font?>
+ 
+-<AnchorPane fx:id="context" prefHeight="788.0" prefWidth="1622.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.ItemFormController">
++<?import javafx.collections.FXCollections?>
++<?import java.lang.String?>
++<AnchorPane fx:id="context" prefHeight="788.0" prefWidth="1622.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.ItemFormController">
+    <children>
+       <TextField fx:id="txtSearchField" layoutX="362.0" layoutY="95.0" onAction="#txtSearchFieldOnAction" prefHeight="48.0" prefWidth="304.0" promptText="Search" style="-fx-border-width: 2; -fx-border-color: green; -fx-background-color: transparent; -fx-text-fill: green; -fx-border-radius: 10; -fx-background-radius: 20;">
+          <font>
+@@ -18,23 +18,22 @@
+          </font>
+       </TextField>
+       <TableView fx:id="tblItem" layoutX="221.0" layoutY="211.0" prefHeight="448.0" prefWidth="1180.0">
+-
+          <columns>
+-            <TableColumn fx:id="colItemCode" prefWidth="196.0" text="Item Code" style="-fx-font-weight: bold;-fx-font-size: 18px"  />
+-            <TableColumn fx:id="colItemName" prefWidth="181.0" text="Item Name" style="-fx-font-weight: bold;-fx-font-size: 18px"   />
+-            <TableColumn fx:id="colPrice" prefWidth="256.0" text="Price" style="-fx-font-weight: bold;-fx-font-size: 18px"  />
+-            <TableColumn fx:id="colQtyOnHand" prefWidth="219.0" text="Qty On Hand" style="-fx-font-weight: bold;-fx-font-size: 18px"  />
+-            <TableColumn fx:id="colOptions" prefWidth="327.0" text="Options" style="-fx-font-weight: bold;-fx-font-size: 18px"  />
++            <TableColumn fx:id="colItemCode" prefWidth="196.0" text="Item Code" />
++            <TableColumn fx:id="colItemName" prefWidth="181.0" text="Item Name" />
++            <TableColumn fx:id="colPrice" prefWidth="256.0" text="Price" />
++            <TableColumn fx:id="colQtyOnHand" prefWidth="219.0" text="Qty On Hand" />
++            <TableColumn fx:id="colOptions" prefWidth="327.0" text="Options" />
+          </columns>
+       </TableView>
+-      <Button layoutX="898.0" layoutY="95.0" mnemonicParsing="false" onAction="#btnAddItemFormOnAction" prefHeight="48.0" prefWidth="192.0" style="-fx-background-color: black; -fx-border-radius: 15; -fx-background-radius: 10;" text="Add New Item" textFill="#f8f8f8">
++      <Button layoutX="847.0" layoutY="95.0" mnemonicParsing="false" onAction="#btnAddItemFormOnAction" prefHeight="48.0" prefWidth="192.0" style="-fx-background-color: black; -fx-border-radius: 15; -fx-background-radius: 10;" text="Add New Item" textFill="#f8f8f8">
+          <font>
+             <Font name="System Bold" size="15.0" />
+          </font></Button>
+-      <ComboBox fx:id="cmbItemId" layoutX="683.0" layoutY="95.0" onAction="#cmbSearchByItemOnAction" prefHeight="48.0" prefWidth="192.0" promptText="Select Serch Option" style="-fx-background-color: FFC700; -fx-background-radius: 10;">
++      <ComboBox fx:id="cmbCustomerId" layoutX="683.0" layoutY="95.0" onAction="#cmbSearchByItemOnAction" prefHeight="48.0" prefWidth="150.0" promptText="Select Serch Option" style="-fx-background-color: #EFC81A; -fx-background-radius: 10;">
+          <items>
+             <FXCollections fx:factory="observableArrayList">
+-               <String fx:id="cmbName" fx:value="Item Name" />
++               <String  fx:id="cmbName" fx:value="Item Name" />
+                <String fx:id="cmbID" fx:value="Item Code" />
+             </FXCollections>
+          </items>
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_12_33_PM_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2024_12_33_PM_[Changes]/shelved.patch
+deleted file mode 100644

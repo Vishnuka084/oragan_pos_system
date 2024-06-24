@@ -43,8 +43,7 @@ public class DashBoardFormController {
     private void setUi2(String ui2) throws IOException {
         context.getChildren().clear();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/" + ui2 + ".fxml"));
-        Parent parent = loader.load();
-        context.getChildren().add(parent);
+        context.getChildren().add(loader.load());
     }
 
 
