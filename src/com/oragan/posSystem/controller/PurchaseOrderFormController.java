@@ -6,6 +6,11 @@ import com.oragan.posSystem.entity.Item;
 import javafx.event.ActionEvent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,6 +18,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class PurchaseOrderFormController {
     public ComboBox<String> cmbCustomerID;
@@ -137,4 +143,25 @@ public class PurchaseOrderFormController {
         String selectedItemCode = cmbItemCode.getSelectionModel().getSelectedItem();
         setItemDetails(selectedItemCode);
     }
+
+    public void PlaceOderBillOnEvent(MouseEvent mouseEvent) {
+        System.out.println("HEllo Jasperf 01 ");
+        try {
+
+            System.out.println("print coming  ");
+            JasperDesign load = JRXmlLoader.load(this.getClass().getResourceAsStream("/view/reports/OraganJasper.jrxml"));
+            System.out.println("Report view ");
+            JasperReport compileReport = JasperCompileManager.compileReport(load);
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(compileReport, null, new JREmptyDataSource(1));
+
+            JasperViewer.viewReport(jasperPrint,false);
+
+
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

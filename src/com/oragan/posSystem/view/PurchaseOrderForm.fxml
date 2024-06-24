@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="788.0" prefWidth="1622.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.PurchaseOrderFormController">
+<AnchorPane prefHeight="788.0" prefWidth="1622.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.PurchaseOrderFormController">
    <children>
       <TableView layoutX="275.0" layoutY="394.0" prefHeight="200.0" prefWidth="1180.0">
          <columns>
@@ -125,7 +125,7 @@
             <Image url="@../assets/cart.png" />
          </image>
       </ImageView>
-      <Button layoutX="1425.0" layoutY="692.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="164.0" style="-fx-background-color: #3BB30A; -fx-border-radius: 10; -fx-background-radius: 10;" text="Place Order" textFill="#f5f5f5">
+      <Button layoutX="1425.0" layoutY="692.0" mnemonicParsing="false" onMouseClicked="#PlaceOderBillOnEvent" prefHeight="42.0" prefWidth="164.0" style="-fx-background-color: #3BB30A; -fx-border-radius: 10; -fx-background-radius: 10;" text="Place Order" textFill="#f5f5f5">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
@@ -135,12 +135,7 @@
             <Image url="@../assets/place-order.png" />
          </image>
       </ImageView>
-      <Text layoutX="20.0" layoutY="720.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Totol :" wrappingWidth="51.70654296875">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Text>
-      <Text layoutX="20.0" layoutY="752.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Totol :" wrappingWidth="51.70654296875">
+      <Text layoutX="20.0" layoutY="740.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total :" wrappingWidth="51.70654296875">
          <font>
             <Font size="17.0" />
          </font>
