@@ -225,3 +225,5 @@ public class CustomerFormController {
         filterCustomerList(txtSerchFieldCustomer.getText());
     }
 }
+
+///------------------------------------------------
