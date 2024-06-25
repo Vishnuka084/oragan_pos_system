@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -13,133 +14,143 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="788.0" prefWidth="1622.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.PurchaseOrderFormController">
+<AnchorPane prefHeight="788.0" prefWidth="1622.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.PurchaseOrderFormController">
    <children>
-      <TableView layoutX="275.0" layoutY="394.0" prefHeight="200.0" prefWidth="1180.0">
+      <TableView fx:id="tblCart" layoutX="278.0" layoutY="416.0" prefHeight="247.0" prefWidth="1180.0">
          <columns>
-            <TableColumn prefWidth="167.0" text="Item Code" />
-            <TableColumn minWidth="0.0" prefWidth="188.0" text="Item Name" />
-            <TableColumn prefWidth="173.0" text="Unit Price" />
-            <TableColumn prefWidth="166.0" text="Quantity" />
-            <TableColumn prefWidth="212.0" text="Total" />
+            <TableColumn fx:id="colItemCode" prefWidth="167.0" text="Item Code" />
+            <TableColumn fx:id="colItemName" minWidth="0.0" prefWidth="188.0" text="Item Name" />
+            <TableColumn fx:id="colUnitPrice" prefWidth="173.0" text="Unit Price" />
+            <TableColumn fx:id="colQuantity" prefWidth="166.0" text="Quantity" />
+            <TableColumn fx:id="colTotal" prefWidth="212.0" text="Total" />
             <TableColumn prefWidth="273.0" text="Options" />
          </columns>
       </TableView>
-      <Text fill="#180361" layoutX="20.0" layoutY="53.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID" wrappingWidth="133.60986328125">
+      <Text fill="#180361" layoutX="23.0" layoutY="117.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID" wrappingWidth="133.60986328125">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
       </Text>
-      <ComboBox fx:id="cmbCustomerID" layoutX="23.0" layoutY="66.0" onAction="#cmbCustomerIDOnAction" opacity="0.84" prefHeight="35.0" prefWidth="371.0" promptText="Select Customer ID" style="-fx-background-color: white;">
+      <ComboBox fx:id="cmbCustomerID" layoutX="23.0" layoutY="132.0" onAction="#cmbCustomerIDOnAction" opacity="0.84" prefHeight="35.0" prefWidth="371.0" promptText="Select Customer ID" style="-fx-background-color: white;">
          <opaqueInsets>
             <Insets left="5.0" />
          </opaqueInsets>
       </ComboBox>
-      <Text fill="#180361" layoutX="410.0" layoutY="50.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="133.60986328125">
+      <Text fill="#180361" layoutX="410.0" layoutY="116.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="133.60986328125">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
       </Text>
-      <TextField fx:id="txtCustomerName" editable="false" layoutX="410.0" layoutY="66.0" prefHeight="35.0" prefWidth="371.0">
+      <TextField fx:id="txtCustomerName" editable="false" layoutX="410.0" layoutY="132.0" prefHeight="35.0" prefWidth="371.0">
          <opaqueInsets>
             <Insets left="5.0" />
          </opaqueInsets>
       </TextField>
-      <Text fill="#180361" layoutX="798.0" layoutY="49.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" wrappingWidth="133.60986328125">
+      <Text fill="#180361" layoutX="798.0" layoutY="115.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" wrappingWidth="133.60986328125">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
       </Text>
-      <TextField fx:id="txtCustomerAddress" editable="false" layoutX="798.0" layoutY="66.0" prefHeight="35.0" prefWidth="371.0">
+      <TextField fx:id="txtCustomerAddress" editable="false" layoutX="798.0" layoutY="132.0" prefHeight="35.0" prefWidth="371.0">
          <opaqueInsets>
             <Insets left="5.0" />
          </opaqueInsets>
       </TextField>
-      <Text fill="#180361" layoutX="1189.0" layoutY="51.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact Number" wrappingWidth="214.60986328125">
+      <Text fill="#180361" layoutX="1189.0" layoutY="117.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact Number" wrappingWidth="214.60986328125">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
       </Text>
-      <TextField fx:id="txtContactNumber" editable="false" layoutX="1189.0" layoutY="66.0" prefHeight="35.0" prefWidth="382.0">
+      <TextField fx:id="txtContactNumber" editable="false" layoutX="1189.0" layoutY="132.0" prefHeight="35.0" prefWidth="382.0">
          <opaqueInsets>
             <Insets left="5.0" />
          </opaqueInsets>
       </TextField>
-      <Text fill="#180361" layoutX="23.0" layoutY="135.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Code" wrappingWidth="133.60986328125">
+      <Text fill="#180361" layoutX="23.0" layoutY="202.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Code" wrappingWidth="133.60986328125">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
       </Text>
-      <ComboBox fx:id="cmbItemCode" layoutX="23.0" layoutY="152.0" onAction="#cmbItemCodeOnAction" opacity="0.84" prefHeight="35.0" prefWidth="371.0" promptText="Select Item Code" style="-fx-background-color: white;">
+      <ComboBox fx:id="cmbItemCode" layoutX="23.0" layoutY="218.0" onAction="#cmbItemCodeOnAction" opacity="0.84" prefHeight="35.0" prefWidth="371.0" promptText="Select Item Code" style="-fx-background-color: white;">
          <opaqueInsets>
             <Insets left="5.0" />
          </opaqueInsets>
       </ComboBox>
-      <Text fill="#180361" layoutX="413.0" layoutY="136.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Name" wrappingWidth="133.60986328125">
+      <Text fill="#180361" layoutX="413.0" layoutY="202.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Name" wrappingWidth="133.60986328125">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
       </Text>
-      <TextField fx:id="txtItemName" editable="false" layoutX="413.0" layoutY="152.0" prefHeight="35.0" prefWidth="371.0">
+      <TextField fx:id="txtItemName" editable="false" layoutX="413.0" layoutY="218.0" prefHeight="35.0" prefWidth="371.0">
          <opaqueInsets>
             <Insets left="5.0" />
          </opaqueInsets>
       </TextField>
-      <Text fill="#180361" layoutX="801.0" layoutY="135.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="QTY On Hand" wrappingWidth="133.60986328125">
+      <Text fill="#180361" layoutX="801.0" layoutY="201.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="QTY On Hand" wrappingWidth="133.60986328125">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
       </Text>
-      <TextField fx:id="txtQtyOnHand" editable="false" layoutX="801.0" layoutY="152.0" prefHeight="35.0" prefWidth="371.0">
+      <TextField fx:id="txtQtyOnHand" editable="false" layoutX="801.0" layoutY="218.0" prefHeight="35.0" prefWidth="371.0">
          <opaqueInsets>
             <Insets left="5.0" />
          </opaqueInsets>
       </TextField>
-      <Text fill="#180361" layoutX="1189.0" layoutY="135.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Price" wrappingWidth="214.60986328125">
+      <Text fill="#180361" layoutX="1189.0" layoutY="201.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Price" wrappingWidth="214.60986328125">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
       </Text>
-      <TextField fx:id="txtPrice" editable="false" layoutX="1192.0" layoutY="152.0" prefHeight="35.0" prefWidth="382.0">
+      <TextField fx:id="txtPrice" editable="false" layoutX="1192.0" layoutY="218.0" prefHeight="35.0" prefWidth="382.0">
          <opaqueInsets>
             <Insets left="5.0" />
          </opaqueInsets>
       </TextField>
-      <Text fill="#ff210d" layoutX="1348.0" layoutY="228.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity" wrappingWidth="214.60986328125">
+      <Text fill="#ff210d" layoutX="1348.0" layoutY="294.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity" wrappingWidth="214.60986328125">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
       </Text>
-      <TextField layoutX="1348.0" layoutY="240.0" prefHeight="35.0" prefWidth="225.0">
+      <TextField fx:id="txtQuantity" layoutX="1348.0" layoutY="306.0" prefHeight="35.0" prefWidth="225.0">
          <opaqueInsets>
             <Insets left="5.0" />
          </opaqueInsets>
       </TextField>
-      <Button layoutX="1348.0" layoutY="286.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="215.0" style="-fx-background-color: yellow; -fx-border-radius: 10; -fx-background-radius: 10;" text="Add To Cart">
+      <Button layoutX="1348.0" layoutY="352.0" mnemonicParsing="false" onAction="#btnAddCartOnAction" prefHeight="42.0" prefWidth="215.0" style="-fx-background-color: yellow; -fx-border-radius: 10; -fx-background-radius: 10;" text="Add To Cart">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
       </Button>
-      <ImageView fitHeight="28.0" fitWidth="25.0" layoutX="1507.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="28.0" fitWidth="25.0" layoutX="1507.0" layoutY="361.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/cart.png" />
          </image>
       </ImageView>
-      <Button layoutX="1425.0" layoutY="692.0" mnemonicParsing="false" onMouseClicked="#PlaceOderBillOnEvent" prefHeight="42.0" prefWidth="164.0" style="-fx-background-color: #3BB30A; -fx-border-radius: 10; -fx-background-radius: 10;" text="Place Order" textFill="#f5f5f5">
+      <Button layoutX="1425.0" layoutY="692.0" mnemonicParsing="false" onAction="#btnPlaceOrderOnAction" prefHeight="53.0" prefWidth="164.0" style="-fx-background-color: #3BB30A; -fx-border-radius: 10; -fx-background-radius: 10;" text="Place Order" textFill="#f5f5f5">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
       </Button>
-      <ImageView fitHeight="25.0" fitWidth="43.0" layoutX="1558.0" layoutY="702.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="25.0" fitWidth="43.0" layoutX="1559.0" layoutY="706.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/place-order.png" />
          </image>
       </ImageView>
-      <Text layoutX="20.0" layoutY="740.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total :" wrappingWidth="51.70654296875">
+      <Text fill="#1625d3" layoutX="23.0" layoutY="736.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Totol :" wrappingWidth="94.70654296875">
          <font>
-            <Font size="17.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Text>
+      <Label fx:id="lblOrderID" layoutX="25.0" layoutY="35.0" text="Order ID:" textFill="#ff2323">
+         <font>
+            <Font name="Lucida Console" size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtTotal" layoutX="109.0" layoutY="708.0" style="-fx-background-color: white;">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
    </children>
    <effect>
       <ColorAdjust brightness="0.02" />

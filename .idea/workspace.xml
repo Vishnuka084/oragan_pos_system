@@ -4,20 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="89dbfd71-98c4-49ba-a84d-1363c7f00fa7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/PurchaseOrderFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/PurchaseOrderFormController.java" afterDir="false" />
+=======
+    <list default="true" id="89dbfd71-98c4-49ba-a84d-1363c7f00fa7" name="Changes" comment="load to item details combobox">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identifier.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/identifier.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/PurchaseOrderFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/PurchaseOrderFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/PurchaseOrderForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/view/PurchaseOrderForm.fxml" afterDir="false" />
+>>>>>>> b5d5e6af10d7127b8ac8e37f8d97468d35808096
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="CodeInsightWorkspaceSettings">
-    <option name="optimizeImportsOnTheFly" value="true" />
-  </component>
   <component name="ComposerSettings">
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -44,6 +56,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -61,10 +74,17 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+=======
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/oragan/posSystem/assets" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+>>>>>>> b5d5e6af10d7127b8ac8e37f8d97468d35808096
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\oragan\New folder\oragan_pos_system\oragan_pos_system\src\com\oragan\posSystem\view\reports" />
-      <recent name="F:\oragan\New folder\oragan_pos_system\oragan_pos_system\lib" />
       <recent name="D:\oragan_pos_system\src\com\oragan\posSystem\assets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -108,8 +128,20 @@
       <workItem from="1718521546240" duration="3449000" />
       <workItem from="1718525322147" duration="947000" />
       <workItem from="1718553376607" duration="10197000" />
+<<<<<<< HEAD
       <workItem from="1718773303291" duration="2158000" />
       <workItem from="1719279147745" duration="838000" />
+=======
+      <workItem from="1718773303291" duration="5269000" />
+      <workItem from="1718817192033" duration="474000" />
+      <workItem from="1718871580947" duration="4930000" />
+      <workItem from="1719072736814" duration="1346000" />
+      <workItem from="1719121256994" duration="2071000" />
+      <workItem from="1719160976520" duration="4724000" />
+      <workItem from="1719171186852" duration="93000" />
+      <workItem from="1719202840257" duration="5813000" />
+      <workItem from="1719225156680" duration="9308000" />
+>>>>>>> b5d5e6af10d7127b8ac8e37f8d97468d35808096
     </task>
     <task id="LOCAL-00001" summary="updated serch customer">
       <created>1718173089708</created>
@@ -146,7 +178,28 @@
       <option name="project" value="LOCAL" />
       <updated>1718561946930</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="updated customer form serch  for combox two options added">
+      <created>1718776508484</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1718776508484</updated>
+    </task>
+    <task id="LOCAL-00007" summary="load purchase order customer details">
+      <created>1718778658045</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1718778658045</updated>
+    </task>
+    <task id="LOCAL-00008" summary="load to item details combobox">
+      <created>1719171250825</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1719171250825</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,13 +215,16 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="updated serch customer" />
     <MESSAGE value="updated cmobox loading ids" />
     <MESSAGE value="updated item form fuctions" />
     <MESSAGE value="updated customer form serch  for combox two options added" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated customer form serch  for combox two options added" />
+    <MESSAGE value="load purchase order customer details" />
+    <MESSAGE value="load to item details combobox" />
+    <option name="LAST_COMMIT_MESSAGE" value="load to item details combobox" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
