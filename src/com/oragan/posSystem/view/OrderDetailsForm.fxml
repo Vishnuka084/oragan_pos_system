@@ -1,41 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="788.0" prefWidth="1622.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.OrderDetailsFormController">
+<AnchorPane prefHeight="788.0" prefWidth="1622.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.OrderDetailsFormController">
    <children>
-      <TextField fx:id="txtSearchField" layoutX="433.0" layoutY="105.0" onAction="#txtSearchFieldOnAction" prefHeight="39.0" prefWidth="304.0" promptText="Search">
+      <TextField layoutX="433.0" layoutY="105.0" onAction="#txtSearchFieldOnAction" prefHeight="48.0" prefWidth="304.0" promptText="Search">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
-      <MenuButton fx:id="cmbCustomerId" layoutX="746.0" layoutY="105.0" mnemonicParsing="false" onAction="#cmbSearchByOrderOnAction" prefHeight="39.0" prefWidth="195.0" style="-fx-background-color: yellow; -fx-background-radius: 10; -fx-border-radius: 10;" text="Select Search Option ">
-         <items>
-            <MenuItem mnemonicParsing="false" text="Action 1" />
-            <MenuItem mnemonicParsing="false" text="Action 2" />
-         </items>
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </MenuButton>
-      <TableView fx:id="orderdetailstbl" layoutX="152.0" layoutY="199.0" prefHeight="534.0" prefWidth="1337.0">
+      <TableView fx:id="tblOrder" layoutX="204.0" layoutY="197.0" prefHeight="286.0" prefWidth="1180.0">
          <columns>
-            <TableColumn fx:id="colOderId" prefWidth="127.0" text="Order ID" />
-            <TableColumn fx:id="colCustId" prefWidth="153.0" text="Customer ID" />
-            <TableColumn fx:id="colCusName" prefWidth="162.0" text="Customer Name" />
-            <TableColumn fx:id="colDate" prefWidth="144.0" text="Date" />
-            <TableColumn fx:id="colTotal" prefWidth="153.0" text="Total" />
-            <TableColumn fx:id="colDiscount" prefWidth="129.0" text="Discount" />
-            <TableColumn fx:id="colAmount" prefWidth="177.0" text="Amount" />
-            <TableColumn fx:id="colStatus" prefWidth="147.0" text="Status" />
-            <TableColumn fx:id="colOption" prefWidth="144.0" text="Options" />
+            <TableColumn fx:id="colOrderID" prefWidth="163.0" text="Order ID" />
+            <TableColumn fx:id="colCustomerID" prefWidth="170.0" text="Customer ID" />
+            <TableColumn fx:id="ColCustomerName" prefWidth="187.0" text="Customer Name" />
+            <TableColumn fx:id="colOrderDate" prefWidth="179.0" text="Date" />
+            <TableColumn fx:id="colOrderTotal" prefWidth="231.0" text="Total" />
+            <TableColumn prefWidth="249.0" text="options" />
          </columns>
       </TableView>
+      <ComboBox fx:id="cmbOrderID" layoutX="761.0" layoutY="105.0" onAction="#cmbSearchByOrderOnAction" prefHeight="48.0" prefWidth="192.0" promptText="Select Serch Option" style="-fx-background-color: FFC700; -fx-background-radius: 10;">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:id="cmbOrderIDs" fx:value="Order ID" />
+               <String fx:id="cmbCustomerName" fx:value="Customer Name" />
+            </FXCollections>
+         </items>
+      </ComboBox>
    </children>
 </AnchorPane>
