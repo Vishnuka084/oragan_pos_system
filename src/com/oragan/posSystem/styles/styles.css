@@ -1,0 +1,10 @@
+/* Style for the table header background */
+.table-view .column-header-background {
+   -fx-background-color: red;
+}
+
+/* Style for the table header text */
+.table-view .column-header .label {
+    -fx-text-fill: white;
+}
+
