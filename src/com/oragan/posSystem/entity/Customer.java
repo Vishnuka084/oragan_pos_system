@@ -15,7 +15,7 @@ public class Customer {
     public Customer(String customer_Id, String customer_name, String address, String contact_number) {
         Customer_Id = customer_Id;
         Customer_name = customer_name;
-        Address = address;
+        this.Address = address;
         this.contact_number = contact_number;
     }
 

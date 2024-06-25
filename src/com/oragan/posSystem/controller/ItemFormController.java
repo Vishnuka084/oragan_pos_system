@@ -36,7 +36,7 @@ public class ItemFormController {
     public TextField txtSearchField;
     public String cmbName;
     public String cmbID;
-    public ComboBox<String> cmbItemId;
+    public ComboBox<String> cmbCustomerId;
 
     private ObservableList<String> itemCodes = FXCollections.observableArrayList();
     private ObservableList<Item> itemList = FXCollections.observableArrayList();
@@ -44,7 +44,7 @@ public class ItemFormController {
     public void initialize() {
 
         //item code, name initialize
-        cmbItemId.setItems(FXCollections.observableArrayList("Item Name", "Item Code"));
+        cmbCustomerId.setItems(FXCollections.observableArrayList("Item Name", "Item Code"));
         loadItemsData();
         initializeTableColumns();
         txtSearchField.textProperty().addListener((observable, oldValue, newValue) -> filterItemList(newValue));
@@ -123,7 +123,7 @@ public class ItemFormController {
                     setStyle("");
                 } else {
                     if (item.getQty() < 10) {
-                        setStyle("-fx-background-color: #C73659; -fx-text-fill: white; -fx-font-weight: bold;");
+                        setStyle("-fx-background-color: red; -fx-text-fill: white;");
                     } else {
                         setStyle("");
                     }
@@ -203,7 +203,7 @@ public class ItemFormController {
 
     @FXML
     private void cmbSearchByItemOnAction(ActionEvent actionEvent) {
-        String selectedValue = cmbItemId.getValue();
+        String selectedValue = cmbCustomerId.getValue();
         if ("Item Name".equals(selectedValue)) {
             txtSearchField.setPromptText("Enter item name");
             txtSearchField.clear();
@@ -225,7 +225,7 @@ public class ItemFormController {
             tblItem.setItems(itemList);  // Display all items if search query is empty
         } else {
             ObservableList<Item> filteredList = FXCollections.observableArrayList();
-            String selectedValue = cmbItemId.getValue();
+            String selectedValue = cmbCustomerId.getValue();
             if ("Item Name".equals(selectedValue)) {
                 for (Item item : itemList) {
                     if (item.getItem_name().toLowerCase().contains(searchQuery.toLowerCase())) {
