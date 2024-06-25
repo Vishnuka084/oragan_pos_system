@@ -147,7 +147,6 @@ public class PurchaseOrderFormController {
     public void PlaceOderBillOnEvent(MouseEvent mouseEvent) {
         System.out.println("HEllo Jasperf 01 ");
         try {
-
             System.out.println("print coming  ");
             JasperDesign load = JRXmlLoader.load(this.getClass().getResourceAsStream("/view/reports/OraganJasper.jrxml"));
             System.out.println("Report view ");
@@ -161,6 +160,7 @@ public class PurchaseOrderFormController {
         } catch (JRException e) {
             e.printStackTrace();
         }
+
     }
 
 
