@@ -13,6 +13,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_25_2024_11_01_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_25_2024_11_01_AM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/PurchaseOrderFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/PurchaseOrderFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/DashBoardForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/view/DashBoardForm.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/PurchaseOrderForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/view/PurchaseOrderForm.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/reports/OraganJasper.jrxml" beforeDir="false" />
     </list>
