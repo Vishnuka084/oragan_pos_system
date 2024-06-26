@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="89dbfd71-98c4-49ba-a84d-1363c7f00fa7" name="Changes" comment="" />
+    <list default="true" id="89dbfd71-98c4-49ba-a84d-1363c7f00fa7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bf0e0951-6d2b-45d6-806f-d0d0de35b2d2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e0e4459e-a6bb-4c73-b1a7-9be16a9a5cb4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e0e4459e-a6bb-4c73-b1a7-9be16a9a5cb4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_25_2024_10_46_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_25_2024_10_46_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_25_2024_11_01_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_25_2024_11_01_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/PurchaseOrderFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/PurchaseOrderFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/PurchaseOrderForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/view/PurchaseOrderForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/reports/OraganJasper.jrxml" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  <component name="ComposerSettings">
+    <execution />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/com/oragan/posSystem/view/CustomerForm.fxml" root0="FORCE_HIGHLIGHTING" />
@@ -20,20 +34,28 @@
     <setting file="file://$PROJECT_DIR$/src/com/oragan/posSystem/entity/Customer.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/com/oragan/posSystem/entity/Item.java" root0="FORCE_HIGHLIGHTING" />
   </component>
-  <component name="ProjectId" id="2iMKfGvfBvwfEhudJVy5ZPZhl3U" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
-  <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="sqlite" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="nodejs_package_manager_path" value="npm" />
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "F:/oragan/New folder/oragan_pos_system/oragan_pos_system/src/com/oragan/posSystem/view/reports",
+    "node.js.selected.package.tslint": "(autodetect)"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlite"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\oragan\New folder\oragan_pos_system\oragan_pos_system\src\com\oragan\posSystem\view\reports" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\oragan\New folder\oragan_pos_system\oragan_pos_system\src\com\oragan\posSystem\test" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="AppInitializer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -55,48 +77,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="89dbfd71-98c4-49ba-a84d-1363c7f00fa7" name="Changes" comment="" />
-      <created>1719295120601</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1719295120601</updated>
-      <workItem from="1719295152403" duration="888000" />
-    </task>
-    <task id="LOCAL-00001" summary="updated">
-      <created>1719295366307</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1719295366307</updated>
-    </task>
-    <task id="LOCAL-00002" summary="updated">
-      <created>1719295866944</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1719295866944</updated>
-    </task>
-    <task id="LOCAL-00003" summary="updated">
-      <created>1719295956595</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1719295956595</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated" />
   </component>
 </project>

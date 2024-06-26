@@ -10,8 +10,11 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -350,8 +353,18 @@ public class PurchaseOrderFormController {
 
     private void generateJasperReport(String orderId) {
         try {
-            // Load the compiled Jasper report
-            JasperReport jasperReport = JasperCompileManager.compileReport(getClass().getResourceAsStream("./com/oragan/posSystem/view/reports/OraganJasper.jrxml"));
+            // Verify the path
+            String resourcePath = "/com/oragan/posSystem/view/reports/OraganBill.jrxml";
+            InputStream reportStream = getClass().getResourceAsStream(resourcePath);
+
+            if (reportStream == null) {
+                System.err.println("Report file not found at: " + resourcePath);
+                throw new RuntimeException("Report file not found");
+            } else {
+                System.out.println("Report file found at: " + resourcePath);
+            }
+
+            JasperReport jasperReport = JasperCompileManager.compileReport(reportStream);
 
             // Set parameters
             Map<String, Object> parameters = new HashMap<>();
