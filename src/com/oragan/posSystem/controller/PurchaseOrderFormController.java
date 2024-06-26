@@ -10,8 +10,6 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.InputStream;
@@ -36,17 +34,19 @@ public class PurchaseOrderFormController {
     public TextField txtCustomerAddress;
     public TextField txtPrice;
     public Label lblOrderID;
-    public TableColumn colItemCode;
-    public TableColumn colItemName;
-    public TableColumn colUnitPrice;
-    public TableColumn colQuantity;
-    public TableColumn colTotal;
+    public TableColumn<OrderItem, String> colItemCode;
+    public TableColumn<OrderItem, String> colItemName;
+    public TableColumn<OrderItem, Double> colUnitPrice;
+    public TableColumn<OrderItem, Integer> colQuantity;
+    public TableColumn<OrderItem, Double> colTotal;
+    public TableColumn<OrderItem, Void> colOptions;
     public TextField txtQuantity;
-    public TableView tblCart;
+    public TableView<OrderItem> tblCart;
     public TextField txtTotal;
     private List<Customer> customers;
     private List<Item> items;
     private ObservableList<OrderItem> cartItems;
+
 
     public void initialize() {
         customers = getAllCustomers();
@@ -83,8 +83,11 @@ public class PurchaseOrderFormController {
         colQuantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
         colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
+        // Add the options column with buttons
+       // colOptions.setCellFactory(new PropertyValueFactory<>("option"));
 
     }
+
 
     private String generateOrderId() throws SQLException, ClassNotFoundException {
         String query = "SELECT OrderID FROM 'Order' ORDER BY OrderID DESC LIMIT 1";

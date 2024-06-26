@@ -1,27 +1,38 @@
-
 package com.oragan.posSystem.controller;
 
 import com.oragan.posSystem.db.DBConnection;
+
 import com.oragan.posSystem.entity.Customer;
-import com.oragan.posSystem.entity.Item;
 import com.oragan.posSystem.entity.Order;
-import com.oragan.posSystem.entity.OrderItem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+
 import java.sql.*;
 
 
 public class OrderDetailsFormController {
-    public TableView tblOrder;
-    public TableColumn colOrderID;
-    public TableColumn colCustomerID;
-    public TableColumn ColCustomerName;
-    public TableColumn colOrderDate;
-    public TableColumn colOrderTotal;
+    public AnchorPane context;
+    public TableView<Order> tblOrder;
+    public TableColumn<Order,String>  colOrderID;
+    public TableColumn<Order,String>  colCustomerID;
+    public TableColumn<Order,String>  ColCustomerName;
+    public TableColumn<Order,String>  colOrderDate;
+    public TableColumn<Order,String>  colOrderTotal;
+    public TableColumn<Order,Order> colOption;
+    public ComboBox<String> cmbOrderID;
+    public String cmbCustomerName;
+    public String cmbOrderIDs;
+    public TextField txtSearchField;
+
+    private ObservableList<String> orderIds = FXCollections.observableArrayList();
+
     private ObservableList<Order> orderList = FXCollections.observableArrayList();
 
     public void initialize() {
@@ -65,10 +76,41 @@ public class OrderDetailsFormController {
 
 
     public void txtSearchFieldOnAction(ActionEvent actionEvent) {
+        String searchText = txtSearchField.getText().trim();
+        if (!searchText.isEmpty()) {
+            filterTableBySearch(searchText);
+        } else {
+            tblOrder.setItems(orderList); // Reset to show all orders if search field is cleared
+        }
+    }
 
+    private void filterTableBySearch(String searchText) {
+        ObservableList<Order> filteredList = FXCollections.observableArrayList();
+        for (Order order : orderList) {
+            if (order.getOrderID().toLowerCase().contains(searchText.toLowerCase())) {
+                filteredList.add(order);
+            }
+        }
+        tblOrder.setItems(filteredList);
     }
 
     public void cmbSearchByOrderOnAction(ActionEvent actionEvent) {
+        String selectedOrderID = cmbOrderID.getValue();
+        if (selectedOrderID != null && !selectedOrderID.isEmpty()) {
+            filterTableByOrderID(selectedOrderID);
+        } else {
+            tblOrder.setItems(orderList); // Reset to show all orders if no order ID is selected
+        }
+    }
+
+    private void filterTableByOrderID(String orderID) {
+        ObservableList<Order> filteredList = FXCollections.observableArrayList();
+        for (Order order : orderList) {
+            if (order.getOrderID().equalsIgnoreCase(orderID)) {
+                filteredList.add(order);
+            }
+        }
+        tblOrder.setItems(filteredList);
     }
 }
 

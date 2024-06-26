@@ -23,7 +23,7 @@
             <TableColumn fx:id="colUnitPrice" prefWidth="173.0" text="Unit Price" />
             <TableColumn fx:id="colQuantity" prefWidth="166.0" text="Quantity" />
             <TableColumn fx:id="colTotal" prefWidth="212.0" text="Total" />
-            <TableColumn prefWidth="273.0" text="Options" />
+            <TableColumn fx:id="colOption" prefWidth="273.0" text="Options" />
          </columns>
       </TableView>
       <Text fill="#180361" layoutX="23.0" layoutY="117.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID" wrappingWidth="133.60986328125">
