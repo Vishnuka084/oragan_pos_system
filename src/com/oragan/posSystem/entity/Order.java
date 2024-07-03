@@ -13,20 +13,21 @@ public class Order {
     private String OrderID;
     private Date OrderDate;
     private double Total;
+    private String Customer_name;
     private String Customer_Id;
+    private String Status;
 
-
-    public Order(String orderID) {
-        OrderID = orderID;
+    public Order() {
     }
 
-    public Order(String orderID, Date orderDate, double total, String customer_Id) {
+    public Order(String orderID, Date orderDate, double total, String customer_name, String customer_Id, String status) {
         OrderID = orderID;
         OrderDate = orderDate;
         Total = total;
+        Customer_name = customer_name;
         Customer_Id = customer_Id;
+        Status = status;
     }
-
 
     public String getOrderID() {
         return OrderID;
@@ -52,6 +53,14 @@ public class Order {
         Total = total;
     }
 
+    public String getCustomer_name() {
+        return Customer_name;
+    }
+
+    public void setCustomer_name(String customer_name) {
+        Customer_name = customer_name;
+    }
+
     public String getCustomer_Id() {
         return Customer_Id;
     }
@@ -60,13 +69,11 @@ public class Order {
         Customer_Id = customer_Id;
     }
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "OrderID='" + OrderID + '\'' +
-                ", OrderDate=" + OrderDate +
-                ", Total=" + Total +
-                ", Customer_Id='" + Customer_Id + '\'' +
-                '}';
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String status) {
+        Status = status;
     }
 }

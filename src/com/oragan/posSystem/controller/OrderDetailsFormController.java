@@ -19,9 +19,12 @@ public class OrderDetailsFormController {
     public TableView tblOrder;
     public TableColumn colOrderID;
     public TableColumn colCustomerID;
-    public TableColumn ColCustomerName;
     public TableColumn colOrderDate;
     public TableColumn colOrderTotal;
+    public String cmbCustomerName;
+    public String cmbOrderIDs;
+    public TableColumn colCustomerName;
+    public TableColumn colStatus;
     private ObservableList<Order> orderList = FXCollections.observableArrayList();
 
     public void initialize() {
@@ -30,6 +33,8 @@ public class OrderDetailsFormController {
         colOrderDate.setCellValueFactory(new PropertyValueFactory<>("orderDate"));
         colOrderTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
         colCustomerID.setCellValueFactory(new PropertyValueFactory<>("customer_Id"));
+        colCustomerName.setCellValueFactory(new PropertyValueFactory<>("Customer_name"));
+        colStatus.setCellValueFactory(new PropertyValueFactory<>("Status"));
 
         // Fetch data and populate the table
         fetchOrdersFromDatabase();
@@ -38,7 +43,7 @@ public class OrderDetailsFormController {
     private void fetchOrdersFromDatabase() {
         orderList.clear();
 
-        String query = "SELECT OrderID, OrderDate, Total, CustomerID FROM 'Order'";
+        String query = "SELECT OrderID, OrderDate, Total, Customer_name, Customer_Id, Status FROM 'Order'";
 
         try (Connection conn = DBConnection.getInstance().getConnection();
              PreparedStatement ps = conn.prepareStatement(query);
@@ -48,9 +53,11 @@ public class OrderDetailsFormController {
                 String orderID = rs.getString("OrderID");
                 Date orderDate = rs.getDate("OrderDate");
                 double total = rs.getDouble("Total");
-                String customerID = rs.getString("CustomerID");
+                String customerID = rs.getString("Customer_Id");
+                String customerName = rs.getString("Customer_name");
+                String status = rs.getString("Status");
 
-                Order order = new Order(orderID, orderDate, total, customerID);
+                Order order = new Order(orderID, orderDate, total, customerID,customerName,status);
                 orderList.add(order);
                 System.out.println(order);
             }

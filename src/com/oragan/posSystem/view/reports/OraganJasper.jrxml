@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
 			  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 			  xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
-			  name="OraganJasper" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a00424e2-736b-4c8e-b638-d3c28ab8094e">
+			  name="OraganBill" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a00424e2-736b-4c8e-b638-d3c28ab8094e">
+
 	<parameter name="orderId" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT * FROM OrderItem WHERE OrderID = $P{orderId}]]>
@@ -13,30 +14,126 @@
 	<field name="Quantity" class="java.lang.Integer"/>
 	<field name="Price" class="java.lang.Double"/>
 	<field name="Total" class="java.lang.Double"/>
+	<variable name="TotalAmount" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{Total}]]></variableExpression>
+	</variable>
+
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+
 	<title>
-		<band height="79" splitType="Stretch">
-			<staticText>
-				<reportElement x="220" y="24" width="173" height="30" uuid="1eb28c75-681a-435e-a488-865efa955d30"/>
-				<text><![CDATA[ORAGAN.IST POS SYSTEM]]></text>
-			</staticText>
+		<band height="139" splitType="Stretch">
+			<textField>
+				<reportElement x="180" y="20" width="330" height="60" uuid="50d1659f-0f7a-42ba-8a09-163cce67c55d"/>
+				<textElement>
+					<font size="30" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ORAGAN.IST"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="80" width="330" height="30" uuid="50d1659f-0f7a-42ba-8a09-163cce67c55d"/>
+				<textFieldExpression><![CDATA["Problem Solving Innovation Software Company"]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="18" y="110" width="512" height="1" uuid="20593498-22f0-49f8-b602-0f54daa8b5bf"/>
+			</line>
+			<textField>
+				<reportElement x="0" y="0" width="100" height="30" uuid="3432d398-da2e-40d7-81ad-8e1ba222177d"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="475" y="0" width="100" height="30" uuid="a8968058-7269-4a66-8a3b-d1837ac336fa"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm">
+				<reportElement x="475" y="20" width="100" height="30" uuid="10ba55f2-5ea1-46dd-891c-14cafd9ce40a"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
+
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement x="20" y="10" width="150" height="25" uuid="d5f76422-79d7-4b89-909d-3b8d3031b7fa"/>
+				<text><![CDATA[Order ID:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="170" y="10" width="150" height="25" uuid="9945baff-7e89-4b71-871d-2b6b807f3e32"/>
+				<textFieldExpression><![CDATA[$P{orderId}]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageHeader>
+
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="80" height="30" uuid="1b9b4c5b-3a58-4f5e-8e5f-6e603c88dc7b"/>
+				<text><![CDATA[Item Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="0" width="200" height="30" uuid="44f7d3c7-970f-45f0-9e80-9f66a5b26b79"/>
+				<text><![CDATA[Item Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="0" width="80" height="30" uuid="2f55e5a8-2c6a-4055-a6d7-508d8b0fc89e"/>
+				<text><![CDATA[Quantity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="360" y="0" width="100" height="30" uuid="6f0f704e-4b99-4b2b-b407-9a8a3283ccbb"/>
+				<text><![CDATA[Unit Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="0" width="100" height="30" uuid="b1fc39f0-1e63-4875-98ef-8b0eaa6148fc"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
 	</columnHeader>
+
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="80" height="30" uuid="bfc78593-3df8-4f2f-8cf5-3b3a5edceec2"/>
+				<textFieldExpression><![CDATA[$F{Item_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="0" width="200" height="30" uuid="a174d053-1f25-4df6-b8d2-1e3b108de1a7"/>
+				<textFieldExpression><![CDATA[$F{Item_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="0" width="80" height="30" uuid="ea97af7f-f1ee-4d07-981f-d0c52e43d4be"/>
+				<textFieldExpression><![CDATA[$F{Quantity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="360" y="0" width="100" height="30" uuid="d3425b95-9f4e-4e08-8e26-3466fba6f1da"/>
+				<textFieldExpression><![CDATA[$F{Price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="0" width="100" height="30" uuid="e8c484e6-cfc4-4ae2-872f-6b6ef8b0f703"/>
+				<textFieldExpression><![CDATA[$F{Total}]]></textFieldExpression>
+			</textField>
+		</band>
 	</detail>
+
 	<columnFooter>
 		<band height="45" splitType="Stretch"/>
 	</columnFooter>
+
 	<pageFooter>
 		<band height="54" splitType="Stretch"/>
 	</pageFooter>
+
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="360" y="0" width="100" height="30" uuid="a9b3b602-cb0d-40b2-8770-2021c2b60ab4"/>
+				<text><![CDATA[Grand Total:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="460" y="0" width="100" height="30" uuid="c5173560-5d21-4997-9e38-3b5f7b785f3b"/>
+				<textFieldExpression><![CDATA["$ " + new java.text.DecimalFormat("0.00").format($V{TotalAmount})]]></textFieldExpression>
+			</textField>
+		</band>
 	</summary>
 </jasperReport>

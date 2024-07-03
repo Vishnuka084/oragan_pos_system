@@ -15,17 +15,19 @@ public class OrderItem {
     private Integer Quantity;
     private double price;
     private double total;
+    private String status;
 
     public OrderItem() {
     }
 
-    public OrderItem(String orderID, String item_code, String item_name, Integer quantity, double price, double total) {
+    public OrderItem(String orderID, String item_code, String item_name, Integer quantity, double price, double total, String status) {
         OrderID = orderID;
         Item_code = item_code;
         Item_name = item_name;
         Quantity = quantity;
         this.price = price;
         this.total = total;
+        this.status = status;
     }
 
     public String getOrderID() {
@@ -76,15 +78,11 @@ public class OrderItem {
         this.total = total;
     }
 
-    @Override
-    public String toString() {
-        return "OrderItem{" +
-                "OrderID='" + OrderID + '\'' +
-                ", Item_code='" + Item_code + '\'' +
-                ", Item_name='" + Item_name + '\'' +
-                ", Quantity=" + Quantity +
-                ", price=" + price +
-                ", total=" + total +
-                '}';
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

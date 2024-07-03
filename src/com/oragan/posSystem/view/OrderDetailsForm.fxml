@@ -20,10 +20,11 @@
          <columns>
             <TableColumn fx:id="colOrderID" prefWidth="163.0" text="Order ID" />
             <TableColumn fx:id="colCustomerID" prefWidth="170.0" text="Customer ID" />
-            <TableColumn fx:id="ColCustomerName" prefWidth="187.0" text="Customer Name" />
+            <TableColumn fx:id="colCustomerName" prefWidth="187.0" text="Customer Name" />
             <TableColumn fx:id="colOrderDate" prefWidth="179.0" text="Date" />
-            <TableColumn fx:id="colOrderTotal" prefWidth="231.0" text="Total" />
-            <TableColumn prefWidth="249.0" text="options" />
+            <TableColumn fx:id="colStatus" prefWidth="131.0" text="Status" />
+            <TableColumn fx:id="colOrderTotal" prefWidth="155.0" text="Total" />
+            <TableColumn prefWidth="194.0" text="options" />
          </columns>
       </TableView>
       <ComboBox fx:id="cmbOrderID" layoutX="761.0" layoutY="105.0" onAction="#cmbSearchByOrderOnAction" prefHeight="48.0" prefWidth="192.0" promptText="Select Serch Option" style="-fx-background-color: FFC700; -fx-background-radius: 10;">
