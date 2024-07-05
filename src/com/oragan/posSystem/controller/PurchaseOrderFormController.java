@@ -99,6 +99,7 @@ public class PurchaseOrderFormController {
 
 
 
+
     }
 
     private String generateOrderId() throws SQLException, ClassNotFoundException {
@@ -478,8 +479,7 @@ public class PurchaseOrderFormController {
                     setGraphic(hBox);
 
                     updateButton.setOnAction(event -> handleUpdateOrder(orderItem));
-
-//                    deleteButton.setOnAction(event -> handleDeleteCustomer(customer));
+                    deleteButton.setOnAction(event -> handleDeleteOrderItem(orderItem));
                 }
             });
 
@@ -487,7 +487,37 @@ public class PurchaseOrderFormController {
         }
 
     private void handleUpdateOrder(OrderItem orderItem) {
+        // Get the current quantity on hand for the selected item
+        int currentQtyOnHand = Integer.parseInt(txtQtyOnHand.getText());
 
+        // Calculate the difference in quantity
+        int oldQuantity = orderItem.getQuantity();
+        int newQuantity = Integer.parseInt(txtQuantity.getText());
+        int quantityDifference = newQuantity - oldQuantity;
+
+        // Validate if the new quantity is available
+        if (quantityDifference > currentQtyOnHand) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Insufficient quantity available.");
+            return;
+        }
+
+        // Update the quantity on hand preview in the text field
+        txtQtyOnHand.setText(String.valueOf(currentQtyOnHand - quantityDifference));
+
+        // Update the order item with new values
+        String newItemCode = cmbItemCode.getValue();
+        String newItemName = txtItemName.getText();
+        double newPrice = Double.parseDouble(txtPrice.getText());
+
+        orderItem.setItem_code(newItemCode);
+        orderItem.setItem_name(newItemName);
+        orderItem.setQuantity(newQuantity);
+        orderItem.setPrice(newPrice);
+        orderItem.setTotal(newQuantity * newPrice); // Assuming total is calculated as quantity * price
+
+        // Refresh the table to show updated values
+        tblCart.refresh();
+        updateTotal();
     }
 
     private void handleDeleteOrderItem(OrderItem orderItem) {

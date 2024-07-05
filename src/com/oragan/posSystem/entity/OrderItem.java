@@ -6,6 +6,8 @@
  */
 package com.oragan.posSystem.entity;
 
+import java.nio.charset.Charset;
+
 public class OrderItem {
 
 
@@ -85,4 +87,6 @@ public class OrderItem {
     public void setStatus(String status) {
         this.status = status;
     }
+
+
 }

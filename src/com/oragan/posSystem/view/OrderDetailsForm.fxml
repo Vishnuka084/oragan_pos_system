@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="788.0" prefWidth="1622.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.OrderDetailsFormController">
    <children>
-      <TextField layoutX="433.0" layoutY="105.0" onAction="#txtSearchFieldOnAction" prefHeight="48.0" prefWidth="304.0" promptText="Search">
+      <TextField fx:id="txtSerchFieldOrder" layoutX="433.0" layoutY="105.0" onAction="#txtSearchFieldOnAction" prefHeight="48.0" prefWidth="304.0" promptText="Search">
          <font>
             <Font size="15.0" />
          </font>
@@ -24,7 +24,7 @@
             <TableColumn fx:id="colOrderDate" prefWidth="179.0" text="Date" />
             <TableColumn fx:id="colStatus" prefWidth="131.0" text="Status" />
             <TableColumn fx:id="colOrderTotal" prefWidth="155.0" text="Total" />
-            <TableColumn prefWidth="194.0" text="options" />
+            <TableColumn fx:id="colOptions" prefWidth="194.0" text="options" />
          </columns>
       </TableView>
       <ComboBox fx:id="cmbOrderID" layoutX="761.0" layoutY="105.0" onAction="#cmbSearchByOrderOnAction" prefHeight="48.0" prefWidth="192.0" promptText="Select Serch Option" style="-fx-background-color: FFC700; -fx-background-radius: 10;">

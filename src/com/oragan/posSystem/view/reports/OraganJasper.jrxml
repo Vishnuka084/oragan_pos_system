@@ -8,7 +8,9 @@
 	<parameter name="orderId" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT * FROM OrderItem WHERE OrderID = $P{orderId}]]>
+
 	</queryString>
+
 	<field name="Item_code" class="java.lang.String"/>
 	<field name="Item_name" class="java.lang.String"/>
 	<field name="Quantity" class="java.lang.Integer"/>
@@ -68,6 +70,7 @@
 
 	<columnHeader>
 		<band height="61" splitType="Stretch">
+
 			<staticText>
 				<reportElement x="0" y="0" width="80" height="30" uuid="1b9b4c5b-3a58-4f5e-8e5f-6e603c88dc7b"/>
 				<text><![CDATA[Item Code]]></text>
