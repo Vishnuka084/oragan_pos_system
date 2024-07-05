@@ -1,0 +1,563 @@
+Index: src/com/oragan/posSystem/controller/PurchaseOrderFormController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.oragan.posSystem.controller;\r\n\r\nimport com.oragan.posSystem.db.DBConnection;\r\nimport com.oragan.posSystem.entity.Customer;\r\nimport com.oragan.posSystem.entity.Item;\r\nimport com.oragan.posSystem.entity.OrderItem;\r\nimport javafx.collections.FXCollections;\r\nimport javafx.collections.ObservableList;\r\nimport javafx.event.ActionEvent;\r\nimport javafx.scene.control.*;\r\nimport javafx.scene.control.cell.PropertyValueFactory;\r\nimport net.sf.jasperreports.engine.*;\r\nimport net.sf.jasperreports.view.JasperViewer;\r\n\r\nimport java.sql.Connection;\r\nimport java.sql.PreparedStatement;\r\nimport java.sql.ResultSet;\r\nimport java.sql.SQLException;\r\nimport java.time.LocalDateTime;\r\nimport java.time.format.DateTimeFormatter;\r\nimport java.util.ArrayList;\r\nimport java.util.HashMap;\r\nimport java.util.List;\r\nimport java.util.Map;\r\n\r\npublic class PurchaseOrderFormController {\r\n    public ComboBox<String> cmbCustomerID;\r\n    public TextField txtCustomerName;\r\n    public TextField txtContactNumber;\r\n    public ComboBox<String> cmbItemCode;\r\n    public TextField txtItemName;\r\n    public TextField txtQtyOnHand;\r\n    public TextField txtCustomerAddress;\r\n    public TextField txtPrice;\r\n    public Label lblOrderID;\r\n    public TableColumn colItemCode;\r\n    public TableColumn colItemName;\r\n    public TableColumn colUnitPrice;\r\n    public TableColumn colQuantity;\r\n    public TableColumn colTotal;\r\n    public TextField txtQuantity;\r\n    public TableView tblCart;\r\n    public TextField txtTotal;\r\n    private List<Customer> customers;\r\n    private List<Item> items;\r\n    private ObservableList<OrderItem> cartItems;\r\n\r\n    public void initialize() {\r\n        customers = getAllCustomers();\r\n        for (Customer customer : customers) {\r\n            cmbCustomerID.getItems().add(customer.getCustomer_Id());\r\n        }\r\n        if (!customers.isEmpty()) {\r\n            cmbCustomerID.getSelectionModel().selectFirst();\r\n            setCustomerDetails(customers.get(0).getCustomer_Id());\r\n        }\r\n\r\n        items = getAllItems();\r\n        for (Item item : items) {\r\n            cmbItemCode.getItems().add(item.getItem_code());\r\n        }\r\n        if (!items.isEmpty()) {\r\n            cmbItemCode.getSelectionModel().selectFirst();\r\n            setItemDetails(items.get(0).getItem_code());\r\n        }\r\n\r\n        //generate  order Id\r\n        try {\r\n            String orderId = generateOrderId();\r\n            lblOrderID.setText(orderId);\r\n        } catch (SQLException | ClassNotFoundException e) {\r\n            System.err.println(\"Error generating order ID: \" + e.getMessage());\r\n        }\r\n\r\n        // Initialize cart table\r\n        cartItems = FXCollections.observableArrayList();\r\n        tblCart.setItems(cartItems);\r\n        colItemCode.setCellValueFactory(new PropertyValueFactory<>(\"item_code\"));\r\n        colItemName.setCellValueFactory(new PropertyValueFactory<>(\"item_name\"));\r\n        colQuantity.setCellValueFactory(new PropertyValueFactory<>(\"quantity\"));\r\n        colUnitPrice.setCellValueFactory(new PropertyValueFactory<>(\"price\"));\r\n        colTotal.setCellValueFactory(new PropertyValueFactory<>(\"total\"));\r\n\r\n    }\r\n\r\n    private String generateOrderId() throws SQLException, ClassNotFoundException {\r\n        String query = \"SELECT OrderID FROM 'Order' ORDER BY OrderID DESC LIMIT 1\";\r\n\r\n        try (Connection conn = DBConnection.getInstance().getConnection();\r\n             PreparedStatement ps = conn.prepareStatement(query);\r\n             ResultSet rs = ps.executeQuery()) {\r\n\r\n            if (rs.next()) {\r\n                String lastOrderId = rs.getString(\"OrderID\");\r\n                int lastIdNumber = Integer.parseInt(lastOrderId.replace(\"ORD-\", \"\"));\r\n                int newIdNumber = lastIdNumber + 1;\r\n                return String.format(\"ORD-%06d\", newIdNumber);\r\n            } else {\r\n                // If no orders exist, start with ORD-000001\r\n                return \"ORD-000001\";\r\n            }\r\n        }\r\n    }\r\n\r\n\r\n\r\n    private void setItemDetails(String Item_code) {\r\n        for (Item item : items) {\r\n            if (item.getItem_code().equals(Item_code)) {\r\n                txtItemName.setText(item.getItem_name());\r\n                txtPrice.setText(String.valueOf(item.getPrice()));\r\n                txtQtyOnHand.setText(String.valueOf(item.getQty()));\r\n                break;\r\n            }\r\n        }\r\n    }\r\n\r\n    private List<Item> getAllItems() {\r\n        List<Item> itemList = new ArrayList<>();\r\n        String query = \"SELECT * FROM items\";\r\n\r\n        try {\r\n            DBConnection dbConnection = DBConnection.getInstance();\r\n            if (dbConnection.isConnectionValid()) {\r\n                try (Connection conn = dbConnection.getConnection();\r\n                     PreparedStatement ps = conn.prepareStatement(query);\r\n                     ResultSet rs = ps.executeQuery()) {\r\n\r\n                    while (rs.next()) {\r\n                        Item item = new Item();\r\n                        item.setItem_code(rs.getString(\"Item_code\"));\r\n                        item.setItem_name(rs.getString(\"Item_name\"));\r\n                        item.setPrice(rs.getDouble(\"price\"));\r\n                        item.setQty(rs.getInt(\"qty\"));\r\n                        itemList.add(item);\r\n                    }\r\n                }\r\n            } else {\r\n                System.err.println(\"Database connection is not valid.\");\r\n            }\r\n        } catch (SQLException | ClassNotFoundException e) {\r\n            System.err.println(\"Error loading items: \" + e.getMessage());\r\n        }\r\n\r\n        return itemList;\r\n    }\r\n\r\n    private void setCustomerDetails(String customer_id) {\r\n        for (Customer customer : customers) {\r\n            if (customer.getCustomer_Id().equals(customer_id)) {\r\n                txtCustomerName.setText(customer.getCustomer_name());\r\n                txtCustomerAddress.setText(customer.getAddress());\r\n                txtContactNumber.setText(customer.getContact_number());\r\n                break;\r\n            }\r\n        }\r\n    }\r\n\r\n    private List<Customer> getAllCustomers() {\r\n        List<Customer> customerList = new ArrayList<>();\r\n        String query = \"SELECT * FROM customers\";\r\n\r\n        try {\r\n            DBConnection dbConnection = DBConnection.getInstance();\r\n            if (dbConnection.isConnectionValid()) {\r\n                try (Connection conn = dbConnection.getConnection();\r\n                     PreparedStatement ps = conn.prepareStatement(query);\r\n                     ResultSet rs = ps.executeQuery()) {\r\n\r\n                    while (rs.next()) {\r\n                        Customer customer = new Customer();\r\n                        customer.setCustomer_Id(rs.getString(\"customer_id\"));\r\n                        customer.setCustomer_name(rs.getString(\"customer_name\"));\r\n                        customer.setAddress(rs.getString(\"address\"));\r\n                        customer.setContact_number(rs.getString(\"contact_number\"));\r\n                        customerList.add(customer);\r\n                    }\r\n                }\r\n            } else {\r\n                System.err.println(\"Database connection is not valid.\");\r\n            }\r\n        } catch (SQLException | ClassNotFoundException e) {\r\n            System.err.println(\"Error loading customers: \" + e.getMessage());\r\n        }\r\n\r\n        return customerList;\r\n    }\r\n\r\n    public void cmbCustomerIDOnAction(ActionEvent actionEvent) {\r\n        String selectedCustomerId = cmbCustomerID.getSelectionModel().getSelectedItem();\r\n        setCustomerDetails(selectedCustomerId);\r\n    }\r\n\r\n    public void cmbItemCodeOnAction(ActionEvent actionEvent) {\r\n        String selectedItemCode = cmbItemCode.getSelectionModel().getSelectedItem();\r\n        setItemDetails(selectedItemCode);\r\n    }\r\n\r\n    public void btnAddCartOnAction(ActionEvent actionEvent) {\r\n        String itemCode = cmbItemCode.getSelectionModel().getSelectedItem();\r\n        String itemName = txtItemName.getText();\r\n        int quantity = Integer.parseInt(txtQuantity.getText());\r\n        double price = Double.parseDouble(txtPrice.getText());\r\n        double total = quantity * price;\r\n\r\n        // Validate if quantity is available\r\n        int qtyOnHand = Integer.parseInt(txtQtyOnHand.getText());\r\n        if (quantity > qtyOnHand) {\r\n            showAlert(Alert.AlertType.ERROR, \"Error\", \"Insufficient quantity available.\");\r\n            return;\r\n        }\r\n\r\n        // Create the OrderItem object\r\n        OrderItem selectedItem = new OrderItem();\r\n        selectedItem.setItem_code(itemCode);\r\n        selectedItem.setItem_name(itemName);\r\n        selectedItem.setQuantity(quantity);\r\n        selectedItem.setPrice(price);\r\n        selectedItem.setTotal(total);\r\n\r\n        // Update the quantity preview in the text field\r\n        txtQtyOnHand.setText(String.valueOf(qtyOnHand - quantity));\r\n\r\n        // Add item to cart\r\n        cartItems.add(selectedItem);\r\n        tblCart.refresh();\r\n        updateTotal();\r\n\r\n    }\r\n    public void  updateTotal(){\r\n        double total=0;\r\n        for(OrderItem orderitem:cartItems){\r\n            total+=orderitem.getTotal();\r\n        }\r\n        txtTotal.setText(String.valueOf(total));\r\n    }\r\n\r\n\r\n    public void btnPlaceOrderOnAction(ActionEvent actionEvent) {\r\n        String orderId = lblOrderID.getText();\r\n        String orderDate = getCurrentDateTime();\r\n        double total = Double.parseDouble(txtTotal.getText());\r\n        String customerId = cmbCustomerID.getSelectionModel().getSelectedItem();\r\n\r\n        String insertOrderQuery = \"INSERT INTO 'Order' (OrderID, OrderDate, Total, CustomerID) VALUES (?, ?, ?, ?)\";\r\n        String updateItemQuantityQuery = \"UPDATE items SET qty = qty - ? WHERE Item_code = ?\";\r\n\r\n        try (Connection conn = DBConnection.getInstance().getConnection()) {\r\n            // Start transaction\r\n            conn.setAutoCommit(false);\r\n\r\n            try (PreparedStatement psOrder = conn.prepareStatement(insertOrderQuery);\r\n                 PreparedStatement psUpdateItem = conn.prepareStatement(updateItemQuantityQuery)) {\r\n\r\n                // Insert order\r\n                psOrder.setString(1, orderId);\r\n                psOrder.setString(2, orderDate);\r\n                psOrder.setDouble(3, total);\r\n                psOrder.setString(4, customerId);\r\n\r\n                int rowsInsertedOrder = psOrder.executeUpdate();\r\n                if (rowsInsertedOrder <= 0) {\r\n                    throw new SQLException(\"Failed to save order.\");\r\n                }\r\n\r\n                // Update item quantities and prepare order items insertion\r\n                for (OrderItem orderItem : cartItems) {\r\n                    psUpdateItem.setInt(1, orderItem.getQuantity());\r\n                    psUpdateItem.setString(2, orderItem.getItem_code());\r\n                    int rowsUpdatedItem = psUpdateItem.executeUpdate();\r\n                    if (rowsUpdatedItem <= 0) {\r\n                        throw new SQLException(\"Failed to update item quantity.\");\r\n                    }\r\n                }\r\n\r\n                // Save order items\r\n                saveOrderItems(conn, orderId);\r\n\r\n                // Commit transaction\r\n                conn.commit();\r\n                System.out.println(\"Order saved successfully.\");\r\n                showAlert(Alert.AlertType.INFORMATION, \"Success\", \"Order updated successfully.\" + orderId);\r\n\r\n                // Generate Jasper Report\r\n                generateJasperReport(orderId);\r\n\r\n                clearForm();\r\n\r\n            } catch (SQLException e) {\r\n                conn.rollback();\r\n                System.err.println(\"Transaction rolled back: \" + e.getMessage());\r\n                showAlert(Alert.AlertType.ERROR, \"Error\", \"Failed to save order: \" + e.getMessage());\r\n            } finally {\r\n                conn.setAutoCommit(true);\r\n            }\r\n\r\n        } catch (SQLException | ClassNotFoundException e) {\r\n            System.err.println(\"Error saving order: \" + e.getMessage());\r\n            showAlert(Alert.AlertType.ERROR, \"Error\", \"Error saving order: \" + e.getMessage());\r\n        }\r\n    }\r\n\r\n    //get Current date and time\r\n    private String getCurrentDateTime() {\r\n        LocalDateTime currentDateTime = LocalDateTime.now();\r\n        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(\"yyyy-MM-dd HH:mm:ss\");\r\n        String formattedDateTime = currentDateTime.format(formatter);\r\n        return formattedDateTime;\r\n\r\n    }\r\n\r\n    private void saveOrderItems(Connection conn, String orderId) throws SQLException {\r\n        String insertOrderItemQuery = \"INSERT INTO 'OrderItem' (OrderID, Item_code, Item_name, Quantity, Price, Total) VALUES (?, ?, ?, ?, ?, ?)\";\r\n\r\n        try (PreparedStatement ps = conn.prepareStatement(insertOrderItemQuery)) {\r\n            for (OrderItem orderItem : cartItems) {\r\n                ps.setString(1, orderId);\r\n                ps.setString(2, orderItem.getItem_code());\r\n                ps.setString(3, orderItem.getItem_name());\r\n                ps.setInt(4, orderItem.getQuantity());\r\n                ps.setDouble(5, orderItem.getPrice());\r\n                ps.setDouble(6, orderItem.getTotal());\r\n                ps.addBatch();\r\n            }\r\n\r\n            int[] rowsInserted = ps.executeBatch();\r\n            if (rowsInserted.length != cartItems.size()) {\r\n                throw new SQLException(\"Failed to insert all order items.\");\r\n            }\r\n\r\n            System.out.println(\"Inserted \" + rowsInserted.length + \" order items.\");\r\n        }\r\n    }\r\n\r\n    private void clearForm() {\r\n        // Clear UI fields as needed\r\n        txtTotal.clear();\r\n        cartItems.clear();\r\n        tblCart.refresh();\r\n        // Clear other form fields as needed\r\n    }\r\n\r\n    private void showAlert(Alert.AlertType alertType, String title, String message) {\r\n        Alert alert = new Alert(alertType);\r\n        alert.setTitle(title);\r\n        alert.setHeaderText(null);\r\n        alert.setContentText(message);\r\n        alert.showAndWait();\r\n    }\r\n\r\n    private void generateJasperReport(String orderId) {\r\n        try {\r\n            // Load the compiled Jasper report\r\n            JasperReport jasperReport = JasperCompileManager.compileReport(getClass().getResourceAsStream(\"./com/oragan/posSystem/view/reports/OraganJasper.jrxml\"));\r\n\r\n            // Set parameters\r\n            Map<String, Object> parameters = new HashMap<>();\r\n            parameters.put(\"orderId\", orderId);\r\n\r\n            // Fill the report with data\r\n            Connection conn = DBConnection.getInstance().getConnection();\r\n            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, conn);\r\n\r\n            // View the report\r\n            JasperViewer.viewReport(jasperPrint, false);\r\n        } catch (JRException | SQLException | ClassNotFoundException e) {\r\n            System.err.println(\"Error generating Jasper report: \" + e.getMessage());\r\n            showAlert(Alert.AlertType.ERROR, \"Error\", \"Error generating report: \" + e.getMessage());\r\n        }\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/oragan/posSystem/controller/PurchaseOrderFormController.java b/src/com/oragan/posSystem/controller/PurchaseOrderFormController.java
+--- a/src/com/oragan/posSystem/controller/PurchaseOrderFormController.java	(revision 8db981e0f9cf952d3aa260d1d870210ce8dffbcf)
++++ b/src/com/oragan/posSystem/controller/PurchaseOrderFormController.java	(date 1719295410662)
+@@ -9,8 +9,6 @@
+ import javafx.event.ActionEvent;
+ import javafx.scene.control.*;
+ import javafx.scene.control.cell.PropertyValueFactory;
+-import net.sf.jasperreports.engine.*;
+-import net.sf.jasperreports.view.JasperViewer;
+ 
+ import java.sql.Connection;
+ import java.sql.PreparedStatement;
+@@ -19,9 +17,7 @@
+ import java.time.LocalDateTime;
+ import java.time.format.DateTimeFormatter;
+ import java.util.ArrayList;
+-import java.util.HashMap;
+ import java.util.List;
+-import java.util.Map;
+ 
+ public class PurchaseOrderFormController {
+     public ComboBox<String> cmbCustomerID;
+@@ -196,32 +192,31 @@
+         setItemDetails(selectedItemCode);
+     }
+ 
++<<<<<<< HEAD
++    public void PlaceOderBillOnEvent(MouseEvent mouseEvent) {
++        System.out.println("HEllo Jasperf 01 ");
++        try {
++            System.out.println("print coming  ");
++            JasperDesign load = JRXmlLoader.load(this.getClass().getResourceAsStream("/view/reports/OraganJasper.jrxml"));
++            System.out.println("Report view ");
++            JasperReport compileReport = JasperCompileManager.compileReport(load);
++=======
+     public void btnAddCartOnAction(ActionEvent actionEvent) {
+         String itemCode = cmbItemCode.getSelectionModel().getSelectedItem();
+         String itemName = txtItemName.getText();
+         int quantity = Integer.parseInt(txtQuantity.getText());
+         double price = Double.parseDouble(txtPrice.getText());
++        String orderId = lblOrderID.getText();
+         double total = quantity * price;
+ 
+-        // Validate if quantity is available
+-        int qtyOnHand = Integer.parseInt(txtQtyOnHand.getText());
+-        if (quantity > qtyOnHand) {
+-            showAlert(Alert.AlertType.ERROR, "Error", "Insufficient quantity available.");
+-            return;
+-        }
+-
+-        // Create the OrderItem object
+         OrderItem selectedItem = new OrderItem();
+         selectedItem.setItem_code(itemCode);
+         selectedItem.setItem_name(itemName);
+         selectedItem.setQuantity(quantity);
+         selectedItem.setPrice(price);
+         selectedItem.setTotal(total);
++>>>>>>> b5d5e6af10d7127b8ac8e37f8d97468d35808096
+ 
+-        // Update the quantity preview in the text field
+-        txtQtyOnHand.setText(String.valueOf(qtyOnHand - quantity));
+-
+-        // Add item to cart
+         cartItems.add(selectedItem);
+         tblCart.refresh();
+         updateTotal();
+@@ -232,72 +227,42 @@
+         for(OrderItem orderitem:cartItems){
+             total+=orderitem.getTotal();
+         }
++<<<<<<< HEAD
++
++=======
+         txtTotal.setText(String.valueOf(total));
++>>>>>>> b5d5e6af10d7127b8ac8e37f8d97468d35808096
+     }
+ 
+ 
+     public void btnPlaceOrderOnAction(ActionEvent actionEvent) {
+         String orderId = lblOrderID.getText();
+-        String orderDate = getCurrentDateTime();
+-        double total = Double.parseDouble(txtTotal.getText());
+-        String customerId = cmbCustomerID.getSelectionModel().getSelectedItem();
++        String orderDate = getCurrentDateTime(); // Implement getCurrentDateTime() to get current date and time as a string
++        double total = Double.parseDouble(txtTotal.getText()); // Get total from txtTotal
++        String customerId = cmbCustomerID.getSelectionModel().getSelectedItem(); // Assuming CustomerID is an integer
+ 
+         String insertOrderQuery = "INSERT INTO 'Order' (OrderID, OrderDate, Total, CustomerID) VALUES (?, ?, ?, ?)";
+-        String updateItemQuantityQuery = "UPDATE items SET qty = qty - ? WHERE Item_code = ?";
+-
+-        try (Connection conn = DBConnection.getInstance().getConnection()) {
+-            // Start transaction
+-            conn.setAutoCommit(false);
+-
+-            try (PreparedStatement psOrder = conn.prepareStatement(insertOrderQuery);
+-                 PreparedStatement psUpdateItem = conn.prepareStatement(updateItemQuantityQuery)) {
+-
+-                // Insert order
+-                psOrder.setString(1, orderId);
+-                psOrder.setString(2, orderDate);
+-                psOrder.setDouble(3, total);
+-                psOrder.setString(4, customerId);
+ 
+-                int rowsInsertedOrder = psOrder.executeUpdate();
+-                if (rowsInsertedOrder <= 0) {
+-                    throw new SQLException("Failed to save order.");
+-                }
++        try (Connection conn = DBConnection.getInstance().getConnection();
++             PreparedStatement ps = conn.prepareStatement(insertOrderQuery)) {
+ 
+-                // Update item quantities and prepare order items insertion
+-                for (OrderItem orderItem : cartItems) {
+-                    psUpdateItem.setInt(1, orderItem.getQuantity());
+-                    psUpdateItem.setString(2, orderItem.getItem_code());
+-                    int rowsUpdatedItem = psUpdateItem.executeUpdate();
+-                    if (rowsUpdatedItem <= 0) {
+-                        throw new SQLException("Failed to update item quantity.");
+-                    }
+-                }
++            ps.setString(1, orderId);
++            ps.setString(2, orderDate);
++            ps.setDouble(3, total);
++            ps.setString(4, customerId);
+ 
+-                // Save order items
+-                saveOrderItems(conn, orderId);
+-
+-                // Commit transaction
+-                conn.commit();
++            int rowsInserted = ps.executeUpdate();
++            if (rowsInserted > 0) {
+                 System.out.println("Order saved successfully.");
+-                showAlert(Alert.AlertType.INFORMATION, "Success", "Order updated successfully." + orderId);
+-
+-                // Generate Jasper Report
+-                generateJasperReport(orderId);
+-
+-                clearForm();
+-
+-            } catch (SQLException e) {
+-                conn.rollback();
+-                System.err.println("Transaction rolled back: " + e.getMessage());
+-                showAlert(Alert.AlertType.ERROR, "Error", "Failed to save order: " + e.getMessage());
+-            } finally {
+-                conn.setAutoCommit(true);
++                saveOrderItems(orderId); // Call method to save order items
++                clearForm(); // Optional: Clear form after saving
++            } else {
++                System.err.println("Failed to save order.");
+             }
+-
+         } catch (SQLException | ClassNotFoundException e) {
+             System.err.println("Error saving order: " + e.getMessage());
+-            showAlert(Alert.AlertType.ERROR, "Error", "Error saving order: " + e.getMessage());
+         }
++
+     }
+ 
+     //get Current date and time
+@@ -309,10 +274,13 @@
+ 
+     }
+ 
+-    private void saveOrderItems(Connection conn, String orderId) throws SQLException {
++    private void saveOrderItems(String orderId) {
++
+         String insertOrderItemQuery = "INSERT INTO 'OrderItem' (OrderID, Item_code, Item_name, Quantity, Price, Total) VALUES (?, ?, ?, ?, ?, ?)";
+ 
+-        try (PreparedStatement ps = conn.prepareStatement(insertOrderItemQuery)) {
++        try (Connection conn = DBConnection.getInstance().getConnection();
++             PreparedStatement ps = conn.prepareStatement(insertOrderItemQuery)) {
++
+             for (OrderItem orderItem : cartItems) {
+                 ps.setString(1, orderId);
+                 ps.setString(2, orderItem.getItem_code());
+@@ -324,11 +292,10 @@
+             }
+ 
+             int[] rowsInserted = ps.executeBatch();
+-            if (rowsInserted.length != cartItems.size()) {
+-                throw new SQLException("Failed to insert all order items.");
+-            }
+-
+             System.out.println("Inserted " + rowsInserted.length + " order items.");
++
++        } catch (SQLException | ClassNotFoundException e) {
++            System.err.println("Error saving order items: " + e.getMessage());
+         }
+     }
+ 
+@@ -339,34 +306,4 @@
+         tblCart.refresh();
+         // Clear other form fields as needed
+     }
+-
+-    private void showAlert(Alert.AlertType alertType, String title, String message) {
+-        Alert alert = new Alert(alertType);
+-        alert.setTitle(title);
+-        alert.setHeaderText(null);
+-        alert.setContentText(message);
+-        alert.showAndWait();
+-    }
+-
+-    private void generateJasperReport(String orderId) {
+-        try {
+-            // Load the compiled Jasper report
+-            JasperReport jasperReport = JasperCompileManager.compileReport(getClass().getResourceAsStream("./com/oragan/posSystem/view/reports/OraganJasper.jrxml"));
+-
+-            // Set parameters
+-            Map<String, Object> parameters = new HashMap<>();
+-            parameters.put("orderId", orderId);
+-
+-            // Fill the report with data
+-            Connection conn = DBConnection.getInstance().getConnection();
+-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, conn);
+-
+-            // View the report
+-            JasperViewer.viewReport(jasperPrint, false);
+-        } catch (JRException | SQLException | ClassNotFoundException e) {
+-            System.err.println("Error generating Jasper report: " + e.getMessage());
+-            showAlert(Alert.AlertType.ERROR, "Error", "Error generating report: " + e.getMessage());
+-        }
+-    }
+-
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"89dbfd71-98c4-49ba-a84d-1363c7f00fa7\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_15_2024_5_20_PM__Changes_.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_15_2024_5_20_PM__Changes_.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_19_2024_11_16_AM__Changes_.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_19_2024_11_16_AM__Changes_.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_19_2024_11_25_AM__Changes_.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_19_2024_11_25_AM__Changes_.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_24_2024_11_55_AM__Changes_.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_24_2024_11_55_AM__Changes_.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_24_2024_11_55_AM__Changes_1.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_24_2024_11_55_AM__Changes_1.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/identifier.sqlite\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/identifier.sqlite\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/oragan_pos_system.iml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/oragan_pos_system.iml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/com/oragan/posSystem/controller/OrderDetailsFormController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/com/oragan/posSystem/controller/OrderDetailsFormController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/com/oragan/posSystem/controller/PurchaseOrderFormController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/com/oragan/posSystem/controller/PurchaseOrderFormController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/com/oragan/posSystem/view/OrderDetailsForm.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/com/oragan/posSystem/view/OrderDetailsForm.fxml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"HighlightingSettingsPerFile\">\r\n    <setting file=\"file://$PROJECT_DIR$/src/com/oragan/posSystem/view/CustomerForm.fxml\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/com/oragan/posSystem/controller/DashBoardFormController.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/.gitignore\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/com/oragan/posSystem/controller/AddItemFormController.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/com/oragan/posSystem/controller/CustomerFormController.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/com/oragan/posSystem/controller/AddCustomerFormController.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/com/oragan/posSystem/entity/Customer.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/com/oragan/posSystem/entity/Item.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n  </component>\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"1\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"AppInitializer\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.oragan.posSystem.AppInitializer\" />\r\n      <module name=\"oragan_pos_system\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.oragan.posSystem.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.AppInitializer\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 8db981e0f9cf952d3aa260d1d870210ce8dffbcf)
++++ b/.idea/workspace.xml	(date 1719295410924)
+@@ -1,23 +1,38 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="AutoImportSettings">
++    <option name="autoReloadType" value="SELECTIVE" />
++  </component>
+   <component name="ChangeListManager">
++<<<<<<< HEAD
+     <list default="true" id="89dbfd71-98c4-49ba-a84d-1363c7f00fa7" name="Changes" comment="">
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_15_2024_5_20_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_15_2024_5_20_PM__Changes_.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_19_2024_11_16_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_19_2024_11_16_AM__Changes_.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_19_2024_11_25_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_19_2024_11_25_AM__Changes_.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_24_2024_11_55_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_24_2024_11_55_AM__Changes_.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_24_2024_11_55_AM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_24_2024_11_55_AM__Changes_1.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/PurchaseOrderFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/PurchaseOrderFormController.java" afterDir="false" />
++=======
++    <list default="true" id="89dbfd71-98c4-49ba-a84d-1363c7f00fa7" name="Changes" comment="load to item details combobox">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/identifier.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/identifier.sqlite" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/oragan_pos_system.iml" beforeDir="false" afterPath="$PROJECT_DIR$/oragan_pos_system.iml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/OrderDetailsFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/OrderDetailsFormController.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/PurchaseOrderFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/PurchaseOrderFormController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/OrderDetailsForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/view/OrderDetailsForm.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/PurchaseOrderForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/view/PurchaseOrderForm.fxml" afterDir="false" />
++>>>>>>> b5d5e6af10d7127b8ac8e37f8d97468d35808096
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
++  </component>
++  <component name="ComposerSettings">
++    <execution />
++  </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="Class" />
++      </list>
++    </option>
++  </component>
++  <component name="Git.Settings">
++    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="HighlightingSettingsPerFile">
+     <setting file="file://$PROJECT_DIR$/src/com/oragan/posSystem/view/CustomerForm.fxml" root0="FORCE_HIGHLIGHTING" />
+@@ -29,9 +44,53 @@
+     <setting file="file://$PROJECT_DIR$/src/com/oragan/posSystem/entity/Customer.java" root0="FORCE_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/src/com/oragan/posSystem/entity/Item.java" root0="FORCE_HIGHLIGHTING" />
+   </component>
++  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\xampp\php\php.exe" />
++  <component name="ProjectColorInfo"><![CDATA[{
++  "associatedIndex": 3
++}]]></component>
++  <component name="ProjectId" id="2himxfBdo2WkUsgndzFgyBZefjj" />
+   <component name="ProjectLevelVcsManager">
+     <ConfirmationsSetting value="1" id="Add" />
+   </component>
++  <component name="ProjectViewState">
++    <option name="hideEmptyMiddlePackages" value="true" />
++    <option name="showLibraryContents" value="true" />
++  </component>
++<<<<<<< HEAD
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "RunOnceActivity.OpenProjectViewOnStart": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "WebServerToolWindowFactoryState": "false",
++    "git-widget-placeholder": "master",
++    "last_opened_file_path": "F:/oragan/New folder/oragan_pos_system/oragan_pos_system/lib/commons-lang3-3.4.jar",
++    "node.js.detected.package.eslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "nodejs_package_manager_path": "npm",
++    "project.structure.last.edited": "Libraries",
++    "project.structure.proportion": "0.15",
++    "project.structure.side.proportion": "0.2",
++    "vue.rearranger.settings.migration": "true"
++  }
++}]]></component>
++=======
++  <component name="PropertiesComponent">
++    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
++    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
++    <property name="WebServerToolWindowFactoryState" value="false" />
++    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/oragan/posSystem/assets" />
++    <property name="nodejs_package_manager_path" value="npm" />
++  </component>
++>>>>>>> b5d5e6af10d7127b8ac8e37f8d97468d35808096
++  <component name="RecentsManager">
++    <key name="CopyFile.RECENT_KEYS">
++      <recent name="D:\oragan_pos_system\src\com\oragan\posSystem\assets" />
++    </key>
++    <key name="MoveFile.RECENT_KEYS">
++      <recent name="F:\oragan\New folder\oragan_pos_system\oragan_pos_system\src\com\oragan\posSystem\assets" />
++    </key>
++  </component>
+   <component name="RunManager">
+     <configuration name="AppInitializer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="com.oragan.posSystem.AppInitializer" />
+@@ -52,10 +111,123 @@
+       </list>
+     </recent_temporary>
+   </component>
++  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
++    <task active="true" id="Default" summary="Default task">
++      <changelist id="89dbfd71-98c4-49ba-a84d-1363c7f00fa7" name="Changes" comment="" />
++      <created>1718085521888</created>
++      <option name="number" value="Default" />
++      <option name="presentableId" value="Default" />
++      <updated>1718085521888</updated>
++      <workItem from="1718085522653" duration="13943000" />
++      <workItem from="1718171185591" duration="7644000" />
++      <workItem from="1718186001443" duration="14000" />
++      <workItem from="1718433094581" duration="7725000" />
++      <workItem from="1718448794662" duration="7382000" />
++      <workItem from="1718456806607" duration="111000" />
++      <workItem from="1718521546240" duration="3449000" />
++      <workItem from="1718525322147" duration="947000" />
++      <workItem from="1718553376607" duration="10197000" />
++<<<<<<< HEAD
++      <workItem from="1718773303291" duration="2158000" />
++      <workItem from="1719279147745" duration="838000" />
++=======
++      <workItem from="1718773303291" duration="5269000" />
++      <workItem from="1718817192033" duration="474000" />
++      <workItem from="1718871580947" duration="4930000" />
++      <workItem from="1719072736814" duration="1346000" />
++      <workItem from="1719121256994" duration="2071000" />
++      <workItem from="1719160976520" duration="4724000" />
++      <workItem from="1719171186852" duration="93000" />
++      <workItem from="1719202840257" duration="5813000" />
++      <workItem from="1719225156680" duration="9308000" />
++>>>>>>> b5d5e6af10d7127b8ac8e37f8d97468d35808096
++    </task>
++    <task id="LOCAL-00001" summary="updated serch customer">
++      <created>1718173089708</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1718173089708</updated>
++    </task>
++    <task id="LOCAL-00002" summary="updated cmobox loading ids">
++      <created>1718175036983</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1718175036983</updated>
++    </task>
++    <task id="LOCAL-00003" summary="updated item form fuctions">
++      <created>1718177705791</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1718177705791</updated>
++    </task>
++    <task id="LOCAL-00004" summary="updated item form fuctions">
++      <created>1718452113832</created>
++      <option name="number" value="00004" />
++      <option name="presentableId" value="LOCAL-00004" />
++      <option name="project" value="LOCAL" />
++      <updated>1718452113832</updated>
++    </task>
++    <task id="LOCAL-00005" summary="updated customer form serch  for combox two options added">
++      <created>1718561946930</created>
++      <option name="number" value="00005" />
++      <option name="presentableId" value="LOCAL-00005" />
++      <option name="project" value="LOCAL" />
++      <updated>1718561946930</updated>
++    </task>
++    <task id="LOCAL-00006" summary="updated customer form serch  for combox two options added">
++      <created>1718776508484</created>
++      <option name="number" value="00006" />
++      <option name="presentableId" value="LOCAL-00006" />
++      <option name="project" value="LOCAL" />
++      <updated>1718776508484</updated>
++    </task>
++    <task id="LOCAL-00007" summary="load purchase order customer details">
++      <created>1718778658045</created>
++      <option name="number" value="00007" />
++      <option name="presentableId" value="LOCAL-00007" />
++      <option name="project" value="LOCAL" />
++      <updated>1718778658045</updated>
++    </task>
++    <task id="LOCAL-00008" summary="load to item details combobox">
++      <created>1719171250825</created>
++      <option name="number" value="00008" />
++      <option name="presentableId" value="LOCAL-00008" />
++      <option name="project" value="LOCAL" />
++      <updated>1719171250825</updated>
++    </task>
++    <option name="localTasksCounter" value="9" />
+     <servers />
+   </component>
++  <component name="TypeScriptGeneratedFilesManager">
++    <option name="version" value="3" />
++  </component>
+   <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State />
++          </value>
++        </entry>
++      </map>
++    </option>
+     <option name="oldMeFiltersMigrated" value="true" />
+   </component>
++  <component name="VcsManagerConfiguration">
++    <MESSAGE value="updated serch customer" />
++    <MESSAGE value="updated cmobox loading ids" />
++    <MESSAGE value="updated item form fuctions" />
++    <MESSAGE value="updated customer form serch  for combox two options added" />
++    <MESSAGE value="load purchase order customer details" />
++    <MESSAGE value="load to item details combobox" />
++    <option name="LAST_COMMIT_MESSAGE" value="load to item details combobox" />
++  </component>
++  <component name="XSLT-Support.FileAssociations.UIState">
++    <expand />
++    <select />
++  </component>
+ </project>
+\ No newline at end of file
+Index: .idea/dataSources.local.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"dataSourceStorageLocal\" created-in=\"IU-232.9921.47\">\r\n    <data-source name=\"identifier\" uuid=\"e0e4459e-a6bb-4c73-b1a7-9be16a9a5cb4\">\r\n      <database-info product=\"\" version=\"\" jdbc-version=\"\" driver-name=\"\" driver-version=\"\" dbms=\"SQLITE\" exact-version=\"0\" />\r\n      <schema-mapping />\r\n    </data-source>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/dataSources.local.xml b/.idea/dataSources.local.xml
+--- a/.idea/dataSources.local.xml	(revision 8db981e0f9cf952d3aa260d1d870210ce8dffbcf)
++++ b/.idea/dataSources.local.xml	(date 1719295858250)
+@@ -1,9 +1,18 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="dataSourceStorageLocal" created-in="IU-232.9921.47">
+-    <data-source name="identifier" uuid="e0e4459e-a6bb-4c73-b1a7-9be16a9a5cb4">
+-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="SQLITE" exact-version="0" />
+-      <schema-mapping />
++    <data-source name="Oragan_Pos" uuid="79b52514-f59d-4cac-bc28-15f8b85b9587">
++      <database-info product="SQLite" version="3.45.1" jdbc-version="4.2" driver-name="SQLite JDBC" driver-version="3.45.1.0" dbms="SQLITE" exact-version="3.45.1" exact-driver-version="3.45">
++        <identifier-quote-string>&quot;</identifier-quote-string>
++      </database-info>
++      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
++      <secret-storage>master_key</secret-storage>
++      <auth-provider>no-auth</auth-provider>
++      <schema-mapping>
++        <introspection-scope>
++          <node kind="schema" qname="@" />
++        </introspection-scope>
++      </schema-mapping>
+     </data-source>
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/dataSources.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"DataSourceManagerImpl\" format=\"xml\" multifile-model=\"true\">\r\n    <data-source source=\"LOCAL\" name=\"identifier\" uuid=\"e0e4459e-a6bb-4c73-b1a7-9be16a9a5cb4\">\r\n      <driver-ref>sqlite.xerial</driver-ref>\r\n      <synchronize>true</synchronize>\r\n      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>\r\n      <jdbc-url>jdbc:sqlite:D:\\oragan_pos_system\\identifier.sqlite</jdbc-url>\r\n      <working-dir>$ProjectFileDir$</working-dir>\r\n      <libraries>\r\n        <library>\r\n          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.45.1/org/xerial/sqlite-jdbc/3.45.1.0/sqlite-jdbc-3.45.1.0.jar</url>\r\n        </library>\r\n        <library>\r\n          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.45.1/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar</url>\r\n        </library>\r\n      </libraries>\r\n    </data-source>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/dataSources.xml b/.idea/dataSources.xml
+--- a/.idea/dataSources.xml	(revision 8db981e0f9cf952d3aa260d1d870210ce8dffbcf)
++++ b/.idea/dataSources.xml	(date 1719295857992)
+@@ -1,20 +1,12 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+-    <data-source source="LOCAL" name="identifier" uuid="e0e4459e-a6bb-4c73-b1a7-9be16a9a5cb4">
++    <data-source source="LOCAL" name="Oragan_Pos" uuid="79b52514-f59d-4cac-bc28-15f8b85b9587">
+       <driver-ref>sqlite.xerial</driver-ref>
+       <synchronize>true</synchronize>
+       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+-      <jdbc-url>jdbc:sqlite:D:\oragan_pos_system\identifier.sqlite</jdbc-url>
++      <jdbc-url>jdbc:sqlite:identifier.sqlite</jdbc-url>
+       <working-dir>$ProjectFileDir$</working-dir>
+-      <libraries>
+-        <library>
+-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.45.1/org/xerial/sqlite-jdbc/3.45.1.0/sqlite-jdbc-3.45.1.0.jar</url>
+-        </library>
+-        <library>
+-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.45.1/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar</url>
+-        </library>
+-      </libraries>
+     </data-source>
+   </component>
+ </project>
+\ No newline at end of file
+Index: src/com/oragan/posSystem/view/PurchaseOrderForm.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import javafx.geometry.Insets?>\r\n<?import javafx.scene.control.Button?>\r\n<?import javafx.scene.control.ComboBox?>\r\n<?import javafx.scene.control.Label?>\r\n<?import javafx.scene.control.TableColumn?>\r\n<?import javafx.scene.control.TableView?>\r\n<?import javafx.scene.control.TextField?>\r\n<?import javafx.scene.effect.ColorAdjust?>\r\n<?import javafx.scene.image.Image?>\r\n<?import javafx.scene.image.ImageView?>\r\n<?import javafx.scene.layout.AnchorPane?>\r\n<?import javafx.scene.text.Font?>\r\n<?import javafx.scene.text.Text?>\r\n\r\n<AnchorPane prefHeight=\"788.0\" prefWidth=\"1622.0\" xmlns=\"http://javafx.com/javafx/8.0.171\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.oragan.posSystem.controller.PurchaseOrderFormController\">\r\n   <children>\r\n      <TableView fx:id=\"tblCart\" layoutX=\"278.0\" layoutY=\"416.0\" prefHeight=\"247.0\" prefWidth=\"1180.0\">\r\n         <columns>\r\n            <TableColumn fx:id=\"colItemCode\" prefWidth=\"167.0\" text=\"Item Code\" />\r\n            <TableColumn fx:id=\"colItemName\" minWidth=\"0.0\" prefWidth=\"188.0\" text=\"Item Name\" />\r\n            <TableColumn fx:id=\"colUnitPrice\" prefWidth=\"173.0\" text=\"Unit Price\" />\r\n            <TableColumn fx:id=\"colQuantity\" prefWidth=\"166.0\" text=\"Quantity\" />\r\n            <TableColumn fx:id=\"colTotal\" prefWidth=\"212.0\" text=\"Total\" />\r\n            <TableColumn prefWidth=\"273.0\" text=\"Options\" />\r\n         </columns>\r\n      </TableView>\r\n      <Text fill=\"#180361\" layoutX=\"23.0\" layoutY=\"117.0\" opacity=\"0.75\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Customer ID\" wrappingWidth=\"133.60986328125\">\r\n         <font>\r\n            <Font name=\"Berlin Sans FB Demi Bold\" size=\"18.0\" />\r\n         </font>\r\n      </Text>\r\n      <ComboBox fx:id=\"cmbCustomerID\" layoutX=\"23.0\" layoutY=\"132.0\" onAction=\"#cmbCustomerIDOnAction\" opacity=\"0.84\" prefHeight=\"35.0\" prefWidth=\"371.0\" promptText=\"Select Customer ID\" style=\"-fx-background-color: white;\">\r\n         <opaqueInsets>\r\n            <Insets left=\"5.0\" />\r\n         </opaqueInsets>\r\n      </ComboBox>\r\n      <Text fill=\"#180361\" layoutX=\"410.0\" layoutY=\"116.0\" opacity=\"0.75\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Name\" wrappingWidth=\"133.60986328125\">\r\n         <font>\r\n            <Font name=\"Berlin Sans FB Demi Bold\" size=\"18.0\" />\r\n         </font>\r\n      </Text>\r\n      <TextField fx:id=\"txtCustomerName\" editable=\"false\" layoutX=\"410.0\" layoutY=\"132.0\" prefHeight=\"35.0\" prefWidth=\"371.0\">\r\n         <opaqueInsets>\r\n            <Insets left=\"5.0\" />\r\n         </opaqueInsets>\r\n      </TextField>\r\n      <Text fill=\"#180361\" layoutX=\"798.0\" layoutY=\"115.0\" opacity=\"0.75\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Address\" wrappingWidth=\"133.60986328125\">\r\n         <font>\r\n            <Font name=\"Berlin Sans FB Demi Bold\" size=\"18.0\" />\r\n         </font>\r\n      </Text>\r\n      <TextField fx:id=\"txtCustomerAddress\" editable=\"false\" layoutX=\"798.0\" layoutY=\"132.0\" prefHeight=\"35.0\" prefWidth=\"371.0\">\r\n         <opaqueInsets>\r\n            <Insets left=\"5.0\" />\r\n         </opaqueInsets>\r\n      </TextField>\r\n      <Text fill=\"#180361\" layoutX=\"1189.0\" layoutY=\"117.0\" opacity=\"0.75\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Contact Number\" wrappingWidth=\"214.60986328125\">\r\n         <font>\r\n            <Font name=\"Berlin Sans FB Demi Bold\" size=\"18.0\" />\r\n         </font>\r\n      </Text>\r\n      <TextField fx:id=\"txtContactNumber\" editable=\"false\" layoutX=\"1189.0\" layoutY=\"132.0\" prefHeight=\"35.0\" prefWidth=\"382.0\">\r\n         <opaqueInsets>\r\n            <Insets left=\"5.0\" />\r\n         </opaqueInsets>\r\n      </TextField>\r\n      <Text fill=\"#180361\" layoutX=\"23.0\" layoutY=\"202.0\" opacity=\"0.75\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Item Code\" wrappingWidth=\"133.60986328125\">\r\n         <font>\r\n            <Font name=\"Berlin Sans FB Demi Bold\" size=\"18.0\" />\r\n         </font>\r\n      </Text>\r\n      <ComboBox fx:id=\"cmbItemCode\" layoutX=\"23.0\" layoutY=\"218.0\" onAction=\"#cmbItemCodeOnAction\" opacity=\"0.84\" prefHeight=\"35.0\" prefWidth=\"371.0\" promptText=\"Select Item Code\" style=\"-fx-background-color: white;\">\r\n         <opaqueInsets>\r\n            <Insets left=\"5.0\" />\r\n         </opaqueInsets>\r\n      </ComboBox>\r\n      <Text fill=\"#180361\" layoutX=\"413.0\" layoutY=\"202.0\" opacity=\"0.75\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Item Name\" wrappingWidth=\"133.60986328125\">\r\n         <font>\r\n            <Font name=\"Berlin Sans FB Demi Bold\" size=\"18.0\" />\r\n         </font>\r\n      </Text>\r\n      <TextField fx:id=\"txtItemName\" editable=\"false\" layoutX=\"413.0\" layoutY=\"218.0\" prefHeight=\"35.0\" prefWidth=\"371.0\">\r\n         <opaqueInsets>\r\n            <Insets left=\"5.0\" />\r\n         </opaqueInsets>\r\n      </TextField>\r\n      <Text fill=\"#180361\" layoutX=\"801.0\" layoutY=\"201.0\" opacity=\"0.75\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"QTY On Hand\" wrappingWidth=\"133.60986328125\">\r\n         <font>\r\n            <Font name=\"Berlin Sans FB Demi Bold\" size=\"18.0\" />\r\n         </font>\r\n      </Text>\r\n      <TextField fx:id=\"txtQtyOnHand\" editable=\"false\" layoutX=\"801.0\" layoutY=\"218.0\" prefHeight=\"35.0\" prefWidth=\"371.0\">\r\n         <opaqueInsets>\r\n            <Insets left=\"5.0\" />\r\n         </opaqueInsets>\r\n      </TextField>\r\n      <Text fill=\"#180361\" layoutX=\"1189.0\" layoutY=\"201.0\" opacity=\"0.75\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Price\" wrappingWidth=\"214.60986328125\">\r\n         <font>\r\n            <Font name=\"Berlin Sans FB Demi Bold\" size=\"18.0\" />\r\n         </font>\r\n      </Text>\r\n      <TextField fx:id=\"txtPrice\" editable=\"false\" layoutX=\"1192.0\" layoutY=\"218.0\" prefHeight=\"35.0\" prefWidth=\"382.0\">\r\n         <opaqueInsets>\r\n            <Insets left=\"5.0\" />\r\n         </opaqueInsets>\r\n      </TextField>\r\n      <Text fill=\"#ff210d\" layoutX=\"1348.0\" layoutY=\"294.0\" opacity=\"0.75\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Quantity\" wrappingWidth=\"214.60986328125\">\r\n         <font>\r\n            <Font name=\"Berlin Sans FB Demi Bold\" size=\"18.0\" />\r\n         </font>\r\n      </Text>\r\n      <TextField fx:id=\"txtQuantity\" layoutX=\"1348.0\" layoutY=\"306.0\" prefHeight=\"35.0\" prefWidth=\"225.0\">\r\n         <opaqueInsets>\r\n            <Insets left=\"5.0\" />\r\n         </opaqueInsets>\r\n      </TextField>\r\n      <Button layoutX=\"1348.0\" layoutY=\"352.0\" mnemonicParsing=\"false\" onAction=\"#btnAddCartOnAction\" prefHeight=\"42.0\" prefWidth=\"215.0\" style=\"-fx-background-color: yellow; -fx-border-radius: 10; -fx-background-radius: 10;\" text=\"Add To Cart\">\r\n         <font>\r\n            <Font name=\"System Bold\" size=\"17.0\" />\r\n         </font>\r\n      </Button>\r\n      <ImageView fitHeight=\"28.0\" fitWidth=\"25.0\" layoutX=\"1507.0\" layoutY=\"361.0\" pickOnBounds=\"true\" preserveRatio=\"true\">\r\n         <image>\r\n            <Image url=\"@../assets/cart.png\" />\r\n         </image>\r\n      </ImageView>\r\n      <Button layoutX=\"1425.0\" layoutY=\"692.0\" mnemonicParsing=\"false\" onAction=\"#btnPlaceOrderOnAction\" prefHeight=\"53.0\" prefWidth=\"164.0\" style=\"-fx-background-color: #3BB30A; -fx-border-radius: 10; -fx-background-radius: 10;\" text=\"Place Order\" textFill=\"#f5f5f5\">\r\n         <font>\r\n            <Font name=\"System Bold\" size=\"17.0\" />\r\n         </font>\r\n      </Button>\r\n      <ImageView fitHeight=\"25.0\" fitWidth=\"43.0\" layoutX=\"1559.0\" layoutY=\"706.0\" pickOnBounds=\"true\" preserveRatio=\"true\">\r\n         <image>\r\n            <Image url=\"@../assets/place-order.png\" />\r\n         </image>\r\n      </ImageView>\r\n      <Text fill=\"#1625d3\" layoutX=\"23.0\" layoutY=\"736.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Totol :\" wrappingWidth=\"94.70654296875\">\r\n         <font>\r\n            <Font name=\"System Bold\" size=\"24.0\" />\r\n         </font>\r\n      </Text>\r\n      <Label fx:id=\"lblOrderID\" layoutX=\"25.0\" layoutY=\"35.0\" text=\"Order ID:\" textFill=\"#ff2323\">\r\n         <font>\r\n            <Font name=\"Lucida Console\" size=\"24.0\" />\r\n         </font>\r\n      </Label>\r\n      <TextField fx:id=\"txtTotal\" layoutX=\"109.0\" layoutY=\"708.0\" style=\"-fx-background-color: white;\">\r\n         <font>\r\n            <Font size=\"16.0\" />\r\n         </font>\r\n      </TextField>\r\n   </children>\r\n   <effect>\r\n      <ColorAdjust brightness=\"0.02\" />\r\n   </effect>\r\n</AnchorPane>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/oragan/posSystem/view/PurchaseOrderForm.fxml b/src/com/oragan/posSystem/view/PurchaseOrderForm.fxml
+--- a/src/com/oragan/posSystem/view/PurchaseOrderForm.fxml	(revision 8db981e0f9cf952d3aa260d1d870210ce8dffbcf)
++++ b/src/com/oragan/posSystem/view/PurchaseOrderForm.fxml	(date 1719295404269)
+@@ -14,7 +14,7 @@
+ <?import javafx.scene.text.Font?>
+ <?import javafx.scene.text.Text?>
+ 
+-<AnchorPane prefHeight="788.0" prefWidth="1622.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.PurchaseOrderFormController">
++<AnchorPane prefHeight="788.0" prefWidth="1622.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.PurchaseOrderFormController">
+    <children>
+       <TableView fx:id="tblCart" layoutX="278.0" layoutY="416.0" prefHeight="247.0" prefWidth="1180.0">
+          <columns>
+@@ -126,7 +126,7 @@
+             <Image url="@../assets/cart.png" />
+          </image>
+       </ImageView>
+-      <Button layoutX="1425.0" layoutY="692.0" mnemonicParsing="false" onAction="#btnPlaceOrderOnAction" prefHeight="53.0" prefWidth="164.0" style="-fx-background-color: #3BB30A; -fx-border-radius: 10; -fx-background-radius: 10;" text="Place Order" textFill="#f5f5f5">
++      <Button fx:id="btnPlaceOrder" layoutX="1425.0" layoutY="692.0" mnemonicParsing="false" onAction="#btnPlaceOrderOnAction" prefHeight="53.0" prefWidth="164.0" style="-fx-background-color: #3BB30A; -fx-border-radius: 10; -fx-background-radius: 10;" text="Place Order" textFill="#f5f5f5">
+          <font>
+             <Font name="System Bold" size="17.0" />
+          </font>

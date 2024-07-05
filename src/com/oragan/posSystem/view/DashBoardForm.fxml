@@ -64,14 +64,10 @@
       <Button layoutX="1054.0" layoutY="141.0" mnemonicParsing="false" onAction="#PurchaseOrderOnAction" opacity="0.11" prefHeight="25.0" prefWidth="181.0" />
       <Button layoutX="1315.0" layoutY="144.0" mnemonicParsing="false" onAction="#OderDetailsOnAction" opacity="0.11" prefHeight="25.0" prefWidth="150.0" />
       <AnchorPane fx:id="context" layoutX="197.0" layoutY="186.0" opacity="0.98" prefHeight="788.0" prefWidth="1622.0" style="-fx-background-color: #ebf3ff;" />
-      <Label fx:id="timeLabel" layoutX="1502.0" layoutY="136.0" opacity="0.46" prefHeight="40.0" prefWidth="286.0" style="-fx-background-radius: 15; -fx-background-color: #273c75; -fx-background-position: center;" text="Label" textFill="WHITE">
+      <Label fx:id="timeLabel" layoutX="1523.0" layoutY="136.0" opacity="0.46" prefHeight="40.0" prefWidth="268.0" style="-fx-background-radius: 15; -fx-background-color: #273c75; -fx-background-position: center;" text="Label" textFill="WHITE">
          <font>
             <Font name="Berlin Sans FB" size="26.0" />
          </font>
       </Label>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1494.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/clock.gif" />
-         </image></ImageView>
    </children>
 </AnchorPane>

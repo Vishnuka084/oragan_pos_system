@@ -1,15 +1,8 @@
-/**
- * authour By Pamindu Nawodya
- * Date:6/24/2024
- * Time:7:02 PM
- * Project Name:oragan_pos_system
- */
 package com.oragan.posSystem.entity;
 
 import java.nio.charset.Charset;
 
 public class OrderItem {
-
 
     private String OrderID;
     private String Item_code;
