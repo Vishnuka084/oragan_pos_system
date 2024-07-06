@@ -261,31 +261,38 @@ public class PurchaseOrderFormController {
 
     public void btnPlaceOrderOnAction(ActionEvent actionEvent) {
         String orderId = lblOrderID.getText();
-        String orderDate = getCurrentDateTime();
         double total = Double.parseDouble(txtTotal.getText());
         String customerId = cmbCustomerID.getSelectionModel().getSelectedItem();
         String customername = txtCustomerName.getText();
         String Status=btnOrderHold.getText();
+        String currentDate = getCurrentDateTime();
+        String issueDate = getCurrentDateTime();
 
-        String insertOrderQuery = "INSERT INTO 'Order' (OrderID, OrderDate, Total, Customer_name, Customer_Id, Status) VALUES (?, ?, ?, ? ,?, ?)";
+        String insertOrderQuery = "INSERT INTO 'Order' (OrderID, Total, Customer_name, Customer_Id, Status, Current_Date, Issue_Date) VALUES (?, ?, ?, ? ,?, ? ,?)";
         String updateItemQuantityQuery = "UPDATE items SET qty = qty - ? WHERE Item_code = ?";
+        String deleteOrderItemsQuery = "DELETE FROM OrderItem WHERE OrderID = ?";
 
         try (Connection conn = DBConnection.getInstance().getConnection()) {
             // Start transaction
             conn.setAutoCommit(false);
 
             try (PreparedStatement psOrder = conn.prepareStatement(insertOrderQuery);
-                 PreparedStatement psUpdateItem = conn.prepareStatement(updateItemQuantityQuery)) {
+                 PreparedStatement psUpdateItem = conn.prepareStatement(updateItemQuantityQuery);
+                 PreparedStatement psDeleteOrderItems = conn.prepareStatement(deleteOrderItemsQuery) ) {
 
                 // Insert order
                 psOrder.setString(1, orderId);
-                psOrder.setString(2, orderDate);
-                psOrder.setDouble(3, total);
-                psOrder.setString(4, customerId);
-                psOrder.setString(5, customername);
-               psOrder.setString(6, Status);
+                psOrder.setDouble(2, total);
+                psOrder.setString(3, customerId);
+                psOrder.setString(4, customername);
+                psOrder.setString(5, Status);
+                psOrder.setString(6, currentDate);
+                psOrder.setString(7, issueDate);
 
                 System.out.println(psOrder);
+
+
+
 
 
 
@@ -293,6 +300,11 @@ public class PurchaseOrderFormController {
                 if (rowsInsertedOrder <= 0) {
                     throw new SQLException("Failed to save order.");
                 }
+
+                // Clear existing order items
+                psDeleteOrderItems.setString(1, orderId);
+                psDeleteOrderItems.executeUpdate();
+
 
                 // Update item quantities and prepare order items insertion
                 for (OrderItem orderItem : cartItems) {
@@ -431,60 +443,60 @@ public class PurchaseOrderFormController {
             btnOrderHold.setText(newStatus);
         }
     }
-        //Option Coloumn set Table
+    //Option Coloumn set Table
 
-        private void initializeTableColumns () {
-            colItemCode.setCellValueFactory(new PropertyValueFactory<>("item_code"));
-            colItemName.setCellValueFactory(new PropertyValueFactory<>("item_name"));
-            colQuantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-            colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
-            colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
-            colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+    private void initializeTableColumns () {
+        colItemCode.setCellValueFactory(new PropertyValueFactory<>("item_code"));
+        colItemName.setCellValueFactory(new PropertyValueFactory<>("item_name"));
+        colQuantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
+        colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
+        colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
 
 
-            colOptions.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
-            colOptions.setCellFactory(param -> new TableCell<OrderItem, OrderItem>() {
-                private final Button updateButton = new Button();
-                private final Button deleteButton = new Button();
+        colOptions.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
+        colOptions.setCellFactory(param -> new TableCell<OrderItem, OrderItem>() {
+            private final Button updateButton = new Button();
+            private final Button deleteButton = new Button();
 
-                @Override
-                protected void updateItem(OrderItem orderItem, boolean empty) {
-                    super.updateItem(orderItem, empty);
-                    if (orderItem == null) {
-                        setGraphic(null);
-                        return;
-                    }
-
-                    // Load the update icon image
-                    Image updateImage = new Image(getClass().getResourceAsStream("/com/oragan/posSystem/assets/icons8-update-64.png"));
-                    if (updateImage != null) {
-                        ImageView updateImageView = new ImageView(updateImage);
-                        updateImageView.setFitWidth(20); // Adjust the size as needed
-                        updateImageView.setFitHeight(20); // Adjust the size as needed
-                        updateButton.setGraphic(updateImageView);
-                    }
-
-                    // Load the delete icon image
-                    Image deleteImage = new Image(getClass().getResourceAsStream("/com/oragan/posSystem/assets/icons8-delete-120.png"));
-                    if (deleteImage != null) {
-                        ImageView deleteImageView = new ImageView(deleteImage);
-                        deleteImageView.setFitWidth(20); // Adjust the size as needed
-                        deleteImageView.setFitHeight(20); // Adjust the size as needed
-                        deleteButton.setGraphic(deleteImageView);
-                    }
-
-                    HBox hBox = new HBox(updateButton, deleteButton);
-                    hBox.setAlignment(Pos.CENTER);
-                    hBox.setSpacing(10);
-                    setGraphic(hBox);
-
-                    updateButton.setOnAction(event -> handleUpdateOrder(orderItem));
-                    deleteButton.setOnAction(event -> handleDeleteOrderItem(orderItem));
+            @Override
+            protected void updateItem(OrderItem orderItem, boolean empty) {
+                super.updateItem(orderItem, empty);
+                if (orderItem == null) {
+                    setGraphic(null);
+                    return;
                 }
-            });
 
-            tblCart.setItems(cartItems);
-        }
+                // Load the update icon image
+                Image updateImage = new Image(getClass().getResourceAsStream("/com/oragan/posSystem/assets/icons8-update-64.png"));
+                if (updateImage != null) {
+                    ImageView updateImageView = new ImageView(updateImage);
+                    updateImageView.setFitWidth(20); // Adjust the size as needed
+                    updateImageView.setFitHeight(20); // Adjust the size as needed
+                    updateButton.setGraphic(updateImageView);
+                }
+
+                // Load the delete icon image
+                Image deleteImage = new Image(getClass().getResourceAsStream("/com/oragan/posSystem/assets/icons8-delete-120.png"));
+                if (deleteImage != null) {
+                    ImageView deleteImageView = new ImageView(deleteImage);
+                    deleteImageView.setFitWidth(20); // Adjust the size as needed
+                    deleteImageView.setFitHeight(20); // Adjust the size as needed
+                    deleteButton.setGraphic(deleteImageView);
+                }
+
+                HBox hBox = new HBox(updateButton, deleteButton);
+                hBox.setAlignment(Pos.CENTER);
+                hBox.setSpacing(10);
+                setGraphic(hBox);
+
+                updateButton.setOnAction(event -> handleUpdateOrder(orderItem));
+                deleteButton.setOnAction(event -> handleDeleteOrderItem(orderItem));
+            }
+        });
+
+        tblCart.setItems(cartItems);
+    }
 
     private void handleUpdateOrder(OrderItem orderItem) {
         // Get the current quantity on hand for the selected item

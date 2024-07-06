@@ -16,15 +16,16 @@
             <Font size="15.0" />
          </font>
       </TextField>
-      <TableView fx:id="tblOrder" layoutX="204.0" layoutY="197.0" prefHeight="286.0" prefWidth="1180.0">
+      <TableView fx:id="tblOrder" layoutX="204.0" layoutY="217.0" prefHeight="412.0" prefWidth="1386.0">
          <columns>
             <TableColumn fx:id="colOrderID" prefWidth="163.0" text="Order ID" />
             <TableColumn fx:id="colCustomerID" prefWidth="170.0" text="Customer ID" />
             <TableColumn fx:id="colCustomerName" prefWidth="187.0" text="Customer Name" />
-            <TableColumn fx:id="colOrderDate" prefWidth="179.0" text="Date" />
+            <TableColumn fx:id="colCurrentDate" prefWidth="179.0" text="Current Date" />
+            <TableColumn fx:id="colIssueDate" prefWidth="238.0" text="Issue Date" />
             <TableColumn fx:id="colStatus" prefWidth="131.0" text="Status" />
             <TableColumn fx:id="colOrderTotal" prefWidth="155.0" text="Total" />
-            <TableColumn fx:id="colOptions" prefWidth="194.0" text="options" />
+            <TableColumn fx:id="colOptions" prefWidth="114.0" text="options" />
          </columns>
       </TableView>
       <ComboBox fx:id="cmbOrderID" layoutX="761.0" layoutY="105.0" onAction="#cmbSearchByOrderOnAction" prefHeight="48.0" prefWidth="192.0" promptText="Select Serch Option" style="-fx-background-color: FFC700; -fx-background-radius: 10;">

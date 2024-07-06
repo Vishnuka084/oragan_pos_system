@@ -11,22 +11,24 @@ import java.sql.Date;
 public class Order {
 
     private String OrderID;
-    private Date OrderDate;
     private double Total;
     private String Customer_name;
     private String Customer_Id;
     private String Status;
+    private String Current_Date;
+    private String Issue_Date;
 
     public Order() {
     }
 
-    public Order(String orderID, Date orderDate, double total, String customer_name, String customer_Id, String status) {
+    public Order(String orderID, double total, String customer_name, String customer_Id, String status, String current_Date, String issue_Date) {
         OrderID = orderID;
-        OrderDate = orderDate;
         Total = total;
         Customer_name = customer_name;
         Customer_Id = customer_Id;
         Status = status;
+        Current_Date = current_Date;
+        Issue_Date = issue_Date;
     }
 
     public String getOrderID() {
@@ -35,14 +37,6 @@ public class Order {
 
     public void setOrderID(String orderID) {
         OrderID = orderID;
-    }
-
-    public Date getOrderDate() {
-        return OrderDate;
-    }
-
-    public void setOrderDate(Date orderDate) {
-        OrderDate = orderDate;
     }
 
     public double getTotal() {
@@ -77,4 +71,19 @@ public class Order {
         Status = status;
     }
 
+    public String getCurrent_Date() {
+        return Current_Date;
+    }
+
+    public void setCurrent_Date(String current_Date) {
+        Current_Date = current_Date;
+    }
+
+    public String getIssue_Date() {
+        return Issue_Date;
+    }
+
+    public void setIssue_Date(String issue_Date) {
+        Issue_Date = issue_Date;
+    }
 }

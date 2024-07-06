@@ -15,13 +15,17 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 
 public class OrderDetailsFormController {
     public TableView<Order> tblOrder;
     public TableColumn<Order, String> colOrderID;
     public TableColumn<Order, String> colCustomerID;
-    public TableColumn<Order, Date> colOrderDate;
+    public TableColumn<Order, Date>  colCurrentDate;
+    public TableColumn <Order, Date> colIssueDate;
     public TableColumn<Order, Double> colOrderTotal;
     public TableColumn<Order, String> colCustomerName;
     public TableColumn<Order, String> colStatus;
@@ -35,7 +39,8 @@ public class OrderDetailsFormController {
     public void initialize() {
         // Initialize columns
         colOrderID.setCellValueFactory(new PropertyValueFactory<>("orderID"));
-        colOrderDate.setCellValueFactory(new PropertyValueFactory<>("orderDate"));
+        colCurrentDate.setCellValueFactory(new PropertyValueFactory<>("Current_Date"));
+        colIssueDate.setCellValueFactory(new PropertyValueFactory<>("Issue_Date"));
         colOrderTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
         colCustomerID.setCellValueFactory(new PropertyValueFactory<>("customer_Id"));
         colCustomerName.setCellValueFactory(new PropertyValueFactory<>("Customer_name"));
@@ -51,7 +56,7 @@ public class OrderDetailsFormController {
     private void fetchOrdersFromDatabase() {
         orderList.clear();
 
-        String query = "SELECT OrderID, OrderDate, Total, Customer_name, Customer_Id, Status FROM 'Order'";
+        String query = " SELECT OrderID, Total, Customer_name, Customer_Id, Status, Current_Date, Issue_Date FROM 'Order';";
 
         try (Connection conn = DBConnection.getInstance().getConnection();
              PreparedStatement ps = conn.prepareStatement(query);
@@ -59,13 +64,21 @@ public class OrderDetailsFormController {
 
             while (rs.next()) {
                 String orderID = rs.getString("OrderID");
-                Date orderDate = rs.getDate("OrderDate");
                 double total = rs.getDouble("Total");
                 String customerID = rs.getString("Customer_Id");
                 String customerName = rs.getString("Customer_name");
                 String status = rs.getString("Status");
+                String currentDate = rs.getString("Current_Date");
+                String issueDate=rs.getString("Issue_Date");
 
-                Order order = new Order(orderID, orderDate, total, customerID, customerName, status);
+
+
+                System.out.println(issueDate);
+                System.out.println(currentDate);
+                System.out.println(orderID);
+
+
+                Order order = new Order(orderID, total, customerID, customerName, status, currentDate, issueDate);
                 orderList.add(order);
                 System.out.println(order);
             }
@@ -77,6 +90,7 @@ public class OrderDetailsFormController {
             e.printStackTrace(); // Handle or log exception
         }
     }
+
 
 
     public void txtSearchFieldOnAction(ActionEvent actionEvent) {
@@ -121,7 +135,8 @@ public class OrderDetailsFormController {
         colOrderID.setCellValueFactory(new PropertyValueFactory<>("orderID"));
         colOrderTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
         colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
-        colOrderDate.setCellValueFactory(new PropertyValueFactory<>("orderDate"));
+        colCurrentDate.setCellValueFactory(new PropertyValueFactory<>("Current_Date"));
+        colIssueDate.setCellValueFactory(new PropertyValueFactory<>("Issue_Date"));
 
         colOptions.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
         colOptions.setCellFactory(param -> new TableCell<Order, Order>() {
@@ -166,12 +181,36 @@ public class OrderDetailsFormController {
         // Remove the order from the orderList
         orderList.remove(order);
 
-        // Delete the order from the database
-        String query = "DELETE FROM 'OrderItem' WHERE OrderID = ?";
-        try (Connection conn = DBConnection.getInstance().getConnection();
-             PreparedStatement ps = conn.prepareStatement(query)) {
-            ps.setString(1, order.getOrderID());
-            ps.executeUpdate();
+        // SQL queries to delete from OrderItem and Order tables
+        String deleteOrderItemQuery = "DELETE FROM OrderItem WHERE OrderID = ?";
+        String deleteOrderQuery = "DELETE FROM \"Order\" WHERE OrderID = ?";
+
+        // Using try-with-resources to manage the database connection and statements
+        try (Connection conn = DBConnection.getInstance().getConnection()) {
+            // Start transaction
+            conn.setAutoCommit(false);
+
+            try (PreparedStatement psOrderItem = conn.prepareStatement(deleteOrderItemQuery);
+                 PreparedStatement psOrder = conn.prepareStatement(deleteOrderQuery)) {
+
+                // Set parameters for the OrderItem deletion query
+                psOrderItem.setString(1, order.getOrderID());
+                psOrderItem.executeUpdate();
+
+                // Set parameters for the Order deletion query
+                psOrder.setString(1, order.getOrderID());
+                psOrder.executeUpdate();
+
+                // Commit the transaction
+                conn.commit();
+            } catch (SQLException e) {
+                // Rollback the transaction in case of error
+                conn.rollback();
+                e.printStackTrace(); // Handle or log exception
+            } finally {
+                // Restore auto-commit mode
+                conn.setAutoCommit(true);
+            }
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace(); // Handle or log exception
         }
