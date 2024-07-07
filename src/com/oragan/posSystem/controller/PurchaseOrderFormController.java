@@ -345,7 +345,7 @@ public class PurchaseOrderFormController {
     //get Current date and time
     private String getCurrentDateTime() {
         LocalDateTime currentDateTime = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String formattedDateTime = currentDateTime.format(formatter);
         return formattedDateTime;
 

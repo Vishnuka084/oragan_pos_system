@@ -7,13 +7,19 @@ import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.*;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -141,6 +147,7 @@ public class OrderDetailsFormController {
         colOptions.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
         colOptions.setCellFactory(param -> new TableCell<Order, Order>() {
 
+            private final Button updateButton = new Button();
             private final Button deleteButton = new Button();
 
             @Override
@@ -152,6 +159,15 @@ public class OrderDetailsFormController {
                     return;
                 }
 
+                // Load the update icon image
+                Image updateImage = new Image(getClass().getResourceAsStream("/com/oragan/posSystem/assets/icons8-update-64.png"));
+                if (updateImage != null) {
+                    ImageView updateImageView = new ImageView(updateImage);
+                    updateImageView.setFitWidth(20); // Adjust the size as needed
+                    updateImageView.setFitHeight(20); // Adjust the size as needed
+                    updateButton.setGraphic(updateImageView);
+                }
+
                 // Load the delete icon image
                 Image deleteImage = new Image(getClass().getResourceAsStream("/com/oragan/posSystem/assets/icons8-delete-120.png"));
                 if (deleteImage != null) {
@@ -161,7 +177,7 @@ public class OrderDetailsFormController {
                     deleteButton.setGraphic(deleteImageView);
                 }
 
-                HBox hBox = new HBox(deleteButton);
+                HBox hBox = new HBox(deleteButton,updateButton);
                 hBox.setAlignment(Pos.CENTER);
                 hBox.setSpacing(10);
                 setGraphic(hBox);
@@ -170,12 +186,39 @@ public class OrderDetailsFormController {
                     // Handle the delete action
                     handleDeleteOrder(order);
                 });
+
+                updateButton.setOnAction(event -> {
+                    // Handle the update action
+                    openUpdateForm(order);
+                });
             }
         });
 
         tblOrder.setItems(orderList);
     }
 
+    private void openUpdateForm(Order order) {
+        System.out.println("order details update'");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/oragan/posSystem/view/OderDetailsUpdateForm.fxml"));
+            AnchorPane root = loader.load();
+
+            OderDetailsUpdateFormController controller = loader.getController();
+            controller.setOrderDetails(order);
+
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Update Order Details");
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+
+            // Refresh the order list after the update form is closed
+            fetchOrdersFromDatabase();
+
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle or log exception
+        }
+    }
 
     private void handleDeleteOrder(Order order) {
         // Remove the order from the orderList
@@ -215,9 +258,6 @@ public class OrderDetailsFormController {
             e.printStackTrace(); // Handle or log exception
         }
     }
-
-
-
 
 
 }

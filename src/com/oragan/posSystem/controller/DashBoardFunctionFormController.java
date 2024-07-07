@@ -1,13 +1,16 @@
 package com.oragan.posSystem.controller;
 
 import com.oragan.posSystem.db.DBConnection;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class DashBoardFunctionFormController {
@@ -17,9 +20,86 @@ public class DashBoardFunctionFormController {
     public Text CustCount;
     public Text ItemCount;
     public Text OrderCount;
+    public LineChart<Number, Number> lineChartID;
 
     public void initialize() {
         loadDashboardData();
+        loadLineChart();
+    }
+
+    /*private void loadLineChart() {
+        // Define the axes
+        NumberAxis xAxis = new NumberAxis();
+        NumberAxis yAxis = new NumberAxis();
+        xAxis.setLabel("Date");
+        yAxis.setLabel("Total Income");
+
+        // Create a LineChart
+        lineChartID = new LineChart<>(xAxis, yAxis);
+        lineChartID.setTitle("Total Income Over Time");
+
+        // Fetch data from the database and populate the chart
+        String sql = "SELECT Issue_Date, SUM(Total) AS dailyIncome FROM `Order` GROUP BY Issue_Date";
+        try (Connection conn = DBConnection.getInstance().getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            // Create a series to add data
+            XYChart.Series<Number, Number> series = new XYChart.Series<>();
+            series.setName("Daily Income");
+
+            // A map to store dates and corresponding income
+            Map<LocalDate, Double> dataMap = new HashMap<>();
+
+            while (rs.next()) {
+                LocalDate date = LocalDate.parse(rs.getString("Issue_Date"));
+                double dailyIncome = rs.getDouble("dailyIncome");
+                dataMap.put(date, dailyIncome);
+            }
+
+            // Add data to the series
+            for (Map.Entry<LocalDate, Double> entry : dataMap.entrySet()) {
+                series.getData().add(new XYChart.Data<>(entry.getKey().toEpochDay(), entry.getValue()));
+            }
+
+            // Add series to the chart
+            lineChartID.getData().add(series);
+        } catch (ClassNotFoundException | SQLException e) {
+            showError("Error loading line chart data", e);
+        }
+    }*/
+    private void loadLineChart() {
+        lineChartID.setTitle("Total Income Over Time");
+
+        // Fetch data from the database and populate the chart
+        String sql = "SELECT Issue_Date, SUM(Total) AS dailyIncome FROM `Order` GROUP BY Issue_Date";
+        try (Connection conn = DBConnection.getInstance().getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            // Create a series to add data
+            XYChart.Series<Number, Number> series = new XYChart.Series<>();
+            series.setName("Daily Income");
+
+            // A map to store dates and corresponding income
+            Map<LocalDate, Double> dataMap = new HashMap<>();
+
+            while (rs.next()) {
+                LocalDate date = LocalDate.parse(rs.getString("Issue_Date"));
+                double dailyIncome = rs.getDouble("dailyIncome");
+                dataMap.put(date, dailyIncome);
+            }
+
+            // Add data to the series
+            for (Map.Entry<LocalDate, Double> entry : dataMap.entrySet()) {
+                series.getData().add(new XYChart.Data<>(entry.getKey().toEpochDay(), entry.getValue()));
+            }
+
+            // Add series to the chart
+            lineChartID.getData().add(series);
+        } catch (ClassNotFoundException | SQLException e) {
+            showError("Error loading line chart data", e);
+        }
     }
 
     private void loadDashboardData() {
@@ -27,6 +107,7 @@ public class DashBoardFunctionFormController {
         loadItemCount();
         loadOrderCount();
         loadTotalIncome();
+
     }
 
     private void loadTotalIncome() {
