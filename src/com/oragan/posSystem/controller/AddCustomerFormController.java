@@ -192,8 +192,6 @@ public class AddCustomerFormController {
             txtContactNumber.setStyle("-fx-border-color: #2aff2a;");
         }
 
-        System.out.println("Hello Ravindu");
-
         if (!valid) {
             showAlert(Alert.AlertType.ERROR, "Validation Error", "Please correct the input fields.");
         }
