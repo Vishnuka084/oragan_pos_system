@@ -102,6 +102,7 @@ public class DashBoardFunctionFormController {
         }
     }
 
+    //------------------------------ load DashBoardData
     private void loadDashboardData() {
         loadCustomerCount();
         loadItemCount();

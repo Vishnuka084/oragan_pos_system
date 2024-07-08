@@ -1,36 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="89dbfd71-98c4-49ba-a84d-1363c7f00fa7" name="Changes" comment="">
+    <list default="true" id="89dbfd71-98c4-49ba-a84d-1363c7f00fa7" name="Changes" comment="Complete project">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_25_2024_11_33_AM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_25_2024_11_33_AM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_25_2024_11_46_AM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_25_2024_11_46_AM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/identifier.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/identifier.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/OrderDetailsFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/OrderDetailsFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/PurchaseOrderFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/PurchaseOrderFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/entity/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/OrderDetailsForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/view/OrderDetailsForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/reports/OraganBill.jrxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/com/oragan/posSystem/view/CustomerForm.fxml" root0="FORCE_HIGHLIGHTING" />
@@ -42,7 +41,12 @@
     <setting file="file://$PROJECT_DIR$/src/com/oragan/posSystem/entity/Customer.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/com/oragan/posSystem/entity/Item.java" root0="FORCE_HIGHLIGHTING" />
   </component>
-  <component name="ProjectId" id="2iMKfGvfBvwfEhudJVy5ZPZhl3U" />
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\xampp\php\php.exe" />
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2irzRViLIlTF2efRkwsRdRCEH48" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
@@ -50,17 +54,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="sqlite" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/oragan/New folder/oragan_pos_system&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlite&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\oragan\New folder\oragan_pos_system\oragan_pos_system\src\com\oragan\posSystem\view\reports" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\oragan\New folder\oragan_pos_system\oragan_pos_system\src\com\oragan\posSystem\test" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.AppInitializer">
+  <component name="RunManager">
     <configuration name="AppInitializer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.oragan.posSystem.AppInitializer" />
       <module name="oragan_pos_system" />
@@ -74,21 +98,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrderItem.sql (1)" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
-      <script-file value="f5bec7aa-1549-4573-94ba-be35a00bf4ce/schema/main/table/OrderItem.sql" />
-      <script-mode>FILE</script-mode>
-      <method v="2" />
-    </configuration>
-    <configuration name="OrderItem.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
-      <script-file value="bf0e0951-6d2b-45d6-806f-d0d0de35b2d2/schema/main/table/OrderItem.sql" />
-      <script-mode>FILE</script-mode>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.AppInitializer" />
-        <item itemvalue="Database Script.OrderItem.sql (1)" />
-        <item itemvalue="Database Script.OrderItem.sql" />
       </list>
     </recent_temporary>
   </component>
@@ -96,93 +108,78 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="89dbfd71-98c4-49ba-a84d-1363c7f00fa7" name="Changes" comment="" />
-      <created>1719295120601</created>
+      <created>1720263475396</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1719295120601</updated>
-      <workItem from="1719295152403" duration="6431000" />
-      <workItem from="1719316945658" duration="67000" />
-      <workItem from="1719395071699" duration="495000" />
-      <workItem from="1719812500467" duration="4856000" />
-      <workItem from="1719940364135" duration="2203000" />
-      <workItem from="1719949710968" duration="2942000" />
-      <workItem from="1719981768045" duration="4043000" />
-      <workItem from="1720031028196" duration="7710000" />
-      <workItem from="1720069152527" duration="7381000" />
-      <workItem from="1720079654906" duration="4211000" />
-      <workItem from="1720163105539" duration="5306000" />
-      <workItem from="1720168622772" duration="2734000" />
-      <workItem from="1720200371508" duration="2798000" />
-      <workItem from="1720243762484" duration="9805000" />
+      <updated>1720263475396</updated>
+      <workItem from="1720263476332" duration="14183000" />
+      <workItem from="1720291543350" duration="484000" />
+      <workItem from="1720292146203" duration="64000" />
+      <workItem from="1720292236109" duration="483000" />
+      <workItem from="1720293600860" duration="5893000" />
+      <workItem from="1720361298052" duration="3569000" />
+      <workItem from="1720417843176" duration="1108000" />
     </task>
-    <task id="LOCAL-00001" summary="updated">
-      <created>1719295366307</created>
+    <task id="LOCAL-00001" summary="updated the jasper report and content updated">
+      <option name="closed" value="true" />
+      <created>1720287338673</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1719295366307</updated>
+      <updated>1720287338673</updated>
     </task>
-    <task id="LOCAL-00002" summary="updated">
-      <created>1719295866944</created>
+    <task id="LOCAL-00002" summary="updated the jasper report and content updated">
+      <option name="closed" value="true" />
+      <created>1720287554367</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1719295866944</updated>
+      <updated>1720287554367</updated>
     </task>
-    <task id="LOCAL-00003" summary="updated">
-      <created>1719295956595</created>
+    <task id="LOCAL-00003" summary="Complete project">
+      <option name="closed" value="true" />
+      <created>1720361783037</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1719295956595</updated>
+      <updated>1720361783037</updated>
     </task>
-    <task id="LOCAL-00004" summary="updated">
-      <created>1719296119963</created>
+    <task id="LOCAL-00004" summary="Complete project">
+      <option name="closed" value="true" />
+      <created>1720362969270</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1719296119963</updated>
+      <updated>1720362969270</updated>
     </task>
-    <task id="LOCAL-00005" summary="updated">
-      <created>1719297513405</created>
+    <task id="LOCAL-00005" summary="Complete project">
+      <option name="closed" value="true" />
+      <created>1720418260737</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1719297513405</updated>
+      <updated>1720418260737</updated>
     </task>
-    <task id="LOCAL-00006" summary="updated orader form set satus,options actions">
-      <created>1720038793610</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1720038793610</updated>
-    </task>
-    <task id="LOCAL-00007" summary="updated orader form set satus,options actions">
-      <created>1720164929252</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1720164929252</updated>
-    </task>
-    <task id="LOCAL-00008" summary="updated orader form set satus,options actions">
-      <created>1720165194328</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1720165194328</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="oldMeFiltersMigrated" value="true" />
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="updated" />
-    <MESSAGE value="updated orader form set satus,options actions" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated orader form set satus,options actions" />
+    <MESSAGE value="updated the jasper report and content updated" />
+    <MESSAGE value="Complete project" />
+    <option name="LAST_COMMIT_MESSAGE" value="Complete project" />
   </component>
 </project>
