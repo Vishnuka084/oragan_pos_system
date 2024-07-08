@@ -1,0 +1,35 @@
+CREATE TABLE IF NOT EXISTS Customer (
+    Customer_Id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Customer_name TEXT NOT NULL,
+    Address TEXT,
+    contact_number TEXT
+);
+
+CREATE TABLE IF NOT EXISTS "Order" (
+    orderID INTEGER PRIMARY KEY AUTOINCREMENT,
+    orderDate DATE NOT NULL,
+    total REAL NOT NULL,
+    customerID INTEGER,
+    customerName TEXT,
+    FOREIGN KEY (customerID) REFERENCES Customer(Customer_Id)
+);
+
+CREATE TABLE IF NOT EXISTS Item (
+    ItemID INTEGER PRIMARY KEY AUTOINCREMENT,
+    ItemCode TEXT NOT NULL,
+    ItemName TEXT NOT NULL,
+    Price REAL NOT NULL,
+    Quantity INTEGER
+);
+
+CREATE TABLE IF NOT EXISTS OrderItem (
+    OrderID INTEGER,
+    Item_code INTEGER,
+    Item_name TEXT,
+    Quantity INTEGER,
+    price REAL NOT NULL,
+    total REAL,
+    FOREIGN KEY (OrderID) REFERENCES "Order"(orderID),
+    FOREIGN KEY (Item_code) REFERENCES Item(ItemID),
+    PRIMARY KEY (OrderID, Item_code)
+);

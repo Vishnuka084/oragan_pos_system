@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="dataSourceStorageLocal" created-in="IU-212.5712.43">
-    <data-source name="identifier" uuid="f081ed3a-8e9b-4d37-a7e6-92e2022964ab">
+  <component name="dataSourceStorageLocal" created-in="IU-232.9921.47">
+    <data-source name="oragn_pos" uuid="1a3147f8-cd29-495a-bf8c-2733c019349e">
       <database-info product="SQLite" version="3.45.1" jdbc-version="4.2" driver-name="SQLite JDBC" driver-version="3.45.1.0" dbms="SQLITE" exact-version="3.45.1" exact-driver-version="3.45">
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
       <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
+      <secret-storage>master_key</secret-storage>
       <auth-provider>no-auth</auth-provider>
       <schema-mapping>
         <introspection-scope>

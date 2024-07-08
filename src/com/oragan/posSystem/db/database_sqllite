@@ -1,0 +1,41 @@
+-------------- Create the Customer table
+CREATE TABLE IF NOT EXISTS Customer (
+                                        Customer_Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                        Customer_name VARCHAR,
+                                        Address VARCHAR,
+                                        contact_number TEXT
+);
+
+------------- Create the Item table
+CREATE TABLE IF NOT EXISTS Item (
+                                    Item_code TEXT PRIMARY KEY,
+                                    Item_name TEXT NOT NULL,
+                                    Price REAL NOT NULL,
+                                    Qty INTEGER NOT NULL
+);
+
+-------------- Create the Order table
+create table "Order"(
+    OrderID       VARCHAR(50) not null
+        primary key,
+    Current_Date  DATE        not null,
+    Issue_Date    DATE        not null,
+    Customer_Id   VARCHAR(50) not null,
+    Customer_name VARCHAR(50) not null,
+    Total         DOUBLE,
+    Status        VARCHAR(10)
+);
+
+-------------- Create the OrderItem table
+CREATE TABLE OrderItem(
+    OrderID   VARCHAR(50) REFERENCES "Order" (OrderID),
+    Item_code TEXT REFERENCES items (Item_code),
+    Item_name TEXT NOT NULL,
+    Quantity  INTEGER NOT NULL,
+    Price     REAL NOT NULL,
+    Total     REAL NOT NULL,
+    Status    VARCHAR(10),
+    PRIMARY KEY (OrderID, Item_code)
+);
+
+
