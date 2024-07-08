@@ -2,7 +2,6 @@
 package com.oragan.posSystem.entity;
 
 public class Customer {
-
     private String Customer_Id;
     private String Customer_name;
     private String Address;
