@@ -14,7 +14,7 @@
 
 <AnchorPane fx:id="context" prefHeight="788.0" prefWidth="1622.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.DashBoardFunctionFormController">
    <children>
-      <Button layoutX="1503.0" layoutY="17.0" mnemonicParsing="false" onAction="#btnNotificationIconOnAction" prefHeight="70.0" prefWidth="70.0" style="-fx-background-radius: 150; -fx-background-color: blue;" />
+      <Button layoutX="1503.0" layoutY="17.0" mnemonicParsing="false" onAction="#btnNotificationIconOnAction" prefHeight="70.0" prefWidth="70.0" style="-fx-background-radius: 150; -fx-background-color: #4bcffa;" />
       <Circle fill="#f20a0a" layoutX="1573.0" layoutY="17.0" radius="14.0" stroke="WHITE" strokeType="INSIDE" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2772f5b5" height="129.0" layoutX="28.0" layoutY="323.0" stroke="#00fffb" strokeType="INSIDE" width="371.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a7c7e7b5" height="129.0" layoutX="28.0" layoutY="34.0" stroke="#a7c7e7" strokeType="INSIDE" width="371.0" />

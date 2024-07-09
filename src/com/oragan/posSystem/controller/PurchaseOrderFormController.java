@@ -283,8 +283,18 @@ public class PurchaseOrderFormController {
                 // Insert order
                 psOrder.setString(1, orderId);
                 psOrder.setDouble(2, total);
-                psOrder.setString(3, customerId);
-                psOrder.setString(4, customername);
+                if (customerId != null && !customerId.isEmpty()) {
+                    psOrder.setString(3, customerId);
+                } else {
+                    psOrder.setNull(3, java.sql.Types.VARCHAR);
+                }
+
+                if (customername != null && !customername.isEmpty()) {
+                    psOrder.setString(4, customername);
+                } else {
+                    psOrder.setNull(4, java.sql.Types.VARCHAR);
+                }
+
                 psOrder.setString(5, Status);
                 psOrder.setString(6, currentDate);
                 psOrder.setString(7, issueDate);
