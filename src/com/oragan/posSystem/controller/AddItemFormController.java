@@ -19,6 +19,7 @@ public class AddItemFormController {
     public TextField txtItemName;
     public TextField txtItemPrice;
     public TextField txtItemQty;
+    public TextField txtCriticalLevel;
     private TableView<Item> tblItem;
     private ItemFormController itemFormController;
     private Item itemToUpdate;  // Track the item being updated
@@ -40,6 +41,7 @@ public class AddItemFormController {
         txtItemName.setText(item.getItem_name());
         txtItemPrice.setText(String.valueOf(item.getPrice()));
         txtItemQty.setText(String.valueOf(item.getQty()));
+        txtCriticalLevel.setText(String.valueOf(item.getCritical_level()));
         txtItemCode.setEditable(false);  // Disable editing of code during update
     }
 
@@ -61,6 +63,7 @@ public class AddItemFormController {
         txtItemName.clear();
         txtItemPrice.clear();
         txtItemQty.clear();
+        txtCriticalLevel.clear();
         resetFieldStyles();
 
         if (itemToUpdate == null) {
@@ -84,7 +87,7 @@ public class AddItemFormController {
 
     private void addNewItem() {
         String newItemCode = txtItemCode.getText();
-        String sql = "INSERT INTO items(Item_code, Item_name, price, qty) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO items(Item_code, Item_name, price, qty, critical_level) VALUES(?,?,?,?,?)";
         try {
             Connection conn = DBConnection.getInstance().getConnection();
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -92,6 +95,7 @@ public class AddItemFormController {
                 pstmt.setString(2, txtItemName.getText());
                 pstmt.setDouble(3, Double.parseDouble(txtItemPrice.getText()));
                 pstmt.setInt(4, Integer.parseInt(txtItemQty.getText()));
+                pstmt.setInt(5,Integer.parseInt(txtCriticalLevel.getText()));
                 pstmt.executeUpdate();
                 showAlert(Alert.AlertType.INFORMATION, "Success", "Item added successfully.");
                 itemFormController.refreshItemData();
@@ -104,15 +108,17 @@ public class AddItemFormController {
     }
 
     private void updateItem() {
-        String sql = "UPDATE items SET Item_name=?, price=?, qty=? WHERE Item_code=?";
+        String sql = "UPDATE items SET Item_name=?, price=?, qty=?, critical_level=?  WHERE Item_code=?";
         try {
             Connection conn = DBConnection.getInstance().getConnection();
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setString(1, txtItemName.getText());
                 pstmt.setDouble(2, Double.parseDouble(txtItemPrice.getText()));
                 pstmt.setInt(3, Integer.parseInt(txtItemQty.getText()));
-                pstmt.setString(4, txtItemCode.getText());
+                pstmt.setInt(4, Integer.parseInt(txtCriticalLevel.getText()));
+                pstmt.setString(5, txtItemCode.getText());
                 pstmt.executeUpdate();
+                System.out.println(pstmt);
                 showAlert(Alert.AlertType.INFORMATION, "Success", "Item updated successfully.");
                 itemFormController.refreshItemData();
                 ((Stage) addItemFormContext.getScene().getWindow()).close();
@@ -203,6 +209,7 @@ public class AddItemFormController {
         txtItemName.setStyle(null);
         txtItemPrice.setStyle(null);
         txtItemQty.setStyle(null);
+        txtCriticalLevel.setStyle(null);
     }
 
     public void clearbtnOnAction(ActionEvent actionEvent) {

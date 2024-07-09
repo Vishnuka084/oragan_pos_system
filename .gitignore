@@ -29,4 +29,4 @@ bin/
 .DS_Store!/src/com/oragan/posSystem/view/AddCustomerForm.fxml
 
 # Ignore SQLite database file
-identifier.sqlite
+identifier.sqlite!/src/com/oragan/posSystem/view/CriticalLevelForm.fxml

@@ -7,15 +7,18 @@ public class Item {
     private String Item_name;
     private double price;
     private int qty;
+    private int critical_level;
+
 
     public Item() {
     }
 
-    public Item(String item_code, String item_name, double price, int qty) {
+    public Item(String item_code, String item_name, double price, int qty, int critical_level) {
         Item_code = item_code;
         Item_name = item_name;
         this.price = price;
         this.qty = qty;
+        this.critical_level = critical_level;
     }
 
     public String getItem_code() {
@@ -48,5 +51,13 @@ public class Item {
 
     public void setQty(int qty) {
         this.qty = qty;
+    }
+
+    public int getCritical_level() {
+        return critical_level;
+    }
+
+    public void setCritical_level(int critical_level) {
+        this.critical_level = critical_level;
     }
 }
