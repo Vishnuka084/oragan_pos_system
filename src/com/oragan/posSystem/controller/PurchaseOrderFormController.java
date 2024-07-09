@@ -62,11 +62,18 @@ public class PurchaseOrderFormController {
         for (Customer customer : customers) {
             cmbCustomerID.getItems().add(customer.getCustomer_Id());
         }
-        if (!customers.isEmpty()) {
-            cmbCustomerID.getSelectionModel().selectFirst();
-            setCustomerDetails(customers.get(0).getCustomer_Id());
-        }
+        cmbCustomerID.getSelectionModel();
+        setCustomerDetails(null); // or handle it as per your logic
 
+        // Add a listener to handle selection changes
+        cmbCustomerID.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == null) {
+                // Handle the case where no customer is selected
+                clearCustomerDetails();
+            } else {
+                setCustomerDetails(newValue);
+            }
+        });
         items = getAllItems();
         for (Item item : items) {
             cmbItemCode.getItems().add(item.getItem_code());
@@ -99,6 +106,13 @@ public class PurchaseOrderFormController {
 
 
 
+
+    }
+
+    private void clearCustomerDetails() {
+        txtCustomerName.clear();
+        txtCustomerAddress.clear();
+        txtContactNumber.clear();
 
     }
 
