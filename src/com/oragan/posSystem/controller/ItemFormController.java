@@ -37,6 +37,7 @@ public class ItemFormController {
     public String cmbName;
     public String cmbID;
     public ComboBox<String> cmbCustomerId;
+    public TableColumn colCriticalLevel;
 
     private ObservableList<String> itemCodes = FXCollections.observableArrayList();
     private ObservableList<Item> itemList = FXCollections.observableArrayList();
@@ -69,6 +70,8 @@ public class ItemFormController {
         colItemName.setCellValueFactory(new PropertyValueFactory<>("Item_name"));
         colPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
         colQtyOnHand.setCellValueFactory(new PropertyValueFactory<>("qty"));
+        colCriticalLevel.setCellValueFactory(new PropertyValueFactory<>("critical_level"));
+
 
         colOptions.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
         colOptions.setCellFactory(param -> new TableCell<Item, Item>() {
@@ -122,7 +125,7 @@ public class ItemFormController {
                 if (empty || item == null) {
                     setStyle("");
                 } else {
-                    if (item.getQty() < 10) {
+                    if (item.getQty() <= item.getCritical_level()) {
                         setStyle("-fx-background-color: red; -fx-text-fill: white;");
                     } else {
                         setStyle("");
@@ -166,7 +169,8 @@ public class ItemFormController {
                     String itemName = rs.getString("Item_name");
                     double price = rs.getDouble("price");
                     int qty = rs.getInt("qty");
-                    Item item = new Item(itemCode, itemName, price, qty);
+                    int criticalLevel = rs.getInt("critical_level");
+                    Item item = new Item(itemCode, itemName, price, qty, criticalLevel);
                     itemList.add(item);
                     itemCodes.add(itemCode); // Add itemCode to the itemCodes list
                 }
