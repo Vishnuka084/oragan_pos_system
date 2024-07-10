@@ -591,10 +591,11 @@ public class PurchaseOrderFormController {
         Stage stage = new Stage();
         stage.setScene(new Scene(load));
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setTitle("Search Txt Name Form");
+        stage.setTitle("SearchTxt Name Form");
         stage.centerOnScreen();
         stage.show();
 
+        System.out.println("clickkkkkkkkkkk");
 
     }
 }

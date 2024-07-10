@@ -18,9 +18,9 @@ public class Customer {
         this.contact_number = contact_number;
     }
 
-    public Customer(String Customer_Id, String Customer_name) {
-        this.Customer_Id = Customer_Id;
-        this.Customer_name = Customer_name;
+    public Customer(String customer_id, String customer_name) {
+        this.Customer_Id = customer_id;
+        this.Customer_name = customer_name;
     }
 
 

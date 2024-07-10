@@ -47,10 +47,9 @@ public class CustomerFormController {
 
     public void initialize() {
         loadCustomerData();
-
         initializeTableColumns();
-
         txtSerchFieldCustomer.textProperty().addListener((observable, oldValue, newValue) -> filterCustomerList(newValue));
+
     }
 
     public void btnAddCustomerFormOnAction(ActionEvent actionEvent) throws IOException {
@@ -210,6 +209,7 @@ public class CustomerFormController {
             tblCustomer.setItems(filteredList);
         }
     }
+
 
     public void cmbSearchByCustomerOnAction(ActionEvent actionEvent) {
 
