@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -16,15 +17,15 @@
 
 <AnchorPane prefHeight="788.0" prefWidth="1622.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.PurchaseOrderFormController">
    <children>
-      <TableView fx:id="tblCart" layoutX="278.0" layoutY="416.0" onMouseClicked="#handleRowClick" prefHeight="247.0" prefWidth="1180.0">
+      <TableView fx:id="tblCart" layoutX="192.0" layoutY="391.0" onMouseClicked="#handleRowClick" prefHeight="294.0" prefWidth="1266.0">
          <columns>
             <TableColumn fx:id="colItemCode" prefWidth="167.0" text="Item Code" />
             <TableColumn fx:id="colItemName" minWidth="0.0" prefWidth="188.0" text="Item Name" />
             <TableColumn fx:id="colUnitPrice" prefWidth="173.0" text="Unit Price" />
-            <TableColumn fx:id="colQuantity" prefWidth="166.0" text="Quantity" />
-            <TableColumn fx:id="colTotal" prefWidth="175.0" text="Total" />
-            <TableColumn fx:id="colStatus" prefWidth="144.0" text="Status" />
-            <TableColumn fx:id="colOptions" prefWidth="164.0" text="Options" />
+            <TableColumn fx:id="colQuantity" prefWidth="179.0" text="Quantity" />
+            <TableColumn fx:id="colTotal" prefWidth="195.0" text="Total" />
+            <TableColumn fx:id="colStatus" prefWidth="175.0" text="Status" />
+            <TableColumn fx:id="colOptions" prefWidth="188.0" text="Options" />
          </columns>
       </TableView>
       <Text fill="#180361" layoutX="23.0" layoutY="117.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID" wrappingWidth="133.60986328125">
@@ -107,22 +108,22 @@
             <Insets left="5.0" />
          </opaqueInsets>
       </TextField>
-      <Text fill="#ff210d" layoutX="1348.0" layoutY="294.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity" wrappingWidth="214.60986328125">
+      <Text fill="#ff210d" layoutX="1248.0" layoutY="316.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity" wrappingWidth="83.60986328125">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
       </Text>
-      <TextField fx:id="txtQuantity" layoutX="1348.0" layoutY="306.0" prefHeight="35.0" prefWidth="225.0">
+      <TextField fx:id="txtQuantity" layoutX="1346.0" layoutY="292.0" prefHeight="35.0" prefWidth="225.0">
          <opaqueInsets>
             <Insets left="5.0" />
          </opaqueInsets>
       </TextField>
-      <Button layoutX="1348.0" layoutY="352.0" mnemonicParsing="false" onAction="#btnAddCartOnAction" prefHeight="42.0" prefWidth="215.0" style="-fx-background-color: yellow; -fx-border-radius: 10; -fx-background-radius: 10;" text="Add To Cart">
+      <Button layoutX="1351.0" layoutY="341.0" mnemonicParsing="false" onAction="#btnAddCartOnAction" prefHeight="42.0" prefWidth="215.0" style="-fx-background-color: yellow; -fx-border-radius: 10; -fx-background-radius: 10;" text="Add To Cart">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
       </Button>
-      <ImageView fitHeight="28.0" fitWidth="25.0" layoutX="1507.0" layoutY="361.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="28.0" fitWidth="25.0" layoutX="1521.0" layoutY="349.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/cart.png" />
          </image>
@@ -157,6 +158,16 @@
             <Font name="System Bold" size="17.0" />
          </font>
       </Button>
+      <RadioButton layoutX="684.0" layoutY="713.0" mnemonicParsing="false" text="Card Payment ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </RadioButton>
+      <RadioButton layoutX="481.0" layoutY="712.0" mnemonicParsing="false" text="Cash Payment ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </RadioButton>
    </children>
    <effect>
       <ColorAdjust brightness="0.02" />
