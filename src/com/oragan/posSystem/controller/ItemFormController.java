@@ -15,6 +15,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
@@ -38,6 +39,8 @@ public class ItemFormController {
     public String cmbID;
     public ComboBox<String> cmbCustomerId;
     public TableColumn colCriticalLevel;
+    public ImageView imgNotificationIcon;
+    public Label lblNotificationCount;
 
     private ObservableList<String> itemCodes = FXCollections.observableArrayList();
     private ObservableList<Item> itemList = FXCollections.observableArrayList();
@@ -246,5 +249,21 @@ public class ItemFormController {
             }
             tblItem.setItems(filteredList);
         }
+    }
+
+    public void btnNotificationIconOnAction(MouseEvent mouseEvent) throws IOException {
+        URL resource = this.getClass().getResource("/com/oragan/posSystem/view/CriticalLevelForm.fxml");
+        FXMLLoader fxmlLoader = new FXMLLoader(resource);
+        Parent load = fxmlLoader.load();
+        CriticalLevelFormController criticalLevelFormController = fxmlLoader.getController();
+        criticalLevelFormController.setItemsData(itemList); // Pass the item list to the controller
+        Stage stage = new Stage();
+        stage.setScene(new Scene(load));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("Critical Level Items");
+        stage.centerOnScreen();
+        stage.show();
+
+        System.out.println("Critical Items Form Open ");
     }
 }

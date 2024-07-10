@@ -18,6 +18,12 @@ public class Customer {
         this.contact_number = contact_number;
     }
 
+    public Customer(String Customer_Id, String Customer_name) {
+        this.Customer_Id = Customer_Id;
+        this.Customer_name = Customer_name;
+    }
+
+
     public String getCustomer_Id() {
         return Customer_Id;
     }
