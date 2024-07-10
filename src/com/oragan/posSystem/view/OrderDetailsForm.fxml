@@ -9,26 +9,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="831.0" prefWidth="1915.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.OrderDetailsFormController">
+<AnchorPane prefHeight="831.0" prefWidth="1915.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.OrderDetailsFormController">
    <children>
-      <TextField fx:id="txtSerchFieldOrder" layoutX="433.0" layoutY="105.0" onAction="#txtSearchFieldOnAction" prefHeight="48.0" prefWidth="304.0" promptText="Search">
+      <TextField fx:id="txtSerchFieldOrder" layoutX="698.0" layoutY="122.0" onAction="#txtSearchFieldOnAction" prefHeight="48.0" prefWidth="304.0" promptText="Search">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
-      <TableView fx:id="tblOrder" layoutX="204.0" layoutY="217.0" prefHeight="412.0" prefWidth="1386.0">
+      <TableView fx:id="tblOrder" layoutX="128.0" layoutY="217.0" prefHeight="535.0" prefWidth="1659.0">
          <columns>
             <TableColumn fx:id="colOrderID" prefWidth="163.0" text="Order ID" />
             <TableColumn fx:id="colCustomerID" prefWidth="170.0" text="Customer ID" />
-            <TableColumn fx:id="colCustomerName" prefWidth="187.0" text="Customer Name" />
-            <TableColumn fx:id="colCurrentDate" prefWidth="179.0" text="Current Date" />
-            <TableColumn fx:id="colIssueDate" prefWidth="238.0" text="Issue Date" />
-            <TableColumn fx:id="colStatus" prefWidth="131.0" text="Status" />
-            <TableColumn fx:id="colOrderTotal" prefWidth="155.0" text="Total" />
-            <TableColumn fx:id="colOptions" prefWidth="114.0" text="options" />
+            <TableColumn fx:id="colCustomerName" prefWidth="270.0" text="Customer Name" />
+            <TableColumn fx:id="colCurrentDate" prefWidth="352.0" text="Current Date" />
+            <TableColumn fx:id="colIssueDate" prefWidth="191.0" text="Issue Date" />
+            <TableColumn fx:id="colStatus" prefWidth="187.0" text="Status" />
+            <TableColumn fx:id="colOrderTotal" prefWidth="167.0" text="Total" />
+            <TableColumn fx:id="colOptions" prefWidth="158.0" text="options" />
          </columns>
       </TableView>
-      <ComboBox fx:id="cmbOrderID" layoutX="761.0" layoutY="105.0" onAction="#cmbSearchByOrderOnAction" prefHeight="48.0" prefWidth="192.0" promptText="Select Serch Option" style="-fx-background-color: FFC700; -fx-background-radius: 10;">
+      <ComboBox fx:id="cmbOrderID" layoutX="1026.0" layoutY="122.0" onAction="#cmbSearchByOrderOnAction" prefHeight="48.0" prefWidth="192.0" promptText="Select Serch Option" style="-fx-background-color: FFC700; -fx-background-radius: 10;">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:id="cmbOrderIDs" fx:value="Order ID" />

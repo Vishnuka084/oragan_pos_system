@@ -10,12 +10,12 @@
 
 <AnchorPane prefHeight="725.0" prefWidth="477.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.SearchTextFormCustomerController">
    <children>
-      <Text layoutX="119.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search Name Form " wrappingWidth="227.13671875">
+      <Text layoutX="73.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search Name Form Customer" wrappingWidth="335.13671875">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="txtCustomerName"  onAction="#searchCustomerByName" layoutX="63.0" layoutY="81.0" prefHeight="32.0" prefWidth="351.0" promptText="Search this Customer Name">
+      <TextField fx:id="txtCustomerName" layoutX="63.0" layoutY="81.0" onAction="#searchCustomerByName" prefHeight="32.0" prefWidth="351.0" promptText="Search this Customer Name">
          <font>
             <Font size="13.0" />
          </font>

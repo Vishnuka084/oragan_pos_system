@@ -16,27 +16,27 @@
 
 <AnchorPane fx:id="context" prefHeight="831.0" prefWidth="1915.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.ItemFormController">
    <children>
-      <Circle fill="#2085dd" layoutX="1539.0" layoutY="53.0" radius="24.0" stroke="#2085dd" strokeType="INSIDE" />
-      <TextField fx:id="txtSearchField" layoutX="362.0" layoutY="95.0" onAction="#txtSearchFieldOnAction" prefHeight="48.0" prefWidth="304.0" promptText="Search" style="-fx-border-width: 2; -fx-border-color: green; -fx-background-color: transparent; -fx-text-fill: green; -fx-border-radius: 10; -fx-background-radius: 20;">
+      <Circle fill="#2085dd" layoutX="1833.0" layoutY="61.0" radius="24.0" stroke="#2085dd" strokeType="INSIDE" />
+      <TextField fx:id="txtSearchField" layoutX="619.0" layoutY="102.0" onAction="#txtSearchFieldOnAction" prefHeight="48.0" prefWidth="304.0" promptText="Search" style="-fx-border-width: 2; -fx-border-color: green; -fx-background-color: transparent; -fx-text-fill: green; -fx-border-radius: 10; -fx-background-radius: 20;">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
-      <TableView fx:id="tblItem" layoutX="221.0" layoutY="220.0" prefHeight="439.0" prefWidth="1345.0">
+      <TableView fx:id="tblItem" layoutX="101.0" layoutY="208.0" prefHeight="566.0" prefWidth="1713.0">
          <columns>
             <TableColumn fx:id="colItemCode" prefWidth="196.0" text="Item Code" />
-            <TableColumn fx:id="colItemName" prefWidth="181.0" text="Item Name" />
-            <TableColumn fx:id="colPrice" prefWidth="256.0" text="Price" />
-            <TableColumn fx:id="colQtyOnHand" prefWidth="219.0" text="Qty On Hand" />
-            <TableColumn fx:id="colCriticalLevel" prefWidth="235.0" text="Critical Item Level" />
-            <TableColumn fx:id="colOptions" prefWidth="311.0" text="Options" />
+            <TableColumn fx:id="colItemName" prefWidth="465.0" text="Item Name" />
+            <TableColumn fx:id="colPrice" prefWidth="292.0" text="Price" />
+            <TableColumn fx:id="colQtyOnHand" prefWidth="280.0" text="Qty On Hand" />
+            <TableColumn fx:id="colCriticalLevel" prefWidth="288.0" text="Critical Item Level" />
+            <TableColumn fx:id="colOptions" prefWidth="191.0" text="Options" />
          </columns>
       </TableView>
-      <Button layoutX="847.0" layoutY="95.0" mnemonicParsing="false" onAction="#btnAddItemFormOnAction" prefHeight="48.0" prefWidth="192.0" style="-fx-background-color: black; -fx-border-radius: 15; -fx-background-radius: 10;" text="Add New Item" textFill="#f8f8f8">
+      <Button layoutX="1104.0" layoutY="102.0" mnemonicParsing="false" onAction="#btnAddItemFormOnAction" prefHeight="48.0" prefWidth="192.0" style="-fx-background-color: black; -fx-border-radius: 15; -fx-background-radius: 10;" text="Add New Item" textFill="#f8f8f8">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <ComboBox fx:id="cmbCustomerId" layoutX="683.0" layoutY="95.0" onAction="#cmbSearchByItemOnAction" prefHeight="48.0" prefWidth="150.0" promptText="Select Serch Option" style="-fx-background-color: #EFC81A; -fx-background-radius: 10;">
+      <ComboBox fx:id="cmbCustomerId" layoutX="940.0" layoutY="102.0" onAction="#cmbSearchByItemOnAction" prefHeight="48.0" prefWidth="150.0" promptText="Select Serch Option" style="-fx-background-color: #EFC81A; -fx-background-radius: 10;">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:id="cmbName" fx:value="Item Name" />
@@ -44,13 +44,13 @@
             </FXCollections>
          </items>
       </ComboBox>
-      <ImageView fx:id="imgNotificationIcon" fitHeight="37.0" fitWidth="36.0" layoutX="1521.0" layoutY="35.0" onMouseClicked="#btnNotificationIconOnAction" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imgNotificationIcon" fitHeight="37.0" fitWidth="36.0" layoutX="1815.0" layoutY="43.0" onMouseClicked="#btnNotificationIconOnAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/icons8-notification.gif" />
          </image>
       </ImageView>
-      <Circle fill="#eb0a0a" layoutX="1562.0" layoutY="35.0" radius="15.0" stroke="#eb0000" strokeType="INSIDE" />
-      <Label fx:id="lblNotificationCount" layoutX="1556.0" layoutY="19.0" prefWidth="0.0" text="1" textFill="#e8e8e8">
+      <Circle fill="#eb0a0a" layoutX="1856.0" layoutY="43.0" radius="15.0" stroke="#eb0000" strokeType="INSIDE" />
+      <Label fx:id="lblNotificationCount" layoutX="1850.0" layoutY="27.0" prefWidth="0.0" text="1" textFill="#e8e8e8">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

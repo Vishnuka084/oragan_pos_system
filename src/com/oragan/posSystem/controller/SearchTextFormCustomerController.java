@@ -9,7 +9,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
+
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,6 +26,7 @@ public class SearchTextFormCustomerController implements Initializable {
 
     @FXML
     private TableColumn<Customer, String> colName;
+
 
     public interface CustomerSelectionListener {
         void onCustomerSelected(Customer customer);

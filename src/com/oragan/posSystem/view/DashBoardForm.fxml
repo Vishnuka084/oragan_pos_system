@@ -37,7 +37,7 @@
          <font>
             <Font name="Bell MT Bold" size="14.0" />
          </font></Text>
-      <Text layoutX="720.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 25; -fx-font-family: bold;" text="Customer" wrappingWidth="127.13671875">
+      <Text layoutX="720.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 25; -fx-font-family: bold;" text="Customer" wrappingWidth="127.13671875">
          <font>
             <Font size="14.0" />
          </font></Text>
@@ -50,13 +50,13 @@
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Text>
-      <Text layoutX="1102.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 25; -fx-font-family: bold;" text="Purchase Order" wrappingWidth="208.13671875" />
+      <Text layoutX="1105.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 25; -fx-font-family: bold;" text="Purchase Order" wrappingWidth="208.13671875" />
       <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="1054.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/icons8-create-order-100.png" />
          </image>
       </ImageView>
-      <Text layoutX="1377.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 25; -fx-font-family: bold;" text="Oder Details" wrappingWidth="150.13671875" />
+      <Text layoutX="1377.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 25; -fx-font-family: bold;" text="Oder Details" wrappingWidth="150.13671875" />
       <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="1329.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/icons8-order-100.png" />
@@ -67,10 +67,10 @@
             <Font name="Georgia Pro Bold" size="18.0" />
          </font></Text>
       <Button layoutX="475.0" layoutY="53.0" mnemonicParsing="false" onAction="#DashBoardOnAction" opacity="0.11" prefHeight="48.0" prefWidth="150.0" />
-      <Button layoutX="696.0" layoutY="59.0" mnemonicParsing="false" onAction="#CustomerOnAction" opacity="0.11" prefHeight="40.0" prefWidth="135.0" />
+      <Button layoutX="703.0" layoutY="56.0" mnemonicParsing="false" onAction="#CustomerOnAction" opacity="0.11" prefHeight="40.0" prefWidth="135.0" />
       <Button layoutX="906.0" layoutY="57.0" mnemonicParsing="false" onAction="#ItemOnAction" opacity="0.11" prefHeight="40.0" prefWidth="102.0" />
-      <Button layoutX="1089.0" layoutY="57.0" mnemonicParsing="false" onAction="#PurchaseOrderOnAction" opacity="0.11" prefHeight="48.0" prefWidth="198.0" />
-      <Button layoutX="1355.0" layoutY="56.0" mnemonicParsing="false" onAction="#OderDetailsOnAction" opacity="0.11" prefHeight="48.0" prefWidth="173.0" />
+      <Button layoutX="1088.0" layoutY="56.0" mnemonicParsing="false" onAction="#PurchaseOrderOnAction" opacity="0.11" prefHeight="48.0" prefWidth="198.0" />
+      <Button layoutX="1353.0" layoutY="62.0" mnemonicParsing="false" onAction="#OderDetailsOnAction" opacity="0.11" prefHeight="48.0" prefWidth="173.0" />
       <AnchorPane fx:id="context" layoutX="10.0" layoutY="163.0" opacity="0.98" prefHeight="831.0" prefWidth="1915.0" style="-fx-background-color: #ebf3ff;" />
       <Label fx:id="timeLabel" layoutX="1621.0" layoutY="47.0" prefHeight="48.0" prefWidth="277.0" style="-fx-background-radius: 15; -fx-background-color: #0c2461; -fx-background-position: center;" text="Label" textFill="WHITE">
          <font>

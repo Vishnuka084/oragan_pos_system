@@ -58,6 +58,11 @@ public class PurchaseOrderFormController {
     public TableColumn colStatus;
     public Button btnOrderHold;
     public TableColumn <OrderItem,OrderItem>colOptions;
+    public TextField txtDiscount;
+    public ImageView CardID;
+    public TextField txtPyaamount;
+    public TextField txtBalance;
+    public ImageView CashID;
     private List<Customer> customers;
     private List<Item> items;
     private ObservableList<OrderItem> cartItems;
@@ -112,8 +117,16 @@ public class PurchaseOrderFormController {
         initializeTableColumns();
 
 
+        txtPyaamount.textProperty().addListener((observable, oldValue, newValue) -> calculateBalance());
 
 
+    }
+
+    private void calculateBalance() {
+        double totalAmount = Double.parseDouble(txtTotal.getText());
+        double payAmount = Double.parseDouble(txtPyaamount.getText());
+        double balance = payAmount - totalAmount;
+        txtBalance.setText(String.valueOf(balance));
     }
 
     private void clearCustomerDetails() {
@@ -584,6 +597,7 @@ public class PurchaseOrderFormController {
         }
     }
 
+    /// Search Customer Name ----------------------------------
     public void SearchTxtNameFormOnAction(MouseEvent mouseEvent) throws IOException {
         URL resource = this.getClass().getResource("/com/oragan/posSystem/view/SearchTextFormCustomer.fxml");
         FXMLLoader fxmlLoader = new FXMLLoader(resource);
@@ -605,7 +619,7 @@ public class PurchaseOrderFormController {
         stage.centerOnScreen();
         stage.show();
 
-        System.out.println("clickkkkkkkkkkk");
+        System.out.println("SearchTextFormCustomer ");
 
     }
 
@@ -616,5 +630,50 @@ public class PurchaseOrderFormController {
             txtCustomerAddress.setText(customer.getAddress());
             txtContactNumber.setText(customer.getContact_number());
         }
+    }
+
+    public void SearchTxtIItemNameFormOnAction(MouseEvent mouseEvent) throws IOException {
+        URL resource = this.getClass().getResource("/com/oragan/posSystem/view/SearchTextFromItem.fxml");
+        FXMLLoader fxmlLoader = new FXMLLoader(resource);
+        Parent load = fxmlLoader.load();
+
+        SearchTextFromItemController searchTextFromItemController = fxmlLoader.getController();
+
+        // Set item list in the search form controller
+        ObservableList<Item> itemList = FXCollections.observableArrayList(getAllItems());
+        searchTextFromItemController.setItemNamesList(itemList);
+
+        // Set the item selection listener
+        searchTextFromItemController.setItemSelectionListener(this::handleItemSelection);
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(load));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("SearchTxt Item Name Form");
+        stage.centerOnScreen();
+        stage.show();
+
+        System.out.println("SearchTextFromItem");
+    }
+
+    private void handleItemSelection(Item item) {
+        if (item != null) {
+            cmbItemCode.setValue(item.getItem_code());
+            txtItemName.setText(item.getItem_name());
+            txtQtyOnHand.setText(String.valueOf(item.getQty()));
+            txtPrice.setText(String.valueOf(item.getPrice()));
+        }
+    }
+
+    public void CashPaymentOnAction(MouseEvent mouseEvent) {
+        txtPyaamount.setDisable(false);
+        txtBalance.setDisable(true);
+        txtTotal.setDisable(true);
+    }
+
+    public void CardPaymentOnAction(MouseEvent mouseEvent) {
+        txtPyaamount.setDisable(true);
+        txtBalance.setDisable(true);
+        txtTotal.setDisable(true);
     }
 }
