@@ -11,30 +11,30 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="context" prefHeight="788.0" prefWidth="1622.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.CustomerFormController">
+<AnchorPane fx:id="context" prefHeight="831.0" prefWidth="1915.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.CustomerFormController">
     <children>
-        <TextField fx:id="txtSerchFieldCustomer" layoutX="362.0" layoutY="95.0" onAction="#txtSerchFieldCustomerOnAction" prefHeight="48.0" prefWidth="304.0" promptText="Search" style="-fx-border-width: 2; -fx-border-color: green; -fx-background-color: transparent; -fx-text-fill: green; -fx-border-radius: 10; -fx-background-radius: 20;">
+        <TextField fx:id="txtSerchFieldCustomer" layoutX="602.0" layoutY="99.0" onAction="#txtSerchFieldCustomerOnAction" prefHeight="48.0" prefWidth="304.0" promptText="Search" style="-fx-border-width: 2; -fx-border-color: green; -fx-background-color: transparent; -fx-text-fill: green; -fx-border-radius: 10; -fx-background-radius: 20;">
             <font>
                 <Font size="15.0" />
             </font>
         </TextField>
-        <TableView fx:id="tblCustomer" layoutX="221.0" layoutY="211.0" prefHeight="540.0" prefWidth="1180.0">
+        <TableView fx:id="tblCustomer" layoutX="63.0" layoutY="181.0" prefHeight="625.0" prefWidth="1803.0">
             <columns>
-                <TableColumn fx:id="tblCustomerIdField" prefWidth="196.0" style="-fx-font-size: 10" text="Customer ID" />
-                <TableColumn fx:id="tblCustomerNameFIeld" prefWidth="181.0" text="Name" />
-                <TableColumn fx:id="tblCustomerAddressField" prefWidth="256.0" text="Address" />
-                <TableColumn fx:id="tblCustomerContactNoField" prefWidth="193.0" text="Contact Number" />
-                <TableColumn fx:id="tblOptionsColumn" prefWidth="353.0" text="Options" />
+                <TableColumn fx:id="tblCustomerIdField" prefWidth="228.0" style="-fx-font-size: 10" text="Customer ID" />
+                <TableColumn fx:id="tblCustomerNameFIeld" prefWidth="432.0" text="Name" />
+                <TableColumn fx:id="tblCustomerAddressField" prefWidth="491.0" text="Address" />
+                <TableColumn fx:id="tblCustomerContactNoField" prefWidth="372.0" text="Contact Number" />
+                <TableColumn fx:id="tblOptionsColumn" prefWidth="334.0" text="Options" />
             </columns>
          <effect>
             <ColorAdjust brightness="0.13" contrast="0.05" hue="0.15" saturation="-0.03" />
          </effect>
         </TableView>
-        <Button layoutX="1000.0" layoutY="95.0" mnemonicParsing="false" onAction="#btnAddCustomerFormOnAction" prefHeight="48.0" prefWidth="192.0" style="-fx-background-color: black; -fx-border-radius: 15; -fx-background-radius: 10;" text="Add New Customer" textFill="#f8f8f8">
+        <Button layoutX="1135.0" layoutY="99.0" mnemonicParsing="false" onAction="#btnAddCustomerFormOnAction" prefHeight="48.0" prefWidth="192.0" style="-fx-background-color: black; -fx-border-radius: 15; -fx-background-radius: 10;" text="Add New Customer" textFill="#f8f8f8">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-        <ComboBox fx:id="cmbCustomerId" layoutX="683.0" layoutY="95.0" onAction="#cmbSearchByCustomerOnAction" prefHeight="48.0" prefWidth="192.0" promptText="Select Serch Option" style="-fx-background-color: FFC700; -fx-background-radius: 10;-fx-font-weight: bold;-fx-font-size: 15px">
+        <ComboBox fx:id="cmbCustomerId" layoutX="923.0" layoutY="99.0" onAction="#cmbSearchByCustomerOnAction" prefHeight="48.0" prefWidth="192.0" promptText="Select Serch Option" style="-fx-background-color: FFC700; -fx-background-radius: 10;-fx-font-weight: bold;-fx-font-size: 15px">
             <items>
                 <FXCollections fx:factory="observableArrayList">
                     <String fx:id="cmbName" fx:value="Customer Name" />

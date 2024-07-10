@@ -11,63 +11,72 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="1120.0" prefWidth="1929.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.DashBoardFormController">
+<AnchorPane prefHeight="1156.0" prefWidth="1936.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.DashBoardFormController">
    <children>
       <Circle fill="#034586" layoutX="96.0" layoutY="555.0" radius="607.0" stroke="#034586" strokeType="INSIDE" />
       <Circle fill="#0d549a" layoutX="-130.0" layoutY="555.0" radius="604.0" stroke="#0d549a" strokeType="INSIDE" />
       <Circle fill="#2868a4" layoutX="-307.0" layoutY="580.0" radius="604.0" stroke="#2868a4" strokeType="INSIDE" />
-      <Rectangle arcWidth="5.0" fill="WHITE" height="72.0" layoutX="197.0" layoutY="116.0" opacity="0.86" stroke="WHITE" strokeType="INSIDE" width="1622.0" />
-      <Text layoutX="275.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 27; -fx-font-family: bold;" text="Oragan Shop" wrappingWidth="181.13671875" />
-      <ImageView fitHeight="54.0" fitWidth="62.0" layoutX="215.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+      <Rectangle arcWidth="5.0" fill="WHITE" height="149.0" layoutX="13.0" layoutY="11.0" opacity="0.86" stroke="WHITE" strokeType="INSIDE" width="1923.0" />
+      <Text layoutX="50.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 27; -fx-font-family: bold;" text="Oragan Shop" wrappingWidth="181.13671875" />
+      <ImageView fitHeight="78.0" fitWidth="89.0" layoutX="88.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/icons8-shop-96.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="33.0" fitWidth="31.0" layoutX="502.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="434.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/icons8-home-100.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="31.0" fitWidth="31.0" layoutX="696.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="672.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/icons8-customer-100.png" />
          </image>
       </ImageView>
-      <Text layoutX="533.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 25; -fx-font-family: bold;" text="DashBoard" wrappingWidth="150.13671875" />
-      <Text layoutX="725.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 25; -fx-font-family: bold;" text="Customer" wrappingWidth="150.13671875" />
-      <ImageView fitHeight="31.0" fitWidth="31.0" layoutX="876.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
+      <Text layoutX="482.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 25; -fx-font-family: bold;" text="DashBoard" wrappingWidth="135.13671875">
+         <font>
+            <Font name="Bell MT Bold" size="14.0" />
+         </font></Text>
+      <Text layoutX="720.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 25; -fx-font-family: bold;" text="Customer" wrappingWidth="127.13671875">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+      <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="883.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/icons8-open-box-90.png" />
          </image>
       </ImageView>
-      <Text layoutX="906.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 25; -fx-font-family: bold;" text="Items" wrappingWidth="150.13671875" />
-      <Text layoutX="1065.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 25; -fx-font-family: bold;" text="Purchase Order" wrappingWidth="208.13671875" />
-      <ImageView fitHeight="31.0" fitWidth="31.0" layoutX="1034.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
+      <Text layoutX="942.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 25; -fx-font-family: bold;" text="Items" wrappingWidth="78.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Text>
+      <Text layoutX="1102.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 25; -fx-font-family: bold;" text="Purchase Order" wrappingWidth="208.13671875" />
+      <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="1054.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/icons8-create-order-100.png" />
          </image>
       </ImageView>
-      <Text layoutX="1323.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 25; -fx-font-family: bold;" text="Oder Details" wrappingWidth="217.13671875" />
-      <ImageView fitHeight="31.0" fitWidth="31.0" layoutX="1292.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
+      <Text layoutX="1377.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 25; -fx-font-family: bold;" text="Oder Details" wrappingWidth="150.13671875" />
+      <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="1329.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/icons8-order-100.png" />
          </image>
       </ImageView>
-      <Separator layoutX="216.0" layoutY="173.0" prefHeight="12.0" prefWidth="1585.0" />
-      <Text fill="#42003e" layoutX="981.0" layoutY="1003.0" strokeType="OUTSIDE" strokeWidth="0.0" text="copy@right 2024 Oragan.ist">
+      <Text fill="#42003e" layoutX="883.0" layoutY="1013.0" strokeType="OUTSIDE" strokeWidth="0.0" text="copy@right 2024 Oragan.ist">
          <font>
             <Font name="Georgia Pro Bold" size="18.0" />
          </font></Text>
-      <Button layoutX="525.0" layoutY="145.0" mnemonicParsing="false" onAction="#DashBoardOnAction" opacity="0.11" prefHeight="25.0" prefWidth="137.0" />
-      <Button layoutX="712.0" layoutY="143.0" mnemonicParsing="false" onAction="#CustomerOnAction" opacity="0.11" prefHeight="25.0" prefWidth="123.0" />
-      <Button layoutX="892.0" layoutY="143.0" mnemonicParsing="false" onAction="#ItemOnAction" opacity="0.11" prefHeight="25.0" prefWidth="89.0" />
-      <Button layoutX="1054.0" layoutY="141.0" mnemonicParsing="false" onAction="#PurchaseOrderOnAction" opacity="0.11" prefHeight="25.0" prefWidth="181.0" />
-      <Button layoutX="1315.0" layoutY="144.0" mnemonicParsing="false" onAction="#OderDetailsOnAction" opacity="0.11" prefHeight="25.0" prefWidth="150.0" />
-      <AnchorPane fx:id="context" layoutX="197.0" layoutY="186.0" opacity="0.98" prefHeight="788.0" prefWidth="1622.0" style="-fx-background-color: #ebf3ff;" />
-      <Label fx:id="timeLabel" layoutX="1523.0" layoutY="136.0" prefHeight="40.0" prefWidth="268.0" style="-fx-background-radius: 15; -fx-background-color: #0c2461; -fx-background-position: center;" text="Label" textFill="WHITE">
+      <Button layoutX="475.0" layoutY="53.0" mnemonicParsing="false" onAction="#DashBoardOnAction" opacity="0.11" prefHeight="48.0" prefWidth="150.0" />
+      <Button layoutX="696.0" layoutY="59.0" mnemonicParsing="false" onAction="#CustomerOnAction" opacity="0.11" prefHeight="40.0" prefWidth="135.0" />
+      <Button layoutX="906.0" layoutY="57.0" mnemonicParsing="false" onAction="#ItemOnAction" opacity="0.11" prefHeight="40.0" prefWidth="102.0" />
+      <Button layoutX="1089.0" layoutY="57.0" mnemonicParsing="false" onAction="#PurchaseOrderOnAction" opacity="0.11" prefHeight="48.0" prefWidth="198.0" />
+      <Button layoutX="1355.0" layoutY="56.0" mnemonicParsing="false" onAction="#OderDetailsOnAction" opacity="0.11" prefHeight="48.0" prefWidth="173.0" />
+      <AnchorPane fx:id="context" layoutX="10.0" layoutY="163.0" opacity="0.98" prefHeight="831.0" prefWidth="1915.0" style="-fx-background-color: #ebf3ff;" />
+      <Label fx:id="timeLabel" layoutX="1621.0" layoutY="47.0" prefHeight="48.0" prefWidth="277.0" style="-fx-background-radius: 15; -fx-background-color: #0c2461; -fx-background-position: center;" text="Label" textFill="WHITE">
          <font>
             <Font name="Berlin Sans FB" size="26.0" />
          </font>
       </Label>
+      <Separator layoutX="241.0" layoutY="124.0" prefHeight="12.0" prefWidth="1585.0" />
    </children>
 </AnchorPane>

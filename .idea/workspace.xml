@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89dbfd71-98c4-49ba-a84d-1363c7f00fa7" name="Changes" comment="" />
+    <list default="true" id="89dbfd71-98c4-49ba-a84d-1363c7f00fa7" name="Changes" comment="update search  level items update form and controller, update datbase , set ui searchForm  count and items show">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/CustomerForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/view/CustomerForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/DashBoardForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/view/DashBoardForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/DashBoardFunctionForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/view/DashBoardFunctionForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/ItemForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/view/ItemForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/OrderDetailsForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/view/OrderDetailsForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/PurchaseOrderForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/view/PurchaseOrderForm.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,7 +31,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/com/oragan/posSystem/view/CustomerForm.fxml" root0="FORCE_HIGHLIGHTING" />
@@ -36,6 +43,10 @@
     <setting file="file://$PROJECT_DIR$/src/com/oragan/posSystem/entity/Item.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\xampp\php\php.exe" />
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2irzRViLIlTF2efRkwsRdRCEH48" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -44,17 +55,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/oragan/posSystem/assets" />
-    <property name="nodejs_package_manager_path" value="npm" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "F:/oragan/oragan_pos_system/src/com/oragan/posSystem/view",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.oragan.posSystem.controller" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\oragan_pos_system\src\com\oragan\posSystem\assets" />
+      <recent name="F:\oragan\oragan_pos_system\src\com\oragan\posSystem\view" />
       <recent name="F:\oragan\New folder\oragan_pos_system\oragan_pos_system\src\com\oragan\posSystem\view\reports" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -105,13 +123,9 @@
       <workItem from="1720417843176" duration="1108000" />
       <workItem from="1720452474031" duration="4562000" />
       <workItem from="1720503928437" duration="10491000" />
-      <workItem from="1720546129882" duration="8817000" />
-      <workItem from="1720590514453" duration="2971000" />
-      <workItem from="1720609018931" duration="1988000" />
-      <workItem from="1720611306342" duration="502000" />
-      <workItem from="1720611854417" duration="2937000" />
-      <workItem from="1720623719662" duration="1636000" />
-      <workItem from="1720625441440" duration="148000" />
+      <workItem from="1720546129882" duration="2005000" />
+      <workItem from="1720583438969" duration="9758000" />
+      <workItem from="1720611592200" duration="1994000" />
     </task>
     <task id="LOCAL-00001" summary="updated the jasper report and content updated">
       <option name="closed" value="true" />
@@ -160,35 +174,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720522124664</updated>
     </task>
-    <task id="LOCAL-00007" summary="update critiacl level items">
-      <created>1720549257628</created>
+    <task id="LOCAL-00007" summary="update search  level items update form and controller, update datbase , set ui searchForm  count and items show">
+      <option name="closed" value="true" />
+      <created>1720586975757</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1720549257628</updated>
+      <updated>1720586975757</updated>
     </task>
-    <task id="LOCAL-00008" summary="updated">
-      <created>1720549667584</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1720549667584</updated>
-    </task>
-    <task id="LOCAL-00009" summary="customer details optional cahnges database and controller">
-      <created>1720551209844</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1720551209844</updated>
-    </task>
-    <task id="LOCAL-00010" summary="update search customer from name set text field PurchaseOrderFormController">
-      <created>1720625287279</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1720625287279</updated>
-    </task>
-    <option name="localTasksCounter" value="11" />
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,16 +198,12 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="updated the jasper report and content updated" />
     <MESSAGE value="Complete project" />
     <MESSAGE value="update critiacl level items update form and controller, update datbase , set ui critical count and items show" />
-    <MESSAGE value="update critiacl level items" />
-    <MESSAGE value="updated" />
-    <MESSAGE value="customer details optional cahnges database and controller" />
-    <MESSAGE value="update search customer from name set text field PurchaseOrderFormController" />
-    <option name="LAST_COMMIT_MESSAGE" value="update search customer from name set text field PurchaseOrderFormController" />
+    <MESSAGE value="update search  level items update form and controller, update datbase , set ui searchForm  count and items show" />
+    <option name="LAST_COMMIT_MESSAGE" value="update search  level items update form and controller, update datbase , set ui searchForm  count and items show" />
   </component>
 </project>

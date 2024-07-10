@@ -4,16 +4,26 @@ import com.oragan.posSystem.entity.Customer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Created by Vishnuka Yahan
+ *
+ * @date : 7/10/2024
+ * @project : oragan_pos_system
+ */
 public class SearchTextFormCustomerController implements Initializable {
     @FXML
     private TextField txtCustomerName;
@@ -27,48 +37,20 @@ public class SearchTextFormCustomerController implements Initializable {
     @FXML
     private TableColumn<Customer, String> colName;
 
-    public interface CustomerSelectionListener {
-        void onCustomerSelected(Customer customer);
-    }
-
-    private CustomerSelectionListener customerSelectionListener;
-
     private ObservableList<Customer> customerNamesList = FXCollections.observableArrayList();
-
-    public void setCustomerSelectionListener(CustomerSelectionListener listener) {
-        this.customerSelectionListener = listener;
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        colId.setCellValueFactory(new PropertyValueFactory<>("customer_Id"));
+        colId.setCellValueFactory(new PropertyValueFactory<>("customer_id"));
         colName.setCellValueFactory(new PropertyValueFactory<>("customer_name"));
         CustomerNametbl.setItems(customerNamesList);
-
-        txtCustomerName.textProperty().addListener((observable, oldValue, newValue) -> filterTable(newValue));
-
-        CustomerNametbl.setOnMouseClicked(event -> {
-            if (event.getClickCount() == 2) { // Double click
-                Customer selectedCustomer = CustomerNametbl.getSelectionModel().getSelectedItem();
-                if (selectedCustomer != null && customerSelectionListener != null) {
-                    customerSelectionListener.onCustomerSelected(selectedCustomer);
-                }
-            }
-        });
     }
 
+
+    @FXML
     public void searchCustomerByName() {
         String searchText = txtCustomerName.getText().trim();
         if (searchText.isEmpty()) {
-            CustomerNametbl.setItems(customerNamesList);
-            return;
-        }
-
-        filterTable(searchText);
-    }
-
-    private void filterTable(String searchText) {
-        if (searchText == null || searchText.isEmpty()) {
             CustomerNametbl.setItems(customerNamesList);
             return;
         }
@@ -81,10 +63,5 @@ public class SearchTextFormCustomerController implements Initializable {
         }
 
         CustomerNametbl.setItems(filteredList);
-    }
-
-    public void setCustomerNamesList(ObservableList<Customer> customerNamesList) {
-        this.customerNamesList = customerNamesList;
-        CustomerNametbl.setItems(customerNamesList);
     }
 }

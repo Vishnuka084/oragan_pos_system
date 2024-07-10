@@ -3,36 +3,29 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="715.0" prefWidth="521.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.SearchTextFormCustomerController">
+<AnchorPane prefHeight="725.0" prefWidth="477.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.SearchTextFormCustomerController">
    <children>
-      <Text layoutX="144.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search Name Form " wrappingWidth="227.13671875">
+      <Text layoutX="119.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search Name Form " wrappingWidth="227.13671875">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="txtCustomerName" layoutX="82.0" layoutY="84.0" onAction="#searchCustomerByName" prefHeight="32.0" prefWidth="351.0" promptText="Search this Customer Name">
+      <TextField fx:id="txtCustomerName"  onAction="#searchCustomerByName" layoutX="63.0" layoutY="81.0" prefHeight="32.0" prefWidth="351.0" promptText="Search this Customer Name">
          <font>
             <Font size="13.0" />
          </font>
       </TextField>
-      <Line endX="297.0" layoutX="159.0" layoutY="68.0" startX="-100.0" stroke="#1b0ff8" />
-      <TableView fx:id="CustomerNametbl" layoutX="63.0" layoutY="143.0" prefHeight="566.0" prefWidth="389.0">
+      <Line endX="297.0" layoutX="142.0" layoutY="66.0" startX="-100.0" stroke="#1b0ff8" />
+      <TableView fx:id="CustomerNametbl" layoutX="46.0" layoutY="140.0" prefHeight="566.0" prefWidth="389.0">
         <columns>
           <TableColumn fx:id="colId" prefWidth="107.0" text="Customer ID" />
             <TableColumn fx:id="colName" prefWidth="281.0" text="Customer Name" />
         </columns>
       </TableView>
-      <ImageView fitHeight="146.0" fitWidth="114.0" layoutX="25.0" layoutY="-19.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/search-customer.gif" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

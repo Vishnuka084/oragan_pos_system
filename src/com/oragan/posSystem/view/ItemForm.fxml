@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="context" prefHeight="788.0" prefWidth="1622.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.ItemFormController">
+<AnchorPane fx:id="context" prefHeight="831.0" prefWidth="1915.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.ItemFormController">
    <children>
       <Circle fill="#2085dd" layoutX="1539.0" layoutY="53.0" radius="24.0" stroke="#2085dd" strokeType="INSIDE" />
       <TextField fx:id="txtSearchField" layoutX="362.0" layoutY="95.0" onAction="#txtSearchFieldOnAction" prefHeight="48.0" prefWidth="304.0" promptText="Search" style="-fx-border-width: 2; -fx-border-color: green; -fx-background-color: transparent; -fx-text-fill: green; -fx-border-radius: 10; -fx-background-radius: 20;">
