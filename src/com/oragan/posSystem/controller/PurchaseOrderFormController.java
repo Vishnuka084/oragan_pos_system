@@ -588,6 +588,16 @@ public class PurchaseOrderFormController {
         URL resource = this.getClass().getResource("/com/oragan/posSystem/view/SearchTextFormCustomer.fxml");
         FXMLLoader fxmlLoader = new FXMLLoader(resource);
         Parent load = fxmlLoader.load();
+
+        SearchTextFormCustomerController searchTextFormCustomerController = fxmlLoader.getController();
+
+        // Set customer list in the search form controller
+        ObservableList<Customer> customerList = FXCollections.observableArrayList(getAllCustomers());
+        searchTextFormCustomerController.setCustomerNamesList(customerList);
+
+        // Set the customer selection listener
+        searchTextFormCustomerController.setCustomerSelectionListener(this::handleCustomerSelection);
+        
         Stage stage = new Stage();
         stage.setScene(new Scene(load));
         stage.initModality(Modality.APPLICATION_MODAL);
@@ -597,5 +607,14 @@ public class PurchaseOrderFormController {
 
         System.out.println("clickkkkkkkkkkk");
 
+    }
+
+    private void handleCustomerSelection(Customer customer) {
+        if (customer != null) {
+            cmbCustomerID.setValue(customer.getCustomer_Id());
+            txtCustomerName.setText(customer.getCustomer_name());
+            txtCustomerAddress.setText(customer.getAddress());
+            txtContactNumber.setText(customer.getContact_number());
+        }
     }
 }
