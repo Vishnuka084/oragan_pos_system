@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="716.0" prefWidth="509.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.SearchTextFromItemController">
+   <children>
+      <Text layoutX="106.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search Name Form Item " wrappingWidth="296.13671875">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtItemName" layoutX="73.0" layoutY="91.0" onAction="#searchItemByName" prefHeight="32.0" prefWidth="351.0" promptText="Search this Items Name">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <Line endX="297.0" layoutX="152.0" layoutY="76.0" startX="-100.0" stroke="#1b0ff8" />
+      <TableView fx:id="ItemtableName" layoutX="56.0" layoutY="150.0" prefHeight="566.0" prefWidth="389.0">
+         <columns>
+            <TableColumn fx:id="colItemCode" prefWidth="107.0" text="Item Code" />
+            <TableColumn fx:id="colItemName" prefWidth="281.0" text="Item Name" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>
