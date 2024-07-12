@@ -64,6 +64,8 @@ public class PurchaseOrderFormController {
     public TextField txtPyaamount;
     public TextField txtBalance;
     public ImageView CashID;
+    public ImageView AddCustomerIcon;
+    public ImageView addCustomerId;
     private List<Customer> customers;
     private List<Item> items;
     private ObservableList<OrderItem> cartItems;
@@ -716,6 +718,18 @@ public class PurchaseOrderFormController {
         } catch (NumberFormatException e) {
             showAlert(Alert.AlertType.ERROR, "Error", "Please enter valid numbers for total and discount.");
         }
+    }
+
+    public void AddCustomerOnAction(MouseEvent mouseEvent) throws IOException {
+        URL resource = this.getClass().getResource("/com/oragan/posSystem/view/AddCustomerForm.fxml");
+        FXMLLoader fxmlLoader = new FXMLLoader(resource);
+        Parent load = fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(load));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("Add Customer Form");
+        stage.centerOnScreen();
+        stage.show();
     }
 }
 
