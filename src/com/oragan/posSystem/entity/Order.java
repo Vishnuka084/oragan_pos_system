@@ -1,12 +1,5 @@
 package com.oragan.posSystem.entity;
 
-/**
- * Created by Vishnuka Yahan
- *
- * @author : Vishnuka Yahan
- * @data : 7/7/2024
- * @project : oragan_pos_system
- */
 public class Order {
     private String OrderID;
     private double Total;
@@ -15,11 +8,17 @@ public class Order {
     private String Status;
     private String Current_Date;
     private String Issue_Date;
+    private String Payment_option;
+    private double discount;
+    private double payAmount;
+    private String creditOrDebit;
+    private double balance;
+
 
     public Order() {
     }
 
-    public Order(String orderID, double total, String customer_name, String customer_Id, String status, String current_Date, String issue_Date) {
+    public Order(String orderID, double total, String customer_name, String customer_Id, String status, String current_Date, String issue_Date, String payment_option, double discount, double payAmount, String creditOrDebit, double balance) {
         OrderID = orderID;
         Total = total;
         Customer_name = customer_name;
@@ -27,6 +26,11 @@ public class Order {
         Status = status;
         Current_Date = current_Date;
         Issue_Date = issue_Date;
+        Payment_option = payment_option;
+        this.discount = discount;
+        this.payAmount = payAmount;
+        this.creditOrDebit = creditOrDebit;
+        this.balance = balance;
     }
 
     public String getOrderID() {
@@ -83,5 +87,45 @@ public class Order {
 
     public void setIssue_Date(String issue_Date) {
         Issue_Date = issue_Date;
+    }
+
+    public String getPayment_option() {
+        return Payment_option;
+    }
+
+    public void setPayment_option(String payment_option) {
+        Payment_option = payment_option;
+    }
+
+    public double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(double discount) {
+        this.discount = discount;
+    }
+
+    public double getPayAmount() {
+        return payAmount;
+    }
+
+    public void setPayAmount(double payAmount) {
+        this.payAmount = payAmount;
+    }
+
+    public String getCreditOrDebit() {
+        return creditOrDebit;
+    }
+
+    public void setCreditOrDebit(String creditOrDebit) {
+        this.creditOrDebit = creditOrDebit;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 }

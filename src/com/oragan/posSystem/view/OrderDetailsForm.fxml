@@ -24,13 +24,13 @@
             <TableColumn fx:id="colCurrentDate" prefWidth="129.0" text="Current Date" />
             <TableColumn fx:id="colIssueDate" prefWidth="149.0" text="Issue Date" />
             <TableColumn fx:id="colStatus" prefWidth="134.0" text="Status" />
-            <TableColumn fx:id="colOptions" prefWidth="127.0" text="options" />
             <TableColumn fx:id="colPaymentOptions" prefWidth="158.0" text="Payment Options" />
             <TableColumn fx:id="colDiscount" prefWidth="130.0" text="Discount" />
             <TableColumn fx:id="colTotal" prefWidth="124.0" text="Total" />
             <TableColumn fx:id="colPaymentAmount" prefWidth="129.0" text="Payment Amount" />
             <TableColumn fx:id="colBalance" prefWidth="131.0" text="Balance" />
             <TableColumn fx:id="colCreditOrDebit" prefWidth="129.0" text="Credit OR Debit" />
+            <TableColumn fx:id="colOptions" prefWidth="127.0" text="options" />
          </columns>
       </TableView>
       <ComboBox fx:id="cmbOrderID" layoutX="1026.0" layoutY="122.0" onAction="#cmbSearchByOrderOnAction" prefHeight="48.0" prefWidth="192.0" promptText="Select Serch Option" style="-fx-background-color: FFC700; -fx-background-radius: 10;">

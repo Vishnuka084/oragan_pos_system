@@ -32,7 +32,6 @@ public class OrderDetailsFormController {
     public TableColumn<Order, String> colCustomerID;
     public TableColumn<Order, Date>  colCurrentDate;
     public TableColumn <Order, Date> colIssueDate;
-    public TableColumn<Order, Double> colOrderTotal;
     public TableColumn<Order, String> colCustomerName;
     public TableColumn<Order, String> colStatus;
     public TableColumn<Order, Order> colOptions;
@@ -40,12 +39,12 @@ public class OrderDetailsFormController {
     public String cmbOrderIDs;
     public ComboBox<String> cmbOrderID;
     public TextField txtSerchFieldOrder;
-    public TableColumn colPaymentOptions;
-    public TableColumn colDiscount;
-    public TableColumn colTotal;
-    public TableColumn colPaymentAmount;
-    public TableColumn colBalance;
-    public TableColumn colCreditOrDebit;
+    public TableColumn<Order, String> colPaymentOptions;
+    public TableColumn <Order, Double>colDiscount;
+    public TableColumn <Order, Double>colTotal;
+    public TableColumn <Order, Double>colPaymentAmount;
+    public TableColumn <Order, Double>colBalance;
+    public TableColumn <Order, String>colCreditOrDebit;
     private ObservableList<Order> orderList = FXCollections.observableArrayList();
 
     public void initialize() {
@@ -53,10 +52,16 @@ public class OrderDetailsFormController {
         colOrderID.setCellValueFactory(new PropertyValueFactory<>("orderID"));
         colCurrentDate.setCellValueFactory(new PropertyValueFactory<>("Current_Date"));
         colIssueDate.setCellValueFactory(new PropertyValueFactory<>("Issue_Date"));
-        colOrderTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
+        colTotal.setCellValueFactory(new PropertyValueFactory<>("Total"));
         colCustomerID.setCellValueFactory(new PropertyValueFactory<>("customer_Id"));
         colCustomerName.setCellValueFactory(new PropertyValueFactory<>("Customer_name"));
         colStatus.setCellValueFactory(new PropertyValueFactory<>("Status"));
+        colDiscount.setCellValueFactory(new PropertyValueFactory<>("Discount"));
+        colPaymentAmount.setCellValueFactory(new PropertyValueFactory<>("PayAmount"));
+        colCreditOrDebit.setCellValueFactory(new PropertyValueFactory<>("Credit_Or_Debit"));
+        colBalance.setCellValueFactory(new PropertyValueFactory<>("Balance"));
+
+
 
         // Fetch data and populate the table
         fetchOrdersFromDatabase();
@@ -68,7 +73,7 @@ public class OrderDetailsFormController {
     private void fetchOrdersFromDatabase() {
         orderList.clear();
 
-        String query = " SELECT OrderID, Total, Customer_name, Customer_Id, Status, Current_Date, Issue_Date FROM 'Order';";
+        String query = " SELECT OrderID, Total, Customer_name, Customer_Id, Status, Current_Date, Issue_Date, Payment_option, Discount, PayAmount, Credit_Or_Debit, Balance FROM 'Order';";
 
         try (Connection conn = DBConnection.getInstance().getConnection();
              PreparedStatement ps = conn.prepareStatement(query);
@@ -76,12 +81,18 @@ public class OrderDetailsFormController {
 
             while (rs.next()) {
                 String orderID = rs.getString("OrderID");
-                double total = rs.getDouble("Total");
+                double total = rs.getDouble("total");
                 String customerID = rs.getString("Customer_Id");
                 String customerName = rs.getString("Customer_name");
                 String status = rs.getString("Status");
                 String currentDate = rs.getString("Current_Date");
                 String issueDate=rs.getString("Issue_Date");
+                String paymentOption=rs.getString("Payment_option");
+                double discount=rs.getDouble("Discount");
+                double payAmount=rs.getDouble("PayAmount");
+                String creditOrDebit=rs.getString("Credit_Or_Debit");
+                double balance=rs.getDouble("Balance");
+
 
 
 
@@ -90,7 +101,7 @@ public class OrderDetailsFormController {
                 System.out.println(orderID);
 
 
-                Order order = new Order(orderID, total, customerID, customerName, status, currentDate, issueDate);
+                Order order = new Order(orderID, total, customerID, customerName, status, currentDate, issueDate, paymentOption, discount, payAmount, creditOrDebit, balance);
                 orderList.add(order);
                 System.out.println(order);
             }
@@ -145,10 +156,15 @@ public class OrderDetailsFormController {
         colCustomerID.setCellValueFactory(new PropertyValueFactory<>("customer_Id"));
         colCustomerName.setCellValueFactory(new PropertyValueFactory<>("customer_name"));
         colOrderID.setCellValueFactory(new PropertyValueFactory<>("orderID"));
-        colOrderTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
-        colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+        colTotal.setCellValueFactory(new PropertyValueFactory<>("Total"));
         colCurrentDate.setCellValueFactory(new PropertyValueFactory<>("Current_Date"));
         colIssueDate.setCellValueFactory(new PropertyValueFactory<>("Issue_Date"));
+        colPaymentOptions.setCellValueFactory(new PropertyValueFactory<>("Payment_option"));
+        colDiscount.setCellValueFactory(new PropertyValueFactory<>("discount"));
+        colPaymentAmount.setCellValueFactory(new PropertyValueFactory<>("payAmount"));
+        colCreditOrDebit.setCellValueFactory(new PropertyValueFactory<>("creditOrDebit"));
+        colBalance.setCellValueFactory(new PropertyValueFactory<>("balance"));
+        colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
 
         colOptions.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
         colOptions.setCellFactory(param -> new TableCell<Order, Order>() {

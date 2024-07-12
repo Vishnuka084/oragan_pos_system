@@ -174,8 +174,8 @@
             <Font name="System Bold" size="22.0" />
          </font>
       </Text>
-      <TextField fx:id="txtPyaamount" layoutX="1614.0" layoutY="571.0" prefHeight="35.0" prefWidth="251.0" />
-      <TextField fx:id="txtBalance" layoutX="1614.0" layoutY="636.0" prefHeight="35.0" prefWidth="251.0" />
+      <TextField fx:id="txtPyaamount" layoutX="1614.0" layoutY="571.0" onMouseClicked="#clearPayMountClickEvent" onMouseReleased="#txtPaymountOnReleased" prefHeight="35.0" prefWidth="251.0" text=".00" />
+      <TextField fx:id="txtBalance" layoutX="1614.0" layoutY="636.0" onMouseClicked="#clearBalanceClickEvent" onMouseReleased="#txtBalanceOnReleased" prefHeight="35.0" prefWidth="251.0" text=".00" />
       <ImageView fx:id="CashID" fitHeight="53.0" fitWidth="63.0" layoutX="1558.0" layoutY="317.0" onMouseClicked="#CashPaymentOnAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/icons8-cash-100.png" />
@@ -194,7 +194,7 @@
             <Font name="System Bold" size="22.0" />
          </font>
       </Text>
-      <TextField fx:id="txtDiscount" layoutX="1614.0" layoutY="506.0" onAction="#serDiscountOnAction" prefHeight="35.0" prefWidth="251.0" />
+      <TextField fx:id="txtDiscount" layoutX="1614.0" layoutY="506.0" onAction="#serDiscountOnAction" onMouseClicked="#clearDiscountClickEvent" onMouseReleased="#txtDiscountOnReleased" prefHeight="35.0" prefWidth="251.0" text="0" />
    </children>
    <effect>
       <ColorAdjust brightness="0.02" />
