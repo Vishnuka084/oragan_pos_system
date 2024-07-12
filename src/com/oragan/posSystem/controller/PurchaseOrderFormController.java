@@ -16,6 +16,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
@@ -66,9 +67,13 @@ public class PurchaseOrderFormController {
     private List<Customer> customers;
     private List<Item> items;
     private ObservableList<OrderItem> cartItems;
-    
+    private String selectedPaymentOption;
+
+
 
     public void initialize() {
+
+
 
         customers = getAllCustomers();
         for (Customer customer : customers) {
@@ -156,8 +161,6 @@ public class PurchaseOrderFormController {
     }
 
     //status
-
-
 
     private void setItemDetails(String Item_code) {
         for (Item item : items) {
@@ -294,97 +297,116 @@ public class PurchaseOrderFormController {
 
 
     public void btnPlaceOrderOnAction(ActionEvent actionEvent) {
-        String orderId = lblOrderID.getText();
-        double total = Double.parseDouble(txtTotal.getText());
-        String customerId = cmbCustomerID.getSelectionModel().getSelectedItem();
-        String customername = txtCustomerName.getText();
-        String Status=btnOrderHold.getText();
-        String currentDate = getCurrentDateTime();
-        String issueDate = getCurrentDateTime();
-
-        String insertOrderQuery = "INSERT INTO 'Order' (OrderID, Total, Customer_name, Customer_Id, Status, Current_Date, Issue_Date) VALUES (?, ?, ?, ? ,?, ? ,?)";
-        String updateItemQuantityQuery = "UPDATE items SET qty = qty - ? WHERE Item_code = ?";
-        String deleteOrderItemsQuery = "DELETE FROM OrderItem WHERE OrderID = ?";
-
-        try (Connection conn = DBConnection.getInstance().getConnection()) {
-            // Start transaction
-            conn.setAutoCommit(false);
-
-            try (PreparedStatement psOrder = conn.prepareStatement(insertOrderQuery);
-                 PreparedStatement psUpdateItem = conn.prepareStatement(updateItemQuantityQuery);
-                 PreparedStatement psDeleteOrderItems = conn.prepareStatement(deleteOrderItemsQuery) ) {
-
-                // Insert order
-                psOrder.setString(1, orderId);
-                psOrder.setDouble(2, total);
-                if (customerId != null && !customerId.isEmpty()) {
-                    psOrder.setString(3, customerId);
-                } else {
-                    psOrder.setNull(3, java.sql.Types.VARCHAR);
-                }
-
-                if (customername != null && !customername.isEmpty()) {
-                    psOrder.setString(4, customername);
-                } else {
-                    psOrder.setNull(4, java.sql.Types.VARCHAR);
-                }
-
-                psOrder.setString(5, Status);
-                psOrder.setString(6, currentDate);
-                psOrder.setString(7, issueDate);
-
-                System.out.println(psOrder);
+        try {
+            double total = Double.parseDouble(txtTotal.getText());
+            double discount = Double.parseDouble(txtDiscount.getText());
+            double finalAmount = total - (total * discount / 100);
+            txtTotal.setText(String.format(String.valueOf(finalAmount)));
 
 
+            String orderId = lblOrderID.getText();
+            String customerId = cmbCustomerID.getSelectionModel().getSelectedItem();
+            String customername = txtCustomerName.getText();
+            String Status = btnOrderHold.getText();
+            String currentDate = getCurrentDateTime();
+            String issueDate = getCurrentDateTime();
+            String paymentOption = selectedPaymentOption;
+            double balance = Double.parseDouble(txtBalance.getText());
+            double payAmount = Double.parseDouble(txtPyaamount.getText());
 
-
-
-
-                int rowsInsertedOrder = psOrder.executeUpdate();
-                if (rowsInsertedOrder <= 0) {
-                    throw new SQLException("Failed to save order.");
-                }
-
-                // Clear existing order items
-                psDeleteOrderItems.setString(1, orderId);
-                psDeleteOrderItems.executeUpdate();
-
-
-                // Update item quantities and prepare order items insertion
-                for (OrderItem orderItem : cartItems) {
-                    psUpdateItem.setInt(1, orderItem.getQuantity());
-                    psUpdateItem.setString(2, orderItem.getItem_code());
-                    int rowsUpdatedItem = psUpdateItem.executeUpdate();
-                    if (rowsUpdatedItem <= 0) {
-                        throw new SQLException("Failed to update item quantity.");
-                    }
-                }
-
-                // Save order items
-                saveOrderItems(conn, orderId);
-
-                // Commit transaction
-                conn.commit();
-                System.out.println("Order saved successfully.");
-                showAlert(Alert.AlertType.INFORMATION, "Success", "Order updated successfully." + orderId);
-
-                // Generate Jasper Report
-                generateJasperReport(orderId);
-                clearForm();
-
-            } catch (SQLException e) {
-                conn.rollback();
-                System.err.println("Transaction rolled back: " + e.getMessage());
-                showAlert(Alert.AlertType.ERROR, "Error", "Failed to save order: " + e.getMessage());
-            } finally {
-                conn.setAutoCommit(true);
+            String creditOrDebit;
+            if (balance <= 0) {
+                creditOrDebit = "Credit";
+            } else {
+                creditOrDebit = "Debit";
             }
 
-        } catch (SQLException | ClassNotFoundException e) {
-            System.err.println("Error saving order: " + e.getMessage());
-            showAlert(Alert.AlertType.ERROR, "Error", "Error saving order: " + e.getMessage());
+            String insertOrderQuery = "INSERT INTO 'Order' (OrderID, Total, Customer_name, Customer_Id, Status, Current_Date, Issue_Date, Payment_option, Discount, PayAmount, Credit_Or_Debit, Balance) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String updateItemQuantityQuery = "UPDATE items SET qty = qty - ? WHERE Item_code = ?";
+            String deleteOrderItemsQuery = "DELETE FROM OrderItem WHERE OrderID = ?";
+
+            try (Connection conn = DBConnection.getInstance().getConnection()) {
+                // Start transaction
+                conn.setAutoCommit(false);
+
+                try (PreparedStatement psOrder = conn.prepareStatement(insertOrderQuery);
+                     PreparedStatement psUpdateItem = conn.prepareStatement(updateItemQuantityQuery);
+                     PreparedStatement psDeleteOrderItems = conn.prepareStatement(deleteOrderItemsQuery)) {
+
+                    // Insert order
+                    psOrder.setString(1, orderId);
+                    psOrder.setDouble(2, total);
+                    if (customerId != null && !customerId.isEmpty()) {
+                        psOrder.setString(3, customerId);
+                    } else {
+                        psOrder.setNull(3, java.sql.Types.VARCHAR);
+                    }
+
+                    if (customername != null && !customername.isEmpty()) {
+                        psOrder.setString(4, customername);
+                    } else {
+                        psOrder.setNull(4, java.sql.Types.VARCHAR);
+                    }
+
+                    psOrder.setString(5, Status);
+                    psOrder.setString(6, currentDate);
+                    psOrder.setString(7, issueDate);
+                    psOrder.setString(8, paymentOption);
+                    psOrder.setDouble(9, discount); // Set discount
+                    psOrder.setDouble(10, payAmount); // Set pay amount
+                    psOrder.setString(11, creditOrDebit); // Set Credit or Debit
+                    psOrder.setDouble(12, balance); // Set the balance
+
+                    System.out.println(psOrder);
+
+                    int rowsInsertedOrder = psOrder.executeUpdate();
+                    if (rowsInsertedOrder <= 0) {
+                        throw new SQLException("Failed to save order.");
+                    }
+
+                    // Clear existing order items
+                    psDeleteOrderItems.setString(1, orderId);
+                    psDeleteOrderItems.executeUpdate();
+
+                    // Update item quantities and prepare order items insertion
+                    for (OrderItem orderItem : cartItems) {
+                        psUpdateItem.setInt(1, orderItem.getQuantity());
+                        psUpdateItem.setString(2, orderItem.getItem_code());
+                        int rowsUpdatedItem = psUpdateItem.executeUpdate();
+                        if (rowsUpdatedItem <= 0) {
+                            throw new SQLException("Failed to update item quantity.");
+                        }
+                    }
+
+                    // Save order items
+                    saveOrderItems(conn, orderId);
+
+                    // Commit transaction
+                    conn.commit();
+                    System.out.println("Order saved successfully.");
+                    showAlert(Alert.AlertType.INFORMATION, "Success", "Order updated successfully." + orderId);
+
+                    // Generate Jasper Report
+                    generateJasperReport(orderId);
+                    clearForm();
+
+                } catch (SQLException e) {
+                    conn.rollback();
+                    System.err.println("Transaction rolled back: " + e.getMessage());
+                    showAlert(Alert.AlertType.ERROR, "Error", "Failed to save order: " + e.getMessage());
+                } finally {
+                    conn.setAutoCommit(true);
+                }
+
+            } catch (SQLException | ClassNotFoundException e) {
+                System.err.println("Error saving order: " + e.getMessage());
+                showAlert(Alert.AlertType.ERROR, "Error", "Error saving order: " + e.getMessage());
+            }
+        } catch (NumberFormatException e) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Please enter valid numbers for total and discount.");
         }
     }
+
 
     //get Current date and time
     private String getCurrentDateTime() {
@@ -611,7 +633,7 @@ public class PurchaseOrderFormController {
 
         // Set the customer selection listener
         searchTextFormCustomerController.setCustomerSelectionListener(this::handleCustomerSelection);
-        
+
         Stage stage = new Stage();
         stage.setScene(new Scene(load));
         stage.initModality(Modality.APPLICATION_MODAL);
@@ -666,14 +688,34 @@ public class PurchaseOrderFormController {
     }
 
     public void CashPaymentOnAction(MouseEvent mouseEvent) {
+        System.out.println("Clickkk cash");
         txtPyaamount.setDisable(false);
         txtBalance.setDisable(true);
         txtTotal.setDisable(true);
+        selectedPaymentOption = "Cash";
     }
 
     public void CardPaymentOnAction(MouseEvent mouseEvent) {
+        System.out.println("Clickkk card");
         txtPyaamount.setDisable(true);
         txtBalance.setDisable(true);
         txtTotal.setDisable(true);
+        selectedPaymentOption = "Card";
+
+    }
+
+//set discount for items
+
+    public void serDiscountOnAction(ActionEvent actionEvent) {
+        try {
+            double total = Double.parseDouble(txtTotal.getText());
+            double discount = Double.parseDouble(txtDiscount.getText());
+            double finalAmount = total - (total * discount / 100);
+            txtTotal.setText(String.valueOf(finalAmount));
+            System.out.println(finalAmount);
+        } catch (NumberFormatException e) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Please enter valid numbers for total and discount.");
+        }
     }
 }
+

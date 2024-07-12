@@ -40,6 +40,12 @@ public class OrderDetailsFormController {
     public String cmbOrderIDs;
     public ComboBox<String> cmbOrderID;
     public TextField txtSerchFieldOrder;
+    public TableColumn colPaymentOptions;
+    public TableColumn colDiscount;
+    public TableColumn colTotal;
+    public TableColumn colPaymentAmount;
+    public TableColumn colBalance;
+    public TableColumn colCreditOrDebit;
     private ObservableList<Order> orderList = FXCollections.observableArrayList();
 
     public void initialize() {
