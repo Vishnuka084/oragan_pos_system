@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="89dbfd71-98c4-49ba-a84d-1363c7f00fa7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_6_2024_3_03_PM_[Changes]/identifier.sqlite" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_6_2024_3_03_PM_[Changes]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identifier.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/identifier.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/OrderDetailsFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/OrderDetailsFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/PurchaseOrderFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/PurchaseOrderFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/PurchaseOrderForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/view/PurchaseOrderForm.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,6 +120,7 @@
       <workItem from="1720812131400" duration="6318000" />
       <workItem from="1720846664313" duration="6519000" />
       <workItem from="1720857810847" duration="444000" />
+      <workItem from="1720866740337" duration="2246000" />
     </task>
     <task id="LOCAL-00001" summary="updated the jasper report and content updated">
       <option name="closed" value="true" />
@@ -200,7 +199,14 @@
       <option name="project" value="LOCAL" />
       <updated>1720818493632</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="updated">
+      <created>1720866829151</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1720866829151</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,6 +232,7 @@
     <MESSAGE value="setup SearchName item Form  , edite the ui and calculate balance" />
     <MESSAGE value="updated balance , total , payment option" />
     <MESSAGE value="update changes order details tables add order details,set pay amount , discount , balance optional" />
-    <option name="LAST_COMMIT_MESSAGE" value="update changes order details tables add order details,set pay amount , discount , balance optional" />
+    <MESSAGE value="updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated" />
   </component>
 </project>
