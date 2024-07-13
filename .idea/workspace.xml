@@ -7,8 +7,7 @@
     <list default="true" id="89dbfd71-98c4-49ba-a84d-1363c7f00fa7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/identifier.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/identifier.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/DashBoardFunctionFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/DashBoardFunctionFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/entity/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/DashBoardForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/view/DashBoardForm.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/DashBoardFunctionForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/view/DashBoardFunctionForm.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -124,7 +123,10 @@
       <workItem from="1720846664313" duration="6519000" />
       <workItem from="1720857810847" duration="444000" />
       <workItem from="1720866740337" duration="4529000" />
-      <workItem from="1720871664163" duration="2737000" />
+      <workItem from="1720871664163" duration="2923000" />
+      <workItem from="1720883474590" duration="1018000" />
+      <workItem from="1720884555497" duration="1019000" />
+      <workItem from="1720886098900" duration="1629000" />
     </task>
     <task id="LOCAL-00001" summary="updated the jasper report and content updated">
       <option name="closed" value="true" />
@@ -224,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1720870130025</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="updated set table for ui credit customers">
+      <created>1720874606003</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1720874606003</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,6 +260,7 @@
     <MESSAGE value="updated balance , total , payment option" />
     <MESSAGE value="update changes order details tables add order details,set pay amount , discount , balance optional" />
     <MESSAGE value="updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated" />
+    <MESSAGE value="updated set table for ui credit customers" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated set table for ui credit customers" />
   </component>
 </project>
