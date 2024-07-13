@@ -352,7 +352,7 @@ public class PurchaseOrderFormController {
             double payAmount = Double.parseDouble(txtPyaamount.getText());
 
             String creditOrDebit;
-            if (balance <= 0) {
+            if (balance < 0) {
                 creditOrDebit = "Credit";
             } else {
                 creditOrDebit = "Debit";
