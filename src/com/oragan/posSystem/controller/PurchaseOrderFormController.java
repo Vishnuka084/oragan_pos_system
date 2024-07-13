@@ -5,8 +5,6 @@ import com.oragan.posSystem.entity.Customer;
 import com.oragan.posSystem.entity.Item;
 import com.oragan.posSystem.entity.OrderItem;
 import javafx.beans.property.ReadOnlyObjectWrapper;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -60,19 +58,23 @@ public class PurchaseOrderFormController {
     public TextField txtTotal;
     public TableColumn colStatus;
     public Button btnOrderHold;
-    public TableColumn<OrderItem, OrderItem> colOptions;
+    public TableColumn <OrderItem,OrderItem>colOptions;
     public TextField txtDiscount;
     public ImageView CardID;
     public TextField txtPyaamount;
     public TextField txtBalance;
     public ImageView CashID;
+    public ImageView AddCustomerIcon;
+    public ImageView addCustomerId;
     private List<Customer> customers;
     private List<Item> items;
     private ObservableList<OrderItem> cartItems;
     private String selectedPaymentOption;
 
 
+
     public void initialize() {
+
 
 
         customers = getAllCustomers();
@@ -123,41 +125,6 @@ public class PurchaseOrderFormController {
 
 
         txtPyaamount.textProperty().addListener((observable, oldValue, newValue) -> calculateBalance());
-
-        //discount,pay mount .. text field clear and set default
-
-        txtDiscount.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if (!newValue) {  // focus lost
-                    if (txtDiscount.getText().isEmpty()) {
-                        txtDiscount.setText("0");
-                    }
-                }
-            }
-        });
-
-        txtPyaamount.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if (!newValue) {  // focus lost
-                    if (txtPyaamount.getText().isEmpty()) {
-                        txtPyaamount.setText("0");
-                    }
-                }
-            }
-        });
-
-        txtBalance.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if (!newValue) {  // focus lost
-                    if (txtBalance.getText().isEmpty()) {
-                        txtBalance.setText("0");
-                    }
-                }
-            }
-        });
 
 
     }
@@ -322,11 +289,10 @@ public class PurchaseOrderFormController {
         updateTotal();
 
     }
-
-    public void updateTotal() {
-        double total = 0;
-        for (OrderItem orderitem : cartItems) {
-            total += orderitem.getTotal();
+    public void  updateTotal(){
+        double total=0;
+        for(OrderItem orderitem:cartItems){
+            total+=orderitem.getTotal();
         }
         txtTotal.setText(String.valueOf(total));
     }
@@ -361,10 +327,7 @@ public class PurchaseOrderFormController {
             String updateItemQuantityQuery = "UPDATE items SET qty = qty - ? WHERE Item_code = ?";
             String deleteOrderItemsQuery = "DELETE FROM OrderItem WHERE OrderID = ?";
 
-
             try (Connection conn = DBConnection.getInstance().getConnection()) {
-
-
                 // Start transaction
                 conn.setAutoCommit(false);
 
@@ -391,33 +354,10 @@ public class PurchaseOrderFormController {
                     psOrder.setString(6, currentDate);
                     psOrder.setString(7, issueDate);
                     psOrder.setString(8, paymentOption);
-
-
-//                    psOrder.setDouble(9, discount); // Set discount
-//                    psOrder.setDouble(10, payAmount); // Set pay amount
-//                    psOrder.setString(11, creditOrDebit); // Set Credit or Debit
-//                    psOrder.setDouble(12, balance); // Set the balance
-                    if (discount != 0) {
-                        psOrder.setNull(9, java.sql.Types.DOUBLE);
-                    } else {
-
-                    }
-
-// Set pay amount (optional)
-                    if (payAmount != 0) {
-                        psOrder.setDouble(10, payAmount);
-                    } else {
-                        psOrder.setNull(10, java.sql.Types.DOUBLE);
-                    }
-
-                    psOrder.setString(11, creditOrDebit);
-
-// Set balance (optional)
-                    if (balance != 0) {
-                        psOrder.setDouble(12, balance);
-                    } else {
-                        psOrder.setNull(12, java.sql.Types.DOUBLE);
-                    }
+                    psOrder.setDouble(9, discount); // Set discount
+                    psOrder.setDouble(10, payAmount); // Set pay amount
+                    psOrder.setString(11, creditOrDebit); // Set Credit or Debit
+                    psOrder.setDouble(12, balance); // Set the balance
 
                     System.out.println(psOrder);
 
@@ -489,7 +429,7 @@ public class PurchaseOrderFormController {
                 ps.setString(3, orderItem.getItem_name());
                 ps.setInt(4, orderItem.getQuantity());
                 ps.setDouble(5, orderItem.getPrice());
-                ps.setString(6, orderItem.getStatus());
+                ps.setString(6,orderItem.getStatus());
                 ps.setDouble(7, orderItem.getTotal());
                 ps.addBatch();
             }
@@ -573,7 +513,7 @@ public class PurchaseOrderFormController {
     }
     //Option Coloumn set Table
 
-    private void initializeTableColumns() {
+    private void initializeTableColumns () {
         colItemCode.setCellValueFactory(new PropertyValueFactory<>("item_code"));
         colItemName.setCellValueFactory(new PropertyValueFactory<>("item_name"));
         colQuantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
@@ -780,37 +720,16 @@ public class PurchaseOrderFormController {
         }
     }
 
-
-    //text field value 0 clear
-    public void clearPayMountClickEvent(MouseEvent mouseEvent) {
-        txtPyaamount.clear();
-    }
-
-    public void clearBalanceClickEvent(MouseEvent mouseEvent) {
-        txtBalance.clear();
-    }
-
-    public void clearDiscountClickEvent(MouseEvent mouseEvent) {
-        txtDiscount.clear();
-    }
-
-
-    public void txtDiscountOnReleased(MouseEvent mouseEvent) {
-//        if (txtPyaamount.getText().isEmpty()) {
-//            txtPyaamount.setText("0");  // This will set the text to ".00" when the mouse is released if the field is empty
-//        }
-    }
-
-    public void txtBalanceOnReleased(MouseEvent mouseEvent) {
-//        if(txtBalance.getText().isEmpty()){
-//            txtBalance.setText(".00");
-//        }
-    }
-
-    public void txtPaymountOnReleased(MouseEvent mouseEvent) {
-//        if(txtPyaamount.getText().isEmpty()){
-//            txtPyaamount.setText(".00");
-//        }
+    public void AddCustomerOnAction(MouseEvent mouseEvent) throws IOException {
+        URL resource = this.getClass().getResource("/com/oragan/posSystem/view/AddCustomerForm.fxml");
+        FXMLLoader fxmlLoader = new FXMLLoader(resource);
+        Parent load = fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(load));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("Add Customer Form");
+        stage.centerOnScreen();
+        stage.show();
     }
 }
 

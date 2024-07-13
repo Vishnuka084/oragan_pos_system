@@ -2,12 +2,10 @@ package com.oragan.posSystem.controller;
 
 import com.oragan.posSystem.db.DBConnection;
 import com.oragan.posSystem.entity.Customer;
-import com.oragan.posSystem.entity.Item;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
