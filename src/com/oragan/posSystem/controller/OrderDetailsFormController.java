@@ -125,6 +125,10 @@ public class OrderDetailsFormController {
         if ("Customer Name".equals(selectedValue)) {
             txtSerchFieldOrder.setPromptText("Enter customer  name");
             txtSerchFieldOrder.clear();
+            System.out.println(txtSerchFieldOrder.getText());
+        } else if ("Order ID".equals(selectedValue)) {
+            txtSerchFieldOrder.setPromptText("Enter order ID");
+            txtSerchFieldOrder.clear();
         }
         filterCustomerList(txtSerchFieldOrder.getText());
     }

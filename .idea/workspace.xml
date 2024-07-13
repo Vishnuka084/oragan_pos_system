@@ -9,8 +9,6 @@
       <change beforePath="$PROJECT_DIR$/identifier.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/identifier.sqlite" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/OrderDetailsFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/OrderDetailsFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/PurchaseOrderFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/controller/PurchaseOrderFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/entity/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/OrderDetailsForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/view/OrderDetailsForm.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/PurchaseOrderForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/view/PurchaseOrderForm.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,12 +51,14 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/oragan/posSystem/assets" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.oragan.posSystem.controller" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\oragan_pos_system\src\com\oragan\posSystem\assets" />
       <recent name="F:\oragan\oragan_pos_system\src\com\oragan\posSystem\view" />
       <recent name="F:\oragan\New folder\oragan_pos_system\oragan_pos_system\src\com\oragan\posSystem\view\reports" />
     </key>
@@ -119,7 +119,9 @@
       <workItem from="1720645062945" duration="635000" />
       <workItem from="1720708380590" duration="10436000" />
       <workItem from="1720758385206" duration="7500000" />
-      <workItem from="1720812131400" duration="6215000" />
+      <workItem from="1720812131400" duration="6318000" />
+      <workItem from="1720846664313" duration="6519000" />
+      <workItem from="1720857810847" duration="444000" />
     </task>
     <task id="LOCAL-00001" summary="updated the jasper report and content updated">
       <option name="closed" value="true" />
@@ -191,7 +193,14 @@
       <option name="project" value="LOCAL" />
       <updated>1720763293375</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="update changes order details tables add order details,set pay amount , discount , balance optional">
+      <created>1720818493632</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1720818493632</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,6 +225,7 @@
     <MESSAGE value="update search  level items update form and controller, update datbase , set ui searchForm  count and items show" />
     <MESSAGE value="setup SearchName item Form  , edite the ui and calculate balance" />
     <MESSAGE value="updated balance , total , payment option" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated balance , total , payment option" />
+    <MESSAGE value="update changes order details tables add order details,set pay amount , discount , balance optional" />
+    <option name="LAST_COMMIT_MESSAGE" value="update changes order details tables add order details,set pay amount , discount , balance optional" />
   </component>
 </project>
