@@ -15,17 +15,17 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="831.0" prefWidth="1915.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.PurchaseOrderFormController">
+<AnchorPane prefHeight="831.0" prefWidth="1915.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.PurchaseOrderFormController">
    <children>
-      <TableView fx:id="tblCart" layoutX="70.0" layoutY="310.0" onMouseClicked="#handleRowClick" prefHeight="472.0" prefWidth="1294.0">
+      <TableView fx:id="tblCart" layoutX="70.0" layoutY="310.0" onMouseClicked="#handleRowClick" prefHeight="472.0" prefWidth="1294.0" >
          <columns>
-            <TableColumn fx:id="colItemCode" prefWidth="139.0" text="Item Code" />
-            <TableColumn fx:id="colItemName" minWidth="0.0" prefWidth="218.0" text="Item Name" />
-            <TableColumn fx:id="colUnitPrice" prefWidth="205.0" text="Unit Price" />
-            <TableColumn fx:id="colQuantity" prefWidth="156.0" text="Quantity" />
-            <TableColumn fx:id="colTotal" prefWidth="230.0" text="Total" />
-            <TableColumn fx:id="colStatus" prefWidth="167.0" text="Status" />
-            <TableColumn fx:id="colOptions" prefWidth="178.0" text="Options" />
+            <TableColumn fx:id="colItemCode" prefWidth="139.0" text="Item Code" style="-fx-font-size: 14pt" />
+            <TableColumn fx:id="colItemName" minWidth="0.0" prefWidth="218.0" text="Item Name" style="-fx-font-size: 14pt"/>
+            <TableColumn fx:id="colUnitPrice" prefWidth="205.0" text="Unit Price" style="-fx-font-size: 14pt"/>
+            <TableColumn fx:id="colQuantity" prefWidth="156.0" text="Quantity" style="-fx-font-size: 14pt" />
+            <TableColumn fx:id="colTotal" prefWidth="230.0" text="Total" style="-fx-font-size: 14pt"/>
+            <TableColumn fx:id="colStatus" prefWidth="167.0" text="Status" style="-fx-font-size: 14pt"/>
+            <TableColumn fx:id="colOptions" prefWidth="178.0" text="Options" style="-fx-font-size: 14pt"/>
          </columns>
       </TableView>
       <Text fill="#180361" layoutX="70.0" layoutY="117.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID" wrappingWidth="133.60986328125">
@@ -171,18 +171,18 @@
       </Text>
       <TextField fx:id="txtPyaamount" layoutX="1614.0" layoutY="571.0" onMouseClicked="#clearPayMountClickEvent" prefHeight="35.0" prefWidth="251.0" text="0" />
       <TextField fx:id="txtBalance" layoutX="1614.0" layoutY="636.0" onMouseClicked="#clearBalanceClickEvent" prefHeight="35.0" prefWidth="251.0" text="0" />
-      <ImageView fx:id="CashID" fitHeight="53.0" fitWidth="63.0" layoutX="1558.0" layoutY="317.0" onMouseClicked="#CashPaymentOnAction" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="CashID" fitHeight="67.0" fitWidth="67.0" layoutX="1551.0" layoutY="318.0" onMouseClicked="#CashPaymentOnAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/icons8-cash-100.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="CardID" fitHeight="53.0" fitWidth="61.0" layoutX="1707.0" layoutY="317.0" onMouseClicked="#CardPaymentOnAction" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="CardID" fitHeight="76.0" fitWidth="67.0" layoutX="1700.0" layoutY="318.0" onMouseClicked="#CardPaymentOnAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/icons8-payment-100.png" />
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b3c1dd" height="53.0" layoutX="1433.0" layoutY="499.0" opacity="0.39" stroke="#cbdae8" strokeType="INSIDE" width="157.0" />
-      <Text layoutX="1542.0" layoutY="386.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cash Payment" wrappingWidth="83.60986328125" />
+      <Text layoutX="1548.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cash Payment" wrappingWidth="83.60986328125" />
       <Text layoutX="1692.0" layoutY="386.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card Payement" wrappingWidth="83.60986328125" />
       <Text fill="#ff3916" layoutX="1442.0" layoutY="533.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DisCount     :" wrappingWidth="149.60986328125">
          <font>

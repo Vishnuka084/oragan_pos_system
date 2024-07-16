@@ -6,17 +6,18 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="updateOrderFromContext" prefHeight="328.0" prefWidth="1004.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.OderDetailsUpdateFormController">
+<AnchorPane fx:id="updateOrderFromContext" prefHeight="331.0" prefWidth="998.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.OderDetailsUpdateFormController">
    <children>
       <Text layoutX="390.0" layoutY="49.0" opacity="0.7" strokeType="OUTSIDE" strokeWidth="0.0" text="Oder Details" wrappingWidth="213.05908203125">
          <font>
             <Font name="System Bold" size="23.0" />
          </font>
       </Text>
-      <Line endX="823.0" layoutX="150.0" layoutY="69.0" opacity="0.18" startX="-112.0" />
+      <Line endX="812.0" layoutX="150.0" layoutY="69.0" opacity="0.18" startX="-112.0" />
       <TextField fx:id="txtOrderId" editable="false" layoutX="23.0" layoutY="118.0" prefHeight="46.0" prefWidth="151.0" />
       <TextField fx:id="txtCustomerId" layoutX="197.0" layoutY="118.0" prefHeight="46.0" prefWidth="236.0" />
       <Text layoutX="23.0" layoutY="106.0" opacity="0.7" strokeType="OUTSIDE" strokeWidth="0.0" text="Oder ID" />
@@ -27,7 +28,7 @@
             <Font size="17.0" />
          </font>
       </Button>
-      <Button layoutX="877.0" layoutY="277.0" mnemonicParsing="false" onAction="#btnOderDetailsSaveAddOnAction" prefHeight="37.0" prefWidth="83.0" style="-fx-background-color: #0BD32C;" text="Save" textFill="#fffdfd">
+      <Button layoutX="877.0" layoutY="277.0" mnemonicParsing="false" onAction="#btnOrderDetailsSaveAddOnAction" prefHeight="37.0" prefWidth="83.0" style="-fx-background-color: #0BD32C;" text="Save" textFill="#fffdfd">
          <font>
             <Font size="17.0" />
          </font>
@@ -37,11 +38,36 @@
       <Text layoutX="455.0" layoutY="107.0" opacity="0.7" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer Name" />
       <Text layoutX="809.0" layoutY="107.0" opacity="0.7" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Date" />
       <Text layoutX="23.0" layoutY="194.0" opacity="0.7" strokeType="OUTSIDE" strokeWidth="0.0" text="Issue Date" />
-      <Text layoutX="498.0" layoutY="225.0" opacity="0.7" strokeType="OUTSIDE" strokeWidth="0.0" text="Status" />
-      <TextField fx:id="txtTotal" layoutX="251.0" layoutY="204.0" prefHeight="46.0" prefWidth="203.0" />
-      <Text layoutX="251.0" layoutY="194.0" opacity="0.7" strokeType="OUTSIDE" strokeWidth="0.0" text="Total" />
-      <RadioButton fx:id="radBtnHold" layoutX="556.0" layoutY="196.0" mnemonicParsing="false" text="Hold" />
-      <RadioButton fx:id="radBtnConfirm" layoutX="556.0" layoutY="229.0" mnemonicParsing="false" text="Confirm" />
+      <Text layoutX="523.0" layoutY="225.0" opacity="0.7" strokeType="OUTSIDE" strokeWidth="0.0" text="Status">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+      <TextField fx:id="txtTotal" layoutX="263.0" layoutY="203.0" prefHeight="46.0" prefWidth="203.0" />
+      <Text layoutX="271.0" layoutY="194.0" opacity="0.7" strokeType="OUTSIDE" strokeWidth="0.0" text="Total" />
+      <RadioButton fx:id="radBtnHold" layoutX="579.0" layoutY="195.0" mnemonicParsing="false" text="Hold">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></RadioButton>
+      <RadioButton fx:id="radBtnConfirm" layoutX="577.0" layoutY="227.0" mnemonicParsing="false" text="Confirm">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></RadioButton>
       <DatePicker fx:id="issueDateId" layoutX="23.0" layoutY="208.0" prefHeight="38.0" prefWidth="203.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c1d8ee" height="77.0" layoutX="688.0" layoutY="182.0" stroke="#c1d8ee" strokeType="INSIDE" width="7.0" />
+      <Text fill="#eb0303" layoutX="731.0" layoutY="225.0" opacity="0.7" strokeType="OUTSIDE" strokeWidth="0.0" text="Creadit Or Debit">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+      <RadioButton fx:id="radBtnCredit" layoutX="843.0" layoutY="195.0" mnemonicParsing="false" text="Credit">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="radBtnDebite" layoutX="846.0" layoutY="227.0" mnemonicParsing="false" text="Debit">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </RadioButton>
    </children>
 </AnchorPane>

@@ -18,19 +18,19 @@
       </TextField>
       <TableView fx:id="tblOrder" layoutX="32.0" layoutY="224.0" prefHeight="528.0" prefWidth="1869.0">
          <columns>
-            <TableColumn fx:id="colOrderID" prefWidth="153.99996948242188" text="Order ID" />
-            <TableColumn fx:id="colCustomerID" prefWidth="160.99996948242188" text="Customer ID" />
-            <TableColumn fx:id="colCustomerName" prefWidth="213.0" text="Customer Name" />
-            <TableColumn fx:id="colCurrentDate" prefWidth="129.0" text="Current Date" />
-            <TableColumn fx:id="colIssueDate" prefWidth="149.0" text="Issue Date" />
-            <TableColumn fx:id="colStatus" prefWidth="134.0" text="Status" />
-            <TableColumn fx:id="colPaymentOptions" prefWidth="158.0" text="Payment Options" />
-            <TableColumn fx:id="colDiscount" prefWidth="130.0" text="Discount" />
-            <TableColumn fx:id="colTotal" prefWidth="124.0" text="Total" />
-            <TableColumn fx:id="colPaymentAmount" prefWidth="129.0" text="Payment Amount" />
-            <TableColumn fx:id="colBalance" prefWidth="131.0" text="Balance" />
-            <TableColumn fx:id="colCreditOrDebit" prefWidth="129.0" text="Credit OR Debit" />
-            <TableColumn fx:id="colOptions" prefWidth="127.0" text="options" />
+            <TableColumn fx:id="colOrderID" prefWidth="153.99996948242188" text="Order ID" style="-fx-font-size: 10pt"/>
+            <TableColumn fx:id="colCustomerID" prefWidth="160.99996948242188" text="Customer ID" style="-fx-font-size: 10pt"/>
+            <TableColumn fx:id="colCustomerName" prefWidth="213.0" text="Customer Name" style="-fx-font-size: 10pt"/>
+            <TableColumn fx:id="colCurrentDate" prefWidth="129.0" text="Current Date" style="-fx-font-size: 10pt"/>
+            <TableColumn fx:id="colIssueDate" prefWidth="149.0" text="Issue Date" style="-fx-font-size: 10pt"/>
+            <TableColumn fx:id="colStatus" prefWidth="134.0" text="Status" style="-fx-font-size: 10pt"/>
+            <TableColumn fx:id="colPaymentOptions" prefWidth="158.0" text="Payment Options" style="-fx-font-size: 10pt"/>
+            <TableColumn fx:id="colDiscount" prefWidth="130.0" text="Discount" style="-fx-font-size: 10pt"/>
+            <TableColumn fx:id="colTotal" prefWidth="124.0" text="Total" style="-fx-font-size: 10pt"/>
+            <TableColumn fx:id="colPaymentAmount" prefWidth="129.0" text="Payment Amount" style="-fx-font-size: 10pt"/>
+            <TableColumn fx:id="colBalance" prefWidth="131.0" text="Balance" style="-fx-font-size: 10pt"/>
+            <TableColumn fx:id="colCreditOrDebit" prefWidth="129.0" text="Credit OR Debit" style="-fx-font-size: 10pt"/>
+            <TableColumn fx:id="colOptions" prefWidth="127.0" text="options" style="-fx-font-size: 10pt"/>
          </columns>
       </TableView>
       <ComboBox fx:id="cmbOrderID" layoutX="1026.0" layoutY="122.0" onAction="#cmbSearchByOrderOnAction" prefHeight="48.0" prefWidth="192.0" promptText="Select Serch Option" style="-fx-background-color: FFC700; -fx-background-radius: 10;">

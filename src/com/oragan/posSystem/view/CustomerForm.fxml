@@ -20,11 +20,11 @@
         </TextField>
         <TableView fx:id="tblCustomer" layoutX="63.0" layoutY="181.0" prefHeight="625.0" prefWidth="1803.0">
             <columns>
-                <TableColumn fx:id="tblCustomerIdField" prefWidth="228.0" style="-fx-font-size: 10" text="Customer ID" />
-                <TableColumn fx:id="tblCustomerNameFIeld" prefWidth="432.0" text="Name" />
-                <TableColumn fx:id="tblCustomerAddressField" prefWidth="491.0" text="Address" />
-                <TableColumn fx:id="tblCustomerContactNoField" prefWidth="372.0" text="Contact Number" />
-                <TableColumn fx:id="tblOptionsColumn" prefWidth="334.0" text="Options" />
+                <TableColumn fx:id="tblCustomerIdField" prefWidth="228.0" style="-fx-font-size: 14pt" text="Customer ID" />
+                <TableColumn fx:id="tblCustomerNameFIeld" prefWidth="432.0" text="Name" style="-fx-font-size: 14pt"/>
+                <TableColumn fx:id="tblCustomerAddressField" prefWidth="491.0" text="Address" style="-fx-font-size: 14pt" />
+                <TableColumn fx:id="tblCustomerContactNoField" prefWidth="372.0" text="Contact Number" style="-fx-font-size: 14pt"/>
+                <TableColumn fx:id="tblOptionsColumn" prefWidth="334.0" text="Options" style="-fx-font-size: 14pt"/>
             </columns>
          <effect>
             <ColorAdjust brightness="0.13" contrast="0.05" hue="0.15" saturation="-0.03" />

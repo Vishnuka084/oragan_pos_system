@@ -8,9 +8,9 @@
    <children>
       <TableView fx:id="tblCriticalItems" layoutX="34.0" layoutY="41.0" prefHeight="579.0" prefWidth="660.0">
         <columns>
-            <TableColumn fx:id="colItemCode" prefWidth="187.0" text="Item Code" />
-            <TableColumn fx:id="colItemName" prefWidth="311.0" text="Item Name" />
-            <TableColumn fx:id="colQtyOnHand" prefWidth="161.0" text="Qty On Hand" />
+            <TableColumn fx:id="colItemCode" prefWidth="187.0" text="Item Code" style="-fx-font-size: 14pt"/>
+            <TableColumn fx:id="colItemName" prefWidth="311.0" text="Item Name" style="-fx-font-size: 14pt" />
+            <TableColumn fx:id="colQtyOnHand" prefWidth="161.0" text="Qty On Hand" style="-fx-font-size: 14pt" />
         </columns>
       </TableView>
    </children>
