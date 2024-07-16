@@ -399,9 +399,9 @@ public class PurchaseOrderFormController {
 //                    psOrder.setString(11, creditOrDebit); // Set Credit or Debit
 //                    psOrder.setDouble(12, balance); // Set the balance
                     if (discount != 0) {
-                        psOrder.setNull(9, java.sql.Types.DOUBLE);
+                        psOrder.setDouble(9, discount);
                     } else {
-
+                        psOrder.setNull(9, java.sql.Types.DOUBLE);
                     }
 
 // Set pay amount (optional)
