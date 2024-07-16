@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="1156.0" prefWidth="1936.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.DashBoardFormController">
+<AnchorPane prefHeight="1156.0" prefWidth="1936.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.DashBoardFormController">
    <children>
       <Circle fill="#034586" layoutX="96.0" layoutY="555.0" radius="607.0" stroke="#034586" strokeType="INSIDE" />
       <Circle fill="#0d549a" layoutX="-130.0" layoutY="555.0" radius="604.0" stroke="#0d549a" strokeType="INSIDE" />
@@ -62,9 +62,9 @@
             <Image url="@../assets/icons8-order-100.png" />
          </image>
       </ImageView>
-      <Text fill="#42003e" layoutX="883.0" layoutY="1013.0" strokeType="OUTSIDE" strokeWidth="0.0" text="copy@right 2024 Oragan.ist">
+      <Text fill="#0073ff" layoutX="896.0" layoutY="1035.0" strokeType="OUTSIDE" strokeWidth="0.0" text="copy@right 2024 Oragan.ist" wrappingWidth="224.8000030517578">
          <font>
-            <Font name="Georgia Pro Bold" size="18.0" />
+            <Font name="Dubai Bold" size="18.0" />
          </font></Text>
       <Button layoutX="475.0" layoutY="53.0" mnemonicParsing="false" onAction="#DashBoardOnAction" opacity="0.11" prefHeight="48.0" prefWidth="150.0" />
       <Button layoutX="703.0" layoutY="56.0" mnemonicParsing="false" onAction="#CustomerOnAction" opacity="0.11" prefHeight="40.0" prefWidth="135.0" />
@@ -78,5 +78,15 @@
          </font>
       </Label>
       <Separator layoutX="241.0" layoutY="124.0" prefHeight="12.0" prefWidth="1585.0" />
+      <Text fill="#04106f" layoutX="933.0" layoutY="1069.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+94-728723564" wrappingWidth="173.00000211037695">
+         <font>
+            <Font name="Bell MT Bold" size="22.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="66.0" fitWidth="63.0" layoutX="883.0" layoutY="1031.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/call.gif" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

@@ -413,4 +413,21 @@ public class DashBoardFunctionFormController {
         stage.centerOnScreen();
         stage.show();
     }
+
+    public void imgCreditCustomerClickEvent(MouseEvent mouseEvent) throws IOException {
+        URL resource = this.getClass().getResource("/com/oragan/posSystem/view/CreditCustomerForm.fxml");
+        FXMLLoader fxmlLoader = new FXMLLoader(resource);
+        Parent load = fxmlLoader.load();
+
+        CreditCustomerFormController creditCustomerFormController = fxmlLoader.getController();
+        // Call the FetchCreditCustomers method on the controller
+        creditCustomerFormController.FetchCreditCustomers();
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(load));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("Critical Level Items");
+        stage.centerOnScreen();
+        stage.show();
+    }
 }

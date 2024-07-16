@@ -33,6 +33,11 @@ public class Order {
         this.balance = balance;
     }
 
+    public Order(String customer_name, String customer_Id) {
+        Customer_name = customer_name;
+        Customer_Id = customer_Id;
+    }
+
     public String getOrderID() {
         return OrderID;
     }
