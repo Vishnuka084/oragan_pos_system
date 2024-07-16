@@ -61,8 +61,8 @@ public class DashBoardFormController {
     }
 
     public void OderDetailsOnAction(ActionEvent actionEvent) throws IOException {
+        System.out.println("Hello Order details form");
         setUi2("OrderDetailsForm");
-
     }
 
     public void DashBoardOnAction(ActionEvent actionEvent) throws IOException {

@@ -24,12 +24,12 @@
       </TextField>
       <TableView fx:id="tblItem" layoutX="101.0" layoutY="208.0" prefHeight="566.0" prefWidth="1713.0">
          <columns>
-            <TableColumn fx:id="colItemCode" prefWidth="196.0" text="Item Code" style="-fx-font-size: 14pt"/>
-            <TableColumn fx:id="colItemName" prefWidth="465.0" text="Item Name" style="-fx-font-size: 14pt"/>
-            <TableColumn fx:id="colPrice" prefWidth="292.0" text="Price" style="-fx-font-size: 14pt"/>
-            <TableColumn fx:id="colQtyOnHand" prefWidth="280.0" text="Qty On Hand" style="-fx-font-size: 14pt"/>
-            <TableColumn fx:id="colCriticalLevel" prefWidth="288.0" text="Critical Item Level" style="-fx-font-size: 14pt"/>
-            <TableColumn fx:id="colOptions" prefWidth="191.0" text="Options" style="-fx-font-size: 14pt"/>
+            <TableColumn fx:id="colItemCode" prefWidth="196.0" text="Item Code" style="-fx-font-size: 12pt"/>
+            <TableColumn fx:id="colItemName" prefWidth="465.0" text="Item Name" style="-fx-font-size: 12pt"/>
+            <TableColumn fx:id="colPrice" prefWidth="292.0" text="Price" style="-fx-font-size: 12pt"/>
+            <TableColumn fx:id="colQtyOnHand" prefWidth="280.0" text="Qty On Hand" style="-fx-font-size: 12pt"/>
+            <TableColumn fx:id="colCriticalLevel" prefWidth="288.0" text="Critical Item Level" style="-fx-font-size: 12pt"/>
+            <TableColumn fx:id="colOptions" prefWidth="191.0" text="Options" style="-fx-font-size: 12pt"/>
          </columns>
       </TableView>
       <Button layoutX="1104.0" layoutY="102.0" mnemonicParsing="false" onAction="#btnAddItemFormOnAction" prefHeight="48.0" prefWidth="192.0" style="-fx-background-color: black; -fx-border-radius: 15; -fx-background-radius: 10;" text="Add New Item" textFill="#f8f8f8">

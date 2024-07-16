@@ -19,13 +19,13 @@
    <children>
       <TableView fx:id="tblCart" layoutX="70.0" layoutY="310.0" onMouseClicked="#handleRowClick" prefHeight="472.0" prefWidth="1294.0" >
          <columns>
-            <TableColumn fx:id="colItemCode" prefWidth="139.0" text="Item Code" style="-fx-font-size: 14pt" />
-            <TableColumn fx:id="colItemName" minWidth="0.0" prefWidth="218.0" text="Item Name" style="-fx-font-size: 14pt"/>
-            <TableColumn fx:id="colUnitPrice" prefWidth="205.0" text="Unit Price" style="-fx-font-size: 14pt"/>
-            <TableColumn fx:id="colQuantity" prefWidth="156.0" text="Quantity" style="-fx-font-size: 14pt" />
-            <TableColumn fx:id="colTotal" prefWidth="230.0" text="Total" style="-fx-font-size: 14pt"/>
-            <TableColumn fx:id="colStatus" prefWidth="167.0" text="Status" style="-fx-font-size: 14pt"/>
-            <TableColumn fx:id="colOptions" prefWidth="178.0" text="Options" style="-fx-font-size: 14pt"/>
+            <TableColumn fx:id="colItemCode" prefWidth="139.0" text="Item Code" style="-fx-font-size: 12pt" />
+            <TableColumn fx:id="colItemName" minWidth="0.0" prefWidth="218.0" text="Item Name" style="-fx-font-size: 12pt"/>
+            <TableColumn fx:id="colUnitPrice" prefWidth="205.0" text="Unit Price" style="-fx-font-size: 12pt"/>
+            <TableColumn fx:id="colQuantity" prefWidth="156.0" text="Quantity" style="-fx-font-size: 12pt" />
+            <TableColumn fx:id="colTotal" prefWidth="230.0" text="Total" style="-fx-font-size: 12pt"/>
+            <TableColumn fx:id="colStatus" prefWidth="167.0" text="Status" style="-fx-font-size: 12pt"/>
+            <TableColumn fx:id="colOptions" prefWidth="178.0" text="Options" style="-fx-font-size: 12pt"/>
          </columns>
       </TableView>
       <Text fill="#180361" layoutX="70.0" layoutY="117.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID" wrappingWidth="133.60986328125">

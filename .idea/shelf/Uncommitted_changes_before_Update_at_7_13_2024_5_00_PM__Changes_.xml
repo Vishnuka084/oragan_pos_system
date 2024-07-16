@@ -1,0 +1,19 @@
+<changelist name="Uncommitted_changes_before_Update_at_7_13_2024_5_00_PM_[Changes]" date="1720870267960" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_13_2024_5_00_PM_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 7/13/2024 5:00 PM [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="identifier.sqlite" />
+    <option name="AFTER_PATH" value="identifier.sqlite" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_13_2024_5_00_PM_[Changes]/identifier.sqlite" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="src/com/oragan/posSystem/assets/icons8-add-administrator-100.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_13_2024_5_00_PM_[Changes]/icons8-add-administrator-100.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_7_12_2024_1_02_PM_[Changes]/identifier.sqlite" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_13_2024_5_00_PM_[Changes]/identifier1.sqlite" />
+  </binary>
+</changelist>
