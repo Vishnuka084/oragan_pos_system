@@ -6,34 +6,36 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="831.0" prefWidth="1915.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.OrderDetailsFormController">
    <children>
-      <TextField fx:id="txtSerchFieldOrder" layoutX="698.0" layoutY="122.0" onAction="#txtSearchFieldOnAction" prefHeight="48.0" prefWidth="304.0" promptText="Search">
+      <TextField fx:id="txtSerchFieldOrder" layoutX="650.0" layoutY="114.0" onAction="#txtSearchFieldOnAction" prefHeight="56.0" prefWidth="352.0" promptText="Search">
          <font>
-            <Font size="15.0" />
+            <Font size="19.0" />
          </font>
       </TextField>
       <TableView fx:id="tblOrder" layoutX="32.0" layoutY="224.0" prefHeight="528.0" prefWidth="1869.0">
          <columns>
-            <TableColumn fx:id="colOrderID" prefWidth="153.99996948242188" text="Order ID" style="-fx-font-size: 10pt"/>
-            <TableColumn fx:id="colCustomerID" prefWidth="160.99996948242188" text="Customer ID" style="-fx-font-size: 10pt"/>
-            <TableColumn fx:id="colCustomerName" prefWidth="213.0" text="Customer Name" style="-fx-font-size: 10pt"/>
-            <TableColumn fx:id="colCurrentDate" prefWidth="129.0" text="Current Date" style="-fx-font-size: 10pt"/>
-            <TableColumn fx:id="colIssueDate" prefWidth="149.0" text="Issue Date" style="-fx-font-size: 10pt"/>
-            <TableColumn fx:id="colStatus" prefWidth="134.0" text="Status" style="-fx-font-size: 10pt"/>
-            <TableColumn fx:id="colPaymentOptions" prefWidth="158.0" text="Payment Options" style="-fx-font-size: 10pt"/>
-            <TableColumn fx:id="colDiscount" prefWidth="130.0" text="Discount" style="-fx-font-size: 10pt"/>
-            <TableColumn fx:id="colTotal" prefWidth="124.0" text="Total" style="-fx-font-size: 10pt"/>
-            <TableColumn fx:id="colPaymentAmount" prefWidth="129.0" text="Payment Amount" style="-fx-font-size: 10pt"/>
-            <TableColumn fx:id="colBalance" prefWidth="131.0" text="Balance" style="-fx-font-size: 10pt"/>
-            <TableColumn fx:id="colCreditOrDebit" prefWidth="129.0" text="Credit OR Debit" style="-fx-font-size: 10pt"/>
-            <TableColumn fx:id="colOptions" prefWidth="127.0" text="options" style="-fx-font-size: 10pt"/>
+            <TableColumn fx:id="colOrderID" prefWidth="153.99996948242188" style="-fx-font-size: 17px" text="Order ID" />
+            <TableColumn fx:id="colCustomerID" prefWidth="160.99996948242188" style="-fx-font-size: 17px" text="Customer ID" />
+            <TableColumn fx:id="colCustomerName" prefWidth="213.0" style="-fx-font-size: 17px" text="Customer Name" />
+            <TableColumn fx:id="colCurrentDate" prefWidth="129.0" style="-fx-font-size: 17px" text="Current Date" />
+            <TableColumn fx:id="colIssueDate" prefWidth="149.0" style="-fx-font-size: 17px" text="Issue Date" />
+            <TableColumn fx:id="colStatus" prefWidth="134.0" style="-fx-font-size: 17px" text="Status" />
+            <TableColumn fx:id="colPaymentOptions" prefWidth="158.0" style="-fx-font-size: 17px" text="Payment Options" />
+            <TableColumn fx:id="colDiscount" prefWidth="130.0" style="-fx-font-size: 17px" text="Discount" />
+            <TableColumn fx:id="colTotal" prefWidth="124.0" style="-fx-font-size: 17px" text="Total" />
+            <TableColumn fx:id="colPaymentAmount" prefWidth="129.0" style="-fx-font-size: 17px" text="Payment Amount" />
+            <TableColumn fx:id="colBalance" prefWidth="131.0" style="-fx-font-size: 17px" text="Balance" />
+            <TableColumn fx:id="colCreditOrDebit" prefWidth="129.0" style="-fx-font-size: 17px" text="Credit OR Debit" />
+            <TableColumn fx:id="colOptions" prefWidth="127.0" style="-fx-font-size: 17px" text="options" />
          </columns>
       </TableView>
-      <ComboBox fx:id="cmbOrderID" layoutX="1026.0" layoutY="122.0" onAction="#cmbSearchByOrderOnAction" prefHeight="48.0" prefWidth="192.0" promptText="Select Serch Option" style="-fx-background-color: FFC700; -fx-background-radius: 10;">
+      <ComboBox fx:id="cmbOrderID" layoutX="1026.0" layoutY="114.0" onAction="#cmbSearchByOrderOnAction" prefHeight="56.0" prefWidth="248.0" promptText="Select Serch Option" style="-fx-background-color: FFC700; -fx-background-radius: 10; -fx-font-size: 18;">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:id="cmbOrderIDs" fx:value="Order ID" />
@@ -41,5 +43,15 @@
             </FXCollections>
          </items>
       </ComboBox>
+      <ImageView fitHeight="248.0" fitWidth="440.0" layoutX="268.0" layoutY="-39.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/order.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="193.0" fitWidth="256.0" layoutX="1577.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/hh.gif" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

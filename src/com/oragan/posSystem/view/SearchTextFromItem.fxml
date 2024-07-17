@@ -23,8 +23,8 @@
       <Line endX="297.0" layoutX="152.0" layoutY="76.0" startX="-100.0" stroke="#1b0ff8" />
       <TableView fx:id="ItemtableName" layoutX="56.0" layoutY="150.0" prefHeight="566.0" prefWidth="389.0">
          <columns>
-            <TableColumn fx:id="colItemCode" prefWidth="107.0" text="Item Code" style="-fx-font-size: 10pt"/>
-            <TableColumn fx:id="colItemName" prefWidth="281.0" text="Item Name" style="-fx-font-size: 10pt"/>
+            <TableColumn fx:id="colItemCode" prefWidth="107.0" text="Item Code" style="-fx-font-size: 17px"/>
+            <TableColumn fx:id="colItemName" prefWidth="281.0" text="Item Name" style="-fx-font-size: 17px"/>
          </columns>
       </TableView>
    </children>

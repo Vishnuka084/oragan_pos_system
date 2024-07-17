@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.AreaChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
@@ -94,14 +94,6 @@
             <Image url="@../assets/icons8-customer-100.png" />
          </image>
       </ImageView>
-      <LineChart fx:id="lineChartID" layoutX="5.0" layoutY="203.0" prefHeight="621.0" prefWidth="1115.0">
-         <xAxis>
-            <NumberAxis label="Date" />
-         </xAxis>
-         <yAxis>
-            <NumberAxis label="Total Income" />
-         </yAxis>
-      </LineChart>
       <ImageView fx:id="imgNotificationIcon" fitHeight="100.0" fitWidth="107.0" layoutX="1786.0" layoutY="17.0" onMouseClicked="#btnNotificationIconOnAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/Notification-1--unscreen.gif" />
@@ -119,5 +111,14 @@
             <Image url="@../assets/online-payments-unscreen.gif" />
          </image>
       </ImageView>
+      <AreaChart fx:id="areaChartID" layoutX="18.0" layoutY="214.0" prefHeight="614.0" prefWidth="1120.0">
+         <xAxis>
+            <NumberAxis label="Date" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis label="Income" />
+         </yAxis>
+      </AreaChart>
+
    </children>
 </AnchorPane>

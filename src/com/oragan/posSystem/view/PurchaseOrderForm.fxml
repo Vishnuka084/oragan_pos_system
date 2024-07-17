@@ -8,6 +8,8 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,17 +17,17 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="831.0" prefWidth="1915.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.PurchaseOrderFormController">
+<AnchorPane prefHeight="831.0" prefWidth="1915.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.PurchaseOrderFormController">
    <children>
-      <TableView fx:id="tblCart" layoutX="70.0" layoutY="310.0" onMouseClicked="#handleRowClick" prefHeight="472.0" prefWidth="1294.0" >
+      <TableView fx:id="tblCart" layoutX="70.0" layoutY="310.0" onMouseClicked="#handleRowClick" prefHeight="472.0" prefWidth="1294.0">
          <columns>
-            <TableColumn fx:id="colItemCode" prefWidth="139.0" text="Item Code" style="-fx-font-size: 12pt" />
-            <TableColumn fx:id="colItemName" minWidth="0.0" prefWidth="218.0" text="Item Name" style="-fx-font-size: 12pt"/>
-            <TableColumn fx:id="colUnitPrice" prefWidth="205.0" text="Unit Price" style="-fx-font-size: 12pt"/>
-            <TableColumn fx:id="colQuantity" prefWidth="156.0" text="Quantity" style="-fx-font-size: 12pt" />
-            <TableColumn fx:id="colTotal" prefWidth="230.0" text="Total" style="-fx-font-size: 12pt"/>
-            <TableColumn fx:id="colStatus" prefWidth="167.0" text="Status" style="-fx-font-size: 12pt"/>
-            <TableColumn fx:id="colOptions" prefWidth="178.0" text="Options" style="-fx-font-size: 12pt"/>
+            <TableColumn fx:id="colItemCode" prefWidth="139.0" style="-fx-font-size: 18;" text="Item Code" />
+            <TableColumn fx:id="colItemName" minWidth="0.0" prefWidth="218.0" style="-fx-font-size: 18;" text="Item Name" />
+            <TableColumn fx:id="colUnitPrice" prefWidth="205.0" style="-fx-font-size: 18;" text="Unit Price" />
+            <TableColumn fx:id="colQuantity" prefWidth="156.0" style="-fx-font-size: 18;" text="Quantity" />
+            <TableColumn fx:id="colTotal" prefWidth="230.0" style="-fx-font-size: 18;" text="Total" />
+            <TableColumn fx:id="colStatus" prefWidth="167.0" style="-fx-font-size: 18;" text="Status" />
+            <TableColumn fx:id="colOptions" prefWidth="178.0" style="-fx-font-size: 18;" text="Options" />
          </columns>
       </TableView>
       <Text fill="#180361" layoutX="70.0" layoutY="117.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID" wrappingWidth="133.60986328125">
@@ -33,7 +35,7 @@
             <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
       </Text>
-      <ComboBox fx:id="cmbCustomerID" layoutX="70.0" layoutY="132.0" onAction="#cmbCustomerIDOnAction" opacity="0.84" prefHeight="35.0" prefWidth="371.0" promptText="Select Customer ID" style="-fx-background-color: white;">
+      <ComboBox fx:id="cmbCustomerID" layoutX="70.0" layoutY="132.0" onAction="#cmbCustomerIDOnAction" opacity="0.84" prefHeight="35.0" prefWidth="371.0" promptText="Select Customer ID" style="-fx-background-color: white; -fx-font-size: 18;">
          <opaqueInsets>
             <Insets left="5.0" />
          </opaqueInsets>
@@ -47,12 +49,18 @@
          <opaqueInsets>
             <Insets left="5.0" />
          </opaqueInsets>
+         <font>
+            <Font size="18.0" />
+         </font>
       </TextField>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cbdae8" height="102.0" layoutX="1433.0" layoutY="305.0" opacity="0.39" stroke="#cbdae8" strokeType="INSIDE" width="465.0" />
       <TextField fx:id="txtCustomerAddress" editable="false" layoutX="849.0" layoutY="133.0" prefHeight="35.0" prefWidth="371.0">
          <opaqueInsets>
             <Insets left="5.0" />
          </opaqueInsets>
+         <font>
+            <Font size="18.0" />
+         </font>
       </TextField>
       <Text fill="#180361" layoutX="1248.0" layoutY="117.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact Number" wrappingWidth="214.60986328125">
          <font>
@@ -63,13 +71,16 @@
          <opaqueInsets>
             <Insets left="5.0" />
          </opaqueInsets>
+         <font>
+            <Font size="18.0" />
+         </font>
       </TextField>
       <Text fill="#180361" layoutX="70.0" layoutY="202.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Code" wrappingWidth="133.60986328125">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
       </Text>
-      <ComboBox fx:id="cmbItemCode" layoutX="70.0" layoutY="218.0" onAction="#cmbItemCodeOnAction" opacity="0.84" prefHeight="35.0" prefWidth="371.0" promptText="Select Item Code" style="-fx-background-color: white;">
+      <ComboBox fx:id="cmbItemCode" layoutX="70.0" layoutY="218.0" onAction="#cmbItemCodeOnAction" opacity="0.84" prefHeight="35.0" prefWidth="371.0" promptText="Select Item Code" style="-fx-background-color: white; -fx-font-size: 18;">
          <opaqueInsets>
             <Insets left="5.0" />
          </opaqueInsets>
@@ -83,6 +94,9 @@
          <opaqueInsets>
             <Insets left="5.0" />
          </opaqueInsets>
+         <font>
+            <Font size="18.0" />
+         </font>
       </TextField>
       <Text fill="#180361" layoutX="852.0" layoutY="202.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="QTY On Hand" wrappingWidth="133.60986328125">
          <font>
@@ -94,6 +108,9 @@
          <opaqueInsets>
             <Insets left="5.0" />
          </opaqueInsets>
+         <font>
+            <Font size="18.0" />
+         </font>
       </TextField>
       <Text fill="#180361" layoutX="1248.0" layoutY="201.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Price" wrappingWidth="214.60986328125">
          <font>
@@ -104,56 +121,74 @@
          <opaqueInsets>
             <Insets left="5.0" />
          </opaqueInsets>
+         <font>
+            <Font size="18.0" />
+         </font>
       </TextField>
       <Text fill="#ff210d" layoutX="1680.0" layoutY="141.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity" wrappingWidth="107.60986328125">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="txtQuantity" layoutX="1681.0" layoutY="160.0" prefHeight="35.0" prefWidth="206.0">
+      <TextField fx:id="txtQuantity" layoutX="1713.0" layoutY="153.0" prefHeight="39.0" prefWidth="170.0">
          <opaqueInsets>
             <Insets left="5.0" />
          </opaqueInsets>
+         <font>
+            <Font size="18.0" />
+         </font>
       </TextField>
-      <Button layoutX="1679.0" layoutY="206.0" mnemonicParsing="false" onAction="#btnAddCartOnAction" prefHeight="42.0" prefWidth="215.0" style="-fx-background-color: yellow; -fx-border-radius: 10; -fx-background-radius: 10;" text="Add To Cart">
+      <Button layoutX="1713.0" layoutY="208.0" mnemonicParsing="false" onAction="#btnAddCartOnAction" prefHeight="60.0" prefWidth="170.0" style="-fx-background-color: yellow; -fx-border-radius: 20; -fx-background-radius: 100;" text="Add To Cart">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
+         <opaqueInsets>
+            <Insets top="25.0" />
+         </opaqueInsets>
+         <effect>
+            <InnerShadow />
+         </effect>
       </Button>
-      <ImageView fitHeight="28.0" fitWidth="25.0" layoutX="1840.0" layoutY="215.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="28.0" fitWidth="25.0" layoutX="1846.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/cart.png" />
          </image>
       </ImageView>
-      <Button layoutX="1679.0" layoutY="714.0" mnemonicParsing="false" onAction="#btnPlaceOrderOnAction" prefHeight="53.0" prefWidth="141.0" style="-fx-background-color: #3BB30A; -fx-border-radius: 10; -fx-background-radius: 10;" text="Place Order" textFill="#f5f5f5">
+      <Button layoutX="1717.0" layoutY="714.0" mnemonicParsing="false" onAction="#btnPlaceOrderOnAction" prefHeight="53.0" prefWidth="141.0" style="-fx-background-color: #3BB30A; -fx-border-radius: 10; -fx-background-radius: 10;" text="Place Order" textFill="#f5f5f5">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
+         <effect>
+            <DropShadow />
+         </effect>
       </Button>
       <ImageView fitHeight="25.0" fitWidth="43.0" layoutX="1559.0" layoutY="706.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/place-order.png" />
          </image>
       </ImageView>
-      <Text fill="#1625d3" layoutX="1442.0" layoutY="471.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total            :" wrappingWidth="149.60986328125">
+      <Text fill="ff2323" layoutX="1442.0" layoutY="471.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total            :" wrappingWidth="149.60986328125">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
       </Text>
-      <Label fx:id="lblOrderID" layoutX="71.0" layoutY="42.0" text="Order ID:" textFill="#ff2323">
+      <Label fx:id="lblOrderID" layoutX="161.0" layoutY="52.0" text="Order ID:" textFill="#ff2323">
          <font>
             <Font name="Lucida Console" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="txtTotal" layoutX="1614.0" layoutY="435.0" prefHeight="42.0" prefWidth="251.0">
+      <TextField fx:id="txtTotal" editable="false" layoutX="1614.0" layoutY="435.0" prefHeight="42.0" prefWidth="251.0" style="-fx-text-fill: red;">
          <font>
-            <Font size="16.0" />
+            <Font size="20.0" />
          </font>
       </TextField>
-      <Button fx:id="btnOrderHold" layoutX="1469.0" layoutY="714.0" mnemonicParsing="false" onAction="#btnHoldOrderOnAction" prefHeight="53.0" prefWidth="164.0" style="-fx-background-color: red; -fx-border-radius: 10; -fx-background-radius: 10;" text="Hold" textFill="#f5f5f5">
+      <Button fx:id="btnOrderHold" layoutX="1502.0" layoutY="714.0" mnemonicParsing="false" onAction="#btnHoldOrderOnAction" prefHeight="53.0" prefWidth="164.0" style="-fx-background-color: red; -fx-border-radius: 10; -fx-background-radius: 10;" text="Hold" textFill="#f5f5f5">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
+         <effect>
+            <DropShadow />
+         </effect>
       </Button>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cbdae8" height="76.0" layoutX="1538.0" layoutY="318.0" stroke="#0558a1" strokeType="INSIDE" width="92.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b3c1dd" height="53.0" layoutX="1433.0" layoutY="627.0" opacity="0.39" stroke="#cbdae8" strokeType="INSIDE" width="157.0" />
@@ -169,8 +204,14 @@
             <Font name="System Bold" size="22.0" />
          </font>
       </Text>
-      <TextField fx:id="txtPyaamount" layoutX="1614.0" layoutY="571.0" onMouseClicked="#clearPayMountClickEvent" prefHeight="35.0" prefWidth="251.0" text="0" />
-      <TextField fx:id="txtBalance" layoutX="1614.0" layoutY="636.0" onMouseClicked="#clearBalanceClickEvent" prefHeight="35.0" prefWidth="251.0" text="0" />
+      <TextField fx:id="txtPyaamount" layoutX="1614.0" layoutY="571.0" onMouseClicked="#clearPayMountClickEvent" prefHeight="35.0" prefWidth="251.0" text="0">
+         <font>
+            <Font size="20.0" />
+         </font></TextField>
+      <TextField fx:id="txtBalance" editable="false" layoutX="1614.0" layoutY="636.0" onMouseClicked="#clearBalanceClickEvent" prefHeight="35.0" prefWidth="251.0" text="0">
+         <font>
+            <Font size="20.0" />
+         </font></TextField>
       <ImageView fx:id="CashID" fitHeight="67.0" fitWidth="67.0" layoutX="1551.0" layoutY="318.0" onMouseClicked="#CashPaymentOnAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/icons8-cash-100.png" />
@@ -189,7 +230,10 @@
             <Font name="System Bold" size="22.0" />
          </font>
       </Text>
-      <TextField fx:id="txtDiscount" layoutX="1614.0" layoutY="506.0" onAction="#setDiscountOnAction" onMouseClicked="#clearDiscountClickEvent" prefHeight="35.0" prefWidth="251.0" text="0" />
+      <TextField fx:id="txtDiscount" layoutX="1614.0" layoutY="506.0" onAction="#setDiscountOnAction" onMouseClicked="#clearDiscountClickEvent" prefHeight="35.0" prefWidth="251.0" text="0">
+         <font>
+            <Font size="20.0" />
+         </font></TextField>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cbdae8" height="53.0" layoutX="1764.0" layoutY="64.0" stroke="#cbdae8" strokeType="INSIDE" width="120.0" />
       <ImageView fx:id="addCustomerId" fitHeight="102.0" fitWidth="120.0" layoutX="1769.0" layoutY="-9.0" onMouseClicked="#AddCustomerOnAction" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -206,6 +250,11 @@
             <Font name="Arial Narrow" size="18.0" />
          </font>
       </Text>
+      <ImageView fitHeight="125.0" fitWidth="157.0" layoutX="44.0" layoutY="-20.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/man-shopping-using-trolley-969-unscreen.gif" />
+         </image>
+      </ImageView>
    </children>
    <effect>
       <ColorAdjust brightness="0.02" />
