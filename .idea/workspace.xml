@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89dbfd71-98c4-49ba-a84d-1363c7f00fa7" name="Changes" comment="updated credit customer search" />
+    <list default="true" id="89dbfd71-98c4-49ba-a84d-1363c7f00fa7" name="Changes" comment="updated credit customer search">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_10_2024_12_25_AM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_9_2024_11_51_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_9_2024_11_53_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/oragan/posSystem/view/PurchaseOrderForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/oragan/posSystem/view/PurchaseOrderForm.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
