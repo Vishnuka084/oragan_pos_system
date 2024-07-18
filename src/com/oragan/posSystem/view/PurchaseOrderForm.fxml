@@ -223,14 +223,20 @@
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b3c1dd" height="53.0" layoutX="1433.0" layoutY="499.0" opacity="0.39" stroke="#cbdae8" strokeType="INSIDE" width="157.0" />
-      <Text layoutX="1548.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cash Payment" wrappingWidth="83.60986328125" />
-      <Text layoutX="1692.0" layoutY="386.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card Payement" wrappingWidth="83.60986328125" />
+      <Text layoutX="1548.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cash Payment" wrappingWidth="83.60986328125">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font></Text>
+      <Text layoutX="1692.0" layoutY="386.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card Payement" wrappingWidth="83.60986328125">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font></Text>
       <Text fill="#ff3916" layoutX="1442.0" layoutY="533.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DisCount     :" wrappingWidth="149.60986328125">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
       </Text>
-      <TextField fx:id="txtDiscount" layoutX="1614.0" layoutY="506.0" onAction="#setDiscountOnAction" onMouseClicked="#clearDiscountClickEvent" prefHeight="35.0" prefWidth="251.0" text="0">
+      <TextField fx:id="txtDiscount" layoutX="1614.0" layoutY="506.0" onAction="#setDiscountOnAction" onMouseClicked="#clearDiscountClickEvent" prefHeight="35.0" prefWidth="251.0" promptText="Input Discount Press Enter" text="0">
          <font>
             <Font size="20.0" />
          </font></TextField>

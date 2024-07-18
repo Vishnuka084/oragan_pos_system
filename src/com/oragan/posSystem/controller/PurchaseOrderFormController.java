@@ -497,8 +497,6 @@ public class PurchaseOrderFormController {
         cmbCustomerID.getSelectionModel().clearSelection();
         cmbItemCode.getSelectionModel().clearSelection();
         txtCustomerName.clear();
-        txtBalance.clear();
-        txtPyaamount.clear();
         txtItemName.clear();
         txtQtyOnHand.clear();
         txtQuantity.clear();

@@ -6,9 +6,11 @@
               name="OraganBill" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a00424e2-736b-4c8e-b638-d3c28ab8094e">
 
     <parameter name="orderId" class="java.lang.String"/>
+    <parameter name="Status" class="java.lang.String"/>
+
     <queryString>
         <![CDATA[
-        SELECT oi.Item_code, oi.Item_name, oi.Quantity, oi.Price, oi.Total, o.Customer_Id, o.Customer_name, o.Discount, o.Balance
+        SELECT oi.Item_code, oi.Item_name, oi.Quantity, oi.Price, oi.Total, o.Customer_Id, o.Customer_name, o.Discount, o.Balance, o.Status
         FROM OrderItem oi
         JOIN "Order" o ON oi.OrderID = o.OrderID
         WHERE oi.OrderID = $P{orderId}
@@ -24,6 +26,7 @@
     <field name="Customer_name" class="java.lang.String"/>
     <field name="Discount" class="java.lang.Double"/>
     <field name="Balance" class="java.lang.Double"/>
+    <field name="Status" class="java.lang.String"/>
 
     <variable name="TotalAmount" class="java.lang.Double" calculation="Sum">
         <variableExpression><![CDATA[$F{Total}]]></variableExpression>
@@ -35,6 +38,13 @@
 
     <title>
         <band height="139" splitType="Stretch">
+            <!-- Image element -->
+            <image>
+                <reportElement x="50" y="0" width="100" height="80" uuid="3b9c74c9-2a7e-4d30-9b91-3e5e6d5d2e4f"/>
+                <imageExpression><![CDATA["src/com/oragan/posSystem/assets/shop.png"]]></imageExpression>
+            </image>
+
+            <!-- Existing elements -->
             <textField>
                 <reportElement x="180" y="20" width="330" height="60" uuid="50d1659f-0f7a-42ba-8a09-163cce67c55d"/>
                 <textElement>
@@ -54,18 +64,33 @@
                 <textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
             </textField>
             <textField pattern="MMMMM dd, yyyy">
-                <reportElement x="475" y="0" width="100" height="30" uuid="a8968058-7269-4a66-8a3b-d1837ac336fa"/>
+                <reportElement x="450" y="0" width="100" height="30" uuid="a8968058-7269-4a66-8a3b-d1837ac336fa"/>
                 <textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
             </textField>
             <textField pattern="HH:mm">
-                <reportElement x="475" y="20" width="100" height="30" uuid="10ba55f2-5ea1-46dd-891c-14cafd9ce40a"/>
+                <reportElement x="520" y="0" width="100" height="30" uuid="10ba55f2-5ea1-46dd-891c-14cafd9ce40a"/>
                 <textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
             </textField>
         </band>
     </title>
 
+
     <pageHeader>
         <band height="70" splitType="Stretch">
+            <textField>
+                <reportElement x="0" y="-5" width="150" height="20" uuid="8f7a15f3-4a93-4d94-b1e1-2c0d5261af87"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA[
+                $F{Status}.equals("Confirm") ? "Invoice" :
+                $F{Status}.equals("Hold") ? "Quotation" :
+                "Unknown"
+                ]]>
+                </textFieldExpression>
+            </textField>
+
             <staticText>
                 <reportElement x="0" y="10" width="150" height="25" uuid="d5f76422-79d7-4b89-909d-3b8d3031b7fa"/>
                 <text><![CDATA[Order ID:]]></text>
@@ -74,26 +99,28 @@
                 <reportElement x="80" y="10" width="150" height="25" uuid="9945baff-7e89-4b71-871d-2b6b807f3e32"/>
                 <textFieldExpression><![CDATA[$P{orderId}]]></textFieldExpression>
             </textField>
-            <textField>
-                <reportElement x="170" y="35" width="150" height="25" uuid="a1d5f76422-79d7-4b89-909d-3b8d3031b7fa"/>
-                <textFieldExpression><![CDATA[$F{Customer_name}]]></textFieldExpression>
-            </textField>
-            <staticText>
-                <reportElement x="320" y="35" width="150" height="25" uuid="e5f76422-79d7-4b89-909d-3b8d3031b7fa"/>
-                <text><![CDATA[Customer Name:]]></text>
-            </staticText>
 
-            <textField>
-                <reportElement x="80" y="35" width="150" height="25" uuid="a1d5f76422-79d7-4b89-909d-3b8d3031b7fa"/>
-                <textFieldExpression><![CDATA[$F{Customer_Id}]]></textFieldExpression>
-            </textField>
             <staticText>
                 <reportElement x="0" y="35" width="150" height="25" uuid="e5f76422-79d7-4b89-909d-3b8d3031b7fa"/>
                 <text><![CDATA[Customer ID:]]></text>
             </staticText>
+            <textField>
+                <reportElement x="80" y="35" width="150" height="25" uuid="a1d5f76422-79d7-4b89-909d-3b8d3031b7fa"/>
+                <textFieldExpression><![CDATA[$F{Customer_Id}]]></textFieldExpression>
+            </textField>
 
+            <staticText>
+                <reportElement x="320" y="35" width="150" height="25" uuid="e5f76422-79d7-4b89-909d-3b8d3031b7fa"/>
+                <text><![CDATA[Customer Name:]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="470" y="35" width="150" height="25" uuid="a1d5f76422-79d7-4b89-909d-3b8d3031b7fa"/>
+                <textFieldExpression><![CDATA[$F{Customer_name}]]></textFieldExpression>
+            </textField>
         </band>
     </pageHeader>
+
+
 
     <columnHeader>
         <band height="61" splitType="Stretch">
@@ -114,16 +141,19 @@
                 <text><![CDATA[Unit Price]]></text>
             </staticText>
             <staticText>
-                <reportElement x="460" y="0" width="100" height="30" uuid="b1fc39f0-1e63-4875-98ef-8b0eaa6148fc"/>
+                <reportElement x="460" y="0" width="100" height="30" uuid="ff4c75d0-bf8b-4068-94cb-f6a4f23a17c1"/>
                 <text><![CDATA[Total]]></text>
             </staticText>
+            <line>
+                <reportElement x="0" y="35" width="555" height="1" uuid="3679e23b-66f5-4cb6-888f-fae61fe02eb0"/>
+            </line>
         </band>
     </columnHeader>
 
     <detail>
-        <band height="30" splitType="Prevent">
+        <band height="30" splitType="Stretch">
             <textField>
-                <reportElement x="0" y="0" width="80" height="30" uuid="bfc78593-3df8-4f2f-8a8b-75b111bd234b"/>
+                <reportElement x="0" y="0" width="80" height="30" uuid="1f36a09f-145f-486b-90e6-d1f4b247e72e"/>
                 <textFieldExpression><![CDATA[$F{Item_code}]]></textFieldExpression>
             </textField>
             <textField>
@@ -185,5 +215,4 @@
             </textField>
         </band>
     </summary>
-
 </jasperReport>
