@@ -16,17 +16,17 @@
 
 <AnchorPane fx:id="context" prefHeight="831.0" prefWidth="1915.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.CustomerFormController">
     <children>
-        <TextField fx:id="txtSerchFieldCustomer" layoutX="1122.0" layoutY="80.0" onAction="#txtSerchFieldCustomerOnAction" prefHeight="67.0" prefWidth="304.0" promptText="Search" style="-fx-border-width: 2; -fx-border-color: green; -fx-background-color: transparent; -fx-text-fill: green; -fx-border-radius: 10; -fx-background-radius: 20;">
+        <TextField fx:id="txtSerchFieldCustomer" layoutX="709.0" layoutY="81.0" onAction="#txtSerchFieldCustomerOnAction" prefHeight="67.0" prefWidth="669.0" promptText="Search" style="-fx-border-width: 2; -fx-border-color: green; -fx-background-color: transparent; -fx-text-fill: green; -fx-border-radius: 10; -fx-background-radius: 20;">
             <font>
                 <Font size="15.0" />
             </font>
         </TextField>
         <TableView fx:id="tblCustomer" layoutX="63.0" layoutY="181.0" prefHeight="625.0" prefWidth="1803.0">
             <columns>
-                <TableColumn fx:id="tblCustomerIdField" prefWidth="228.0" style="-fx-font-size: 20" text="Customer ID" />
-                <TableColumn fx:id="tblCustomerNameFIeld" prefWidth="432.0" style="-fx-font-size: 20" text="Name" />
-                <TableColumn fx:id="tblCustomerAddressField" prefWidth="491.0" style="-fx-font-size: 20" text="Address" />
-                <TableColumn fx:id="tblCustomerContactNoField" prefWidth="372.0" style="-fx-font-size: 20" text="Contact Number" />
+                <TableColumn fx:id="tblCustomerIdField" prefWidth="228.0" style="-fx-font-size: 15px" text="Customer ID" />
+                <TableColumn fx:id="tblCustomerNameFIeld" prefWidth="432.0" style="-fx-font-size: 15px" text="Name" />
+                <TableColumn fx:id="tblCustomerAddressField" prefWidth="491.0" style="-fx-font-size: 15px" text="Address" />
+                <TableColumn fx:id="tblCustomerContactNoField" prefWidth="372.0" style="-fx-font-size: 15px" text="Contact Number" />
                 <TableColumn fx:id="tblOptionsColumn" prefWidth="334.0" text="Options" />
             </columns>
          <effect>
@@ -40,7 +40,7 @@
          <effect>
             <InnerShadow blurType="GAUSSIAN" choke="0.07" height="114.29" radius="34.1" width="24.11" />
          </effect></Button>
-        <ComboBox fx:id="cmbCustomerId" layoutX="1443.0" layoutY="80.0" onAction="#cmbSearchByCustomerOnAction" prefHeight="67.0" prefWidth="192.0" promptText="Select Serch Option" style="-fx-background-color: FFC700; -fx-background-radius: 10;-fx-font-weight: bold;-fx-font-size: 15px">
+        <ComboBox fx:id="cmbCustomerId" layoutX="1421.0" layoutY="80.0" onAction="#cmbSearchByCustomerOnAction" prefHeight="67.0" prefWidth="224.0" promptText="Select Serch Option" style="-fx-background-color: FFC700; -fx-background-radius: 10;-fx-font-weight: bold;-fx-font-size: 15px">
             <items>
                 <FXCollections fx:factory="observableArrayList">
                     <String fx:id="cmbName" fx:value="Customer Name" />

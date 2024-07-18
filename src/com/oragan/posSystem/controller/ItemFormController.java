@@ -129,7 +129,7 @@ public class ItemFormController {
                     setStyle("");
                 } else {
                     if (item.getQty() <= item.getCritical_level()) {
-                        setStyle("-fx-background-color: red; -fx-text-fill: white;");
+                        setStyle("-fx-background-color: #ff7979; -fx-text-fill: white;");
                     } else {
                         setStyle("");
                     }

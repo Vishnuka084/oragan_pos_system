@@ -17,26 +17,26 @@
 <AnchorPane fx:id="context" prefHeight="831.0" prefWidth="1915.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.ItemFormController">
    <children>
       <Circle fill="#2085dd" layoutX="1833.0" layoutY="61.0" radius="24.0" stroke="#2085dd" strokeType="INSIDE" />
-      <TextField fx:id="txtSearchField" layoutX="918.0" layoutY="78.0" onAction="#txtSearchFieldOnAction" prefHeight="76.0" prefWidth="344.0" promptText="Search" style="-fx-border-width: 2; -fx-border-color: green; -fx-background-color: transparent; -fx-text-fill: green; -fx-border-radius: 10; -fx-background-radius: 20;">
+      <TextField fx:id="txtSearchField" layoutX="642.0" layoutY="78.0" onAction="#txtSearchFieldOnAction" prefHeight="67.0" prefWidth="669.0" promptText="Search" style="-fx-border-width: 2; -fx-border-color: green; -fx-background-color: transparent; -fx-text-fill: green; -fx-border-radius: 10; -fx-background-radius: 20;">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
       <TableView fx:id="tblItem" layoutX="101.0" layoutY="208.0" prefHeight="566.0" prefWidth="1713.0">
          <columns>
-            <TableColumn fx:id="colItemCode" prefWidth="196.0" style="-fx-font-size: 17px" text="Item Code" />
-            <TableColumn fx:id="colItemName" prefWidth="465.0" style="-fx-font-size: 17px" text="Item Name" />
-            <TableColumn fx:id="colPrice" prefWidth="292.0" style="-fx-font-size: 17px" text="Price" />
-            <TableColumn fx:id="colQtyOnHand" prefWidth="280.0" style="-fx-font-size: 17px" text="Qty On Hand" />
-            <TableColumn fx:id="colCriticalLevel" prefWidth="288.0" style="-fx-font-size: 17px" text="Critical Item Level" />
-            <TableColumn fx:id="colOptions" prefWidth="191.0" style="-fx-font-size: 17px" text="Options" />
+            <TableColumn fx:id="colItemCode" prefWidth="196.0" style="-fx-font-size: 15px" text="Item Code" />
+            <TableColumn fx:id="colItemName" prefWidth="465.0" style="-fx-font-size: 15px" text="Item Name" />
+            <TableColumn fx:id="colPrice" prefWidth="292.0" style="-fx-font-size: 15px" text="Price" />
+            <TableColumn fx:id="colQtyOnHand" prefWidth="280.0" style="-fx-font-size: 15px" text="Qty On Hand" />
+            <TableColumn fx:id="colCriticalLevel" prefWidth="288.0" style="-fx-font-size: 15px" text="Critical Item Level" />
+            <TableColumn fx:id="colOptions" prefWidth="191.0" style="-fx-font-size: 15px" text="Options" />
          </columns>
       </TableView>
-      <Button layoutX="1525.0" layoutY="78.0" mnemonicParsing="false" onAction="#btnAddItemFormOnAction" prefHeight="76.0" prefWidth="220.0" style="-fx-background-color: black; -fx-border-radius: 15; -fx-background-radius: 10;" text="Add New Item" textFill="#f8f8f8">
+      <Button layoutX="1578.0" layoutY="78.0" mnemonicParsing="false" onAction="#btnAddItemFormOnAction" prefHeight="67.0" prefWidth="220.0" style="-fx-background-color: black; -fx-border-radius: 15; -fx-background-radius: 10;" text="Add New Item" textFill="#f8f8f8">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <ComboBox fx:id="cmbCustomerId" layoutX="1291.0" layoutY="78.0" onAction="#cmbSearchByItemOnAction" prefHeight="76.0" prefWidth="220.0" promptText="Select Serch Option" style="-fx-background-color: #EFC81A; -fx-background-radius: 10; -fx-font-size: 17px; -fx-font-weight: bold;">
+      <ComboBox fx:id="cmbCustomerId" layoutX="1339.0" layoutY="78.0" onAction="#cmbSearchByItemOnAction" prefHeight="67.0" prefWidth="220.0" promptText="Select Serch Option" style="-fx-background-color: #EFC81A; -fx-background-radius: 10; -fx-font-size: 17px; -fx-font-weight: bold;">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:id="cmbName" fx:value="Item Name" />
@@ -55,9 +55,9 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <ImageView fitHeight="253.0" fitWidth="251.0" layoutX="157.0" layoutY="-27.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="181.0" fitWidth="258.0" layoutX="160.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/item.gif" />
+            <Image url="@../assets/items.gif" />
          </image>
       </ImageView>
    </children>
