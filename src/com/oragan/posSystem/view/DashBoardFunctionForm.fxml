@@ -15,11 +15,11 @@
 <AnchorPane fx:id="context" prefHeight="831.0" prefWidth="1915.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oragan.posSystem.controller.DashBoardFunctionFormController">
    <children>
       <Circle fill="#f20a0a" layoutX="1867.0" layoutY="38.0" radius="14.0" stroke="WHITE" strokeType="INSIDE" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2772f5b5" height="147.0" layoutX="765.0" layoutY="24.0" stroke="#00fffb" strokeType="INSIDE" width="318.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a7c7e7b5" height="147.0" layoutX="46.0" layoutY="24.0" stroke="#a7c7e7" strokeType="INSIDE" width="318.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ccccffb5" height="147.0" layoutX="413.0" layoutY="25.0" stroke="#ccccff" strokeType="INSIDE" width="318.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00b5a9b5" height="147.0" layoutX="1472.0" layoutY="24.0" stroke="#00fffb" strokeType="INSIDE" width="312.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1a2df8b5" height="147.0" layoutX="1118.0" layoutY="24.0" stroke="#00fffb" strokeType="INSIDE" width="318.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00a838b5" height="147.0" layoutX="765.0" layoutY="24.0" stroke="#00fffb" strokeType="INSIDE" width="318.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fff600b5" height="147.0" layoutX="46.0" layoutY="24.0" stroke="#ffc312" strokeType="INSIDE" width="318.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff000db5" height="147.0" layoutX="413.0" layoutY="25.0" stroke="#ccccff" strokeType="INSIDE" width="318.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1a2df8b5" height="147.0" layoutX="1472.0" layoutY="24.0" stroke="#00fffb" strokeType="INSIDE" width="312.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#797a86b5" height="147.0" layoutX="1118.0" layoutY="24.0" stroke="#00fffb" strokeType="INSIDE" width="318.0" />
       <Text fontSmoothingType="LCD" layoutX="126.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Income" wrappingWidth="138.0">
          <font>
             <Font name="System Bold" size="18.0" />
@@ -106,7 +106,7 @@
       </Label>
       <PieChart fx:id="pieChart1" layoutX="1187.0" layoutY="218.0" prefHeight="560.0" prefWidth="680.0" />
       <Circle fill="#30ff79" layoutX="1843.0" layoutY="141.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
-      <ImageView fitHeight="107.0" fitWidth="113.0" layoutX="1799.0" layoutY="85.0" onMouseClicked="#imgCreditCustomerClickEvent" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="126.0" fitWidth="125.0" layoutX="1791.0" layoutY="75.0" onMouseClicked="#imgCreditCustomerClickEvent" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/online-payments-unscreen.gif" />
          </image>

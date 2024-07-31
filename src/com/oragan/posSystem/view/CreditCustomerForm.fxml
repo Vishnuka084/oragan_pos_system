@@ -25,8 +25,8 @@
         <Line endX="297.0" layoutX="185.0" layoutY="66.0" startX="-100.0" stroke="#1b0ff8" />
         <TableView fx:id="CustomerNametbl" layoutX="89.0" layoutY="140.0" prefHeight="566.0" prefWidth="410.0">
             <columns>
-                <TableColumn fx:id="colId" prefWidth="149.0" text="Customer ID" style="-fx-font-size: 10pt"/>
-                <TableColumn fx:id="colName" prefWidth="260.0" text="Customer Name" style="-fx-font-size: 10pt"/>
+                <TableColumn fx:id="colId" prefWidth="149.0" text="Customer ID" style="-fx-font-size: 15px"/>
+                <TableColumn fx:id="colName" prefWidth="260.0" text="Customer Name" style="-fx-font-size: 15px"/>
             </columns>
         </TableView>
       <ImageView fitHeight="133.0" fitWidth="110.0" layoutX="12.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">

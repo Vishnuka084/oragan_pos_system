@@ -66,13 +66,13 @@
          <font>
             <Font name="Dubai Bold" size="18.0" />
          </font></Text>
-      <Button layoutX="475.0" layoutY="53.0" mnemonicParsing="false" onAction="#DashBoardOnAction" opacity="0.11" prefHeight="48.0" prefWidth="150.0" />
-      <Button layoutX="703.0" layoutY="56.0" mnemonicParsing="false" onAction="#CustomerOnAction" opacity="0.11" prefHeight="40.0" prefWidth="135.0" />
+      <Button layoutX="475.0" layoutY="53.0" mnemonicParsing="false" onAction="#DashBoardOnAction" opacity="0.11" prefHeight="48.0" prefWidth="150.0" textFill="RED" />
+      <Button layoutX="703.0" layoutY="56.0" mnemonicParsing="false" onAction="#CustomerOnAction" opacity="0.11" prefHeight="40.0" prefWidth="135.0" textFill="#55117c" />
       <Button layoutX="906.0" layoutY="57.0" mnemonicParsing="false" onAction="#ItemOnAction" opacity="0.11" prefHeight="40.0" prefWidth="102.0" />
       <Button layoutX="1088.0" layoutY="56.0" mnemonicParsing="false" onAction="#PurchaseOrderOnAction" opacity="0.11" prefHeight="48.0" prefWidth="198.0" />
       <Button layoutX="1353.0" layoutY="62.0" mnemonicParsing="false" onAction="#OderDetailsOnAction" opacity="0.11" prefHeight="48.0" prefWidth="173.0" />
       <AnchorPane fx:id="context" layoutX="10.0" layoutY="163.0" opacity="0.98" prefHeight="831.0" prefWidth="1915.0" style="-fx-background-color: #ebf3ff;" />
-      <Label fx:id="timeLabel" layoutX="1621.0" layoutY="47.0" prefHeight="48.0" prefWidth="277.0" style="-fx-background-radius: 15; -fx-background-color: #0c2461; -fx-background-position: center;" text="Label" textFill="WHITE">
+      <Label fx:id="timeLabel" layoutX="1611.0" layoutY="55.0" prefHeight="48.0" prefWidth="277.0" style="-fx-background-radius: 15; -fx-background-color: #0c2461; -fx-background-position: center;" text="Label" textFill="WHITE">
          <font>
             <Font name="Berlin Sans FB" size="26.0" />
          </font>
